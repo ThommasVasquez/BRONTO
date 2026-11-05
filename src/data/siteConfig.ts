@@ -71,8 +71,8 @@ export const siteConfig: SiteConfig = {
   contact: {
     phone: "+57 (601) 745-0000",
     phoneFormatted: "6017450000",
-    whatsapp: "573100000000",
-    whatsappFormatted: "+57 310 000 0000",
+    whatsapp: "573157052810",
+    whatsappFormatted: "+57 315 705 2810",
     email: "comercial@bronto.com.co",
     address: "Corredor Industrial Sabana Occidente / Calle 80",
     city: "Bogotá D.C. y Sabana",
