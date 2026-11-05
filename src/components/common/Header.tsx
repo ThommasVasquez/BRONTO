@@ -10,11 +10,16 @@ import { useQuoteBasket } from "@/components/quote/QuoteBasketProvider";
 import { Menu, X, FileText, ChevronRight, User, ShieldCheck } from "lucide-react";
 
 export const Header: React.FC = () => {
+  const [mounted, setMounted] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const pathname = usePathname();
   const { totalCount } = useQuoteBasket();
   const { user, isLoggedIn } = useClientAuth();
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -87,7 +92,7 @@ export const Header: React.FC = () => {
             <ThemeToggle />
 
             {/* Acceso a Portal de Clientes */}
-            {isLoggedIn ? (
+            {mounted && isLoggedIn ? (
               <Link
                 href="/portal-clientes"
                 className="inline-flex items-center gap-1.5 px-3 py-2 border border-[#333333] hover:border-bronto-yellow bg-[#1A1A1A] text-xs font-semibold text-white transition-colors"
@@ -115,7 +120,7 @@ export const Header: React.FC = () => {
             >
               <FileText className="w-3.5 h-3.5 text-bronto-yellow" />
               <span>Lista</span>
-              {totalCount > 0 ? (
+              {mounted && totalCount > 0 ? (
                 <span className="inline-flex items-center justify-center px-1.5 py-0.2 text-[11px] font-bold bg-bronto-yellow text-black">
                   {totalCount}
                 </span>
@@ -144,7 +149,7 @@ export const Header: React.FC = () => {
               aria-label="Ver equipos a cotizar"
             >
               <FileText className="w-4 h-4" />
-              {totalCount > 0 && (
+              {mounted && totalCount > 0 && (
                 <span className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center bg-bronto-yellow text-[9px] font-bold text-black">
                   {totalCount}
                 </span>
@@ -182,11 +187,11 @@ export const Header: React.FC = () => {
             ))}
 
             <Link
-              href={isLoggedIn ? "/portal-clientes" : "/login"}
+              href={mounted && isLoggedIn ? "/portal-clientes" : "/login"}
               className="flex items-center gap-2 text-base font-bold py-2 border-b border-[#242424] text-bronto-yellow"
             >
               <ShieldCheck className="w-4 h-4" />
-              <span>{isLoggedIn ? `Portal: ${user?.companyName}` : "Portal de Clientes / Iniciar Sesión"}</span>
+              <span>{mounted && isLoggedIn ? `Portal: ${user?.companyName}` : "Portal de Clientes / Iniciar Sesión"}</span>
             </Link>
 
             <div className="pt-4 flex flex-col gap-3">

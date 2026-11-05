@@ -2,18 +2,15 @@ import { Product } from "@/types/catalog";
 import { QuoteItem } from "@/types/quote";
 
 /**
- * Formatea un valor numérico a pesos colombianos (COP) estándar
+ * Formatea un valor numérico a pesos colombianos (COP) estándar de forma 100% determinista
+ * Evita cualquier discrepancia de hidratación (Hydration Mismatch) entre Node.js SSR y navegadores
  * Ej: 440000 -> "$ 440.000 COP"
  */
 export function formatCOP(amount: number, showCurrency: boolean = true): string {
-  if (isNaN(amount) || amount === 0) return "$ 0 COP";
-  const formatted = new Intl.NumberFormat("es-CO", {
-    style: "currency",
-    currency: "COP",
-    maximumFractionDigits: 0,
-  }).format(amount);
-
-  return showCurrency ? `${formatted} COP` : formatted;
+  if (isNaN(amount) || amount === 0) return showCurrency ? "$ 0 COP" : "$ 0";
+  const numStr = Math.round(amount).toString();
+  const withDots = numStr.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+  return showCurrency ? `$ ${withDots} COP` : `$ ${withDots}`;
 }
 
 /**
@@ -185,3 +182,4 @@ export function computeQuoteSummary(
     itemBreakdown,
   };
 }
+

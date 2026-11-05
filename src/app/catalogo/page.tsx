@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useMemo, Suspense } from "react";
+import React, { useState, useMemo, Suspense, useEffect } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { catalogProducts, catalogCategories } from "@/data/catalogData";
@@ -31,6 +31,11 @@ function CatalogContent() {
   const [sortBy, setSortBy] = useState<"destacados" | "nombre_asc" | "nombre_desc" | "precio_asc" | "precio_desc">("destacados");
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const { addItem, isInBasket } = useQuoteBasket();
 
@@ -311,7 +316,7 @@ function CatalogContent() {
               /* Vista en Cuadrícula Full Width */
               <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-6">
                 {filteredProducts.map((product) => {
-                  const inBasket = isInBasket(product.id);
+                  const inBasket = mounted && isInBasket(product.id);
                   return (
                     <div
                       key={product.id}
@@ -408,7 +413,7 @@ function CatalogContent() {
               /* Vista en Lista */
               <div className="space-y-4">
                 {filteredProducts.map((product) => {
-                  const inBasket = isInBasket(product.id);
+                  const inBasket = mounted && isInBasket(product.id);
                   return (
                     <div
                       key={product.id}

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { Product } from "@/types/catalog";
 import { useQuoteBasket } from "@/components/quote/QuoteBasketProvider";
@@ -27,6 +27,11 @@ export const ProductDetailClient: React.FC<ProductDetailClientProps> = ({ produc
   const [quantity, setQuantity] = useState(1);
   const [estimatedDuration, setEstimatedDuration] = useState("1 mes");
   const [addedSuccess, setAddedSuccess] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const liveEstimate = calculateItemTotal({
     product,
@@ -255,7 +260,7 @@ export const ProductDetailClient: React.FC<ProductDetailClientProps> = ({ produc
             className={`w-full sm:flex-1 py-3.5 px-6 text-xs uppercase tracking-wider font-bold transition-all flex items-center justify-center gap-2 border ${
               addedSuccess
                 ? "bg-green-700 border-green-600 text-white"
-                : isInBasket(product.id)
+                : mounted && isInBasket(product.id)
                 ? "bg-[#252525] border-bronto-yellow text-bronto-yellow"
                 : "bg-[#222222] border-[#3A3A3A] hover:border-bronto-yellow text-white"
             }`}
@@ -265,7 +270,7 @@ export const ProductDetailClient: React.FC<ProductDetailClientProps> = ({ produc
                 <Check className="w-4 h-4" />
                 <span>¡Agregado a la lista!</span>
               </>
-            ) : isInBasket(product.id) ? (
+            ) : mounted && isInBasket(product.id) ? (
               <>
                 <Check className="w-4 h-4" />
                 <span>En su lista (Actualizar cantidad)</span>

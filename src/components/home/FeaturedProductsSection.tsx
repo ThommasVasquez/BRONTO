@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { catalogProducts } from "@/data/catalogData";
 import { useQuoteBasket } from "@/components/quote/QuoteBasketProvider";
@@ -8,8 +8,13 @@ import { formatCOP } from "@/lib/pricing";
 import { Eye, Plus, Check, ArrowRight } from "lucide-react";
 
 export const FeaturedProductsSection: React.FC = () => {
+  const [mounted, setMounted] = useState(false);
   const { addItem, isInBasket } = useQuoteBasket();
   const featured = catalogProducts.filter((p) => p.featured).slice(0, 6);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   return (
     <section
@@ -38,7 +43,7 @@ export const FeaturedProductsSection: React.FC = () => {
       {/* Grid de Productos Industrial */}
       <div className="w-full my-auto py-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4 items-stretch flex-1">
         {featured.map((product) => {
-          const inBasket = isInBasket(product.id);
+          const inBasket = mounted && isInBasket(product.id);
 
           return (
             <div
