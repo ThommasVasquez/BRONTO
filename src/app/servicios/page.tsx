@@ -83,20 +83,42 @@ export default function ServicesPage() {
                     </div>
 
                     <div className="pt-2 flex flex-wrap gap-4">
-                      <Link
-                        href={`/cotizar?servicio=${service.slug}`}
-                        className="inline-flex items-center gap-2 px-6 py-3 bg-bronto-yellow hover:bg-bronto-yellow-hover text-[#151515] font-black text-xs uppercase tracking-wider transition-colors"
-                      >
-                        <span>Cotizar este servicio</span>
-                        <ChevronRight className="w-3.5 h-3.5 stroke-[3]" />
-                      </Link>
+                      {service.id === "capacitacion-operadores" ? (
+                        <>
+                          <Link
+                            href="/capacitacion"
+                            className="inline-flex items-center gap-2 px-6 py-3 bg-bronto-yellow hover:bg-bronto-yellow-hover text-[#151515] font-black text-xs uppercase tracking-wider transition-colors"
+                          >
+                            <span>Ver Escuela de Operadores</span>
+                            <ArrowRight className="w-3.5 h-3.5" />
+                          </Link>
 
-                      <Link
-                        href="/catalogo"
-                        className="inline-flex items-center gap-2 px-6 py-3 border border-[#333333] hover:border-bronto-yellow text-white text-xs uppercase tracking-wider font-semibold transition-colors"
-                      >
-                        <span>Ver equipos aplicables</span>
-                      </Link>
+                          <Link
+                            href={`/cotizar?servicio=${service.slug}`}
+                            className="inline-flex items-center gap-2 px-6 py-3 border border-[#333333] hover:border-bronto-yellow text-white text-xs uppercase tracking-wider font-semibold transition-colors"
+                          >
+                            <span>Cotizar capacitación para empresa</span>
+                            <ChevronRight className="w-3.5 h-3.5 stroke-[3]" />
+                          </Link>
+                        </>
+                      ) : (
+                        <>
+                          <Link
+                            href={`/cotizar?servicio=${service.slug}`}
+                            className="inline-flex items-center gap-2 px-6 py-3 bg-bronto-yellow hover:bg-bronto-yellow-hover text-[#151515] font-black text-xs uppercase tracking-wider transition-colors"
+                          >
+                            <span>Cotizar este servicio</span>
+                            <ChevronRight className="w-3.5 h-3.5 stroke-[3]" />
+                          </Link>
+
+                          <Link
+                            href="/catalogo"
+                            className="inline-flex items-center gap-2 px-6 py-3 border border-[#333333] hover:border-bronto-yellow text-white text-xs uppercase tracking-wider font-semibold transition-colors"
+                          >
+                            <span>Ver equipos aplicables</span>
+                          </Link>
+                        </>
+                      )}
                     </div>
                   </div>
 
