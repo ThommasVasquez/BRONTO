@@ -1,0 +1,43 @@
+{
+  "name": "BRONTO | Equipos, Maquinaria y Soluciones para Construcción",
+  "short_name": "BRONTO",
+  "description": "Plataforma colombiana de alquiler y suministro de maquinaria pesada, equipos menores, formaletas, concretos y sistemas modulados.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#151515",
+  "theme_color": "#FEE123",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["business", "productivity", "utilities"],
+  "shortcuts": [
+    {
+      "name": "Catálogo Completo",
+      "url": "/catalogo",
+      "description": "Explorar catálogo de maquinaria y materiales"
+    },
+    {
+      "name": "Solicitar Cotización",
+      "url": "/cotizar",
+      "description": "Radicar cotización comercial"
+    },
+    {
+      "name": "Servicios de Obra",
+      "url": "/servicios",
+      "description": "Servicios técnicos y logística"
+    }
+  ],
+  "lang": "es-CO"
+}

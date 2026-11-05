@@ -1,0 +1,51 @@
+# BRONTO — Plataforma Colombiana de Alquiler y Suministro para Construcción e Industria
+
+> PIDA TODO EN BRONTO. La obra no se detiene.
+
+BRONTO es una plataforma y compañía colombiana especializada en el alquiler de maquinaria pesada, equipos menores, sistemas de encofrado y formaletas, concretos premezclados e industrializados, y sistemas modulados en EPS para el sector constructor e industrial en Colombia.
+
+## Catálogo de Soluciones y Familias
+
+1. **Maquinaria y Equipos de Construcción** (`/catalogo?categoria=maquinaria-equipos`):
+   - Retroexcavadoras sobre orugas (20 Ton) y minicargadores multi-propósito con aditamentos de demolición y balde.
+   - Equipos de compactación: Vibrocompactadores monocilíndricos 10T, apisonadores tipo canguro 4T, placas compactadoras (ranas).
+   - Generación eléctrica: Plantas diésel insonorizadas de 20 kVA a 150 kVA para trabajo continuo prime o standby.
+   - Demolición y corte: Rompedores eléctricos y neumáticos de 30 kg, cortadoras de concreto con disco diamantado.
+   - Bombeo y achique: Motobombas autocebantes diésel de 4 pulgadas y electrobombas sumergibles.
+
+2. **Formaletas y Sistemas de Construcción** (`/catalogo?categoria=formaletas-sistemas`):
+   - Formaleta metálica modular para muros estructurales y pantallas.
+   - Sistema Steel-Ply con paneles de madera contrachapada fenólica de alto acabado.
+   - Andamios multidireccionales certificados bajo norma OSHA, EN 12810 y Resolución colombiana 4272 de 2021.
+   - Puntales metálicos telescópicos de 2.20 m a 4.00 m para losas.
+   - Torres grúa y accesorios de izaje de alta capacidad.
+
+3. **Concretos y Soluciones Estructurales** (`/catalogo?categoria=concretos-estructuras`):
+   - Concreto premezclado convencional y bombeable (21 MPa / 3000 PSI y 28 MPa / 4000 PSI) bajo NSR-10 y NTC 3318.
+   - Concretos industrializados de fraguado acelerado para ciclos diarios en sistemas tipo túnel.
+   - Pisos y pavimentos industriales con fibra estructural.
+   - Servicio de bombeo con autobomba pluma (32m a 36m) y bombas estacionarias diésel de alta presión.
+
+4. **Icopores y Sistemas Modulados** (`/catalogo?categoria=icopores-modulados`):
+   - Casetones modulados recuperables de polipropileno para losas nervadas.
+   - Casetones perdidos en poliestireno expandido (EPS) autoextinguible con corte milimétrico.
+   - Paneles 3D aligerados en EPS con malla electrosoldada para muros sismorresistentes.
+   - Juntas de dilatación técnicas, perfiles y cordón de respaldo para pavimentos.
+
+## Servicios Principales (`/servicios`)
+- Alquiler de equipos con opción de operador certificado o renta seca.
+- Suministro directo de materiales a pie de obra.
+- Transporte y logística especializada en camas bajas y camiones grúa.
+- Mantenimiento electromecánico preventivo y correctivo en campo.
+- Asesoría técnica en modulación CAD/BIM de encofrados y memorias de cálculo.
+
+## Cobertura y Operaciones
+- Sede operativa en Bogotá D.C. con despacho logístico a nivel nacional en Colombia (Medellín, Cali, Barranquilla, Bucaramanga, Eje Cafetero y proyectos viales).
+- Horarios de despacho: Lunes a Viernes 6:00 a.m. a 6:00 p.m., Sábados 7:00 a.m. a 1:00 p.m. Servicio de emergencia 24/7 para proyectos de alta criticidad.
+
+## Contacto Comercial y Cotizaciones
+- Cotizador interactivo en línea: `/cotizar`
+- Teléfono: +57 (601) 745-0000
+- WhatsApp comercial: +57 310 000 0000
+- Email: comercial@bronto.com.co
+- Web: https://bronto.com.co
