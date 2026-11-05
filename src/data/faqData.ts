@@ -39,8 +39,8 @@ export const faqData: FAQItem[] = [
     id: "cobertura-geografica",
     category: "logistica",
     categoryLabel: "Logística y Despacho",
-    question: "¿En qué ciudades y regiones de Colombia prestan servicio?",
-    answer: "BRONTO cuenta con capacidad de coordinación logística para despachos a nivel nacional en Colombia, cubriendo las principales áreas metropolitanas (Bogotá, Medellín, Cali, Barranquilla, Bucaramanga, Eje Cafetero) así como frentes de obra en corredores viales, hidroeléctricas y proyectos industriales en regiones intermedias previa validación de acceso.",
+    question: "¿En qué zonas prestan servicio actualmente?",
+    answer: "Por ahora nuestra operación logística y despacho express se concentra exclusivamente en Bogotá D.C. y zonas aledañas de la Sabana (incluyendo Chía, Cajicá, Cota, Siberia, Zipaquirá, Mosquera, Funza, Madrid, Facatativá, Soacha, Tocancipá y Sopó). Esto nos permite garantizar tiempos de respuesta mínimos, transporte ágil en cama baja y asistencia técnica inmediata en obra.",
   },
   {
     id: "que-pasa-si-equipo-falla",

@@ -40,8 +40,9 @@ BRONTO es una plataforma y compañía colombiana especializada en el alquiler de
 - Asesoría técnica en modulación CAD/BIM de encofrados y memorias de cálculo.
 
 ## Cobertura y Operaciones
-- Sede operativa en Bogotá D.C. con despacho logístico a nivel nacional en Colombia (Medellín, Cali, Barranquilla, Bucaramanga, Eje Cafetero y proyectos viales).
-- Horarios de despacho: Lunes a Viernes 6:00 a.m. a 6:00 p.m., Sábados 7:00 a.m. a 1:00 p.m. Servicio de emergencia 24/7 para proyectos de alta criticidad.
+- Operación enfocada exclusivamente en **Bogotá D.C. y zonas aledañas de la Sabana de Cundinamarca** (Chía, Cajicá, Cota, Siberia, Funza, Mosquera, Madrid, Facatativá, Soacha, Zipaquirá, Tocancipá, Sopó).
+- Centro logístico en corredor industrial Sabana Occidente / Calle 80.
+- Horarios de despacho: Lunes a Viernes 6:00 a.m. a 6:00 p.m., Sábados 7:00 a.m. a 1:00 p.m. Servicio de emergencia 24/7 para proyectos de alta criticidad en Bogotá y Sabana.
 
 ## Contacto Comercial y Cotizaciones
 - Cotizador interactivo en línea: `/cotizar`

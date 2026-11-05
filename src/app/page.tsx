@@ -10,14 +10,14 @@ import { FinalCtaSection } from "@/components/home/FinalCtaSection";
 import { getOrganizationSchema, getWebSiteSchema } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "BRONTO | Alquiler de Maquinaria y Soluciones para Construcción en Colombia",
-  description: "Plataforma integral de alquiler y suministro de maquinaria pesada, equipos menores, formaletas, concretos y sistemas modulados para construcción e industria en Colombia. Pida todo en BRONTO.",
+  title: "BRONTO | Alquiler de Maquinaria y Soluciones para Construcción en Bogotá y Sabana",
+  description: "Plataforma especializada en alquiler y suministro de maquinaria pesada, equipos menores, formaletas, concretos y sistemas modulados para construcción e industria en Bogotá y zonas aledañas de la Sabana. Pida todo en BRONTO.",
   alternates: {
     canonical: "/",
   },
   openGraph: {
-    title: "BRONTO | La Obra No Se Detiene",
-    description: "Equipos, maquinaria y soluciones para construir sin límites. Alquiler y suministro en Colombia.",
+    title: "BRONTO | La Obra No Se Detiene (Bogotá y Sabana)",
+    description: "Equipos, maquinaria y soluciones para construir sin límites. Despacho express en Bogotá y zonas aledañas.",
     url: "/",
     siteName: "BRONTO",
     locale: "es_CO",

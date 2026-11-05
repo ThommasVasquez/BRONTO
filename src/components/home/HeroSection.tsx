@@ -117,7 +117,7 @@ export const HeroSection: React.FC = () => {
             ref={subtitleRef}
             className="mt-6 text-lg sm:text-xl md:text-2xl text-white/85 font-normal max-w-2xl leading-relaxed font-sans"
           >
-            {siteConfig.secondarySlogan} Alquiler de maquinaria pesada, equipos menores, formaletas, concretos y sistemas modulados para que sus proyectos avancen sin frenos.
+            {siteConfig.secondarySlogan} Alquiler de maquinaria pesada, equipos menores, formaletas, concretos y sistemas modulados con despacho express en Bogotá y zonas aledañas de la Sabana.
           </p>
 
           {/* Acciones Comerciales Principales */}
@@ -166,11 +166,11 @@ export const HeroSection: React.FC = () => {
               </span>
             </div>
             <div>
-              <span className="font-mono text-2xl sm:text-3xl font-black text-bronto-yellow block">
-                Nacional
+              <span className="font-mono text-xl sm:text-2xl font-black text-bronto-yellow block">
+                Bogotá & Sabana
               </span>
               <span className="text-xs font-mono uppercase text-bronto-gray tracking-wider">
-                Despacho en Colombia
+                Despacho en obra
               </span>
             </div>
           </div>

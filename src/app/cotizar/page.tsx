@@ -428,17 +428,30 @@ export default function QuotePage() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-xs font-mono uppercase text-white/70 mb-1.5">
-                    Ciudad de Obra en Colombia *
+                    Zona / Municipio de Obra (Bogotá y Sabana) *
                   </label>
-                  <input
-                    type="text"
+                  <select
                     required
                     name="city"
                     value={formData.city}
                     onChange={handleInputChange}
-                    placeholder="Bogotá, Medellín, etc."
                     className="w-full px-3.5 py-2.5 bg-[#121212] border border-[#333333] rounded-sm text-sm text-white focus:border-bronto-yellow focus:outline-none"
-                  />
+                  >
+                    <option value="Bogotá D.C.">Bogotá D.C.</option>
+                    <option value="Chía">Chía</option>
+                    <option value="Cajicá">Cajicá</option>
+                    <option value="Cota / Siberia">Cota / Siberia</option>
+                    <option value="Mosquera">Mosquera</option>
+                    <option value="Funza">Funza</option>
+                    <option value="Madrid">Madrid</option>
+                    <option value="Facatativá">Facatativá</option>
+                    <option value="Soacha">Soacha</option>
+                    <option value="Zipaquirá">Zipaquirá</option>
+                    <option value="Tocancipá">Tocancipá</option>
+                    <option value="Sopó">Sopó</option>
+                    <option value="Tenjo / Subachoque">Tenjo / Subachoque</option>
+                    <option value="Otra zona aledaña a Bogotá">Otra zona aledaña a Bogotá</option>
+                  </select>
                 </div>
 
                 <div>

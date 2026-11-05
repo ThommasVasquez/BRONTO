@@ -68,9 +68,9 @@ export const servicesData: ServiceItem[] = [
     id: "transporte-logistica",
     slug: "transporte-y-logistica-especializada",
     name: "Transporte y Logística Especializada",
-    tagline: "Despacho seguro y puntual a cualquier frente de obra en Colombia",
+    tagline: "Despacho seguro y puntual en Bogotá y zonas aledañas de la Sabana",
     summary: "Flota propia y aliada de camas bajas, camiones grúa con brazo articulado y furgones para movilización express.",
-    description: "La logística es el corazón de la disponibilidad. Coordinamos la movilización de maquinaria pesada, izaje de módulos de andamio y transporte seguro de elementos aligerados de gran volumen, cumpliendo con toda la reglamentación de tránsito y permisos de carga extradimensionada.",
+    description: "La logística es el corazón de la disponibilidad. Coordinamos la movilización de maquinaria pesada, izaje de módulos de andamio y transporte seguro de elementos aligerados de gran volumen, con rutas programadas en Bogotá y corredores industriales de la Sabana (Cota, Chía, Siberia, Funza, Mosquera, Soacha, Tocancipá y Madrid).",
     imageUrl: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=1200&auto=format&fit=crop",
     iconName: "Compass",
     capabilities: [
