@@ -64,7 +64,7 @@ export const FeaturedProductsSection: React.FC = () => {
               </div>
 
               {/* Información */}
-              <div className="p-4 flex-1 flex flex-col justify-between">
+              <div className="p-4 flex-1 flex flex-col justify-between" suppressHydrationWarning>
                 <div>
                   <span className="text-[11px] font-bold text-white/50 block tracking-wider uppercase">
                     {product.sku}
@@ -82,16 +82,19 @@ export const FeaturedProductsSection: React.FC = () => {
                       </div>
                     ))}
                   </div>
+
                   {/* Tarifa de Referencia (+10% aplicada) */}
-                  <div className="mt-3 pt-2.5 border-t border-white/10 flex items-baseline justify-between">
-                    <span className="text-[10px] text-white/50 uppercase font-semibold">Tarifa Ref.</span>
-                    <div className="text-right">
-                      <span className="text-sm font-black text-bronto-yellow">
-                        {formatCOP(product.pricing.basePrice)}
-                      </span>
-                      <span className="text-[10px] text-white/50 block font-normal">/ {product.pricing.priceUnit}</span>
+                  {product.pricing && (
+                    <div className="mt-3 pt-2.5 border-t border-white/10 flex items-baseline justify-between" suppressHydrationWarning>
+                      <span className="text-[10px] text-white/50 uppercase font-semibold">Tarifa Ref.</span>
+                      <div className="text-right">
+                        <span className="text-sm font-black text-bronto-yellow">
+                          {formatCOP(product.pricing.basePrice)}
+                        </span>
+                        <span className="text-[10px] text-white/50 block font-normal">/ {product.pricing.priceUnit}</span>
+                      </div>
                     </div>
-                  </div>
+                  )}
                 </div>
 
                 {/* Acciones */}
