@@ -72,12 +72,22 @@ export const BrandLogo: React.FC<BrandLogoProps> = ({
         </div>
       ) : (
         <div className="relative flex items-center">
+          {/* Logo para Modo Oscuro (letras BRONTO en blanco) */}
           <Image
             src="/brand/bronto-logo.png"
             alt="BRONTO - Equipos para Construcción e Industria"
             width={currentSize.full.width}
             height={currentSize.full.height}
-            className={`${currentSize.full.className} object-contain transition-transform duration-300 group-hover:scale-105`}
+            className={`${currentSize.full.className} hidden dark:block object-contain transition-transform duration-300 group-hover:scale-105`}
+            priority
+          />
+          {/* Logo para Modo Claro (letras BRONTO en carbón oscuro) */}
+          <Image
+            src="/brand/bronto-logo-dark-text.png"
+            alt="BRONTO - Equipos para Construcción e Industria"
+            width={currentSize.full.width}
+            height={currentSize.full.height}
+            className={`${currentSize.full.className} block dark:hidden object-contain transition-transform duration-300 group-hover:scale-105`}
             priority
           />
           {siteConfig.showRegisteredSymbol && (

@@ -21,20 +21,164 @@
 
 html {
   scroll-behavior: smooth;
-  background-color: var(--bronto-carbon);
-  color: #FFFFFF;
+  color-scheme: light dark;
+}
+
+html.dark {
   color-scheme: dark;
+  background-color: #111111;
+  color: #FFFFFF;
+}
+
+html:not(.dark) {
+  color-scheme: light;
+  background-color: #F8F9FA;
+  color: #111111;
 }
 
 body {
-  background-color: var(--bronto-carbon);
-  color: #FFFFFF;
   min-height: 100vh;
   overflow-x: hidden;
   font-family: var(--font-sans);
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+html.dark body {
+  background-color: #111111;
+  color: #FFFFFF;
+}
+
+html:not(.dark) body {
+  background-color: #F8F9FA;
+  color: #151515;
+}
+
+/* ==========================================================================
+   ADAPTACIONES SISTEMÁTICAS PARA MODO CLARO (LIGHT THEME)
+   ========================================================================== */
+html:not(.dark) .bg-\[\#151515\],
+html:not(.dark) .bg-\[\#111111\],
+html:not(.dark) .bg-\[\#0E0E0E\],
+html:not(.dark) .bg-\[\#101010\] {
+  background-color: #F3F4F6 !important;
+  color: #151515 !important;
+}
+
+html:not(.dark) .bg-\[\#181818\],
+html:not(.dark) .bg-\[\#161616\],
+html:not(.dark) .bg-\[\#141414\],
+html:not(.dark) .bg-\[\#1A1A1A\],
+html:not(.dark) .bg-\[\#1C1C1C\],
+html:not(.dark) .bg-\[\#1F1F1F\],
+html:not(.dark) .bg-\[\#202020\],
+html:not(.dark) .bg-\[\#222222\],
+html:not(.dark) .bg-\[\#252525\] {
+  background-color: #FFFFFF !important;
+  color: #151515 !important;
+}
+
+html:not(.dark) .bg-black\/40,
+html:not(.dark) .bg-black\/50,
+html:not(.dark) .bg-black\/60,
+html:not(.dark) .bg-black\/70,
+html:not(.dark) .bg-black\/80,
+html:not(.dark) .bg-black\/85 {
+  background-color: #EDF0F4 !important;
+  color: #151515 !important;
+}
+
+/* Bordes en Modo Claro */
+html:not(.dark) .border-\[\#242424\],
+html:not(.dark) .border-\[\#262626\],
+html:not(.dark) .border-\[\#2B2B2B\],
+html:not(.dark) .border-\[\#2D2D2D\],
+html:not(.dark) .border-\[\#2E2E2E\],
+html:not(.dark) .border-\[\#333333\],
+html:not(.dark) .border-\[\#3A3A3A\],
+html:not(.dark) .border-white\/10,
+html:not(.dark) .border-white\/15,
+html:not(.dark) .border-white\/20,
+html:not(.dark) .border-white\/30 {
+  border-color: #E2E5E9 !important;
+}
+
+/* Textos en Modo Claro */
+html:not(.dark) .text-white {
+  color: #111111 !important;
+}
+
+html:not(.dark) .text-white\/90,
+html:not(.dark) .text-white\/80 {
+  color: #2D3139 !important;
+}
+
+html:not(.dark) .text-white\/70,
+html:not(.dark) .text-white\/60,
+html:not(.dark) .text-bronto-gray {
+  color: #555B66 !important;
+}
+
+html:not(.dark) .text-white\/50,
+html:not(.dark) .text-white\/40 {
+  color: #717885 !important;
+}
+
+/* Inputs en Modo Claro */
+html:not(.dark) input,
+html:not(.dark) select,
+html:not(.dark) textarea {
+  background-color: #FFFFFF !important;
+  border-color: #D1D5DB !important;
+  color: #111111 !important;
+}
+
+html:not(.dark) input::placeholder,
+html:not(.dark) textarea::placeholder {
+  color: #9CA3AF !important;
+}
+
+/* Header & Footer en Modo Claro */
+html:not(.dark) header {
+  background-color: rgba(255, 255, 255, 0.95) !important;
+  border-bottom: 1px solid #E5E7EB !important;
+}
+
+html:not(.dark) footer {
+  background-color: #EBF0F5 !important;
+  border-top: 1px solid #DCE1E7 !important;
+}
+
+/* El Hero conserva su iluminación cinematográfica de maquinaria pesada */
+html:not(.dark) section[aria-label="Presentación principal BRONTO"] {
+  background-color: #111111 !important;
+  color: #FFFFFF !important;
+}
+
+html:not(.dark) section[aria-label="Presentación principal BRONTO"] .text-white,
+html:not(.dark) section[aria-label="Presentación principal BRONTO"] h1,
+html:not(.dark) section[aria-label="Presentación principal BRONTO"] p,
+html:not(.dark) section[aria-label="Presentación principal BRONTO"] span {
+  color: #FFFFFF !important;
+}
+
+html:not(.dark) section[aria-label="Presentación principal BRONTO"] .text-white\/80 {
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+
+html:not(.dark) section[aria-label="Presentación principal BRONTO"] .text-white\/70 {
+  color: rgba(255, 255, 255, 0.7) !important;
+}
+
+html:not(.dark) section[aria-label="Presentación principal BRONTO"] .text-white\/60 {
+  color: rgba(255, 255, 255, 0.6) !important;
+}
+
+/* Botones BRONTO Amarillo conservan texto negro para contraste perfecto */
+.bg-bronto-yellow {
+  background-color: var(--bronto-yellow) !important;
+  color: #111111 !important;
 }
 
 /* Selección con alto contraste industrial */

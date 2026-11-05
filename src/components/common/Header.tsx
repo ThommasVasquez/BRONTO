@@ -4,14 +4,17 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { BrandLogo } from "./BrandLogo";
+import { ThemeToggle } from "./ThemeToggle";
+import { useClientAuth } from "@/components/auth/ClientAuthProvider";
 import { useQuoteBasket } from "@/components/quote/QuoteBasketProvider";
-import { Menu, X, FileText, ChevronRight } from "lucide-react";
+import { Menu, X, FileText, ChevronRight, User, ShieldCheck } from "lucide-react";
 
 export const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const pathname = usePathname();
   const { totalCount } = useQuoteBasket();
+  const { user, isLoggedIn } = useClientAuth();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -77,12 +80,36 @@ export const Header: React.FC = () => {
             })}
           </nav>
 
-          {/* Acciones Comerciales: Cotizador y CTA */}
-          <div className="hidden sm:flex items-center gap-3">
+          {/* Acciones Comerciales: Theme, Portal Clientes, Cotizador y CTA */}
+          <div className="hidden sm:flex items-center gap-2.5">
+            {/* Selector de Modo Claro / Modo Oscuro */}
+            <ThemeToggle />
+
+            {/* Acceso a Portal de Clientes */}
+            {isLoggedIn ? (
+              <Link
+                href="/portal-clientes"
+                className="inline-flex items-center gap-1.5 px-3 py-2 border border-[#333333] hover:border-bronto-yellow bg-[#1A1A1A] text-xs font-semibold text-white transition-colors"
+                title={`Conectado como ${user?.companyName}`}
+              >
+                <ShieldCheck className="w-3.5 h-3.5 text-bronto-yellow" />
+                <span className="max-w-[110px] truncate">{user?.companyName.split(" ")[0]}</span>
+              </Link>
+            ) : (
+              <Link
+                href="/login"
+                className="inline-flex items-center gap-1.5 px-3 py-2 border border-[#333333] hover:border-bronto-yellow bg-[#1A1A1A] text-xs font-semibold text-white transition-colors"
+                title="Acceso exclusivo para clientes y contratistas"
+              >
+                <User className="w-3.5 h-3.5 text-bronto-yellow" />
+                <span>Clientes</span>
+              </Link>
+            )}
+
             {/* Indicador de lista de cotización */}
             <Link
               href="/cotizar"
-              className="inline-flex items-center gap-2 px-3.5 py-2 border border-[#333333] hover:border-bronto-yellow bg-[#1A1A1A] text-xs font-semibold text-white transition-colors"
+              className="inline-flex items-center gap-2 px-3 py-2 border border-[#333333] hover:border-bronto-yellow bg-[#1A1A1A] text-xs font-semibold text-white transition-colors"
               title="Ver equipos en lista de cotización"
             >
               <FileText className="w-3.5 h-3.5 text-bronto-yellow" />
@@ -99,15 +126,17 @@ export const Header: React.FC = () => {
             {/* CTA Principal */}
             <Link
               href="/cotizar"
-              className="inline-flex items-center gap-2 px-5 py-2.5 bg-bronto-yellow hover:bg-bronto-yellow-hover text-[#111111] font-black text-xs uppercase tracking-wider transition-all duration-150 active:scale-[0.98]"
+              className="inline-flex items-center gap-2 px-4 py-2.5 bg-bronto-yellow hover:bg-bronto-yellow-hover text-[#111111] font-black text-xs uppercase tracking-wider transition-all duration-150 active:scale-[0.98]"
             >
-              <span>Solicitar cotización</span>
+              <span>Cotizar</span>
               <ChevronRight className="w-3.5 h-3.5 stroke-[3]" />
             </Link>
           </div>
 
           {/* Botón Menú Móvil */}
           <div className="flex items-center gap-2 lg:hidden">
+            <ThemeToggle />
+
             <Link
               href="/cotizar"
               className="relative inline-flex items-center p-2 border border-[#333333] bg-[#1A1A1A] text-bronto-yellow"
@@ -150,6 +179,14 @@ export const Header: React.FC = () => {
                 {link.label}
               </Link>
             ))}
+
+            <Link
+              href={isLoggedIn ? "/portal-clientes" : "/login"}
+              className="flex items-center gap-2 text-base font-bold py-2 border-b border-[#242424] text-bronto-yellow"
+            >
+              <ShieldCheck className="w-4 h-4" />
+              <span>{isLoggedIn ? `Portal: ${user?.companyName}` : "Portal de Clientes / Iniciar Sesión"}</span>
+            </Link>
 
             <div className="pt-4 flex flex-col gap-3">
               <Link

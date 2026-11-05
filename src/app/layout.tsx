@@ -6,6 +6,8 @@ import { Footer } from "@/components/common/Footer";
 import { WhatsAppButton } from "@/components/common/WhatsAppButton";
 import { PwaInstallPrompt } from "@/components/common/PwaInstallPrompt";
 import { QuoteBasketProvider } from "@/components/quote/QuoteBasketProvider";
+import { ThemeProvider } from "@/components/common/ThemeProvider";
+import { ClientAuthProvider } from "@/components/auth/ClientAuthProvider";
 
 export const viewport: Viewport = {
   themeColor: "#FEE123",
@@ -65,20 +67,43 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es" className="dark scroll-smooth">
+    <html lang="es" className="dark scroll-smooth" suppressHydrationWarning>
       <head>
+        <meta name="color-scheme" content="light dark" />
         <link rel="apple-touch-icon" href="/icons/icon-192.png" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  var stored = localStorage.getItem('bronto-theme');
+                  var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                  var theme = stored || (prefersDark ? 'dark' : 'light');
+                  if (theme === 'dark') {
+                    document.documentElement.classList.add('dark');
+                  } else {
+                    document.documentElement.classList.remove('dark');
+                  }
+                } catch (e) {}
+              })();
+            `,
+          }}
+        />
       </head>
-      <body className="bg-[#151515] text-white min-h-screen flex flex-col font-sans antialiased selection:bg-bronto-yellow selection:text-[#151515]">
-        <QuoteBasketProvider>
-          <Header />
-          <main className="flex-1 w-full" id="main-content">
-            {children}
-          </main>
-          <Footer />
-          <WhatsAppButton />
-          <PwaInstallPrompt />
-        </QuoteBasketProvider>
+      <body className="bg-[#151515] text-white min-h-screen flex flex-col font-sans antialiased selection:bg-bronto-yellow selection:text-[#151515] transition-colors duration-200">
+        <ThemeProvider>
+          <ClientAuthProvider>
+            <QuoteBasketProvider>
+              <Header />
+              <main className="flex-1 w-full" id="main-content">
+                {children}
+              </main>
+              <Footer />
+              <WhatsAppButton />
+              <PwaInstallPrompt />
+            </QuoteBasketProvider>
+          </ClientAuthProvider>
+        </ThemeProvider>
 
         {/* Registro seguro del Service Worker para PWA */}
         <script
