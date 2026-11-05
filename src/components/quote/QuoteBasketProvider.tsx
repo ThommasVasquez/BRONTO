@@ -3,6 +3,7 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 import { Product, ModalityType } from "@/types/catalog";
 import { QuoteItem } from "@/types/quote";
+import { catalogProducts } from "@/data/catalogData";
 
 interface QuoteBasketContextType {
   items: QuoteItem[];
@@ -23,12 +24,22 @@ export const QuoteBasketProvider: React.FC<{ children: React.ReactNode }> = ({ c
   const [items, setItems] = useState<QuoteItem[]>([]);
   const [isLoaded, setIsLoaded] = useState(false);
 
-  // Carga inicial desde localStorage
+  // Carga inicial desde localStorage con reconciliación de catálogo
   useEffect(() => {
     try {
       const saved = localStorage.getItem(STORAGE_KEY);
       if (saved) {
-        setItems(JSON.parse(saved));
+        const parsed: QuoteItem[] = JSON.parse(saved);
+        const reconciled = parsed
+          .map((item) => {
+            const fresh = catalogProducts.find((p) => p.id === item.product?.id);
+            return {
+              ...item,
+              product: fresh || item.product,
+            };
+          })
+          .filter((item) => item.product && item.product.id);
+        setItems(reconciled);
       }
     } catch {
       // Ignorar en SSR o modo privado restringido

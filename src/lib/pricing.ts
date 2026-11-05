@@ -1,5 +1,6 @@
 import { Product } from "@/types/catalog";
 import { QuoteItem } from "@/types/quote";
+import { catalogProducts } from "@/data/catalogData";
 
 /**
  * Formatea un valor numérico a pesos colombianos (COP) estándar de forma 100% determinista
@@ -40,6 +41,7 @@ export function parseDurationUnits(durationStr?: string): { days: number; months
 
 /**
  * Calcula el subtotal estimado de un ítem en la cotización
+ * Reconcilia automáticamente con el catálogo si el ítem proviene de un localStorage previo sin pricing
  */
 export function calculateItemTotal(
   item: QuoteItem,
@@ -51,13 +53,31 @@ export function calculateItemTotal(
   itemTotal: number;
   priceBasis: string;
 } {
-  const { product, quantity, estimatedDuration } = item;
-  const pricing = product.pricing;
-  const { days, months, isDays } = parseDurationUnits(estimatedDuration);
+  const rawProduct = item.product;
+  const product = catalogProducts.find((p) => p.id === rawProduct?.id) || rawProduct;
+
+  if (!product) {
+    return {
+      unitPrice: 0,
+      equipmentSubtotal: 0,
+      operatorSubtotal: 0,
+      itemTotal: 0,
+      priceBasis: "unidad",
+    };
+  }
+
+  const pricing = product.pricing || {
+    basePrice: 0,
+    currency: "COP",
+    priceUnit: "unidad",
+  };
+
+  const quantity = Math.max(1, item.quantity || 1);
+  const { days, months, isDays } = parseDurationUnits(item.estimatedDuration);
 
   let equipmentSubtotal = 0;
-  let unitPrice = pricing.basePrice;
-  let priceBasis = pricing.priceUnit;
+  let unitPrice = pricing.basePrice || 0;
+  let priceBasis = pricing.priceUnit || "unidad";
 
   if (product.modality === "alquiler") {
     if (isDays && pricing.dailyRate) {
@@ -69,11 +89,11 @@ export function calculateItemTotal(
       priceBasis = "mes";
       equipmentSubtotal = pricing.monthlyRate * Math.max(1, Math.round(months)) * quantity;
     } else {
-      equipmentSubtotal = pricing.basePrice * quantity;
+      equipmentSubtotal = (pricing.basePrice || 0) * quantity;
     }
   } else {
     // Suministro (concretos, casetones, juntas, etc.)
-    equipmentSubtotal = pricing.basePrice * quantity;
+    equipmentSubtotal = (pricing.basePrice || 0) * quantity;
   }
 
   // Operador
@@ -149,9 +169,9 @@ export function computeQuoteSummary(
     operatorTotal += res.operatorSubtotal;
 
     return {
-      productId: item.product.id,
-      productName: item.product.name,
-      quantity: item.quantity,
+      productId: item.product?.id || "",
+      productName: item.product?.name || "Equipo",
+      quantity: item.quantity || 1,
       duration: item.estimatedDuration || "1 mes",
       unitPrice: res.unitPrice,
       priceBasis: res.priceBasis,

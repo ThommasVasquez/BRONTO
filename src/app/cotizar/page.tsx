@@ -90,7 +90,7 @@ export default function QuotePage() {
     msg += `*DETALLE DE EQUIPOS Y MATERIALES:*\n`;
     items.forEach((item, idx) => {
       const itemCalc = calculateItemTotal(item, formData.requiresOperator);
-      msg += `${idx + 1}. ${item.product.name} (SKU: ${item.product.sku})\n`;
+      msg += `${idx + 1}. ${item.product?.name || "Equipo"} (SKU: ${item.product?.sku || "N/A"})\n`;
       msg += `   - Cantidad: ${item.quantity} | Modalidad: ${item.modality.toUpperCase()}\n`;
       msg += `   - Plazo: ${item.estimatedDuration || "1 mes"}\n`;
       msg += `   - Tarifa ref: ${formatCOP(itemCalc.unitPrice)} / ${itemCalc.priceBasis}\n`;
@@ -291,27 +291,30 @@ export default function QuotePage() {
                 </div>
               ) : (
                 <div className="space-y-4">
-                  {items.map((item) => {
+                  {items.map((item, itemIdx) => {
                     const itemCalc = calculateItemTotal(item, formData.requiresOperator);
+                    const prod = item.product;
+                    const pId = prod?.id || `item-${itemIdx}`;
+
                     return (
                       <div
-                        key={item.product.id}
+                        key={pId}
                         className="bg-[#181818] border border-[#2B2B2B] p-4 sm:p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4"
                       >
                         <div className="flex items-center gap-4">
                           <div className="w-16 h-16 bg-black overflow-hidden shrink-0 relative">
                             <div
                               className="absolute inset-0 bg-cover bg-center"
-                              style={{ backgroundImage: `url('${item.product.images[0]?.url}')` }}
+                              style={{ backgroundImage: `url('${prod?.images?.[0]?.url || ""}')` }}
                             />
                           </div>
 
                           <div>
                             <span className="text-[10px] font-bold text-white/50 tracking-wider uppercase font-mono">
-                              {item.product.sku}
+                              {prod?.sku}
                             </span>
                             <h4 className="uppercase text-sm sm:text-base font-bold text-white leading-tight">
-                              {item.product.name}
+                              {prod?.name}
                             </h4>
                             <div className="flex flex-wrap items-center gap-2 mt-1">
                               <span className="text-[11px] font-mono text-bronto-yellow font-bold">
@@ -329,7 +332,7 @@ export default function QuotePage() {
                           <div className="flex items-center border border-[#333333] bg-black/40">
                             <button
                               type="button"
-                              onClick={() => updateQuantity(item.product.id, item.quantity - 1)}
+                              onClick={() => prod?.id && updateQuantity(prod.id, item.quantity - 1)}
                               className="p-1.5 text-white/70 hover:text-white"
                               aria-label="Disminuir cantidad"
                             >
@@ -340,7 +343,7 @@ export default function QuotePage() {
                             </span>
                             <button
                               type="button"
-                              onClick={() => updateQuantity(item.product.id, item.quantity + 1)}
+                              onClick={() => prod?.id && updateQuantity(prod.id, item.quantity + 1)}
                               className="p-1.5 text-white/70 hover:text-white"
                               aria-label="Aumentar cantidad"
                             >
@@ -350,7 +353,7 @@ export default function QuotePage() {
 
                           <select
                             value={item.estimatedDuration || "1 mes"}
-                            onChange={(e) => updateDuration(item.product.id, e.target.value)}
+                            onChange={(e) => prod?.id && updateDuration(prod.id, e.target.value)}
                             className="bg-black/40 border border-[#333333] text-white text-xs py-1.5 px-2 font-medium"
                           >
                             <option value="1 a 7 días">1 a 7 días</option>
@@ -370,7 +373,7 @@ export default function QuotePage() {
 
                           <button
                             type="button"
-                            onClick={() => removeItem(item.product.id)}
+                            onClick={() => prod?.id && removeItem(prod.id)}
                             className="p-2 text-white/40 hover:text-red-400 transition-colors"
                             aria-label="Eliminar equipo"
                           >
