@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { BrandLogo } from "./BrandLogo";
 import { siteConfig } from "@/data/siteConfig";
 import { catalogCategories } from "@/data/catalogData";
@@ -148,9 +149,10 @@ export const Footer: React.FC = () => {
           </div>
         </div>
 
-        {/* Franja Inferior: Copyright, Términos y Firma Obligatoria de Desarrollador */}
-        <div className="pt-8 border-t border-[#242424] flex flex-col md:flex-row items-center justify-between gap-4 text-xs font-mono text-bronto-gray">
-          <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-6 text-center sm:text-left">
+        {/* Franja Inferior: Copyright, Términos y Firma Obligatoria de Desarrollador Centrada */}
+        <div className="pt-10 border-t border-[#242424] flex flex-col items-center justify-center gap-6 text-xs font-mono text-bronto-gray text-center">
+          {/* Navegación Secundaria y Copyright */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-6 text-center">
             <p>
               &copy; {currentYear} {siteConfig.brandName}. Todos los derechos reservados.
             </p>
@@ -167,17 +169,30 @@ export const Footer: React.FC = () => {
             </div>
           </div>
 
-          {/* FIRMA DE DESARROLLADOR OBLIGATORIA Y PERMANENTE (Visible en desktop y móvil) */}
-          <div className="flex items-center py-2 px-4 rounded bg-[#181818] border border-[#2A2A2A] hover:border-bronto-yellow/50 transition-colors">
+          {/* FIRMA DE DESARROLLADOR OFICIAL CENTRADA CON LOGO OFICIAL (Visible en desktop y móvil) */}
+          <div className="w-full flex flex-col items-center justify-center">
             <a
               href={siteConfig.developer.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 font-bold text-white hover:text-bronto-yellow transition-colors text-xs sm:text-[11px]"
-              title="Visitar sitio oficial de ENERGYSOFTmedia"
+              className="group inline-flex flex-col md:flex-row items-center justify-center gap-3 py-3 px-6 sm:px-8 rounded-sm bg-[#161616] border border-[#2B2B2B] hover:border-bronto-yellow/60 transition-all duration-300 shadow-lg hover:shadow-yellow-500/10 text-center"
+              title="Visitar sitio web oficial de ENERGYSOFTmedia"
             >
-              <span>{siteConfig.developer.signatureText}</span>
-              <ExternalLink className="w-3.5 h-3.5 text-[#FF6511] shrink-0" />
+              <div className="relative flex items-center justify-center shrink-0">
+                <Image
+                  src="/brand/energysoft-logo.png"
+                  alt="ENERGYSOFT Official Logo"
+                  width={130}
+                  height={36}
+                  className="h-6 sm:h-7 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+                  priority
+                />
+              </div>
+
+              <div className="flex items-center gap-2 text-xs sm:text-xs font-mono font-bold text-white/90 group-hover:text-bronto-yellow transition-colors">
+                <span>{siteConfig.developer.signatureText}</span>
+                <ExternalLink className="w-3.5 h-3.5 text-[#FF6511] shrink-0" />
+              </div>
             </a>
           </div>
         </div>
