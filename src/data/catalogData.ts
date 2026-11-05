@@ -890,3 +890,4 @@ export const catalogProducts: Product[] = [
     tags: ["juntas", "dilatacion", "cordon respaldo", "pisos industriales"],
   },
 ];
+

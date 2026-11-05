@@ -132,3 +132,4 @@ export const PwaInstallPrompt: React.FC = () => {
     </aside>
   );
 };
+

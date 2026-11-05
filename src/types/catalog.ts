@@ -62,3 +62,4 @@ export interface CatalogFilterState {
   availability: string;
   sortBy: "featured" | "name_asc" | "name_desc";
 }
+

@@ -17,8 +17,8 @@ export const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-[#101010] border-t border-[#242424] text-white pt-16 pb-12">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <footer className="w-full bg-[#101010] border-t border-[#242424] text-white pt-16 pb-12">
+      <div className="w-full px-6 sm:px-10 lg:px-16 2xl:px-24">
         {/* Tira superior: Frase de Marca y Slogan */}
         <div className="pb-12 border-b border-[#242424] flex flex-col md:flex-row md:items-center justify-between gap-6">
           <div className="flex flex-col">
@@ -186,3 +186,4 @@ export const Footer: React.FC = () => {
     </footer>
   );
 };
+

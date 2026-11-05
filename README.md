@@ -118,3 +118,4 @@ Configurar los siguientes secretos en el repositorio de GitHub:
 - `NEXT_PUBLIC_SITE_URL`: URL de producción (ej: `https://bronto.com.co`).
 
 Al hacer `push` a la rama `main`, la GitHub Action `.github/workflows/deploy-cloudflare.yml` compilará y desplegará la plataforma de forma automática.
+

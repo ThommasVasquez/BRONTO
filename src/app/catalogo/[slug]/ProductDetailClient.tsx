@@ -238,3 +238,4 @@ export const ProductDetailClient: React.FC<ProductDetailClientProps> = ({ produc
     </div>
   );
 };
+

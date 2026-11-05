@@ -31,3 +31,4 @@ export interface QuoteSubmissionPayload {
   submittedAt: string;
   quoteReferenceId: string;
 }
+

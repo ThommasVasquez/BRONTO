@@ -249,3 +249,4 @@ export default async function ProductDetailPage({ params }: Props) {
     </>
   );
 }
+

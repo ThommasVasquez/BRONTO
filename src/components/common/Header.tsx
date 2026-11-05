@@ -49,7 +49,7 @@ export const Header: React.FC = () => {
           : "bg-gradient-to-b from-black/80 via-black/40 to-transparent py-5"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="w-full px-6 sm:px-10 lg:px-16 2xl:px-24">
         <div className="flex items-center justify-between">
           {/* Logo Principal BRONTO */}
           <BrandLogo size="md" />
@@ -174,3 +174,4 @@ export const Header: React.FC = () => {
     </header>
   );
 };
+
