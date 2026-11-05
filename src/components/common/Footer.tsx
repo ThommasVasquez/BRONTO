@@ -169,27 +169,27 @@ export const Footer: React.FC = () => {
             </div>
           </div>
 
-          {/* FIRMA DE DESARROLLADOR OFICIAL CENTRADA CON LOGO OFICIAL (Visible en desktop y móvil) */}
-          <div className="w-full flex flex-col items-center justify-center pt-2">
+          {/* FIRMA DE DESARROLLADOR OFICIAL CENTRADA CON LOGO OFICIAL (Visible en desktop y móvil, sin contenedor) */}
+          <div className="w-full flex flex-col items-center justify-center pt-3">
             <a
               href={siteConfig.developer.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex flex-col sm:flex-row items-center justify-center gap-3 py-3 px-6 sm:px-8 bg-[#161616] border border-[#2B2B2B] hover:border-bronto-yellow transition-colors text-center"
+              className="group inline-flex flex-col sm:flex-row items-center justify-center gap-3 text-center transition-opacity hover:opacity-95"
               title="Visitar sitio web oficial de ENERGYSOFTmedia"
             >
               <div className="relative flex items-center justify-center shrink-0">
                 <Image
                   src="/brand/energysoft-logo.png"
                   alt="ENERGYSOFT Official Logo"
-                  width={140}
-                  height={40}
+                  width={130}
+                  height={36}
                   className="h-6 sm:h-7 w-auto object-contain transition-transform duration-200 group-hover:scale-105"
                   priority
                 />
               </div>
 
-              <div className="flex items-center gap-2 text-xs font-semibold text-white/90 group-hover:text-bronto-yellow transition-colors">
+              <div className="flex items-center gap-2 text-xs font-medium text-white/80 group-hover:text-bronto-yellow transition-colors">
                 <span>{siteConfig.developer.signatureText}</span>
                 <ExternalLink className="w-3.5 h-3.5 text-[#FF6511] shrink-0" />
               </div>
