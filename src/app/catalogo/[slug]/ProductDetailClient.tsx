@@ -52,19 +52,19 @@ export const ProductDetailClient: React.FC<ProductDetailClientProps> = ({ produc
 
           {/* Badges Flotantes */}
           <div className="absolute top-4 left-4 flex flex-wrap gap-2">
-            <span className="px-3 py-1 bg-black/85 backdrop-blur-md text-xs font-mono uppercase text-white font-bold border border-white/20 rounded-sm">
+            <span className="px-3 py-1 bg-black/85 backdrop-blur-md text-xs uppercase text-white font-bold border border-white/20">
               {product.subcategory}
             </span>
-            <span className="px-3 py-1 bg-bronto-yellow text-[#151515] text-xs font-mono uppercase font-black rounded-sm">
+            <span className="px-3 py-1 bg-bronto-yellow text-[#151515] text-xs uppercase font-black">
               {product.modality.replace("_", " & ")}
             </span>
           </div>
 
-          <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-xs font-mono text-white/90">
-            <span className="bg-black/70 px-2.5 py-1 rounded">
+          <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-xs text-white/90">
+            <span className="bg-black/80 px-2.5 py-1">
               Ref: <strong className="text-bronto-yellow">{product.sku}</strong>
             </span>
-            <span className="bg-black/70 px-2.5 py-1 rounded flex items-center gap-1.5 text-green-400">
+            <span className="bg-black/80 px-2.5 py-1 flex items-center gap-1.5 text-green-400">
               <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
               {product.availabilityLabel}
             </span>
@@ -78,7 +78,7 @@ export const ProductDetailClient: React.FC<ProductDetailClientProps> = ({ produc
               <button
                 key={index}
                 onClick={() => setActiveImageIndex(index)}
-                className={`relative w-20 h-16 rounded-sm overflow-hidden border-2 transition-all ${
+                className={`relative w-20 h-16 overflow-hidden border-2 transition-all ${
                   activeImageIndex === index
                     ? "border-bronto-yellow ring-2 ring-bronto-yellow/30"
                     : "border-[#333333] opacity-60 hover:opacity-100"
@@ -97,44 +97,44 @@ export const ProductDetailClient: React.FC<ProductDetailClientProps> = ({ produc
       {/* Títulos y Descripción Comercial */}
       <div>
         <div className="flex items-center gap-2 mb-2">
-          <span className="font-mono text-xs text-bronto-yellow font-bold uppercase tracking-wider">
+          <span className="text-xs text-bronto-yellow font-bold uppercase tracking-wider">
             {product.commercialName}
           </span>
         </div>
 
-        <h1 className="font-heading uppercase text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight">
+        <h1 className="uppercase text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight">
           {product.name}
         </h1>
 
-        <p className="mt-4 text-base text-bronto-gray leading-relaxed font-sans">
+        <p className="mt-4 text-base text-white/70 leading-relaxed font-normal">
           {product.fullDescription}
         </p>
 
-        {/* Nota de Precios Transparente (Regla: no inventar precios fijos) */}
-        <div className="mt-6 p-4 bg-[#1A1A1A] border-l-4 border-bronto-yellow rounded-sm">
-          <div className="flex items-center gap-2 text-xs font-mono text-bronto-yellow font-bold uppercase tracking-wider">
+        {/* Nota de Precios Transparente */}
+        <div className="mt-6 p-4 bg-[#1A1A1A] border-l-4 border-bronto-yellow">
+          <div className="flex items-center gap-2 text-xs text-bronto-yellow font-bold uppercase tracking-wider">
             <Clock className="w-4 h-4" />
             <span>Unidad de Cotización: {product.unit}</span>
           </div>
-          <p className="mt-1 text-xs text-white/80 font-sans">
-            {product.priceNote} Tarifa transparente ajustada a los requisitos específicos de su obra.
+          <p className="mt-1 text-xs text-white/80">
+            {product.priceNote} Tarifa transparente ajustada a los requisitos específicos de su obra en Bogotá y Sabana.
           </p>
         </div>
       </div>
 
       {/* Controles de Selección de Cotización */}
-      <div className="p-6 bg-[#181818] border border-[#2B2B2B] rounded-sm space-y-6">
-        <h3 className="font-mono text-xs uppercase tracking-widest text-bronto-yellow font-bold">
+      <div className="p-6 bg-[#181818] border border-[#2B2B2B] space-y-6">
+        <h3 className="text-xs uppercase tracking-wider text-bronto-yellow font-bold">
           Configurar para Solicitud de Cotización
         </h3>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {/* Selector de Cantidad */}
           <div>
-            <label className="block text-xs font-mono text-white/70 uppercase mb-2">
+            <label className="block text-xs text-white/70 uppercase font-semibold mb-2">
               Cantidad de unidades / metros:
             </label>
-            <div className="flex items-center border border-[#333333] bg-[#141414] rounded-sm">
+            <div className="flex items-center border border-[#333333] bg-[#141414]">
               <button
                 type="button"
                 onClick={() => setQuantity(Math.max(1, quantity - 1))}
@@ -148,7 +148,7 @@ export const ProductDetailClient: React.FC<ProductDetailClientProps> = ({ produc
                 min="1"
                 value={quantity}
                 onChange={(e) => setQuantity(Math.max(1, parseInt(e.target.value) || 1))}
-                className="w-full text-center bg-transparent text-white font-mono font-bold text-sm focus:outline-none"
+                className="w-full text-center bg-transparent text-white font-bold text-sm focus:outline-none"
               />
               <button
                 type="button"
@@ -163,13 +163,13 @@ export const ProductDetailClient: React.FC<ProductDetailClientProps> = ({ produc
 
           {/* Selector de Plazo Estimado */}
           <div>
-            <label className="block text-xs font-mono text-white/70 uppercase mb-2">
+            <label className="block text-xs text-white/70 uppercase font-semibold mb-2">
               Duración estimada de uso:
             </label>
             <select
               value={estimatedDuration}
               onChange={(e) => setEstimatedDuration(e.target.value)}
-              className="w-full py-3 px-3.5 bg-[#141414] border border-[#333333] text-white text-xs font-mono rounded-sm focus:border-bronto-yellow focus:outline-none"
+              className="w-full py-3 px-3.5 bg-[#141414] border border-[#333333] text-white text-xs focus:border-bronto-yellow focus:outline-none font-medium"
             >
               <option value="1 a 7 días">1 a 7 días (Jornada puntual)</option>
               <option value="15 días">15 días de operación</option>
@@ -187,7 +187,7 @@ export const ProductDetailClient: React.FC<ProductDetailClientProps> = ({ produc
           <button
             type="button"
             onClick={handleAddToQuote}
-            className={`w-full sm:flex-1 py-3.5 px-6 rounded-sm font-mono text-xs uppercase tracking-wider font-bold transition-all flex items-center justify-center gap-2 border ${
+            className={`w-full sm:flex-1 py-3.5 px-6 text-xs uppercase tracking-wider font-bold transition-all flex items-center justify-center gap-2 border ${
               addedSuccess
                 ? "bg-green-700 border-green-600 text-white"
                 : isInBasket(product.id)
@@ -216,7 +216,7 @@ export const ProductDetailClient: React.FC<ProductDetailClientProps> = ({ produc
           <button
             type="button"
             onClick={handleQuoteDirectly}
-            className="w-full sm:flex-1 py-3.5 px-6 bg-bronto-yellow hover:bg-bronto-yellow-hover text-[#151515] rounded-sm font-black text-xs uppercase tracking-wider transition-all flex items-center justify-center gap-2 shadow-lg active:scale-95"
+            className="w-full sm:flex-1 py-3.5 px-6 bg-bronto-yellow hover:bg-bronto-yellow-hover text-[#151515] font-black text-xs uppercase tracking-wider transition-all flex items-center justify-center gap-2 active:scale-95"
           >
             <span>Cotizar ahora</span>
             <ChevronRight className="w-4 h-4 stroke-[3]" />
@@ -224,7 +224,7 @@ export const ProductDetailClient: React.FC<ProductDetailClientProps> = ({ produc
         </div>
 
         {addedSuccess && (
-          <div className="p-3 bg-green-950/60 border border-green-700/60 rounded-sm text-xs font-mono text-green-300 flex items-center justify-between">
+          <div className="p-3 bg-green-950/60 border border-green-700/60 text-xs text-green-300 flex items-center justify-between">
             <span>Equipo añadido. Puede seguir agregando o enviar su cotización.</span>
             <button
               onClick={() => router.push("/cotizar")}

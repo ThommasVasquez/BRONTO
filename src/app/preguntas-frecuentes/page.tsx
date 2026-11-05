@@ -43,14 +43,11 @@ export default function FAQPage() {
 
           {/* Cabecera */}
           <div className="py-8 border-b border-[#242424]">
-            <span className="font-mono text-xs uppercase tracking-widest text-bronto-yellow font-bold">
-              CENTRO DE INFORMACIÓN Y RESPALDO
-            </span>
-            <h1 className="font-heading uppercase text-4xl sm:text-5xl lg:text-6xl font-black text-white mt-1 tracking-tight">
-              PREGUNTAS FRECUENTES
+            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black uppercase text-white tracking-tight">
+              Preguntas Frecuentes
             </h1>
-            <p className="mt-2 text-base text-bronto-gray font-sans">
-              Respuestas directas sobre requisitos de alquiler, tiempos de entrega, normatividad NSR-10 y condiciones de servicio en Colombia.
+            <p className="mt-2 text-base text-white/70">
+              Respuestas sobre requisitos de alquiler, tiempos de despacho en Bogotá y la Sabana, normatividad NSR-10 y condiciones comerciales.
             </p>
           </div>
 
@@ -60,7 +57,7 @@ export default function FAQPage() {
               <button
                 key={cat.id}
                 onClick={() => setSelectedCategory(cat.id)}
-                className={`px-4 py-2 rounded-sm text-xs font-mono uppercase tracking-wider transition-colors ${
+                className={`px-4 py-2 text-xs uppercase tracking-wider font-bold transition-colors ${
                   selectedCategory === cat.id
                     ? "bg-bronto-yellow text-[#151515] font-black"
                     : "bg-[#1C1C1C] text-white/70 hover:text-white border border-[#2D2D2D]"
@@ -79,7 +76,7 @@ export default function FAQPage() {
               return (
                 <div
                   key={faq.id}
-                  className="bg-[#181818] border border-[#2B2B2B] rounded-sm overflow-hidden transition-colors hover:border-[#3D3D3D]"
+                  className="bg-[#181818] border border-[#2B2B2B] overflow-hidden transition-colors hover:border-[#3D3D3D]"
                 >
                   <button
                     onClick={() => toggleFaq(faq.id)}
@@ -87,10 +84,10 @@ export default function FAQPage() {
                     aria-expanded={isOpen}
                   >
                     <div className="flex items-center gap-3">
-                      <span className="text-[10px] font-mono uppercase px-2 py-0.5 bg-[#252525] text-bronto-yellow rounded border border-[#333333]">
+                      <span className="text-[10px] uppercase font-bold px-2 py-0.5 bg-[#252525] text-bronto-yellow border border-[#333333]">
                         {faq.categoryLabel}
                       </span>
-                      <h3 className="font-heading uppercase text-lg sm:text-xl font-bold text-white tracking-wide">
+                      <h3 className="uppercase text-lg sm:text-xl font-bold text-white tracking-wide">
                         {faq.question}
                       </h3>
                     </div>
@@ -103,7 +100,7 @@ export default function FAQPage() {
                   </button>
 
                   {isOpen && (
-                    <div className="px-6 pb-6 pt-2 border-t border-[#252525] text-sm text-bronto-gray font-sans leading-relaxed">
+                    <div className="px-6 pb-6 pt-2 border-t border-[#252525] text-sm text-white/70 leading-relaxed font-normal">
                       {faq.answer}
                     </div>
                   )}
@@ -113,13 +110,13 @@ export default function FAQPage() {
           </div>
 
           {/* CTA de Asistencia Adicional */}
-          <div className="mt-16 p-8 bg-[#1A1A1A] border border-[#2B2B2B] rounded-sm text-center space-y-4">
+          <div className="mt-16 p-8 bg-[#1A1A1A] border border-[#2B2B2B] text-center space-y-4">
             <HelpCircle className="w-8 h-8 text-bronto-yellow mx-auto" />
-            <h3 className="font-heading uppercase text-2xl font-bold text-white">
+            <h3 className="uppercase text-2xl font-bold text-white">
               ¿Tiene una consulta técnica específica?
             </h3>
-            <p className="text-xs sm:text-sm text-bronto-gray max-w-md mx-auto font-sans">
-              Comuníquese con nuestros ingenieros para resolver especificaciones o asesoría en modulación para su obra.
+            <p className="text-xs sm:text-sm text-white/70 max-w-md mx-auto">
+              Comuníquese con nuestros ingenieros para resolver especificaciones o asesoría en modulación para su obra en Bogotá y la Sabana.
             </p>
             <div className="pt-2">
               <Link

@@ -32,16 +32,10 @@ export const WhatsAppButton: React.FC = () => {
         href={whatsappUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className="fixed bottom-6 right-6 z-40 group flex items-center justify-center w-14 h-14 bg-[#25D366] hover:bg-[#20bd5a] text-white rounded-full shadow-2xl transition-all duration-300 hover:scale-110 active:scale-95 focus:outline-none focus-visible:ring-4 focus-visible:ring-bronto-yellow"
+        className="fixed bottom-6 right-6 z-40 flex items-center justify-center w-14 h-14 bg-[#25D366] hover:bg-[#20bd5a] text-white rounded-full shadow-2xl transition-transform duration-200 hover:scale-105 active:scale-95 focus:outline-none focus-visible:ring-4 focus-visible:ring-bronto-yellow"
         aria-label="Contactar a BRONTO por WhatsApp oficial"
       >
-        <div className="relative flex items-center justify-center">
-          <OfficialWhatsAppIcon className="w-7 h-7 fill-white" />
-          <span className="absolute -top-1 -right-1 flex h-2.5 w-2.5">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#FF6511]"></span>
-          </span>
-        </div>
+        <OfficialWhatsAppIcon className="w-7 h-7 fill-white" />
       </a>
     </aside>
   );

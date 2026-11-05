@@ -100,8 +100,8 @@ export default async function ProductDetailPage({ params }: Props) {
             {/* Columna Derecha: Especificaciones Técnicas y Condiciones */}
             <div className="lg:col-span-5 space-y-6">
               {/* Tabla de Especificaciones Técnicas */}
-              <div className="bg-[#181818] border border-[#2B2B2B] rounded-sm p-6">
-                <h3 className="font-mono text-xs uppercase tracking-wider text-bronto-yellow font-bold mb-4 flex items-center justify-between">
+              <div className="bg-[#181818] border border-[#2B2B2B] p-6">
+                <h3 className="text-xs uppercase tracking-wider text-bronto-yellow font-bold mb-4 flex items-center justify-between">
                   <span>Ficha Técnica y Parámetros</span>
                   <span className="text-[10px] text-white/50">NSR-10 / Estándar</span>
                 </h3>
@@ -110,25 +110,25 @@ export default async function ProductDetailPage({ params }: Props) {
                   {product.specifications.map((spec, index) => (
                     <div
                       key={index}
-                      className={`py-2.5 flex items-center justify-between text-xs font-mono ${
+                      className={`py-2.5 flex items-center justify-between text-xs ${
                         spec.highlight ? "text-bronto-yellow font-bold" : "text-white"
                       }`}
                     >
                       <span className="text-white/60">{spec.label}</span>
-                      <span className="text-right pl-4">{spec.value}</span>
+                      <span className="text-right pl-4 font-semibold">{spec.value}</span>
                     </div>
                   ))}
                 </div>
               </div>
 
               {/* Características Clave y Respaldo */}
-              <div className="bg-[#181818] border border-[#2B2B2B] rounded-sm p-6">
-                <h3 className="font-mono text-xs uppercase tracking-wider text-white font-bold mb-3">
+              <div className="bg-[#181818] border border-[#2B2B2B] p-6">
+                <h3 className="text-xs uppercase tracking-wider text-white font-bold mb-3">
                   Características de Rendimiento
                 </h3>
                 <ul className="space-y-2.5">
                   {product.features.map((feat, index) => (
-                    <li key={index} className="flex items-start gap-2.5 text-xs text-bronto-gray font-sans">
+                    <li key={index} className="flex items-start gap-2.5 text-xs text-white/70">
                       <CheckCircle2 className="w-4 h-4 text-bronto-yellow shrink-0 mt-0.5" />
                       <span>{feat}</span>
                     </li>
@@ -138,12 +138,12 @@ export default async function ProductDetailPage({ params }: Props) {
 
               {/* Condiciones de Alquiler / Suministro */}
               {(product.rentalConditions || product.supplyConditions || product.serviceConditions) && (
-                <div className="bg-[#181818] border border-[#2B2B2B] rounded-sm p-6 text-xs font-sans text-white/80 space-y-2">
-                  <span className="font-mono text-[11px] uppercase font-bold text-bronto-yellow flex items-center gap-1.5">
+                <div className="bg-[#181818] border border-[#2B2B2B] p-6 text-xs text-white/80 space-y-2">
+                  <span className="text-xs uppercase font-bold text-bronto-yellow flex items-center gap-1.5">
                     <ShieldAlert className="w-3.5 h-3.5" />
                     Condiciones Comerciales de Despacho
                   </span>
-                  <ul className="space-y-1.5 list-disc list-inside text-bronto-gray text-[11px] pt-1">
+                  <ul className="space-y-1.5 list-disc list-inside text-white/60 text-xs pt-1">
                     {product.rentalConditions?.map((c, i) => (
                       <li key={i}>{c}</li>
                     ))}
@@ -158,16 +158,16 @@ export default async function ProductDetailPage({ params }: Props) {
               )}
 
               {/* Ficha técnica PDF demostrativa */}
-              <div className="p-4 bg-[#1F1F1F] border border-[#333333] rounded-sm flex items-center justify-between gap-4">
+              <div className="p-4 bg-[#1F1F1F] border border-[#333333] flex items-center justify-between gap-4">
                 <div className="flex items-center gap-3">
-                  <div className="p-2 bg-bronto-carbon border border-[#333333] text-bronto-yellow rounded-sm">
+                  <div className="p-2 bg-black border border-[#333333] text-bronto-yellow">
                     <FileDown className="w-5 h-5" />
                   </div>
                   <div>
-                    <span className="font-mono text-xs text-white font-bold block">
+                    <span className="text-xs text-white font-bold block">
                       Ficha Técnica Homologada
                     </span>
-                    <span className="text-[11px] text-bronto-gray">
+                    <span className="text-[11px] text-white/60">
                       Formato PDF &bull; {product.sku}
                     </span>
                   </div>
@@ -175,7 +175,7 @@ export default async function ProductDetailPage({ params }: Props) {
 
                 <a
                   href={`/contacto?asunto=Ficha-${product.sku}`}
-                  className="px-3 py-1.5 border border-white/20 hover:border-bronto-yellow text-white hover:text-bronto-yellow font-mono text-xs uppercase tracking-wider rounded-sm transition-colors"
+                  className="px-3 py-1.5 border border-white/20 hover:border-bronto-yellow text-white hover:text-bronto-yellow text-xs uppercase tracking-wider font-semibold transition-colors"
                 >
                   Solicitar PDF
                 </a>
@@ -188,16 +188,13 @@ export default async function ProductDetailPage({ params }: Props) {
             <div className="mt-16 pt-12 border-t border-[#242424]">
               <div className="flex items-center justify-between mb-8">
                 <div>
-                  <span className="font-mono text-xs uppercase tracking-widest text-bronto-yellow font-bold">
-                    SOLUCIONES COMPLEMENTARIAS
-                  </span>
-                  <h3 className="font-heading uppercase text-2xl sm:text-3xl font-black text-white mt-1">
-                    EQUIPOS RELACIONADOS
+                  <h3 className="uppercase text-2xl sm:text-3xl font-black text-white">
+                    Equipos Relacionados
                   </h3>
                 </div>
                 <Link
                   href="/catalogo"
-                  className="inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-wider text-bronto-yellow hover:underline"
+                  className="inline-flex items-center gap-1.5 text-xs uppercase tracking-wider font-bold text-bronto-yellow hover:underline"
                 >
                   <span>Ver catálogo completo</span>
                   <ArrowRight className="w-3.5 h-3.5" />
@@ -208,24 +205,24 @@ export default async function ProductDetailPage({ params }: Props) {
                 {relatedProducts.map((rel) => (
                   <div
                     key={rel.id}
-                    className="bg-[#181818] border border-[#2B2B2B] rounded-sm p-4 flex flex-col justify-between group hover:border-bronto-yellow transition-all"
+                    className="bg-[#181818] border border-[#2B2B2B] p-4 flex flex-col justify-between group hover:border-bronto-yellow transition-colors"
                   >
-                    <div className="relative aspect-[16/10] overflow-hidden rounded-sm bg-black mb-4">
+                    <div className="relative aspect-[16/10] overflow-hidden bg-black mb-4">
                       <div
                         className="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-500"
                         style={{ backgroundImage: `url('${rel.images[0]?.url}')` }}
                       />
-                      <span className="absolute top-2 left-2 px-2 py-0.5 bg-black/80 text-[9px] font-mono uppercase text-bronto-yellow font-bold rounded-sm">
+                      <span className="absolute top-2 left-2 px-2 py-0.5 bg-black/80 text-[9px] uppercase text-bronto-yellow font-bold">
                         {rel.modality.replace("_", " & ")}
                       </span>
                     </div>
 
                     <div>
-                      <span className="font-mono text-[10px] text-white/50">{rel.sku}</span>
-                      <h4 className="font-heading uppercase text-base font-bold text-white group-hover:text-bronto-yellow transition-colors mt-0.5">
+                      <span className="text-[11px] font-bold text-white/50 tracking-wider uppercase">{rel.sku}</span>
+                      <h4 className="uppercase text-base font-bold text-white group-hover:text-bronto-yellow transition-colors mt-0.5">
                         {rel.name}
                       </h4>
-                      <p className="text-xs text-bronto-gray mt-1 line-clamp-2 font-sans">
+                      <p className="text-xs text-white/70 mt-1 line-clamp-2">
                         {rel.shortDescription}
                       </p>
                     </div>
@@ -233,7 +230,7 @@ export default async function ProductDetailPage({ params }: Props) {
                     <div className="mt-4 pt-3 border-t border-[#2B2B2B]">
                       <Link
                         href={`/catalogo/${rel.slug}`}
-                        className="w-full inline-flex items-center justify-center gap-1.5 py-2 bg-[#252525] hover:bg-bronto-yellow hover:text-[#151515] text-white text-xs font-mono uppercase rounded-sm transition-colors"
+                        className="w-full inline-flex items-center justify-center gap-1.5 py-2 bg-[#252525] hover:bg-bronto-yellow hover:text-[#151515] text-white text-xs uppercase font-bold transition-colors"
                       >
                         <Eye className="w-3.5 h-3.5" />
                         <span>Ver equipo</span>

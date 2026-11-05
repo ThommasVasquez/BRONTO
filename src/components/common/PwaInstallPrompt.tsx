@@ -82,7 +82,7 @@ export const PwaInstallPrompt: React.FC = () => {
 
         <div className="flex-1 min-w-0">
           <div className="flex items-center justify-between">
-            <span className="font-mono text-[10px] uppercase font-bold text-bronto-yellow tracking-wider">
+            <span className="text-[10px] uppercase font-bold text-bronto-yellow tracking-wider">
               App Progresiva (PWA)
             </span>
             <button
@@ -94,19 +94,19 @@ export const PwaInstallPrompt: React.FC = () => {
             </button>
           </div>
 
-          <h4 className="font-heading uppercase text-sm font-black text-white mt-0.5">
+          <h4 className="uppercase text-sm font-black text-white mt-0.5">
             Instalar BRONTO en su dispositivo
           </h4>
 
-          <p className="text-[11px] text-bronto-gray mt-1 leading-snug">
-            Acceso rápido al catálogo, fichas de maquinaria y cotizaciones sin esperas.
+          <p className="text-xs text-white/70 mt-1 leading-snug">
+            Acceso directo al inventario y cotizaciones en Bogotá y la Sabana.
           </p>
 
           <div className="mt-3 flex items-center gap-2">
             {deferredPrompt && (
               <button
                 onClick={handleInstallClick}
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-bronto-yellow hover:bg-bronto-yellow-hover text-[#151515] font-black text-xs uppercase tracking-wider rounded-sm transition-colors"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-bronto-yellow hover:bg-bronto-yellow-hover text-[#151515] font-black text-xs uppercase tracking-wider rounded-none transition-colors"
               >
                 <Download className="w-3.5 h-3.5 stroke-[2.5]" />
                 <span>Instalar App</span>
@@ -114,7 +114,7 @@ export const PwaInstallPrompt: React.FC = () => {
             )}
 
             {isIOS && !deferredPrompt && (
-              <div className="text-[10px] text-bronto-yellow font-mono flex items-center gap-1">
+              <div className="text-xs text-bronto-yellow font-semibold flex items-center gap-1">
                 <Smartphone className="w-3.5 h-3.5" />
                 <span>Toque &quot;Compartir&quot; &rarr; &quot;Agregar a inicio&quot;</span>
               </div>
@@ -122,7 +122,7 @@ export const PwaInstallPrompt: React.FC = () => {
 
             <button
               onClick={dismiss}
-              className="text-xs text-white/60 hover:text-white font-mono px-2 py-1 transition-colors"
+              className="text-xs text-white/60 hover:text-white px-2 py-1 transition-colors"
             >
               Ahora no
             </button>

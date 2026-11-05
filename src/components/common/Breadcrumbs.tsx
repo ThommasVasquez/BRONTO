@@ -13,7 +13,7 @@ interface BreadcrumbsProps {
 
 export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ items }) => {
   return (
-    <nav aria-label="Ruta de navegación" className="py-3 text-xs font-mono">
+    <nav aria-label="Ruta de navegación" className="py-3 text-xs">
       <ol className="flex items-center flex-wrap gap-1.5 text-bronto-gray">
         <li className="flex items-center gap-1.5">
           <Link

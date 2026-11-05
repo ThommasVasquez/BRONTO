@@ -21,7 +21,7 @@ export const DynastesBeetleSymbol: React.FC<{
         src="/brand/bronto-beetle.png"
         alt="Símbolo Escarabajo Dynastes BRONTO"
         width={size}
-        height={Math.round(size * 0.407)}
+        height={Math.round(size * 0.426)}
         className="w-full h-auto object-contain"
         priority
       />
@@ -35,23 +35,23 @@ export const BrandLogo: React.FC<BrandLogoProps> = ({
   className = "",
   withLink = true,
 }) => {
-  // Proporciones oficiales exactas del recurso marcario original sin deformación
+  // Proporciones oficiales exactas del recurso marcario original sin deformación (ratio: 1.97)
   const sizeMap = {
     sm: {
       full: { width: 110, height: 56, className: "h-9 w-auto" },
-      symbol: { width: 44, height: 20, className: "h-5 w-auto" },
+      symbol: { width: 47, height: 20, className: "h-5 w-auto" },
     },
     md: {
-      full: { width: 145, height: 74, className: "h-12 w-auto" },
-      symbol: { width: 62, height: 28, className: "h-7 w-auto" },
+      full: { width: 148, height: 75, className: "h-12 w-auto" },
+      symbol: { width: 66, height: 28, className: "h-7 w-auto" },
     },
     lg: {
-      full: { width: 195, height: 100, className: "h-16 w-auto" },
-      symbol: { width: 85, height: 38, className: "h-10 w-auto" },
+      full: { width: 197, height: 100, className: "h-16 w-auto" },
+      symbol: { width: 94, height: 40, className: "h-10 w-auto" },
     },
     xl: {
       full: { width: 260, height: 132, className: "h-20 w-auto" },
-      symbol: { width: 120, height: 54, className: "h-14 w-auto" },
+      symbol: { width: 127, height: 54, className: "h-14 w-auto" },
     },
   };
 

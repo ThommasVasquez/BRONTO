@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { BrandLogo } from "./BrandLogo";
 import { useQuoteBasket } from "@/components/quote/QuoteBasketProvider";
-import { Menu, X, FileText, PhoneCall, ChevronRight } from "lucide-react";
+import { Menu, X, FileText, ChevronRight } from "lucide-react";
 
 export const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -43,10 +43,10 @@ export const Header: React.FC = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-200 ${
         isScrolled
-          ? "bg-[#151515]/95 backdrop-blur-md border-b border-[#242424] py-3.5 shadow-2xl"
-          : "bg-gradient-to-b from-black/80 via-black/40 to-transparent py-5"
+          ? "bg-[#111111]/95 backdrop-blur-md border-b border-[#242424] py-3.5 shadow-xl"
+          : "bg-gradient-to-b from-black/90 via-black/40 to-transparent py-5"
       }`}
     >
       <div className="w-full px-6 sm:px-10 lg:px-16 2xl:px-24">
@@ -54,23 +54,23 @@ export const Header: React.FC = () => {
           {/* Logo Principal BRONTO */}
           <BrandLogo size="md" />
 
-          {/* Navegación Desktop */}
-          <nav className="hidden lg:flex items-center gap-1 xl:gap-2" aria-label="Navegación principal">
+          {/* Navegación Desktop: Tipografía limpia y profesional */}
+          <nav className="hidden lg:flex items-center gap-6 xl:gap-8" aria-label="Navegación principal">
             {navLinks.map((link) => {
               const active = isActive(link.href);
               return (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`px-3.5 py-1.5 text-xs font-mono tracking-wider uppercase font-semibold transition-all duration-200 relative group rounded ${
+                  className={`text-sm font-semibold transition-colors duration-150 relative py-1 ${
                     active
                       ? "text-bronto-yellow"
-                      : "text-white/80 hover:text-white hover:bg-white/5"
+                      : "text-white/80 hover:text-white"
                   }`}
                 >
                   {link.label}
                   {active && (
-                    <span className="absolute bottom-0 left-3.5 right-3.5 h-[2px] bg-bronto-yellow" />
+                    <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-bronto-yellow" />
                   )}
                 </Link>
               );
@@ -82,27 +82,27 @@ export const Header: React.FC = () => {
             {/* Indicador de lista de cotización */}
             <Link
               href="/cotizar"
-              className="relative inline-flex items-center gap-2 px-3 py-1.5 rounded border border-[#333333] bg-[#1E1E1E] hover:border-bronto-yellow text-xs font-mono font-medium text-white transition-colors"
-              title="Ver equipos agregados para cotizar"
+              className="inline-flex items-center gap-2 px-3.5 py-2 border border-[#333333] hover:border-bronto-yellow bg-[#1A1A1A] text-xs font-semibold text-white transition-colors"
+              title="Ver equipos en lista de cotización"
             >
               <FileText className="w-3.5 h-3.5 text-bronto-yellow" />
-              <span className="hidden md:inline">Lista</span>
+              <span>Lista</span>
               {totalCount > 0 ? (
-                <span className="inline-flex items-center justify-center px-1.5 py-0.5 text-[10px] font-bold bg-bronto-yellow text-[#151515] rounded-full">
+                <span className="inline-flex items-center justify-center px-1.5 py-0.2 text-[11px] font-bold bg-bronto-yellow text-black">
                   {totalCount}
                 </span>
               ) : (
-                <span className="text-[10px] text-white/50">0</span>
+                <span className="text-white/50 text-xs">0</span>
               )}
             </Link>
 
             {/* CTA Principal */}
             <Link
               href="/cotizar"
-              className="inline-flex items-center gap-2 px-4 py-2 bg-bronto-yellow hover:bg-bronto-yellow-hover text-[#151515] font-black text-xs uppercase tracking-wider transition-all duration-200 shadow-md hover:shadow-lg active:scale-95 rounded-sm"
+              className="inline-flex items-center gap-2 px-5 py-2.5 bg-bronto-yellow hover:bg-bronto-yellow-hover text-[#111111] font-black text-xs uppercase tracking-wider transition-all duration-150 active:scale-[0.98]"
             >
               <span>Solicitar cotización</span>
-              <ChevronRight className="w-3.5 h-3.5 stroke-[2.5]" />
+              <ChevronRight className="w-3.5 h-3.5 stroke-[3]" />
             </Link>
           </div>
 
@@ -110,12 +110,12 @@ export const Header: React.FC = () => {
           <div className="flex items-center gap-2 lg:hidden">
             <Link
               href="/cotizar"
-              className="relative inline-flex items-center p-2 rounded border border-[#333333] bg-[#1E1E1E] text-bronto-yellow"
+              className="relative inline-flex items-center p-2 border border-[#333333] bg-[#1A1A1A] text-bronto-yellow"
               aria-label="Ver equipos a cotizar"
             >
               <FileText className="w-4 h-4" />
               {totalCount > 0 && (
-                <span className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-bronto-yellow text-[9px] font-bold text-[#151515]">
+                <span className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center bg-bronto-yellow text-[9px] font-bold text-black">
                   {totalCount}
                 </span>
               )}
@@ -123,7 +123,7 @@ export const Header: React.FC = () => {
 
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 text-white/90 hover:text-bronto-yellow focus:outline-none focus-visible:ring-2 focus-visible:ring-bronto-yellow rounded"
+              className="p-2 text-white hover:text-bronto-yellow focus:outline-none"
               aria-expanded={mobileMenuOpen}
               aria-label="Abrir menú de navegación"
             >
@@ -135,13 +135,13 @@ export const Header: React.FC = () => {
 
       {/* Menú Móvil Desplegable */}
       {mobileMenuOpen && (
-        <div className="lg:hidden fixed inset-x-0 top-[65px] bg-[#151515] border-b border-[#242424] px-6 py-8 shadow-2xl transition-all">
+        <div className="lg:hidden fixed inset-x-0 top-[65px] bg-[#111111] border-b border-[#242424] px-6 py-8 shadow-2xl">
           <div className="flex flex-col space-y-4">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className={`text-base font-mono uppercase tracking-wider font-semibold py-2 transition-colors border-b border-[#242424]/60 ${
+                className={`text-base font-bold py-2 border-b border-[#242424] ${
                   isActive(link.href)
                     ? "text-bronto-yellow"
                     : "text-white/80 hover:text-white"
@@ -154,18 +154,10 @@ export const Header: React.FC = () => {
             <div className="pt-4 flex flex-col gap-3">
               <Link
                 href="/cotizar"
-                className="w-full flex items-center justify-center gap-2 py-3 bg-bronto-yellow text-[#151515] font-black text-sm uppercase tracking-wider rounded-sm shadow-md"
+                className="w-full flex items-center justify-center gap-2 py-3 bg-bronto-yellow text-black font-black text-xs uppercase tracking-wider"
               >
                 <FileText className="w-4 h-4" />
                 <span>Solicitar cotización ({totalCount})</span>
-              </Link>
-
-              <Link
-                href="/contacto"
-                className="w-full flex items-center justify-center gap-2 py-2.5 border border-[#333333] text-white/90 font-mono text-xs uppercase tracking-wider rounded-sm hover:border-bronto-yellow transition-colors"
-              >
-                <PhoneCall className="w-4 h-4 text-bronto-yellow" />
-                <span>Líneas comerciales</span>
               </Link>
             </div>
           </div>
@@ -174,4 +166,3 @@ export const Header: React.FC = () => {
     </header>
   );
 };
-

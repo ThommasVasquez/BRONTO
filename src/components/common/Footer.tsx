@@ -20,26 +20,26 @@ export const Footer: React.FC = () => {
   return (
     <footer className="w-full bg-[#101010] border-t border-[#242424] text-white pt-16 pb-12">
       <div className="w-full px-6 sm:px-10 lg:px-16 2xl:px-24">
-        {/* Tira superior: Frase de Marca y Slogan */}
+        {/* Tira superior: Frase de Marca */}
         <div className="pb-12 border-b border-[#242424] flex flex-col md:flex-row md:items-center justify-between gap-6">
-          <div className="flex flex-col">
-            <span className="font-mono text-xs uppercase tracking-widest text-bronto-yellow font-bold">
-              CONCEPTO OPERATIVO
-            </span>
-            <p className="font-heading text-3xl sm:text-4xl lg:text-5xl uppercase font-black tracking-tight text-white mt-1">
+          <div>
+            <p className="text-3xl sm:text-4xl lg:text-5xl font-black uppercase tracking-tight text-white">
               {siteConfig.tagline}
             </p>
+            <p className="text-sm text-white/60 mt-1 font-normal">
+              Alquiler de maquinaria y suministro para construcción en Bogotá y la Sabana.
+            </p>
           </div>
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3">
             <Link
               href="/cotizar"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-bronto-yellow hover:bg-bronto-yellow-hover text-[#151515] font-black text-sm uppercase tracking-wider transition-all duration-200 rounded-sm shadow-md"
+              className="inline-flex items-center gap-2 px-6 py-3.5 bg-bronto-yellow hover:bg-bronto-yellow-hover text-[#111111] font-black text-xs uppercase tracking-wider transition-colors"
             >
               <span>Cotizar ahora</span>
             </Link>
             <Link
               href="/catalogo"
-              className="inline-flex items-center gap-2 px-6 py-3 border border-[#333333] hover:border-bronto-yellow text-white font-mono text-xs uppercase tracking-wider transition-all duration-200 rounded-sm"
+              className="inline-flex items-center gap-2 px-6 py-3.5 border border-[#333333] hover:border-bronto-yellow text-white text-xs uppercase tracking-wider font-semibold transition-colors"
             >
               <span>Ver catálogo</span>
             </Link>
@@ -51,24 +51,24 @@ export const Footer: React.FC = () => {
           {/* Columna 1: Identidad y Misión */}
           <div className="lg:col-span-2 space-y-4">
             <BrandLogo size="lg" withLink={false} />
-            <p className="text-sm text-bronto-gray leading-relaxed pr-4">
+            <p className="text-sm text-white/70 leading-relaxed pr-4">
               {siteConfig.description}
             </p>
-            <div className="pt-2 flex items-center gap-2 text-xs font-mono text-bronto-yellow font-semibold">
+            <div className="pt-2 flex items-center gap-2 text-xs text-bronto-yellow font-bold uppercase tracking-wider">
               <ShieldCheck className="w-4 h-4 text-bronto-yellow" />
               <span>{siteConfig.slogan}</span>
             </div>
-            <div className="text-xs text-bronto-gray/70 pt-2">
+            <div className="text-xs text-white/50 pt-1">
               <p>{siteConfig.contact.emergencySupport}</p>
             </div>
           </div>
 
           {/* Columna 2: Categorías de Catálogo */}
           <div>
-            <h3 className="font-mono text-xs uppercase tracking-widest text-bronto-yellow font-bold mb-4">
+            <h3 className="text-xs uppercase tracking-wider text-bronto-yellow font-bold mb-4">
               Catálogo Comercial
             </h3>
-            <ul className="space-y-2.5 text-xs text-white/80 font-sans">
+            <ul className="space-y-2.5 text-xs text-white/80">
               {catalogCategories.map((cat) => (
                 <li key={cat.id}>
                   <Link
@@ -82,7 +82,7 @@ export const Footer: React.FC = () => {
               <li>
                 <Link
                   href="/catalogo"
-                  className="text-bronto-yellow/90 hover:text-bronto-yellow font-mono text-[11px] uppercase tracking-wider block pt-2"
+                  className="text-bronto-yellow hover:underline text-xs uppercase font-bold tracking-wider block pt-2"
                 >
                   &rarr; Ver todas las referencias
                 </Link>
@@ -92,10 +92,10 @@ export const Footer: React.FC = () => {
 
           {/* Columna 3: Servicios */}
           <div>
-            <h3 className="font-mono text-xs uppercase tracking-widest text-bronto-yellow font-bold mb-4">
+            <h3 className="text-xs uppercase tracking-wider text-bronto-yellow font-bold mb-4">
               Servicios y Soluciones
             </h3>
-            <ul className="space-y-2.5 text-xs text-white/80 font-sans">
+            <ul className="space-y-2.5 text-xs text-white/80">
               {servicesData.map((srv) => (
                 <li key={srv.id}>
                   <Link
@@ -119,10 +119,10 @@ export const Footer: React.FC = () => {
 
           {/* Columna 4: Contacto y Ubicación */}
           <div>
-            <h3 className="font-mono text-xs uppercase tracking-widest text-bronto-yellow font-bold mb-4">
+            <h3 className="text-xs uppercase tracking-wider text-bronto-yellow font-bold mb-4">
               Atención Comercial
             </h3>
-            <ul className="space-y-3 text-xs text-white/80 font-sans">
+            <ul className="space-y-3 text-xs text-white/80">
               <li className="flex items-start gap-2.5">
                 <MapPin className="w-4 h-4 text-bronto-yellow shrink-0 mt-0.5" />
                 <span>{siteConfig.contact.address}, {siteConfig.contact.city}</span>
@@ -141,7 +141,7 @@ export const Footer: React.FC = () => {
               </li>
               <li className="flex items-start gap-2.5">
                 <Clock className="w-4 h-4 text-bronto-yellow shrink-0 mt-0.5" />
-                <span className="text-[11px] leading-tight text-bronto-gray">
+                <span className="text-[11px] leading-tight text-white/60">
                   {siteConfig.contact.operationHours}
                 </span>
               </li>
@@ -150,7 +150,7 @@ export const Footer: React.FC = () => {
         </div>
 
         {/* Franja Inferior: Copyright, Términos y Firma Obligatoria de Desarrollador Centrada */}
-        <div className="pt-10 border-t border-[#242424] flex flex-col items-center justify-center gap-6 text-xs font-mono text-bronto-gray text-center">
+        <div className="pt-10 border-t border-[#242424] flex flex-col items-center justify-center gap-6 text-xs text-white/60 text-center">
           {/* Navegación Secundaria y Copyright */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-6 text-center">
             <p>
@@ -170,26 +170,26 @@ export const Footer: React.FC = () => {
           </div>
 
           {/* FIRMA DE DESARROLLADOR OFICIAL CENTRADA CON LOGO OFICIAL (Visible en desktop y móvil) */}
-          <div className="w-full flex flex-col items-center justify-center">
+          <div className="w-full flex flex-col items-center justify-center pt-2">
             <a
               href={siteConfig.developer.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex flex-col md:flex-row items-center justify-center gap-3 py-3 px-6 sm:px-8 rounded-sm bg-[#161616] border border-[#2B2B2B] hover:border-bronto-yellow/60 transition-all duration-300 shadow-lg hover:shadow-yellow-500/10 text-center"
+              className="group inline-flex flex-col sm:flex-row items-center justify-center gap-3 py-3 px-6 sm:px-8 bg-[#161616] border border-[#2B2B2B] hover:border-bronto-yellow transition-colors text-center"
               title="Visitar sitio web oficial de ENERGYSOFTmedia"
             >
               <div className="relative flex items-center justify-center shrink-0">
                 <Image
                   src="/brand/energysoft-logo.png"
                   alt="ENERGYSOFT Official Logo"
-                  width={130}
-                  height={36}
-                  className="h-6 sm:h-7 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+                  width={140}
+                  height={40}
+                  className="h-6 sm:h-7 w-auto object-contain transition-transform duration-200 group-hover:scale-105"
                   priority
                 />
               </div>
 
-              <div className="flex items-center gap-2 text-xs sm:text-xs font-mono font-bold text-white/90 group-hover:text-bronto-yellow transition-colors">
+              <div className="flex items-center gap-2 text-xs font-semibold text-white/90 group-hover:text-bronto-yellow transition-colors">
                 <span>{siteConfig.developer.signatureText}</span>
                 <ExternalLink className="w-3.5 h-3.5 text-[#FF6511] shrink-0" />
               </div>
