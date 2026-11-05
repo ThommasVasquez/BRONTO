@@ -28,7 +28,7 @@ export interface SiteConfig {
     youtube: string;
   };
   developer: {
-    label: string;
+    signatureText: string;
     name: string;
     url: string;
   };
@@ -87,8 +87,8 @@ export const siteConfig: SiteConfig = {
     youtube: "https://youtube.com/@bronto-colombia",
   },
   developer: {
-    label: "Desarrollado por",
-    name: "ENERGYSOFTmedia® ⚡️",
+    signatureText: "Desarrollado con todo el poder de ENERGYSOFTmedia® | Software con Energía! ⚡️",
+    name: "ENERGYSOFTmedia®",
     url: "https://energysoftmedia.com",
   },
   colors: {

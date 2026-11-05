@@ -168,17 +168,16 @@ export const Footer: React.FC = () => {
           </div>
 
           {/* FIRMA DE DESARROLLADOR OBLIGATORIA Y PERMANENTE (Visible en desktop y móvil) */}
-          <div className="flex items-center gap-1.5 py-1 px-3 rounded bg-[#181818] border border-[#2A2A2A]">
-            <span className="text-[11px] text-white/70">{siteConfig.developer.label}</span>
+          <div className="flex items-center py-2 px-4 rounded bg-[#181818] border border-[#2A2A2A] hover:border-bronto-yellow/50 transition-colors">
             <a
               href={siteConfig.developer.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 font-bold text-white hover:text-bronto-yellow transition-colors text-[11px]"
-              title="Visitar sitio de ENERGYSOFTmedia"
+              className="inline-flex items-center gap-1.5 font-bold text-white hover:text-bronto-yellow transition-colors text-xs sm:text-[11px]"
+              title="Visitar sitio oficial de ENERGYSOFTmedia"
             >
-              <span>{siteConfig.developer.name}</span>
-              <ExternalLink className="w-3 h-3 text-[#FF6511]" />
+              <span>{siteConfig.developer.signatureText}</span>
+              <ExternalLink className="w-3.5 h-3.5 text-[#FF6511] shrink-0" />
             </a>
           </div>
         </div>
