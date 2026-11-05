@@ -23,6 +23,16 @@ export interface TechnicalSpec {
   highlight?: boolean;
 }
 
+export interface ProductPricing {
+  basePrice: number; // Precio base en COP con 10% de referencia aplicado
+  currency: "COP";
+  priceUnit: "día" | "mes" | "m² / mes" | "m³" | "unidad" | "metro lineal" | "m²";
+  dailyRate?: number; // Tarifa día en COP
+  monthlyRate?: number; // Tarifa mes en COP
+  operatorDayRate?: number; // Tarifa día operador calificado en COP
+  discountNotice?: string;
+}
+
 export interface Product {
   id: string;
   slug: string;
@@ -42,7 +52,8 @@ export interface Product {
   specifications: TechnicalSpec[];
   features: string[];
   unit: string; // ej: "Día / Mes", "m² / Mes", "m³", "Unidad"
-  priceNote: string; // "Cotización según volumen y tiempo de obra", no inventar precios fijos
+  pricing: ProductPricing;
+  priceNote: string; // Nota descriptiva comercial
   availabilityStatus: "disponible_inmediato" | "bajo_reserva" | "consultar_zona";
   availabilityLabel: string;
   rentalConditions?: string[];
@@ -60,6 +71,6 @@ export interface CatalogFilterState {
   subcategory: string;
   modality: string;
   availability: string;
-  sortBy: "featured" | "name_asc" | "name_desc";
+  sortBy: "featured" | "name_asc" | "name_desc" | "price_asc" | "price_desc";
 }
 

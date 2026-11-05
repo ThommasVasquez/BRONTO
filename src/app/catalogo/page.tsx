@@ -7,6 +7,7 @@ import { catalogProducts, catalogCategories } from "@/data/catalogData";
 import { ModalityType } from "@/types/catalog";
 import { useQuoteBasket } from "@/components/quote/QuoteBasketProvider";
 import { Breadcrumbs } from "@/components/common/Breadcrumbs";
+import { formatCOP } from "@/lib/pricing";
 import { 
   Search, 
   SlidersHorizontal, 
@@ -27,7 +28,7 @@ function CatalogContent() {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState(initialCategory);
   const [selectedModality, setSelectedModality] = useState<string>("todas");
-  const [sortBy, setSortBy] = useState<"destacados" | "nombre_asc" | "nombre_desc">("destacados");
+  const [sortBy, setSortBy] = useState<"destacados" | "nombre_asc" | "nombre_desc" | "precio_asc" | "precio_desc">("destacados");
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
 
@@ -70,6 +71,12 @@ function CatalogContent() {
       .sort((a, b) => {
         if (sortBy === "destacados") {
           return (b.featured ? 1 : 0) - (a.featured ? 1 : 0);
+        }
+        if (sortBy === "precio_asc") {
+          return a.pricing.basePrice - b.pricing.basePrice;
+        }
+        if (sortBy === "precio_desc") {
+          return b.pricing.basePrice - a.pricing.basePrice;
         }
         if (sortBy === "nombre_asc") {
           return a.name.localeCompare(b.name);
@@ -143,10 +150,12 @@ function CatalogContent() {
               <span className="text-xs text-white/60 hidden sm:inline">Ordenar:</span>
               <select
                 value={sortBy}
-                onChange={(e) => setSortBy(e.target.value as "destacados" | "nombre_asc" | "nombre_desc")}
+                onChange={(e) => setSortBy(e.target.value as "destacados" | "nombre_asc" | "nombre_desc" | "precio_asc" | "precio_desc")}
                 className="bg-[#1C1C1C] border border-[#333333] text-white text-xs py-2 px-3 focus:border-bronto-yellow focus:outline-none"
               >
                 <option value="destacados">Destacados primero</option>
+                <option value="precio_asc">Precio: Menor a Mayor</option>
+                <option value="precio_desc">Precio: Mayor a Menor</option>
                 <option value="nombre_asc">Nombre: A - Z</option>
                 <option value="nombre_desc">Nombre: Z - A</option>
               </select>
@@ -347,6 +356,17 @@ function CatalogContent() {
                               </div>
                             ))}
                           </div>
+
+                          {/* Tarifa de Referencia (+10% aplicada) */}
+                          <div className="mt-3 pt-2.5 border-t border-[#2A2A2A] flex items-baseline justify-between">
+                            <span className="text-[10px] text-white/50 uppercase font-semibold">Tarifa Ref.</span>
+                            <div className="text-right">
+                              <span className="text-sm font-black text-bronto-yellow">
+                                {formatCOP(product.pricing.basePrice)}
+                              </span>
+                              <span className="text-[10px] text-white/50 block font-normal">/ {product.pricing.priceUnit}</span>
+                            </div>
+                          </div>
                         </div>
 
                         <div className="mt-5 pt-3 border-t border-[#2A2A2A] flex items-center gap-2">
@@ -425,35 +445,45 @@ function CatalogContent() {
                         </div>
                       </div>
 
-                      <div className="flex md:flex-col items-center gap-2 shrink-0 border-t md:border-t-0 md:border-l border-[#2B2B2B] pt-4 md:pt-0 md:pl-6">
-                        <Link
-                          href={`/catalogo/${product.slug}`}
-                          className="w-full inline-flex items-center justify-center gap-1.5 py-2 px-4 bg-[#252525] hover:bg-[#303030] text-white text-xs uppercase font-bold transition-colors"
-                        >
-                          <Eye className="w-3.5 h-3.5" />
-                          <span>Ver Ficha</span>
-                        </Link>
+                      <div className="flex md:flex-col items-end gap-3 shrink-0 border-t md:border-t-0 md:border-l border-[#2B2B2B] pt-4 md:pt-0 md:pl-6 min-w-[180px]">
+                        <div className="text-right w-full pb-1 border-b md:border-b border-[#2A2A2A]">
+                          <span className="text-[10px] text-white/50 uppercase block font-semibold">Tarifa Ref.</span>
+                          <span className="text-base font-black text-bronto-yellow">
+                            {formatCOP(product.pricing.basePrice)}
+                          </span>
+                          <span className="text-[10px] text-white/50 block font-normal">/ {product.pricing.priceUnit}</span>
+                        </div>
 
-                        <button
-                          onClick={() => addItem(product, 1)}
-                          className={`w-full inline-flex items-center justify-center gap-1.5 py-2 px-4 text-xs uppercase font-bold transition-colors ${
-                            inBasket
-                              ? "bg-green-700 text-white"
-                              : "bg-bronto-yellow hover:bg-bronto-yellow-hover text-[#151515] font-black"
-                          }`}
-                        >
-                          {inBasket ? (
-                            <>
-                              <Check className="w-3.5 h-3.5" />
-                              <span>En Lista</span>
-                            </>
-                          ) : (
-                            <>
-                              <Plus className="w-3.5 h-3.5" />
-                              <span>Cotizar</span>
-                            </>
-                          )}
-                        </button>
+                        <div className="flex md:flex-col items-center gap-2 w-full">
+                          <Link
+                            href={`/catalogo/${product.slug}`}
+                            className="w-full inline-flex items-center justify-center gap-1.5 py-2 px-4 bg-[#252525] hover:bg-[#303030] text-white text-xs uppercase font-bold transition-colors"
+                          >
+                            <Eye className="w-3.5 h-3.5" />
+                            <span>Ver Ficha</span>
+                          </Link>
+
+                          <button
+                            onClick={() => addItem(product, 1)}
+                            className={`w-full inline-flex items-center justify-center gap-1.5 py-2 px-4 text-xs uppercase font-bold transition-colors ${
+                              inBasket
+                                ? "bg-green-700 text-white"
+                                : "bg-bronto-yellow hover:bg-bronto-yellow-hover text-[#151515] font-black"
+                            }`}
+                          >
+                            {inBasket ? (
+                              <>
+                                <Check className="w-3.5 h-3.5" />
+                                <span>En Lista</span>
+                              </>
+                            ) : (
+                              <>
+                                <Plus className="w-3.5 h-3.5" />
+                                <span>Cotizar</span>
+                              </>
+                            )}
+                          </button>
+                        </div>
                       </div>
                     </div>
                   );

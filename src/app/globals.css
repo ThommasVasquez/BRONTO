@@ -220,3 +220,29 @@ html:not(.dark) section[aria-label="Presentación principal BRONTO"] .text-white
     scroll-behavior: auto !important;
   }
 }
+
+/* Estilos de Impresión Formal para Cotizaciones */
+@media print {
+  header, footer, .whatsapp-floating-btn, button, nav, .breadcrumbs {
+    display: none !important;
+  }
+
+  body {
+    background: #FFFFFF !important;
+    color: #000000 !important;
+  }
+
+  .bg-\[\#151515\], .bg-\[\#181818\], .bg-\[\#1A1A1A\], .bg-\[\#141414\], .bg-black\/50 {
+    background: #FFFFFF !important;
+    color: #000000 !important;
+    border-color: #CCCCCC !important;
+  }
+
+  .text-white, .text-white\/80, .text-white\/70, .text-white\/60 {
+    color: #000000 !important;
+  }
+
+  .text-bronto-yellow {
+    color: #B59300 !important;
+  }
+}

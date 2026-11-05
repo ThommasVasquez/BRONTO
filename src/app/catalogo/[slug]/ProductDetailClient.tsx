@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Product } from "@/types/catalog";
 import { useQuoteBasket } from "@/components/quote/QuoteBasketProvider";
+import { formatCOP, calculateItemTotal } from "@/lib/pricing";
 import { 
   Plus, 
   Minus, 
@@ -12,7 +13,9 @@ import {
   FileText, 
   Clock, 
   ShieldCheck, 
-  Sparkles 
+  Sparkles,
+  Calculator,
+  Tag
 } from "lucide-react";
 
 interface ProductDetailClientProps {
@@ -24,6 +27,13 @@ export const ProductDetailClient: React.FC<ProductDetailClientProps> = ({ produc
   const [quantity, setQuantity] = useState(1);
   const [estimatedDuration, setEstimatedDuration] = useState("1 mes");
   const [addedSuccess, setAddedSuccess] = useState(false);
+
+  const liveEstimate = calculateItemTotal({
+    product,
+    quantity,
+    modality: product.modality,
+    estimatedDuration,
+  });
 
   const { addItem, isInBasket } = useQuoteBasket();
   const router = useRouter();
@@ -110,23 +120,65 @@ export const ProductDetailClient: React.FC<ProductDetailClientProps> = ({ produc
           {product.fullDescription}
         </p>
 
-        {/* Nota de Precios Transparente */}
-        <div className="mt-6 p-4 bg-[#1A1A1A] border-l-4 border-bronto-yellow">
-          <div className="flex items-center gap-2 text-xs text-bronto-yellow font-bold uppercase tracking-wider">
-            <Clock className="w-4 h-4" />
-            <span>Unidad de Cotización: {product.unit}</span>
+        {/* Tarifa de Referencia y Estructura de Precios (+10% aplicada) */}
+        <div className="mt-6 p-5 bg-[#181818] border border-[#2B2B2B]">
+          <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 pb-3 border-b border-white/10">
+            <div>
+              <span className="text-[11px] uppercase font-bold text-white/50 tracking-wider block">
+                Tarifa de Referencia
+              </span>
+              <div className="flex items-baseline gap-2 mt-0.5">
+                <span className="text-2xl sm:text-3xl font-black text-bronto-yellow">
+                  {formatCOP(product.pricing.basePrice)}
+                </span>
+                <span className="text-xs text-white/60">/ {product.pricing.priceUnit}</span>
+              </div>
+            </div>
+
+            {product.pricing.discountNotice && (
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-[#242424] text-bronto-yellow text-[11px] font-bold border border-bronto-yellow/30">
+                <Tag className="w-3 h-3" />
+                <span>{product.pricing.discountNotice}</span>
+              </span>
+            )}
           </div>
-          <p className="mt-1 text-xs text-white/80">
-            {product.priceNote} Tarifa transparente ajustada a los requisitos específicos de su obra en Bogotá y Sabana.
+
+          <div className="mt-3 grid grid-cols-2 sm:grid-cols-3 gap-3 text-xs">
+            {product.pricing.dailyRate && (
+              <div className="p-2.5 bg-[#141414] border border-[#262626]">
+                <span className="text-white/50 block text-[10px] uppercase">Tarifa por día:</span>
+                <strong className="text-white font-mono">{formatCOP(product.pricing.dailyRate)}</strong>
+              </div>
+            )}
+            {product.pricing.monthlyRate && (
+              <div className="p-2.5 bg-[#141414] border border-[#262626]">
+                <span className="text-white/50 block text-[10px] uppercase">Tarifa por mes:</span>
+                <strong className="text-white font-mono">{formatCOP(product.pricing.monthlyRate)}</strong>
+              </div>
+            )}
+            {product.pricing.operatorDayRate && (
+              <div className="p-2.5 bg-[#141414] border border-[#262626]">
+                <span className="text-white/50 block text-[10px] uppercase">Operador certificado:</span>
+                <strong className="text-white font-mono">{formatCOP(product.pricing.operatorDayRate)} / día</strong>
+              </div>
+            )}
+          </div>
+
+          <p className="mt-3 text-[11px] text-white/60">
+            {product.priceNote} Precios ajustados a plazos de contrato y disponibilidad en frentes de obra en Bogotá y la Sabana.
           </p>
         </div>
       </div>
 
-      {/* Controles de Selección de Cotización */}
+      {/* Controles de Selección y Estimador en Vivo */}
       <div className="p-6 bg-[#181818] border border-[#2B2B2B] space-y-6">
-        <h3 className="text-xs uppercase tracking-wider text-bronto-yellow font-bold">
-          Configurar para Solicitud de Cotización
-        </h3>
+        <div className="flex items-center justify-between pb-3 border-b border-[#2A2A2A]">
+          <h3 className="text-xs uppercase tracking-wider text-bronto-yellow font-bold flex items-center gap-2">
+            <Calculator className="w-4 h-4" />
+            <span>Cotizador Rápido para este Equipo</span>
+          </h3>
+          <span className="text-xs text-white/50">Cálculo instantáneo</span>
+        </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {/* Selector de Cantidad */}
@@ -180,6 +232,19 @@ export const ProductDetailClient: React.FC<ProductDetailClientProps> = ({ produc
               <option value="Suministro permanente">Suministro de material / Compra</option>
             </select>
           </div>
+        </div>
+
+        {/* Estimación en Vivo */}
+        <div className="p-4 bg-[#141414] border border-[#262626] flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+          <div>
+            <span className="text-[11px] uppercase font-bold text-white/50 block">
+              Subtotal Estimado ({quantity} {quantity > 1 ? "unidades" : "unidad"} &bull; {estimatedDuration}):
+            </span>
+            <span className="text-xl font-black text-bronto-yellow">
+              {formatCOP(liveEstimate.equipmentSubtotal)}
+            </span>
+          </div>
+          <span className="text-[11px] text-white/60">Tarifa antes de IVA y flete</span>
         </div>
 
         {/* Acciones de Cotización */}

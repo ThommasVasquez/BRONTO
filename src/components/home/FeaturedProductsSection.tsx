@@ -4,6 +4,7 @@ import React from "react";
 import Link from "next/link";
 import { catalogProducts } from "@/data/catalogData";
 import { useQuoteBasket } from "@/components/quote/QuoteBasketProvider";
+import { formatCOP } from "@/lib/pricing";
 import { Eye, Plus, Check, ArrowRight } from "lucide-react";
 
 export const FeaturedProductsSection: React.FC = () => {
@@ -75,6 +76,16 @@ export const FeaturedProductsSection: React.FC = () => {
                         <span className="text-white font-semibold shrink-0">{spec.value}</span>
                       </div>
                     ))}
+                  </div>
+                  {/* Tarifa de Referencia (+10% aplicada) */}
+                  <div className="mt-3 pt-2.5 border-t border-white/10 flex items-baseline justify-between">
+                    <span className="text-[10px] text-white/50 uppercase font-semibold">Tarifa Ref.</span>
+                    <div className="text-right">
+                      <span className="text-sm font-black text-bronto-yellow">
+                        {formatCOP(product.pricing.basePrice)}
+                      </span>
+                      <span className="text-[10px] text-white/50 block font-normal">/ {product.pricing.priceUnit}</span>
+                    </div>
                   </div>
                 </div>
 
