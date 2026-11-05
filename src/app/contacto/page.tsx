@@ -34,7 +34,7 @@ export default function ContactPage() {
 
   return (
     <div className="pt-28 pb-24 bg-[#151515] min-h-screen text-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="w-full px-6 sm:px-10 lg:px-16 2xl:px-24">
         <Breadcrumbs items={[{ label: "Contacto Comercial" }]} />
 
         {/* Cabecera */}

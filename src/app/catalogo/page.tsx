@@ -92,7 +92,7 @@ function CatalogContent() {
 
   return (
     <div className="pt-28 pb-24 bg-[#151515] min-h-screen">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="w-full px-6 sm:px-10 lg:px-16 2xl:px-24">
         {/* Breadcrumbs */}
         <Breadcrumbs items={[{ label: "Catálogo de Equipos y Soluciones" }]} />
 
@@ -181,10 +181,10 @@ function CatalogContent() {
           </div>
         </div>
 
-        {/* Layout Principal: Sidebar de Filtros + Rejilla de Productos */}
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
+        {/* Layout Principal: Sidebar de Filtros + Rejilla de Productos Full Width */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           {/* SIDEBAR DE FILTROS (Desktop + Móvil) */}
-          <aside className={`lg:block ${mobileFiltersOpen ? "block" : "hidden"} space-y-6 bg-[#181818] p-6 border border-[#2B2B2B] h-fit`}>
+          <aside className={`lg:block ${mobileFiltersOpen ? "block" : "hidden"} lg:col-span-3 space-y-6 bg-[#181818] p-6 border border-[#2B2B2B] h-fit`}>
             <div className="flex items-center justify-between pb-3 border-b border-[#2A2A2A]">
               <span className="text-xs uppercase tracking-wider font-bold text-white flex items-center gap-2">
                 <SlidersHorizontal className="w-4 h-4 text-bronto-yellow" />
@@ -285,7 +285,7 @@ function CatalogContent() {
           </aside>
 
           {/* REJILLA / LISTA DE RESULTADOS */}
-          <div className="lg:col-span-3">
+          <div className="lg:col-span-9">
             {filteredProducts.length === 0 ? (
               <div className="bg-[#181818] border border-[#2B2B2B] p-12 text-center rounded-sm space-y-4">
                 <p className="text-sm uppercase text-white/70 font-semibold">
@@ -299,8 +299,8 @@ function CatalogContent() {
                 </button>
               </div>
             ) : viewMode === "grid" ? (
-              /* Vista en Cuadrícula */
-              <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+              /* Vista en Cuadrícula Full Width */
+              <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-6">
                 {filteredProducts.map((product) => {
                   const inBasket = isInBasket(product.id);
                   return (
