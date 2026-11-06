@@ -3,6 +3,8 @@ import { siteConfig } from "@/data/siteConfig";
 import { catalogProducts, catalogCategories } from "@/data/catalogData";
 import { servicesData } from "@/data/servicesData";
 
+export const dynamic = "force-static";
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = siteConfig.siteUrl;
   const currentDate = new Date();
