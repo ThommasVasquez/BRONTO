@@ -197,3 +197,4 @@ export const coursesData: CourseItem[] = [
     imageUrl: "https://images.unsplash.com/photo-1504917599217-d4dc5ebe6122?auto=format&fit=crop&w=800&q=80",
   },
 ];
+

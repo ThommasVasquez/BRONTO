@@ -76,8 +76,12 @@ export const PwaInstallPrompt: React.FC = () => {
       className="fixed bottom-20 left-4 sm:left-6 z-40 max-w-sm bg-[#1A1A1A] border-2 border-bronto-yellow text-white p-4 shadow-2xl rounded-sm transition-all animate-fade-in"
     >
       <div className="flex items-start gap-3">
-        <div className="p-2 bg-bronto-carbon rounded border border-[#333333] shrink-0">
-          <DynastesBeetleSymbol className="w-6 h-6" colorFill="#FEE123" />
+        <div className="relative w-12 h-12 rounded-sm overflow-hidden border border-bronto-yellow bg-[#151515] shrink-0">
+          <img
+            src="/icons/icon-192.png"
+            alt="BRONTO®"
+            className="w-full h-full object-cover"
+          />
         </div>
 
         <div className="flex-1 min-w-0">
@@ -95,7 +99,7 @@ export const PwaInstallPrompt: React.FC = () => {
           </div>
 
           <h4 className="uppercase text-sm font-black text-white mt-0.5">
-            Instalar BRONTO® App en su dispositivo
+            Instalar BRONTO® en su dispositivo
           </h4>
 
           <p className="text-xs text-white/70 mt-1 leading-snug">

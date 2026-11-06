@@ -43,9 +43,9 @@ export interface SiteConfig {
 }
 
 export const siteConfig: SiteConfig = {
-  brandName: "BRONTO",
-  legalBrandName: "BRONTO S.A.S.",
-  showRegisteredSymbol: false, // Regla estricta: mientras no se confirme el registro marcario, no mostrar ® en piezas públicas
+  brandName: "BRONTO®",
+  legalBrandName: "BRONTO® S.A.S.",
+  showRegisteredSymbol: true, // Símbolo ® oficial de marca registrada
   tagline: "PIDA TODO EN BRONTO.",
   slogan: "LA OBRA NO SE DETIENE.",
   secondarySlogan: "Equipos, maquinaria y soluciones para construir sin límites.",

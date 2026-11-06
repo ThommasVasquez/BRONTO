@@ -10,7 +10,7 @@ import { ThemeProvider } from "@/components/common/ThemeProvider";
 import { ClientAuthProvider } from "@/components/auth/ClientAuthProvider";
 
 export const viewport: Viewport = {
-  themeColor: "#FEE123",
+  themeColor: "#151515",
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,
@@ -19,11 +19,16 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.siteUrl),
   title: {
-    default: "BRONTO | Equipos, Maquinaria y Soluciones para Construcción",
-    template: "%s | BRONTO",
+    default: "BRONTO® | Equipos, Maquinaria y Soluciones para Construcción",
+    template: "%s | BRONTO®",
   },
   description: siteConfig.description,
-  applicationName: siteConfig.brandName,
+  applicationName: "BRONTO®",
+  appleWebApp: {
+    title: "BRONTO®",
+    capable: true,
+    statusBarStyle: "black-translucent",
+  },
   authors: [{ name: "BRONTO Colombia" }, { name: "ENERGYSOFTmedia", url: "https://energysoftmedia.com" }],
   generator: "Next.js",
   keywords: [

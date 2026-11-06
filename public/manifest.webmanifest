@@ -1,12 +1,12 @@
 {
-  "name": "BRONTO App | Renta de Equipos & Cursos",
-  "short_name": "BRONTO App",
-  "description": "App oficial de BRONTO®. Renta y cotización inmediata de maquinaria para construcción y cursos de certificación técnica para operadores.",
+  "name": "BRONTO®",
+  "short_name": "BRONTO®",
+  "description": "Plataforma y app oficial de BRONTO®. Renta y cotización inmediata de maquinaria para construcción y cursos de certificación técnica para operadores.",
   "start_url": "/app",
   "scope": "/",
   "display": "standalone",
-  "background_color": "#0E0E10",
-  "theme_color": "#FEE123",
+  "background_color": "#151515",
+  "theme_color": "#151515",
   "orientation": "portrait-primary",
   "icons": [
     {

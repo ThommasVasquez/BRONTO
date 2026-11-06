@@ -229,7 +229,7 @@ export default function BrontoAppPage() {
                 </div>
                 <div>
                   <div className="flex items-center gap-1.5">
-                    <span className="font-black text-base tracking-tight text-white uppercase">BRONTO</span>
+                    <span className="font-black text-base tracking-tight text-white uppercase">BRONTO®</span>
                     <span className="bg-bronto-yellow text-[#151515] text-[9px] font-black px-1.5 py-0.2 rounded-xs uppercase tracking-wider">APP</span>
                   </div>
                   <div className="flex items-center gap-1 text-[10px] text-white/50 font-medium">
@@ -1013,10 +1013,15 @@ export default function BrontoAppPage() {
               </div>
 
               <div className="text-center py-2">
-                <div className="w-14 h-14 bg-bronto-yellow text-[#151515] rounded-xl flex items-center justify-center mx-auto mb-2 shadow-lg">
-                  <DynastesBeetleSymbol className="w-9 h-9" colorFill="#151515" />
+                <div className="relative w-16 h-16 rounded-xl overflow-hidden mx-auto mb-2 border-2 border-bronto-yellow shadow-xl bg-[#151515]">
+                  <Image
+                    src="/icons/icon-192.png"
+                    alt="BRONTO®"
+                    fill
+                    className="object-cover"
+                  />
                 </div>
-                <h3 className="font-black text-base text-white">BRONTO® App en tu Móvil</h3>
+                <h3 className="font-black text-base text-white tracking-wide uppercase">BRONTO®</h3>
                 <p className="text-xs text-white/70 mt-1">
                   Guarda la aplicación en tu pantalla de inicio para acceso instantáneo a renta de maquinaria y cursos.
                 </p>
