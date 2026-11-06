@@ -137,7 +137,7 @@ export const servicesData: ServiceItem[] = [
     tagline: "Formación especializada en maquinaria pesada, seguridad operacional y certificación laboral",
     summary: "Entrenamiento teórico-práctico para operadores de línea amarilla, inspección preoperacional, eficiencia en combustible y certificación técnica verificable.",
     description: "Inspirada en el modelo de excelencia de escuelas técnicas de maquinaria pesada como Dozer Maquinarias, BRONTO brinda capacitación profesional y certificación de competencias laborales para operadores de construcción y minería. Ofrecemos formación in-company directamente en frentes de obra o en nuestro patio central en Bogotá y la Sabana, cubriendo operación segura de excavadoras, retrocargadores, minicargadores y rodillos, mecánica básica de campo, sistemas electro-hidráulicos, topografía de obra y normas de seguridad industrial (SST/HSE).",
-    imageUrl: "https://images.unsplash.com/photo-1581092335397-9583fe92d232?q=80&w=1200&auto=format&fit=crop",
+    imageUrl: "https://images.unsplash.com/photo-1578328819058-b69f3a3b0f6b?q=80&w=1200&auto=format&fit=crop",
     iconName: "GraduationCap",
     capabilities: [
       "Operación técnica y destreza en excavadoras de orugas, retroexcavadoras, minicargadores y rodillos compactadores",

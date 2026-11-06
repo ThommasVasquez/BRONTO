@@ -83,7 +83,7 @@ export const coursesData: CourseItem[] = [
     ],
     certificationBadge: "Andamiero Certificado & Inspector de Alturas",
     badgeLevel: "Profesional",
-    imageUrl: "https://images.unsplash.com/photo-1541888946425-d0fbb186156f?auto=format&fit=crop&w=800&q=80",
+    imageUrl: "https://images.unsplash.com/photo-1760597307051-67946f9cf865?auto=format&fit=crop&w=800&q=80",
     featured: true,
   },
   {
@@ -128,7 +128,7 @@ export const coursesData: CourseItem[] = [
     ],
     certificationBadge: "Operador Seguro de Equipos de Impacto y Demolición",
     badgeLevel: "Básico",
-    imageUrl: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=80",
+    imageUrl: "https://images.unsplash.com/photo-1572981779307-38b8cabb2407?auto=format&fit=crop&w=800&q=80",
   },
   {
     id: "compactacion-rasantes",
@@ -194,7 +194,7 @@ export const coursesData: CourseItem[] = [
     ],
     certificationBadge: "Operador con Certificación HSE Integral",
     badgeLevel: "Básico",
-    imageUrl: "https://images.unsplash.com/photo-1504917599217-d4dc5ebe6122?auto=format&fit=crop&w=800&q=80",
+    imageUrl: "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&w=800&q=80",
   },
 ];
 

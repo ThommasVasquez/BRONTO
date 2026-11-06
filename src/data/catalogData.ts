@@ -238,7 +238,7 @@ export const catalogProducts: Product[] = [
     fullDescription: "Motor a gasolina de cuatro tiempos de bajas emisiones y fácil arranque en frío. Fuelle de uretano reforzado y zapata de madera laminada reforzada con lámina de acero.",
     images: [
       {
-        url: "https://images.unsplash.com/photo-1581092335397-9583fe92d232?q=80&w=1200&auto=format&fit=crop",
+        url: "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?q=80&w=1200&auto=format&fit=crop",
         alt: "Apisonador tipo canguro en compactación de zanja",
         isPrimary: true,
       },
@@ -284,7 +284,7 @@ export const catalogProducts: Product[] = [
     fullDescription: "Base de hierro nodular de alta resistencia con bordes curvados que evitan marcas en la superficie compactada. Incluye tanque de agua para riego en aplicaciones asfálticas.",
     images: [
       {
-        url: "https://images.unsplash.com/photo-1541888946425-d0fbb186c5f7?q=80&w=1200&auto=format&fit=crop",
+        url: "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?q=80&w=1200&auto=format&fit=crop",
         alt: "Placa compactadora vibratoria para acabados",
         isPrimary: true,
       },
@@ -470,7 +470,7 @@ export const catalogProducts: Product[] = [
     fullDescription: "Estructura de caja rígida para garantizar cortes perfectamente rectilíneos sin alabeo del disco diamantado. Manivela de avance con ajuste milimétrico de profundidad.",
     images: [
       {
-        url: "https://images.unsplash.com/photo-1541888946425-d0fbb186c5f7?q=80&w=1200&auto=format&fit=crop",
+        url: "https://images.unsplash.com/photo-1581094288338-2314dddb7ece?q=80&w=1200&auto=format&fit=crop",
         alt: "Cortadora de piso en junta de pavimento de concreto",
         isPrimary: true,
       },
@@ -515,7 +515,7 @@ export const catalogProducts: Product[] = [
     fullDescription: "Olla de acero de alta resistencia al desgaste con paletas de mezclado helicoidales para homogeneización rápida de agregados, cemento y aditivos. Volante ergonómico de vaciado con traba de seguridad.",
     images: [
       {
-        url: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=1200&auto=format&fit=crop",
+        url: "https://images.unsplash.com/photo-1527410651988-c2f385ccd3f7?q=80&w=1200&auto=format&fit=crop",
         alt: "Mezcladora de concreto de centro en obra",
         isPrimary: true,
       },
@@ -560,7 +560,7 @@ export const catalogProducts: Product[] = [
     fullDescription: "Herramienta electromecánica de alto par con embrague de seguridad y sistema antivibración activo (AVR). Modo combinado de rotación con percusión o solo cincelado para demoliciones ligeras.",
     images: [
       {
-        url: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?q=80&w=1200&auto=format&fit=crop",
+        url: "https://images.unsplash.com/photo-1572981779307-38b8cabb2407?q=80&w=1200&auto=format&fit=crop",
         alt: "Taladro rotomartillo industrial perforando losa de concreto",
         isPrimary: true,
       },
@@ -605,7 +605,7 @@ export const catalogProducts: Product[] = [
     fullDescription: "Unidad compactadora de alta frecuencia con eje flexible reforzado. Elimina burbujas de aire atrapadas y garantiza la densidad y resistencia especificada en la norma NSR-10.",
     images: [
       {
-        url: "https://images.unsplash.com/photo-1541888946425-d0fbb186c5f7?q=80&w=1200&auto=format&fit=crop",
+        url: "https://images.unsplash.com/photo-1590069261209-f8e9b8642343?q=80&w=1200&auto=format&fit=crop",
         alt: "Vibrador de concreto en fundida de losa",
         isPrimary: true,
       },
@@ -652,7 +652,7 @@ export const catalogProducts: Product[] = [
     fullDescription: "Fabricadas con lámina de acero HR de 1/8\" con perfiles perimetrales troquelados para alineación rápida mediante cuñas y corbatas. Asegura excelente acabado a la vista y resistencia a presiones hidrostáticas de vaciado de hasta 60 kN/m².",
     images: [
       {
-        url: "https://images.unsplash.com/photo-1541888946425-d0fbb186c5f7?q=80&w=1200&auto=format&fit=crop",
+        url: "https://images.unsplash.com/photo-1590486803833-1c5dc8ddd4c8?q=80&w=1200&auto=format&fit=crop",
         alt: "Paneles de formaleta metálica modular en muro de concreto",
         isPrimary: true,
       },
@@ -702,7 +702,7 @@ export const catalogProducts: Product[] = [
     fullDescription: "Combina la robustez del marco perimetral de acero con la ligereza y tersura del tablero de madera multicapa tratada con resinas fenólicas. Reduce las juntas visibles y ofrece un desmolde superior sin adherencia.",
     images: [
       {
-        url: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=1200&auto=format&fit=crop",
+        url: "https://images.unsplash.com/photo-1563245372-f21724e3856d?q=80&w=1200&auto=format&fit=crop",
         alt: "Sistema Steel-Ply montado en frente de losa",
         isPrimary: true,
       },
@@ -747,7 +747,7 @@ export const catalogProducts: Product[] = [
     fullDescription: "Estructura fabricada en acero galvanizado en caliente para máxima protección contra la corrosión. Cada nudo permite hasta 8 conexiones simultáneas en múltiples ángulos con cuña autoasegurante. Certificado bajo normas internacionales EN 12810/12811 y resolución colombiana 4272 para trabajo seguro en alturas.",
     images: [
       {
-        url: "https://images.unsplash.com/photo-1541888946425-d0fbb186c5f7?q=80&w=1200&auto=format&fit=crop",
+        url: "https://images.unsplash.com/photo-1760597307051-67946f9cf865?q=80&w=1200&auto=format&fit=crop",
         alt: "Torre de andamio multidireccional en fachada de edificio",
         isPrimary: true,
       },
@@ -792,7 +792,7 @@ export const catalogProducts: Product[] = [
     fullDescription: "Puntales de acero reforzado con tuerca de regulación milimétrica en hierro fundido y pasador de seguridad cautivo. Base y cabezal planos troquelados para acople directo de vigas de madera o aluminio.",
     images: [
       {
-        url: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=1200&auto=format&fit=crop",
+        url: "https://images.unsplash.com/photo-1741916541913-7203d2be5e6e?q=80&w=1200&auto=format&fit=crop",
         alt: "Puntales metálicos sosteniendo encofrado de losa de concreto",
         isPrimary: true,
       },
@@ -837,7 +837,7 @@ export const catalogProducts: Product[] = [
     fullDescription: "Solución integral para elevar la productividad en frentes de obra verticales. Sistemas de seguridad electrónicos con limitadores de momento de carga y velocidad variable por variador de frecuencia.",
     images: [
       {
-        url: "https://images.unsplash.com/photo-1541888946425-d0fbb186c5f7?q=80&w=1200&auto=format&fit=crop",
+        url: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=1200&auto=format&fit=crop",
         alt: "Torre grúa operando sobre estructura de edificio",
         isPrimary: true,
       },
@@ -885,7 +885,7 @@ export const catalogProducts: Product[] = [
     fullDescription: "Diseñado para cimentaciones, zapatas, vigas, columnas y losas de entrepiso. Agregados seleccionados de cantera con granulometría controlada y aditivos reductores de agua que aseguran trabajabilidad óptima y consistencia de asentamiento (slump) de 6\" a 8\".",
     images: [
       {
-        url: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=1200&auto=format&fit=crop",
+        url: "https://images.unsplash.com/photo-1584467541268-b040f83be3fd?q=80&w=1200&auto=format&fit=crop",
         alt: "Vaciado de concreto premezclado en obra estructural",
         isPrimary: true,
       },
@@ -933,7 +933,7 @@ export const catalogProducts: Product[] = [
     fullDescription: "Desarrolla resistencia a temprana edad (alcanzando el 70% de la resistencia especificada en 14 a 18 horas), permitiendo desencofrar formaletas metálicas diariamente sin comprometer la seguridad estructural.",
     images: [
       {
-        url: "https://images.unsplash.com/photo-1581094288338-2314dddb7ece?q=80&w=1200&auto=format&fit=crop",
+        url: "https://images.unsplash.com/photo-1590069261209-f8e9b8642343?q=80&w=1200&auto=format&fit=crop",
         alt: "Vaciado de concreto industrializado en muros de vivienda",
         isPrimary: true,
       },
@@ -975,7 +975,7 @@ export const catalogProducts: Product[] = [
     fullDescription: "Flota de bombas sobre camión con pluma articulada de 32 a 36 metros de alcance y bombas estacionarias diésel con tubería metálica de alta presión de 5\" para bombeos verticales en torres de hasta 20 pisos.",
     images: [
       {
-        url: "https://images.unsplash.com/photo-1541888946425-d0fbb186c5f7?q=80&w=1200&auto=format&fit=crop",
+        url: "https://images.unsplash.com/photo-1779518084451-f9a3386015f9?q=80&w=1200&auto=format&fit=crop",
         alt: "Autobomba de concreto con pluma desplegada vaciando losa",
         isPrimary: true,
       },
@@ -1024,7 +1024,7 @@ export const catalogProducts: Product[] = [
     fullDescription: "Alternativa ecológica y económica al encofrado tradicional de losa. Su geometría cónica facilita un desmolde rápido y limpio sin necesidad de agentes químicos agresivos, dejando un acabado arquitectónico tipo casetón visto.",
     images: [
       {
-        url: "https://images.unsplash.com/photo-1581094288338-2314dddb7ece?q=80&w=1200&auto=format&fit=crop",
+        url: "https://images.unsplash.com/photo-1622044939413-0b829c342434?q=80&w=1200&auto=format&fit=crop",
         alt: "Casetones modulados en armado de losa aligerada",
         isPrimary: true,
       },
@@ -1069,7 +1069,7 @@ export const catalogProducts: Product[] = [
     fullDescription: "El material idóneo para losas donde no es viable retirar los moldes por altura o diseño estructural. Brinda excelente aislamiento térmico y acústico entre pisos sin sobrecargar la estructura portante.",
     images: [
       {
-        url: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=1200&auto=format&fit=crop",
+        url: "https://images.unsplash.com/photo-1586864387967-d02ef85d93e8?q=80&w=1200&auto=format&fit=crop",
         alt: "Casetones perdidos de EPS colocados en armadura de losa",
         isPrimary: true,
       },
@@ -1112,7 +1112,7 @@ export const catalogProducts: Product[] = [
     fullDescription: "Diseñados para ser recubiertos con mortero lanzado (shotcrete), transformándose en muros monolíticos termoacústicos con capacidad sismorresistente. Reduce drásticamente los tiempos de obra en cerramientos perimetrales y fachadas.",
     images: [
       {
-        url: "https://images.unsplash.com/photo-1581094288338-2314dddb7ece?q=80&w=1200&auto=format&fit=crop",
+        url: "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=1200&auto=format&fit=crop",
         alt: "Panel aligerado con malla electrosoldada para muro liviano",
         isPrimary: true,
       },
@@ -1155,7 +1155,7 @@ export const catalogProducts: Product[] = [
     fullDescription: "Evita fisuras descontroladas en pisos industriales, losas de parqueaderos y pavimentos rígidos. Material químicamente inerte compatible con masillas de poliuretano y polisulfuro.",
     images: [
       {
-        url: "https://images.unsplash.com/photo-1541888946425-d0fbb186c5f7?q=80&w=1200&auto=format&fit=crop",
+        url: "https://images.unsplash.com/photo-1504148455328-c376907d081c?q=80&w=1200&auto=format&fit=crop",
         alt: "Detalle de sellado e instalación de junta de dilatación en piso industrial",
         isPrimary: true,
       },
