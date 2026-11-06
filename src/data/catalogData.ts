@@ -7,7 +7,7 @@ export const catalogCategories: Category[] = [
     shortName: "Maquinaria y Equipos",
     tagline: "Flota pesada y liviana para máxima productividad en obra",
     description: "Equipos de compactación, demolición, generación eléctrica, bombeo, movimiento de tierras y herramientas para alto rendimiento continuo.",
-    imageUrl: "https://images.unsplash.com/photo-1579847188804-ecba0e2ea330?q=80&w=1200&auto=format&fit=crop",
+    imageUrl: "/images/products/retroexcavadora-oruga-20t.jpg",
     iconName: "HardHat",
     subcategories: [
       "Maquinaria pesada",
@@ -24,7 +24,7 @@ export const catalogCategories: Category[] = [
     shortName: "Formaletas y Andamios",
     tagline: "Sistemas modulares certificados para vaciado y trabajo en altura",
     description: "Formaleta metálica, sistemas Steel-Ply, andamiaje multidireccional normado, puntales telescópicos y equipos de soporte vertical.",
-    imageUrl: "https://images.unsplash.com/photo-1541888946425-d0fbb186c5f7?q=80&w=1200&auto=format&fit=crop",
+    imageUrl: "/images/products/formaleta-metalica-muros.jpg",
     iconName: "Layers",
     subcategories: [
       "Formaleta metálica modular",
@@ -40,7 +40,7 @@ export const catalogCategories: Category[] = [
     shortName: "Concretos Estructurales",
     tagline: "Suministro técnico y bombeo de mezclas para cimentación y losas",
     description: "Concretos premezclados convencionales, industrializados de alto desempeño, pisos de alta resistencia y servicio de bombeo.",
-    imageUrl: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=1200&auto=format&fit=crop",
+    imageUrl: "/images/products/concreto-premezclado-bombeable.jpg",
     iconName: "Truck",
     subcategories: [
       "Concreto premezclado",
@@ -55,7 +55,7 @@ export const catalogCategories: Category[] = [
     shortName: "Icopores y Aligerados",
     tagline: "Elementos termoacústicos y aligeramiento estructural para losas",
     description: "Casetones modulados recuperables y perdidos, paneles estructurales aligerados en EPS y juntas técnicas para control de dilataciones.",
-    imageUrl: "https://images.unsplash.com/photo-1581094288338-2314dddb7ece?q=80&w=1200&auto=format&fit=crop",
+    imageUrl: "/images/products/casetones-recuperables.jpg",
     iconName: "Box",
     subcategories: [
       "Casetones recuperables",
@@ -81,13 +81,9 @@ export const catalogProducts: Product[] = [
     fullDescription: "Unidad hidráulica sobre orugas diseñada para rendimiento continuo bajo condiciones severas. Cabina presurizada con climatización y mandos electrohidráulicos ergonómicos. Brazo reforzado para zanjeo y balde de alta penetración.",
     images: [
       {
-        url: "https://images.unsplash.com/photo-1579847188804-ecba0e2ea330?q=80&w=1200&auto=format&fit=crop",
-        alt: "Retroexcavadora sobre orugas 20T en obra de construcción",
+        url: "/images/products/retroexcavadora-oruga-20t.jpg",
+        alt: "Retroexcavadora sobre Orugas 20 Ton BRONTO®",
         isPrimary: true,
-      },
-      {
-        url: "https://images.unsplash.com/photo-1584467541268-b040f83be3fd?q=80&w=1200&auto=format&fit=crop",
-        alt: "Operación de brazo hidráulico en excavación",
       },
     ],
     specifications: [
@@ -139,8 +135,8 @@ export const catalogProducts: Product[] = [
     fullDescription: "Ideal para espacios confinados y proyectos urbanos donde la maquinaria convencional no tiene acceso. Transmisión hidrostática de respuesta inmediata y enganche rápido para acoplar balde de cargue o martillo demoledor.",
     images: [
       {
-        url: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?q=80&w=1200&auto=format&fit=crop",
-        alt: "Minicargador trabajando en cargue de material en obra",
+        url: "/images/products/minicargador-bobcat-s550.jpg",
+        alt: "Minicargador de Ruedas con Aditamentos BRONTO®",
         isPrimary: true,
       },
     ],
@@ -191,8 +187,8 @@ export const catalogProducts: Product[] = [
     fullDescription: "Rollo de acero liso de 2.13 metros de ancho con doble frecuencia y amplitud variable para lograr el índice de densificación requerido en menor número de pasadas.",
     images: [
       {
-        url: "https://images.unsplash.com/photo-1508873535684-277a3cbcc4e8?q=80&w=1200&auto=format&fit=crop",
-        alt: "Vibrocompactador monocilíndrico en vía en construcción",
+        url: "/images/products/rodillo-compactador-10t.jpg",
+        alt: "Rodillo Vibrocompactador Monocilíndrico 10 Ton BRONTO®",
         isPrimary: true,
       },
     ],
@@ -238,8 +234,8 @@ export const catalogProducts: Product[] = [
     fullDescription: "Motor a gasolina de cuatro tiempos de bajas emisiones y fácil arranque en frío. Fuelle de uretano reforzado y zapata de madera laminada reforzada con lámina de acero.",
     images: [
       {
-        url: "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?q=80&w=1200&auto=format&fit=crop",
-        alt: "Apisonador tipo canguro en compactación de zanja",
+        url: "/images/products/apisonador-tipo-canguro.jpg",
+        alt: "Apisonador Vibratorio (Canguro 4T) BRONTO®",
         isPrimary: true,
       },
     ],
@@ -284,8 +280,8 @@ export const catalogProducts: Product[] = [
     fullDescription: "Base de hierro nodular de alta resistencia con bordes curvados que evitan marcas en la superficie compactada. Incluye tanque de agua para riego en aplicaciones asfálticas.",
     images: [
       {
-        url: "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?q=80&w=1200&auto=format&fit=crop",
-        alt: "Placa compactadora vibratoria para acabados",
+        url: "/images/products/rana-compactadora-placa.jpg",
+        alt: "Placa Compactadora Vibratoria (Rana) BRONTO®",
         isPrimary: true,
       },
     ],
@@ -330,8 +326,8 @@ export const catalogProducts: Product[] = [
     fullDescription: "Cabina acústica certificada para cumplimiento de normatividad de ruido ambiental en zonas residenciales e industriales. Módulo de control digital con arranque automático y protecciones térmicas integrales.",
     images: [
       {
-        url: "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?q=80&w=1200&auto=format&fit=crop",
-        alt: "Generador eléctrico industrial insonorizado en sitio de obra",
+        url: "/images/products/planta-electrica-150kva.jpg",
+        alt: "Planta Eléctrica Diésel Insonorizada 150 kVA BRONTO®",
         isPrimary: true,
       },
     ],
@@ -378,8 +374,8 @@ export const catalogProducts: Product[] = [
     fullDescription: "Cuerpo de hierro fundido resistente a la abrasión por sedimentos y arena suspendida. Capaz de manejar sólidos de hasta 2 pulgadas sin atascos mecánicos.",
     images: [
       {
-        url: "https://images.unsplash.com/photo-1581092162384-8987c1d64718?q=80&w=1200&auto=format&fit=crop",
-        alt: "Equipo de bombeo y achique en obra de infraestructura",
+        url: "/images/products/motobomba-diesel-4pulg.jpg",
+        alt: "Motobomba Autocebante Diésel 4 Pulgadas BRONTO®",
         isPrimary: true,
       },
     ],
@@ -424,8 +420,8 @@ export const catalogProducts: Product[] = [
     fullDescription: "Mecanismo electro-neumático de alto impacto con sistema de amortiguación activa para absorber la vibración transmitida al operador. Encastre hexagonal estándar de 28 mm.",
     images: [
       {
-        url: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=1200&auto=format&fit=crop",
-        alt: "Martillo demoledor de concreto en piso",
+        url: "/images/products/martillo-demoledor-30kg.jpg",
+        alt: "Martillo Demoledor Eléctrico 30 kg BRONTO®",
         isPrimary: true,
       },
     ],
@@ -470,8 +466,8 @@ export const catalogProducts: Product[] = [
     fullDescription: "Estructura de caja rígida para garantizar cortes perfectamente rectilíneos sin alabeo del disco diamantado. Manivela de avance con ajuste milimétrico de profundidad.",
     images: [
       {
-        url: "https://images.unsplash.com/photo-1581094288338-2314dddb7ece?q=80&w=1200&auto=format&fit=crop",
-        alt: "Cortadora de piso en junta de pavimento de concreto",
+        url: "/images/products/cortadora-concreto-pavimento.jpg",
+        alt: "Cortadora de Pavimento y Concreto BRONTO®",
         isPrimary: true,
       },
     ],
@@ -515,8 +511,8 @@ export const catalogProducts: Product[] = [
     fullDescription: "Olla de acero de alta resistencia al desgaste con paletas de mezclado helicoidales para homogeneización rápida de agregados, cemento y aditivos. Volante ergonómico de vaciado con traba de seguridad.",
     images: [
       {
-        url: "https://images.unsplash.com/photo-1527410651988-c2f385ccd3f7?q=80&w=1200&auto=format&fit=crop",
-        alt: "Mezcladora de concreto de centro en obra",
+        url: "/images/products/mezcladora-concreto-trompo.jpg",
+        alt: "Mezcladora de Concreto 1.5 Bultos (Trompo / Centro) BRONTO®",
         isPrimary: true,
       },
     ],
@@ -560,8 +556,8 @@ export const catalogProducts: Product[] = [
     fullDescription: "Herramienta electromecánica de alto par con embrague de seguridad y sistema antivibración activo (AVR). Modo combinado de rotación con percusión o solo cincelado para demoliciones ligeras.",
     images: [
       {
-        url: "https://images.unsplash.com/photo-1572981779307-38b8cabb2407?q=80&w=1200&auto=format&fit=crop",
-        alt: "Taladro rotomartillo industrial perforando losa de concreto",
+        url: "/images/products/taladro-rotomartillo-industrial.jpg",
+        alt: "Taladro Rotomartillo Percutor SDS-Max BRONTO®",
         isPrimary: true,
       },
     ],
@@ -605,8 +601,8 @@ export const catalogProducts: Product[] = [
     fullDescription: "Unidad compactadora de alta frecuencia con eje flexible reforzado. Elimina burbujas de aire atrapadas y garantiza la densidad y resistencia especificada en la norma NSR-10.",
     images: [
       {
-        url: "https://images.unsplash.com/photo-1590069261209-f8e9b8642343?q=80&w=1200&auto=format&fit=crop",
-        alt: "Vibrador de concreto en fundida de losa",
+        url: "/images/products/vibrador-concreto-pendular.jpg",
+        alt: "Vibrador de Concreto con Manguera de 4 Metros BRONTO®",
         isPrimary: true,
       },
     ],
@@ -652,8 +648,8 @@ export const catalogProducts: Product[] = [
     fullDescription: "Fabricadas con lámina de acero HR de 1/8\" con perfiles perimetrales troquelados para alineación rápida mediante cuñas y corbatas. Asegura excelente acabado a la vista y resistencia a presiones hidrostáticas de vaciado de hasta 60 kN/m².",
     images: [
       {
-        url: "https://images.unsplash.com/photo-1590486803833-1c5dc8ddd4c8?q=80&w=1200&auto=format&fit=crop",
-        alt: "Paneles de formaleta metálica modular en muro de concreto",
+        url: "/images/products/formaleta-metalica-muros.jpg",
+        alt: "Formaleta Metálica Modular para Muros y Columnas BRONTO®",
         isPrimary: true,
       },
     ],
@@ -702,8 +698,8 @@ export const catalogProducts: Product[] = [
     fullDescription: "Combina la robustez del marco perimetral de acero con la ligereza y tersura del tablero de madera multicapa tratada con resinas fenólicas. Reduce las juntas visibles y ofrece un desmolde superior sin adherencia.",
     images: [
       {
-        url: "https://images.unsplash.com/photo-1563245372-f21724e3856d?q=80&w=1200&auto=format&fit=crop",
-        alt: "Sistema Steel-Ply montado en frente de losa",
+        url: "/images/products/sistema-steel-ply.jpg",
+        alt: "Sistema Steel-Ply con Cara Fenólica BRONTO®",
         isPrimary: true,
       },
     ],
@@ -747,8 +743,8 @@ export const catalogProducts: Product[] = [
     fullDescription: "Estructura fabricada en acero galvanizado en caliente para máxima protección contra la corrosión. Cada nudo permite hasta 8 conexiones simultáneas en múltiples ángulos con cuña autoasegurante. Certificado bajo normas internacionales EN 12810/12811 y resolución colombiana 4272 para trabajo seguro en alturas.",
     images: [
       {
-        url: "https://images.unsplash.com/photo-1760597307051-67946f9cf865?q=80&w=1200&auto=format&fit=crop",
-        alt: "Torre de andamio multidireccional en fachada de edificio",
+        url: "/images/products/andamio-multidireccional-cert.jpg",
+        alt: "Andamio Multidireccional Certificado tipo Ring-Lock BRONTO®",
         isPrimary: true,
       },
     ],
@@ -792,8 +788,8 @@ export const catalogProducts: Product[] = [
     fullDescription: "Puntales de acero reforzado con tuerca de regulación milimétrica en hierro fundido y pasador de seguridad cautivo. Base y cabezal planos troquelados para acople directo de vigas de madera o aluminio.",
     images: [
       {
-        url: "https://images.unsplash.com/photo-1741916541913-7203d2be5e6e?q=80&w=1200&auto=format&fit=crop",
-        alt: "Puntales metálicos sosteniendo encofrado de losa de concreto",
+        url: "/images/products/puntales-telescopicos.jpg",
+        alt: "Puntales Metálicos Telescópicos de Alta Carga BRONTO®",
         isPrimary: true,
       },
     ],
@@ -837,8 +833,8 @@ export const catalogProducts: Product[] = [
     fullDescription: "Solución integral para elevar la productividad en frentes de obra verticales. Sistemas de seguridad electrónicos con limitadores de momento de carga y velocidad variable por variador de frecuencia.",
     images: [
       {
-        url: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=1200&auto=format&fit=crop",
-        alt: "Torre grúa operando sobre estructura de edificio",
+        url: "/images/products/torre-grua-montaje-rapido.jpg",
+        alt: "Torre Grúa y Accesorios de Izaje BRONTO®",
         isPrimary: true,
       },
     ],
@@ -885,8 +881,8 @@ export const catalogProducts: Product[] = [
     fullDescription: "Diseñado para cimentaciones, zapatas, vigas, columnas y losas de entrepiso. Agregados seleccionados de cantera con granulometría controlada y aditivos reductores de agua que aseguran trabajabilidad óptima y consistencia de asentamiento (slump) de 6\" a 8\".",
     images: [
       {
-        url: "https://images.unsplash.com/photo-1584467541268-b040f83be3fd?q=80&w=1200&auto=format&fit=crop",
-        alt: "Vaciado de concreto premezclado en obra estructural",
+        url: "/images/products/concreto-premezclado-bombeable.jpg",
+        alt: "Concreto Premezclado Bombeable (3.000 y 4.000 PSI) BRONTO®",
         isPrimary: true,
       },
     ],
@@ -933,8 +929,8 @@ export const catalogProducts: Product[] = [
     fullDescription: "Desarrolla resistencia a temprana edad (alcanzando el 70% de la resistencia especificada en 14 a 18 horas), permitiendo desencofrar formaletas metálicas diariamente sin comprometer la seguridad estructural.",
     images: [
       {
-        url: "https://images.unsplash.com/photo-1590069261209-f8e9b8642343?q=80&w=1200&auto=format&fit=crop",
-        alt: "Vaciado de concreto industrializado en muros de vivienda",
+        url: "/images/products/concreto-industrializado-acelerado.jpg",
+        alt: "Concreto Industrializado de Rápido Desencofrado BRONTO®",
         isPrimary: true,
       },
     ],
@@ -975,8 +971,8 @@ export const catalogProducts: Product[] = [
     fullDescription: "Flota de bombas sobre camión con pluma articulada de 32 a 36 metros de alcance y bombas estacionarias diésel con tubería metálica de alta presión de 5\" para bombeos verticales en torres de hasta 20 pisos.",
     images: [
       {
-        url: "https://images.unsplash.com/photo-1779518084451-f9a3386015f9?q=80&w=1200&auto=format&fit=crop",
-        alt: "Autobomba de concreto con pluma desplegada vaciando losa",
+        url: "/images/products/servicio-bombeo-concreto.jpg",
+        alt: "Servicio de Bombeo de Concreto (Pluma y Estacionario) BRONTO®",
         isPrimary: true,
       },
     ],
@@ -1024,8 +1020,8 @@ export const catalogProducts: Product[] = [
     fullDescription: "Alternativa ecológica y económica al encofrado tradicional de losa. Su geometría cónica facilita un desmolde rápido y limpio sin necesidad de agentes químicos agresivos, dejando un acabado arquitectónico tipo casetón visto.",
     images: [
       {
-        url: "https://images.unsplash.com/photo-1622044939413-0b829c342434?q=80&w=1200&auto=format&fit=crop",
-        alt: "Casetones modulados en armado de losa aligerada",
+        url: "/images/products/casetones-recuperables.jpg",
+        alt: "Casetones Modulados Recuperables para Losas BRONTO®",
         isPrimary: true,
       },
     ],
@@ -1069,8 +1065,8 @@ export const catalogProducts: Product[] = [
     fullDescription: "El material idóneo para losas donde no es viable retirar los moldes por altura o diseño estructural. Brinda excelente aislamiento térmico y acústico entre pisos sin sobrecargar la estructura portante.",
     images: [
       {
-        url: "https://images.unsplash.com/photo-1586864387967-d02ef85d93e8?q=80&w=1200&auto=format&fit=crop",
-        alt: "Casetones perdidos de EPS colocados en armadura de losa",
+        url: "/images/products/casetones-perdidos-eps.jpg",
+        alt: "Casetones Perdidos en Poliestireno Expandido (EPS) BRONTO®",
         isPrimary: true,
       },
     ],
@@ -1112,8 +1108,8 @@ export const catalogProducts: Product[] = [
     fullDescription: "Diseñados para ser recubiertos con mortero lanzado (shotcrete), transformándose en muros monolíticos termoacústicos con capacidad sismorresistente. Reduce drásticamente los tiempos de obra en cerramientos perimetrales y fachadas.",
     images: [
       {
-        url: "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=1200&auto=format&fit=crop",
-        alt: "Panel aligerado con malla electrosoldada para muro liviano",
+        url: "/images/products/paneles-aligerados-eps.jpg",
+        alt: "Paneles Estructurales Aligerados en EPS BRONTO®",
         isPrimary: true,
       },
     ],
@@ -1155,8 +1151,8 @@ export const catalogProducts: Product[] = [
     fullDescription: "Evita fisuras descontroladas en pisos industriales, losas de parqueaderos y pavimentos rígidos. Material químicamente inerte compatible con masillas de poliuretano y polisulfuro.",
     images: [
       {
-        url: "https://images.unsplash.com/photo-1504148455328-c376907d081c?q=80&w=1200&auto=format&fit=crop",
-        alt: "Detalle de sellado e instalación de junta de dilatación en piso industrial",
+        url: "/images/products/juntas-dilatacion-perfiles.jpg",
+        alt: "Juntas de Dilatación Técnicas y Cordón de Respaldo BRONTO®",
         isPrimary: true,
       },
     ],

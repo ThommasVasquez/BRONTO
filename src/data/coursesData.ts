@@ -37,7 +37,7 @@ export const coursesData: CourseItem[] = [
     ],
     certificationBadge: "Operador Profesional de Excavadora Hidráulica",
     badgeLevel: "Profesional",
-    imageUrl: "https://images.unsplash.com/photo-1578328819058-b69f3a3b0f6b?auto=format&fit=crop&w=800&q=80",
+    imageUrl: "/images/products/retroexcavadora-oruga-20t.jpg",
     featured: true,
   },
   {
@@ -60,7 +60,7 @@ export const coursesData: CourseItem[] = [
     ],
     certificationBadge: "Operador Integral de Maquinaria Mediana",
     badgeLevel: "Intermedio",
-    imageUrl: "https://images.unsplash.com/photo-1581094288338-2314dddb7ece?auto=format&fit=crop&w=800&q=80",
+    imageUrl: "/images/products/minicargador-bobcat-s550.jpg",
     featured: true,
   },
   {
@@ -83,7 +83,7 @@ export const coursesData: CourseItem[] = [
     ],
     certificationBadge: "Andamiero Certificado & Inspector de Alturas",
     badgeLevel: "Profesional",
-    imageUrl: "https://images.unsplash.com/photo-1760597307051-67946f9cf865?auto=format&fit=crop&w=800&q=80",
+    imageUrl: "/images/products/andamio-multidireccional-cert.jpg",
     featured: true,
   },
   {
@@ -106,7 +106,7 @@ export const coursesData: CourseItem[] = [
     ],
     certificationBadge: "Técnico Práctico en Concretos y Vaciado",
     badgeLevel: "Básico",
-    imageUrl: "https://images.unsplash.com/photo-1590069261209-f8e9b8642343?auto=format&fit=crop&w=800&q=80",
+    imageUrl: "/images/products/mezcladora-concreto-trompo.jpg",
   },
   {
     id: "demoledores-perforacion",
@@ -128,7 +128,7 @@ export const coursesData: CourseItem[] = [
     ],
     certificationBadge: "Operador Seguro de Equipos de Impacto y Demolición",
     badgeLevel: "Básico",
-    imageUrl: "https://images.unsplash.com/photo-1572981779307-38b8cabb2407?auto=format&fit=crop&w=800&q=80",
+    imageUrl: "/images/products/martillo-demoledor-30kg.jpg",
   },
   {
     id: "compactacion-rasantes",
@@ -150,7 +150,7 @@ export const coursesData: CourseItem[] = [
     ],
     certificationBadge: "Operador Especializado en Compactación y Vías",
     badgeLevel: "Intermedio",
-    imageUrl: "https://images.unsplash.com/photo-1615811361523-6bd03d7748e7?auto=format&fit=crop&w=800&q=80",
+    imageUrl: "/images/products/rodillo-compactador-10t.jpg",
   },
   {
     id: "mecanica-preventiva",
@@ -172,7 +172,7 @@ export const coursesData: CourseItem[] = [
     ],
     certificationBadge: "Técnico de Mantenimiento y Diagnóstico Hidráulico",
     badgeLevel: "Profesional",
-    imageUrl: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80",
+    imageUrl: "/images/products/planta-electrica-150kva.jpg",
   },
   {
     id: "seguridad-hse-defensivo",
@@ -194,7 +194,7 @@ export const coursesData: CourseItem[] = [
     ],
     certificationBadge: "Operador con Certificación HSE Integral",
     badgeLevel: "Básico",
-    imageUrl: "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&w=800&q=80",
+    imageUrl: "/images/products/torre-grua-montaje-rapido.jpg",
   },
 ];
 

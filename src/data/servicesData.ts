@@ -24,7 +24,7 @@ export const servicesData: ServiceItem[] = [
     tagline: "Flota de alta disponibilidad para que su obra nunca se detenga",
     summary: "Parque moderno de maquinaria pesada, equipos menores, formaletas y andamios certificados con planes por día, semana o mes.",
     description: "Diseñado para constructores e industrias que requieren confiabilidad operativa absoluta. Ofrecemos modalidades de renta seca (dry) o con operador certificado, telemetría activa en tiempo real y mantenimiento preventivo programado sin costo adicional para el contratista.",
-    imageUrl: "https://images.unsplash.com/photo-1579847188804-ecba0e2ea330?q=80&w=1200&auto=format&fit=crop",
+    imageUrl: "/images/products/retroexcavadora-oruga-20t.jpg",
     iconName: "Truck",
     capabilities: [
       "Maquinaria pesada para excavación, cargue y movimiento masivo de tierras",
@@ -48,7 +48,7 @@ export const servicesData: ServiceItem[] = [
     tagline: "Abastecimiento técnico para cimentaciones, losas y cerramientos",
     summary: "Despacho programado de concretos premezclados, sistemas aligerados en EPS, formaletas y consumibles de alto estándar.",
     description: "Centralice sus compras estructurales con un único aliado. Gestionamos el suministro continuo de concreto bombeable dosificado bajo NSR-10, casetones modulados y perdidos en icopor de densidad controlada, y perfiles de junta para pisos industriales.",
-    imageUrl: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=1200&auto=format&fit=crop",
+    imageUrl: "/images/products/concreto-premezclado-bombeable.jpg",
     iconName: "PackageCheck",
     capabilities: [
       "Concretos estructurales convencionales e industrializados acelerados",
@@ -71,7 +71,7 @@ export const servicesData: ServiceItem[] = [
     tagline: "Despacho seguro y puntual en Bogotá y zonas aledañas de la Sabana",
     summary: "Flota propia y aliada de camas bajas, camiones grúa con brazo articulado y furgones para movilización express.",
     description: "La logística es el corazón de la disponibilidad. Coordinamos la movilización de maquinaria pesada, izaje de módulos de andamio y transporte seguro de elementos aligerados de gran volumen, con rutas programadas en Bogotá y corredores industriales de la Sabana (Cota, Chía, Siberia, Funza, Mosquera, Soacha, Tocancipá y Madrid).",
-    imageUrl: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=1200&auto=format&fit=crop",
+    imageUrl: "/images/products/servicio-bombeo-concreto.jpg",
     iconName: "Compass",
     capabilities: [
       "Camas bajas de 2 a 4 ejes para maquinaria sobre orugas de hasta 40 toneladas",
@@ -93,7 +93,7 @@ export const servicesData: ServiceItem[] = [
     tagline: "Cero tiempos muertos: cuadrillas técnicas listas para responder",
     summary: "Asistencia electromecánica preventiva y correctiva in situ para garantizar máxima continuidad operativa.",
     description: "Sabemos el costo que representa una parada de maquinaria en obra. Contamos con técnicos móviles equipados con herramientas de diagnóstico, lubricantes y repuestos críticos de alta rotación para intervenir en campo o realizar cambio preventivo de equipos.",
-    imageUrl: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?q=80&w=1200&auto=format&fit=crop",
+    imageUrl: "/images/products/planta-electrica-150kva.jpg",
     iconName: "Wrench",
     capabilities: [
       "Diagnóstico computarizado de sistemas diésel y electro-hidráulicos",
@@ -115,7 +115,7 @@ export const servicesData: ServiceItem[] = [
     tagline: "Ingeniería aplicada para optimizar rendimiento y seguridad",
     summary: "Modulación de formaletas, memorias de cálculo para andamios, diseño de mezclas y acompañamiento en fundidas.",
     description: "Ponemos a disposición de su departamento técnico ingenieros civiles y mecánicos especializados en optimización de encofrados, planes de vaciado y cálculo de cargas de apuntalamiento, asegurando que cada metro cuadrado rinda al máximo.",
-    imageUrl: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=1200&auto=format&fit=crop",
+    imageUrl: "/images/products/concreto-premezclado-bombeable.jpg",
     iconName: "ShieldCheck",
     capabilities: [
       "Modulación paramétrica en CAD/BIM de formaletas metálicas y sistemas de losa",
@@ -137,7 +137,7 @@ export const servicesData: ServiceItem[] = [
     tagline: "Formación especializada en maquinaria pesada, seguridad operacional y certificación laboral",
     summary: "Entrenamiento teórico-práctico para operadores de línea amarilla, inspección preoperacional, eficiencia en combustible y certificación técnica verificable.",
     description: "Inspirada en el modelo de excelencia de escuelas técnicas de maquinaria pesada como Dozer Maquinarias, BRONTO brinda capacitación profesional y certificación de competencias laborales para operadores de construcción y minería. Ofrecemos formación in-company directamente en frentes de obra o en nuestro patio central en Bogotá y la Sabana, cubriendo operación segura de excavadoras, retrocargadores, minicargadores y rodillos, mecánica básica de campo, sistemas electro-hidráulicos, topografía de obra y normas de seguridad industrial (SST/HSE).",
-    imageUrl: "https://images.unsplash.com/photo-1578328819058-b69f3a3b0f6b?q=80&w=1200&auto=format&fit=crop",
+    imageUrl: "/images/products/retroexcavadora-oruga-20t.jpg",
     iconName: "GraduationCap",
     capabilities: [
       "Operación técnica y destreza en excavadoras de orugas, retroexcavadoras, minicargadores y rodillos compactadores",

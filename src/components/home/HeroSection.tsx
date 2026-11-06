@@ -62,7 +62,7 @@ export const HeroSection: React.FC = () => {
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat scale-100"
           style={{
-            backgroundImage: `url('https://images.unsplash.com/photo-1579847188804-ecba0e2ea330?q=80&w=2400&auto=format&fit=crop')`,
+            backgroundImage: `url('/images/products/retroexcavadora-oruga-20t.jpg')`,
           }}
         />
         {/* Tratamiento cinematográfico sobrio: sin gradientes artificiales violetas ni tramas de puntos */}
