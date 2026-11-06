@@ -1,10 +1,11 @@
 {
-  "name": "BRONTO | Equipos, Maquinaria y Soluciones para Construcción",
-  "short_name": "BRONTO",
-  "description": "Plataforma colombiana de alquiler y suministro de maquinaria pesada, equipos menores, formaletas, concretos y sistemas modulados.",
-  "start_url": "/",
+  "name": "BRONTO App | Renta de Equipos & Cursos",
+  "short_name": "BRONTO App",
+  "description": "App oficial de BRONTO®. Renta y cotización inmediata de maquinaria para construcción y cursos de certificación técnica para operadores.",
+  "start_url": "/app",
+  "scope": "/",
   "display": "standalone",
-  "background_color": "#151515",
+  "background_color": "#0E0E10",
   "theme_color": "#FEE123",
   "orientation": "portrait-primary",
   "icons": [
@@ -21,24 +22,23 @@
       "purpose": "any maskable"
     }
   ],
-  "categories": ["business", "productivity", "utilities"],
+  "categories": ["business", "productivity", "utilities", "education"],
   "shortcuts": [
     {
-      "name": "Catálogo Completo",
-      "url": "/catalogo",
-      "description": "Explorar catálogo de maquinaria y materiales"
+      "name": "Renta de Maquinaria",
+      "url": "/app?tab=renta",
+      "description": "Explorar catálogo de equipos disponibles en patio"
     },
     {
-      "name": "Solicitar Cotización",
-      "url": "/cotizar",
-      "description": "Radicar cotización comercial"
+      "name": "Cursos & Certificaciones",
+      "url": "/app?tab=cursos",
+      "description": "Capacitación y licencias para operadores"
     },
     {
-      "name": "Servicios de Obra",
-      "url": "/servicios",
-      "description": "Servicios técnicos y logística"
+      "name": "Mi Pedido",
+      "url": "/app?tab=pedido",
+      "description": "Ver equipos seleccionados para cotizar"
     }
   ],
   "lang": "es-CO"
 }
-

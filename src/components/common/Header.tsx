@@ -7,7 +7,7 @@ import { BrandLogo } from "./BrandLogo";
 import { ThemeToggle } from "./ThemeToggle";
 import { useClientAuth } from "@/components/auth/ClientAuthProvider";
 import { useQuoteBasket } from "@/components/quote/QuoteBasketProvider";
-import { Menu, X, FileText, ChevronRight, User, ShieldCheck } from "lucide-react";
+import { Menu, X, FileText, ChevronRight, User, ShieldCheck, Smartphone, Download } from "lucide-react";
 
 export const Header: React.FC = () => {
   const [mounted, setMounted] = useState(false);
@@ -91,6 +91,16 @@ export const Header: React.FC = () => {
             {/* Selector de Modo Claro / Modo Oscuro */}
             <ThemeToggle />
 
+            {/* Acceso a App PWA: Renta & Cursos */}
+            <Link
+              href="/app"
+              className="inline-flex items-center gap-1.5 px-3 py-2 bg-gradient-to-r from-bronto-yellow to-[#FED800] hover:to-white text-[#151515] text-xs font-black uppercase tracking-wider rounded-none shadow-sm transition-all active:scale-95"
+              title="Descargar e instalar la App de Renta de Equipos y Cursos"
+            >
+              <Smartphone className="w-3.5 h-3.5 stroke-[2.5]" />
+              <span>Descargar App</span>
+            </Link>
+
             {/* Acceso a Portal de Clientes */}
             {mounted && isLoggedIn ? (
               <Link
@@ -141,6 +151,15 @@ export const Header: React.FC = () => {
 
           {/* Botón Menú Móvil */}
           <div className="flex items-center gap-2 lg:hidden">
+            <Link
+              href="/app"
+              className="inline-flex items-center gap-1 p-2 bg-bronto-yellow text-black text-[11px] font-black uppercase tracking-wider"
+              title="Descargar App"
+            >
+              <Smartphone className="w-3.5 h-3.5 stroke-[2.5]" />
+              <span className="text-[10px]">App</span>
+            </Link>
+
             <ThemeToggle />
 
             <Link
@@ -196,8 +215,16 @@ export const Header: React.FC = () => {
 
             <div className="pt-4 flex flex-col gap-3">
               <Link
+                href="/app"
+                className="w-full flex items-center justify-center gap-2 py-3 bg-gradient-to-r from-bronto-yellow to-[#FED800] text-black font-black text-xs uppercase tracking-wider shadow-lg"
+              >
+                <Smartphone className="w-4 h-4 stroke-[2.5]" />
+                <span>Abrir / Descargar BRONTO App</span>
+              </Link>
+
+              <Link
                 href="/cotizar"
-                className="w-full flex items-center justify-center gap-2 py-3 bg-bronto-yellow text-black font-black text-xs uppercase tracking-wider"
+                className="w-full flex items-center justify-center gap-2 py-3 bg-[#1A1A1A] border border-bronto-yellow text-bronto-yellow font-black text-xs uppercase tracking-wider"
               >
                 <FileText className="w-4 h-4" />
                 <span>Solicitar cotización ({totalCount})</span>

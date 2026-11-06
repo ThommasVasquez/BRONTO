@@ -95,15 +95,15 @@ export const PwaInstallPrompt: React.FC = () => {
           </div>
 
           <h4 className="uppercase text-sm font-black text-white mt-0.5">
-            Instalar BRONTO en su dispositivo
+            Instalar BRONTO® App en su dispositivo
           </h4>
 
           <p className="text-xs text-white/70 mt-1 leading-snug">
-            Acceso directo al inventario y cotizaciones en Bogotá y la Sabana.
+            App oficial para renta de maquinaria en obra y cursos certificados para operadores.
           </p>
 
           <div className="mt-3 flex items-center gap-2">
-            {deferredPrompt && (
+            {deferredPrompt ? (
               <button
                 onClick={handleInstallClick}
                 className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-bronto-yellow hover:bg-bronto-yellow-hover text-[#151515] font-black text-xs uppercase tracking-wider rounded-none transition-colors"
@@ -111,6 +111,14 @@ export const PwaInstallPrompt: React.FC = () => {
                 <Download className="w-3.5 h-3.5 stroke-[2.5]" />
                 <span>Instalar App</span>
               </button>
+            ) : (
+              <a
+                href="/app"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-bronto-yellow hover:bg-bronto-yellow-hover text-[#151515] font-black text-xs uppercase tracking-wider rounded-none transition-colors"
+              >
+                <Smartphone className="w-3.5 h-3.5 stroke-[2.5]" />
+                <span>Abrir App</span>
+              </a>
             )}
 
             {isIOS && !deferredPrompt && (

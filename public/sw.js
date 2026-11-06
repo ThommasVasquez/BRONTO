@@ -4,8 +4,10 @@ const CACHE_NAME = 'bronto-cache-v1.0.0';
 // Recursos críticos para caché inicial (App Shell)
 const PRECACHE_ASSETS = [
   '/',
+  '/app',
   '/offline',
   '/catalogo',
+  '/capacitacion',
   '/servicios',
   '/cotizar',
   '/manifest.webmanifest',
