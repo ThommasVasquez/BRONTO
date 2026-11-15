@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import { usePathname } from "next/navigation";
 import { siteConfig } from "@/data/siteConfig";
 
 export const OfficialWhatsAppIcon: React.FC<{ className?: string }> = ({
@@ -21,13 +20,6 @@ export const OfficialWhatsAppIcon: React.FC<{ className?: string }> = ({
 };
 
 export const WhatsAppButton: React.FC = () => {
-  const pathname = usePathname();
-
-  // En la aplicación PWA (/app) se oculta el botón flotante general para no tapar la barra inferior de navegación
-  if (pathname === "/app" || pathname?.startsWith("/app/")) {
-    return null;
-  }
-
   const defaultMessage = encodeURIComponent(
     `Hola BRONTO, me comunico desde la plataforma web para solicitar asesoría técnica y cotización de equipos para mi proyecto en Bogotá o la Sabana.`
   );

@@ -50,11 +50,6 @@ export const Header: React.FC = () => {
     return pathname.startsWith(href);
   };
 
-  // En la aplicación PWA (/app) el nav del sitio web no debe mostrarse para evitar superposiciones
-  if (pathname === "/app" || pathname?.startsWith("/app/")) {
-    return null;
-  }
-
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-200 ${

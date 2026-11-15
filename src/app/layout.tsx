@@ -1,10 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { siteConfig } from "@/data/siteConfig";
-import { Header } from "@/components/common/Header";
-import { Footer } from "@/components/common/Footer";
-import { WhatsAppButton } from "@/components/common/WhatsAppButton";
-import { PwaInstallPrompt } from "@/components/common/PwaInstallPrompt";
+import { SiteChrome } from "@/components/common/SiteChrome";
 import { QuoteBasketProvider } from "@/components/quote/QuoteBasketProvider";
 import { ThemeProvider } from "@/components/common/ThemeProvider";
 import { ClientAuthProvider } from "@/components/auth/ClientAuthProvider";
@@ -100,13 +97,9 @@ export default function RootLayout({
         <ThemeProvider>
           <ClientAuthProvider>
             <QuoteBasketProvider>
-              <Header />
-              <main className="flex-1 w-full" id="main-content">
+              <SiteChrome>
                 {children}
-              </main>
-              <Footer />
-              <WhatsAppButton />
-              <PwaInstallPrompt />
+              </SiteChrome>
             </QuoteBasketProvider>
           </ClientAuthProvider>
         </ThemeProvider>
