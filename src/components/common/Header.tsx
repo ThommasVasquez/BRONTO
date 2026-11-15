@@ -50,6 +50,11 @@ export const Header: React.FC = () => {
     return pathname.startsWith(href);
   };
 
+  // En la aplicación PWA (/app) el nav del sitio web no debe mostrarse para evitar superposiciones
+  if (pathname === "/app" || pathname?.startsWith("/app/")) {
+    return null;
+  }
+
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-200 ${
@@ -57,6 +62,11 @@ export const Header: React.FC = () => {
           ? "bg-[#111111]/95 backdrop-blur-md border-b border-[#242424] py-3.5 shadow-xl"
           : "bg-gradient-to-b from-black/90 via-black/40 to-transparent py-5"
       }`}
+      style={{
+        paddingTop: isScrolled
+          ? "max(14px, env(safe-area-inset-top, 14px))"
+          : "max(20px, env(safe-area-inset-top, 20px))",
+      }}
     >
       <div className="w-full px-6 sm:px-10 lg:px-16 2xl:px-24">
         <div className="flex items-center justify-between">
@@ -189,7 +199,7 @@ export const Header: React.FC = () => {
 
       {/* Menú Móvil Desplegable */}
       {mobileMenuOpen && (
-        <div className="lg:hidden fixed inset-x-0 top-[65px] bg-[#111111] border-b border-[#242424] px-6 py-8 shadow-2xl">
+        <div className="lg:hidden absolute inset-x-0 top-full bg-[#111111] border-b border-[#242424] px-6 py-8 shadow-2xl">
           <div className="flex flex-col space-y-4">
             {navLinks.map((link) => (
               <Link

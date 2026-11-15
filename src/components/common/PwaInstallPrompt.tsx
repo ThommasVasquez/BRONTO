@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import { Download, X, Smartphone } from "lucide-react";
 import { DynastesBeetleSymbol } from "./BrandLogo";
 
@@ -10,10 +11,16 @@ interface BeforeInstallPromptEvent extends Event {
 }
 
 export const PwaInstallPrompt: React.FC = () => {
+  const pathname = usePathname();
   const [deferredPrompt, setDeferredPrompt] = useState<BeforeInstallPromptEvent | null>(null);
   const [isDismissed, setIsDismissed] = useState(true);
   const [isIOS, setIsIOS] = useState(false);
   const [isStandalone, setIsStandalone] = useState(false);
+
+  // En la propia pantalla /app la página ya cuenta con su propio banner y modal de instalación integrado
+  if (pathname === "/app" || pathname?.startsWith("/app/")) {
+    return null;
+  }
 
   useEffect(() => {
     // Verificar si ya está instalada en modo standalone

@@ -45,6 +45,14 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Soporte de Safe Area para Dispositivos Móviles (iOS Notch & Dynamic Island) */
+.pt-safe {
+  padding-top: max(12px, env(safe-area-inset-top, 12px));
+}
+.pb-safe {
+  padding-bottom: max(8px, env(safe-area-inset-bottom, 8px));
+}
+
 html.dark body {
   background-color: #111111;
   color: #FFFFFF;

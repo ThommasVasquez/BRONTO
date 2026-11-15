@@ -1,6 +1,9 @@
+"use client";
+
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { BrandLogo } from "./BrandLogo";
 import { siteConfig } from "@/data/siteConfig";
 import { catalogCategories } from "@/data/catalogData";
@@ -15,6 +18,13 @@ import {
 } from "lucide-react";
 
 export const Footer: React.FC = () => {
+  const pathname = usePathname();
+
+  // En la aplicación PWA (/app) el footer web se oculta para dar paso a la experiencia nativa de app
+  if (pathname === "/app" || pathname?.startsWith("/app/")) {
+    return null;
+  }
+
   const currentYear = new Date().getFullYear();
 
   return (

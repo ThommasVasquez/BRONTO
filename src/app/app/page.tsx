@@ -213,17 +213,27 @@ export default function BrontoAppPage() {
       )}
 
       {/* App Shell Wrapper (Optimizado para móvil y centrado estilizado en desktop) */}
-      <div className="max-w-2xl mx-auto min-h-screen flex flex-col bg-[#121214] border-x border-[#222226] shadow-2xl">
+      <div 
+        className="max-w-2xl mx-auto min-h-screen flex flex-col bg-[#121214] border-x border-[#222226] shadow-2xl"
+        style={{
+          paddingBottom: "calc(88px + env(safe-area-inset-bottom, 0px))",
+        }}
+      >
         
         {/* ==================================================================== */}
         {/* TOP APP HEADER */}
         {/* ==================================================================== */}
-        <header className="sticky top-0 z-40 bg-[#151515]/95 backdrop-blur-md border-b border-[#252528] px-4 py-3">
+        <header 
+          className="sticky top-0 z-40 bg-[#151515]/95 backdrop-blur-md border-b border-[#252528] px-4 pb-3"
+          style={{
+            paddingTop: "max(12px, env(safe-area-inset-top, 12px))",
+          }}
+        >
           <div className="flex items-center justify-between gap-3">
             
             {/* Logo e Identidad App */}
             <div className="flex items-center gap-2.5">
-              <Link href="/" className="flex items-center gap-2 group">
+              <Link href="/" className="flex items-center gap-2 group" title="Ir al portal principal de BRONTO®">
                 <div className="w-9 h-9 bg-bronto-yellow text-[#151515] flex items-center justify-center font-black rounded-sm shadow-md group-hover:scale-105 transition-transform">
                   <DynastesBeetleSymbol className="w-6 h-6" colorFill="#151515" />
                 </div>
@@ -252,9 +262,9 @@ export default function BrontoAppPage() {
                 <span>App</span>
               </button>
 
-              <Link
-                href="/cotizar"
-                className="relative p-2 bg-[#1E1E22] border border-[#2E2E34] text-bronto-yellow hover:border-bronto-yellow rounded-sm transition-colors"
+              <button
+                onClick={() => setActiveTab("pedido")}
+                className="relative p-2 bg-[#1E1E22] border border-[#2E2E34] text-bronto-yellow hover:border-bronto-yellow rounded-sm transition-colors cursor-pointer"
                 title="Ver lista de cotización"
               >
                 <ShoppingCart className="w-4 h-4" />
@@ -263,7 +273,7 @@ export default function BrontoAppPage() {
                     {totalCount}
                   </span>
                 )}
-              </Link>
+              </button>
             </div>
           </div>
 
@@ -791,7 +801,12 @@ export default function BrontoAppPage() {
         {/* ==================================================================== */}
         {/* BOTTOM APP NAVIGATION BAR (NATIVE MOBILE FEEL) */}
         {/* ==================================================================== */}
-        <nav className="fixed bottom-0 left-0 right-0 z-40 max-w-2xl mx-auto bg-[#141416]/95 backdrop-blur-lg border-t border-[#26262B] px-2 py-2 flex items-center justify-around shadow-2xl">
+        <nav 
+          className="fixed bottom-0 left-0 right-0 z-40 max-w-2xl mx-auto bg-[#141416]/95 backdrop-blur-lg border-t border-[#26262B] px-2 pt-2 flex items-center justify-around shadow-2xl"
+          style={{
+            paddingBottom: "max(8px, env(safe-area-inset-bottom, 8px))",
+          }}
+        >
           
           <button
             onClick={() => setActiveTab("renta")}
