@@ -8,24 +8,24 @@ import { ArrowUpRight } from "lucide-react";
 export const CategoriesSection: React.FC = () => {
   return (
     <section
-      className="relative min-h-[100svh] w-full flex flex-col justify-between bg-[#111111] border-b border-[#242424] py-14 px-6 sm:px-10 lg:px-16 2xl:px-24"
+      className="relative min-h-[100svh] w-full flex flex-col justify-between bg-[#1A1C21] border-b-2 border-[#2D313A] py-14 px-6 sm:px-10 lg:px-16 2xl:px-24"
       aria-label="Familias de equipos y soluciones"
     >
       {/* Cabecera Editorial Limpia */}
-      <div className="w-full flex flex-col md:flex-row md:items-end justify-between gap-6 pb-8 border-b border-[#242424]">
+      <div className="w-full flex flex-col md:flex-row md:items-end justify-between gap-6 pb-8 border-b border-[#2D313A]">
         <div>
-          <h2 className="text-white text-3xl sm:text-5xl lg:text-6xl font-black uppercase tracking-tight">
+          <h2 className="text-white text-3xl sm:text-5xl lg:text-6xl font-black uppercase tracking-tight font-mono">
             Líneas de suministro y alquiler
           </h2>
-          <p className="mt-2 text-sm sm:text-base text-white/70 max-w-xl font-normal">
+          <p className="mt-2 text-sm sm:text-base text-[#94A3B8] max-w-xl font-normal">
             Cuatro familias especializadas para cubrir cada etapa del proyecto constructivo en Bogotá y municipios de la Sabana.
           </p>
         </div>
         <Link
           href="/catalogo"
-          className="text-xs font-bold uppercase tracking-wider text-bronto-yellow hover:text-white transition-colors inline-flex items-center gap-1.5"
+          className="text-xs font-mono font-bold uppercase tracking-wider text-[#FF5F00] hover:text-white transition-colors inline-flex items-center gap-1.5"
         >
-          <span>Consultar inventario disponible</span>
+          <span>Consultar inventario en patio</span>
           <ArrowUpRight className="w-4 h-4" />
         </Link>
       </div>
@@ -36,40 +36,40 @@ export const CategoriesSection: React.FC = () => {
           <Link
             key={cat.id}
             href={`/catalogo?categoria=${cat.id}`}
-            className="group relative overflow-hidden bg-[#181818] border border-[#262626] hover:border-bronto-yellow min-h-[380px] lg:min-h-[480px] flex flex-col justify-between p-7 transition-colors duration-200"
+            className="group relative overflow-hidden bg-[#101114] border border-[#2D313A] hover:border-[#FF5F00] min-h-[380px] lg:min-h-[480px] flex flex-col justify-between p-7 transition-colors duration-200"
           >
             {/* Imagen de fondo con filtro sobrio */}
             <div
-              className="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-out group-hover:scale-105 opacity-40 group-hover:opacity-50"
+              className="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-out group-hover:scale-105 opacity-35 group-hover:opacity-45"
               style={{ backgroundImage: `url('${cat.imageUrl}')` }}
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#111111] via-[#111111]/70 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#101114] via-[#101114]/80 to-transparent" />
 
             {/* Cabecera de bloque */}
             <div className="relative z-10 flex items-center justify-between">
-              <span className="text-xs font-bold text-white/70 uppercase tracking-wider">
+              <span className="text-xs font-mono font-bold text-[#94A3B8] uppercase tracking-wider">
                 {cat.shortName}
               </span>
-              <div className="w-8 h-8 rounded-none border border-white/20 group-hover:border-bronto-yellow group-hover:bg-bronto-yellow group-hover:text-black text-white flex items-center justify-center transition-all">
+              <div className="w-8 h-8 rounded-none border border-[#2D313A] group-hover:border-[#FF5F00] group-hover:bg-[#FF5F00] group-hover:text-black text-white flex items-center justify-center transition-all">
                 <ArrowUpRight className="w-4 h-4" />
               </div>
             </div>
 
             {/* Contenido inferior */}
             <div className="relative z-10 mt-auto pt-12">
-              <h3 className="text-white text-2xl lg:text-3xl font-black uppercase leading-tight group-hover:text-bronto-yellow transition-colors">
+              <h3 className="text-white text-2xl lg:text-3xl font-black uppercase leading-tight font-mono group-hover:text-[#FF5F00] transition-colors">
                 {cat.name}
               </h3>
-              <p className="mt-3 text-xs sm:text-sm text-white/70 font-normal leading-relaxed line-clamp-3">
+              <p className="mt-3 text-xs sm:text-sm text-[#94A3B8] font-normal leading-relaxed line-clamp-3">
                 {cat.description}
               </p>
 
               {/* Subcategorías limpias */}
-              <div className="mt-5 pt-4 border-t border-white/10 flex flex-wrap gap-1.5">
+              <div className="mt-5 pt-4 border-t border-[#2D313A] flex flex-wrap gap-1.5 font-mono">
                 {cat.subcategories.slice(0, 3).map((sub, i) => (
                   <span
                     key={i}
-                    className="text-[11px] text-white/80 bg-black/60 px-2 py-0.5 border border-white/10"
+                    className="text-[11px] text-[#94A3B8] bg-[#141519] px-2 py-0.5 border border-[#2D313A]"
                   >
                     {sub}
                   </span>
@@ -81,7 +81,7 @@ export const CategoriesSection: React.FC = () => {
       </div>
 
       {/* Pie de sección */}
-      <div className="w-full pt-4 flex flex-col sm:flex-row items-center justify-between text-xs text-white/50 border-t border-[#242424] gap-2">
+      <div className="w-full pt-4 flex flex-col sm:flex-row items-center justify-between text-xs text-[#94A3B8] border-t border-[#2D313A] gap-2 font-mono">
         <span>Flota propia y alistada para despacho a pie de obra</span>
         <span>Atención directa para contratistas e ingenieros residentes</span>
       </div>

@@ -11,10 +11,17 @@ const config: Config = {
     extend: {
       colors: {
         bronto: {
-          yellow: "var(--bronto-yellow)",
-          "yellow-hover": "var(--bronto-yellow-hover)",
           orange: "var(--bronto-orange)",
           "orange-hover": "var(--bronto-orange-hover)",
+          yellow: "var(--bronto-yellow)",
+          "yellow-hover": "var(--bronto-yellow-hover)",
+          storm: "var(--bronto-storm)",
+          "storm-surface": "var(--bronto-storm-surface)",
+          "storm-border": "var(--bronto-storm-border)",
+          "storm-divider": "var(--bronto-storm-divider)",
+          matte: "var(--bronto-matte-black)",
+          "matte-card": "var(--bronto-matte-card)",
+          "matte-elevated": "var(--bronto-matte-elevated)",
           carbon: "var(--bronto-carbon)",
           graphite: "var(--bronto-graphite)",
           surface: "var(--bronto-surface)",

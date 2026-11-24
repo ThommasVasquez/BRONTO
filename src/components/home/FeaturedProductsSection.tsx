@@ -18,22 +18,22 @@ export const FeaturedProductsSection: React.FC = () => {
 
   return (
     <section
-      className="relative min-h-[100svh] w-full flex flex-col justify-between bg-[#0E0E0E] border-b border-[#242424] py-14 px-6 sm:px-10 lg:px-16 2xl:px-24"
+      className="relative min-h-[100svh] w-full flex flex-col justify-between bg-[#1A1C21] border-b-2 border-[#2D313A] py-14 px-6 sm:px-10 lg:px-16 2xl:px-24"
       aria-label="Equipos y soluciones destacadas del catálogo"
     >
       {/* Cabecera */}
-      <div className="w-full flex flex-col md:flex-row md:items-end justify-between gap-6 pb-8 border-b border-[#242424]">
+      <div className="w-full flex flex-col md:flex-row md:items-end justify-between gap-6 pb-8 border-b border-[#2D313A]">
         <div>
-          <h2 className="text-white text-3xl sm:text-5xl lg:text-6xl font-black uppercase tracking-tight">
-            Equipos destacados
+          <h2 className="text-white text-3xl sm:text-5xl lg:text-6xl font-black uppercase tracking-tight font-mono">
+            Equipos listos para despacho
           </h2>
-          <p className="mt-2 text-sm sm:text-base text-white/70 max-w-xl font-normal">
+          <p className="mt-2 text-sm sm:text-base text-[#94A3B8] max-w-xl font-normal">
             Flota pesada, encofrados certificados, mezclas estructurales y elementos de aligeramiento con disponibilidad para Bogotá y Sabana.
           </p>
         </div>
         <Link
           href="/catalogo"
-          className="text-xs font-bold uppercase tracking-wider text-bronto-yellow hover:text-white transition-colors inline-flex items-center gap-1.5"
+          className="text-xs font-mono font-bold uppercase tracking-wider text-[#FF5F00] hover:text-white transition-colors inline-flex items-center gap-1.5"
         >
           <span>Catálogo completo ({catalogProducts.length} referencias)</span>
           <ArrowRight className="w-4 h-4" />
@@ -48,16 +48,16 @@ export const FeaturedProductsSection: React.FC = () => {
           return (
             <div
               key={product.id}
-              className="bg-[#151515] border border-[#242424] hover:border-bronto-yellow flex flex-col justify-between overflow-hidden transition-colors duration-150 group"
+              className="bg-[#101114] border border-[#2D313A] hover:border-[#FF5F00] flex flex-col justify-between overflow-hidden transition-colors duration-150 group font-mono"
             >
               {/* Imagen del equipo */}
-              <div className="relative aspect-[16/11] overflow-hidden bg-black/60">
+              <div className="relative aspect-[16/11] overflow-hidden bg-black/80">
                 <div
                   className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
                   style={{ backgroundImage: `url('${product.images[0]?.url}')` }}
                 />
                 <div className="absolute top-2 left-2">
-                  <span className="text-[10px] font-bold text-white bg-black/80 px-2 py-0.5 uppercase tracking-wide">
+                  <span className="text-[9px] font-mono font-bold text-white bg-black/90 px-1.5 py-0.5 uppercase tracking-wide border border-[#2D313A]">
                     {product.modality.replace("_", " / ")}
                   </span>
                 </div>
@@ -66,42 +66,42 @@ export const FeaturedProductsSection: React.FC = () => {
               {/* Información */}
               <div className="p-4 flex-1 flex flex-col justify-between" suppressHydrationWarning>
                 <div>
-                  <span className="text-[11px] font-bold text-white/50 block tracking-wider uppercase">
+                  <span className="text-[10px] font-mono font-bold text-[#FF5F00] block tracking-wider uppercase">
                     {product.sku}
                   </span>
-                  <h3 className="text-white text-base font-bold uppercase leading-tight mt-1 group-hover:text-bronto-yellow transition-colors">
+                  <h3 className="text-white text-sm font-bold uppercase leading-tight mt-1 group-hover:text-[#FF5F00] transition-colors font-mono">
                     {product.name}
                   </h3>
 
                   {/* Especificaciones clave */}
-                  <div className="mt-3 pt-3 border-t border-white/10 space-y-1">
+                  <div className="mt-3 pt-2.5 border-t border-[#22252C] space-y-1 font-mono">
                     {product.specifications.slice(0, 2).map((spec, i) => (
                       <div key={i} className="flex items-center justify-between text-[11px]">
-                        <span className="text-white/50 truncate pr-1">{spec.label}:</span>
+                        <span className="text-[#94A3B8] truncate pr-1">{spec.label}:</span>
                         <span className="text-white font-semibold shrink-0">{spec.value}</span>
                       </div>
                     ))}
                   </div>
 
-                  {/* Tarifa de Referencia (+10% aplicada) */}
+                  {/* Tarifa de Referencia */}
                   {product.pricing && (
-                    <div className="mt-3 pt-2.5 border-t border-white/10 flex items-baseline justify-between" suppressHydrationWarning>
-                      <span className="text-[10px] text-white/50 uppercase font-semibold">Tarifa Ref.</span>
+                    <div className="mt-3 pt-2 border-t border-[#22252C] flex items-baseline justify-between font-mono" suppressHydrationWarning>
+                      <span className="text-[10px] text-[#94A3B8] uppercase font-semibold">Tarifa Ref.</span>
                       <div className="text-right">
-                        <span className="text-sm font-black text-bronto-yellow">
+                        <span className="text-sm font-black text-[#FF5F00]">
                           {formatCOP(product.pricing.basePrice)}
                         </span>
-                        <span className="text-[10px] text-white/50 block font-normal">/ {product.pricing.priceUnit}</span>
+                        <span className="text-[10px] text-[#94A3B8] block font-normal">/ {product.pricing.priceUnit}</span>
                       </div>
                     </div>
                   )}
                 </div>
 
                 {/* Acciones */}
-                <div className="mt-4 pt-3 border-t border-white/10 flex items-center gap-2">
+                <div className="mt-4 pt-3 border-t border-[#22252C] flex items-center gap-2 font-mono">
                   <Link
                     href={`/catalogo/${product.slug}`}
-                    className="flex-1 text-center py-2 px-2 bg-[#202020] hover:bg-[#2A2A2A] text-white text-xs font-bold uppercase transition-colors"
+                    className="flex-1 text-center py-2 px-2 bg-[#1A1C21] hover:bg-[#22252C] text-white text-xs font-bold uppercase border border-[#2D313A] transition-colors"
                   >
                     Ficha
                   </Link>
@@ -110,8 +110,8 @@ export const FeaturedProductsSection: React.FC = () => {
                     onClick={() => addItem(product, 1)}
                     className={`flex-1 text-center py-2 px-2 text-xs font-bold uppercase transition-colors ${
                       inBasket
-                        ? "bg-green-700 text-white"
-                        : "bg-bronto-yellow hover:bg-bronto-yellow-hover text-[#111111]"
+                        ? "bg-emerald-600 text-white"
+                        : "bg-[#FF5F00] hover:bg-[#E65500] text-black"
                     }`}
                   >
                     {inBasket ? "En lista" : "+ Cotizar"}
@@ -124,9 +124,9 @@ export const FeaturedProductsSection: React.FC = () => {
       </div>
 
       {/* Pie de sección */}
-      <div className="w-full pt-4 flex flex-col sm:flex-row items-center justify-between text-xs text-white/50 border-t border-[#242424] gap-2">
+      <div className="w-full pt-4 flex flex-col sm:flex-row items-center justify-between text-xs text-[#94A3B8] border-t border-[#2D313A] gap-2 font-mono">
         <span>Precios adaptados a plazo de obra y volumen requerido</span>
-        <Link href="/cotizar" className="text-bronto-yellow hover:underline">
+        <Link href="/cotizar" className="text-[#FF5F00] hover:underline">
           Consolidar lista de equipos en cotización &rarr;
         </Link>
       </div>

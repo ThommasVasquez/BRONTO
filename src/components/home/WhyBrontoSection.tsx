@@ -26,22 +26,22 @@ export const WhyBrontoSection: React.FC = () => {
 
   return (
     <section
-      className="relative min-h-[100svh] w-full flex flex-col justify-between bg-[#111111] border-b border-[#242424] py-14 px-6 sm:px-10 lg:px-16 2xl:px-24"
+      className="relative min-h-[100svh] w-full flex flex-col justify-between bg-[#1A1C21] border-b-2 border-[#2D313A] py-14 px-6 sm:px-10 lg:px-16 2xl:px-24"
       aria-label="Diferenciadores y propuesta de valor BRONTO"
     >
       {/* Cabecera */}
-      <div className="w-full flex flex-col md:flex-row md:items-end justify-between gap-6 pb-8 border-b border-[#242424]">
+      <div className="w-full flex flex-col md:flex-row md:items-end justify-between gap-6 pb-8 border-b border-[#2D313A]">
         <div>
-          <h2 className="text-white text-3xl sm:text-5xl lg:text-6xl font-black uppercase tracking-tight">
+          <h2 className="text-white text-3xl sm:text-5xl lg:text-6xl font-black uppercase tracking-tight font-mono">
             Por qué elegir BRONTO
           </h2>
-          <p className="mt-2 text-sm sm:text-base text-white/70 max-w-xl font-normal">
+          <p className="mt-2 text-sm sm:text-base text-[#94A3B8] max-w-xl font-normal">
             Criterios de ingeniería y logística pensados para responder a las exigencias reales de contratistas y empresas de construcción.
           </p>
         </div>
         <Link
           href="/nosotros"
-          className="text-xs font-bold uppercase tracking-wider text-bronto-yellow hover:text-white transition-colors inline-flex items-center gap-1.5"
+          className="text-xs font-mono font-bold uppercase tracking-wider text-[#FF5F00] hover:text-white transition-colors inline-flex items-center gap-1.5"
         >
           <span>Conocer nuestra operación</span>
           <ArrowRight className="w-4 h-4" />
@@ -53,17 +53,20 @@ export const WhyBrontoSection: React.FC = () => {
         {differentiators.map((diff, index) => (
           <div
             key={index}
-            className="bg-[#161616] border-t-2 border-bronto-yellow p-8 flex flex-col justify-between"
+            className="bg-[#101114] border border-[#2D313A] border-t-4 border-t-[#FF5F00] p-8 flex flex-col justify-between font-mono"
           >
             <div>
-              <h3 className="text-white text-xl font-black uppercase tracking-tight">
+              <span className="text-[10px] text-[#FF5F00] uppercase font-bold tracking-wider block mb-2">
+                0{index + 1}. CRITERIO OPERATIVO
+              </span>
+              <h3 className="text-white text-lg font-black uppercase tracking-tight">
                 {diff.title}
               </h3>
-              <p className="mt-4 text-xs sm:text-sm text-white/70 leading-relaxed font-normal">
+              <p className="mt-4 text-xs sm:text-sm text-[#94A3B8] leading-relaxed font-normal font-sans">
                 {diff.description}
               </p>
             </div>
-            <div className="mt-8 pt-4 border-t border-white/10 text-xs text-bronto-yellow font-bold uppercase tracking-wider">
+            <div className="mt-8 pt-4 border-t border-[#22252C] text-xs text-[#FF5F00] font-bold uppercase tracking-wider">
               Respaldo BRONTO en obra
             </div>
           </div>
@@ -71,9 +74,9 @@ export const WhyBrontoSection: React.FC = () => {
       </div>
 
       {/* Pie de sección */}
-      <div className="w-full pt-4 flex flex-col sm:flex-row items-center justify-between text-xs text-white/50 border-t border-[#242424] gap-2">
+      <div className="w-full pt-4 flex flex-col sm:flex-row items-center justify-between text-xs text-[#94A3B8] border-t border-[#2D313A] gap-2 font-mono">
         <span>Sin intermediarios &bull; Contacto directo con despachadores técnicos</span>
-        <Link href="/contacto" className="text-bronto-yellow hover:underline">
+        <Link href="/contacto" className="text-[#FF5F00] hover:underline">
           Hablar con un asesor comercial &rarr;
         </Link>
       </div>

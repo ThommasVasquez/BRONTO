@@ -3,17 +3,33 @@
 @tailwind utilities;
 
 :root {
-  /* BRONTO Paleta Cromática Industrial Oficial: Negro, Gris y Naranja */
-  --bronto-yellow: #FF5E00; /* Naranja industrial principal de alto impacto */
-  --bronto-yellow-hover: #E55400; /* Naranja en hover */
-  --bronto-carbon: #111111;
-  --bronto-graphite: #1C1C1C;
-  --bronto-surface: #222222;
-  --bronto-border: #2A2A2A;
-  --bronto-gray: #999999;
-  --bronto-gray-light: #CCCCCC;
-  --bronto-orange: #FF5E00; /* Naranja institucional BRONTO */
-  --bronto-orange-hover: #E55400;
+  /* ==========================================================================
+     BRONTO® SISTEMA INDUSTRIAL 60-30-10: GRIS TORMENTA, NEGRO MATE, NARANJA
+     ========================================================================== */
+  /* 10% Acento: Naranja Seguridad de Obra */
+  --bronto-orange: #FF5F00;
+  --bronto-orange-hover: #E65500;
+  --bronto-yellow: #FF5F00; /* Mantenido para compatibilidad de clases */
+  --bronto-yellow-hover: #E65500;
+
+  /* 60% Dominante: Gris Tormenta (Acero, Asfalto y Concreto) */
+  --bronto-storm: #1A1C21;
+  --bronto-storm-surface: #22252C;
+  --bronto-storm-border: #2D313A;
+  --bronto-storm-divider: #363B46;
+
+  /* 30% Secundario: Negro Mate (Chasis, Tarjetas y Paneles Técnicos) */
+  --bronto-matte-black: #101114;
+  --bronto-matte-card: #141519;
+  --bronto-matte-elevated: #17191E;
+
+  /* Neutros Técnicos */
+  --bronto-carbon: #101114;
+  --bronto-graphite: #1A1C21;
+  --bronto-surface: #22252C;
+  --bronto-border: #2D313A;
+  --bronto-gray: #94A3B8;
+  --bronto-gray-light: #E2E8F0;
   
   --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --font-heading: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
@@ -27,14 +43,14 @@ html {
 
 html.dark {
   color-scheme: dark;
-  background-color: #111111;
-  color: #FFFFFF;
+  background-color: #1A1C21;
+  color: #F8FAFC;
 }
 
 html:not(.dark) {
   color-scheme: light;
-  background-color: #F8F9FA;
-  color: #111111;
+  background-color: #F1F4F8;
+  color: #0F172A;
 }
 
 body {
