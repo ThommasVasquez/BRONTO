@@ -1,5 +1,5 @@
-// BRONTO PWA Service Worker v3.0.0 — Full Industrial Redesign & White-Contrast Icons
-const CACHE_NAME = 'bronto-cache-v3.0.0';
+// BRONTO PWA Service Worker v3.1.0 — Locked Native App Viewport & Bottom Sheets
+const CACHE_NAME = 'bronto-cache-v3.1.0';
 
 // Recursos críticos para caché inicial (App Shell)
 const PRECACHE_ASSETS = [

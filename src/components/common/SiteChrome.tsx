@@ -27,7 +27,14 @@ export const SiteChrome: React.FC<{ children: React.ReactNode }> = ({ children }
   return (
     <>
       {!isApp && <Header />}
-      <main className="flex-1 w-full" id="main-content">
+      <main
+        className={
+          isApp
+            ? "w-full max-w-[100vw] h-[100dvh] overflow-hidden bg-matte-deep"
+            : "flex-1 w-full max-w-[100vw] overflow-x-clip"
+        }
+        id="main-content"
+      >
         {children}
       </main>
       {!isApp && <Footer />}
