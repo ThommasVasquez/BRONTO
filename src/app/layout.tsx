@@ -7,7 +7,7 @@ import { ThemeProvider } from "@/components/common/ThemeProvider";
 import { ClientAuthProvider } from "@/components/auth/ClientAuthProvider";
 
 export const viewport: Viewport = {
-  themeColor: "#151515",
+  themeColor: "#101114",
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,
@@ -43,12 +43,13 @@ export const metadata: Metadata = {
   manifest: "/manifest.webmanifest",
   icons: {
     icon: [
-      { url: "/favicon.ico", sizes: "any" },
-      { url: "/icons/icon-192.png", type: "image/png", sizes: "192x192" },
-      { url: "/icons/icon-512.png", type: "image/png", sizes: "512x512" },
+      { url: "/favicon.ico?v=2", sizes: "any" },
+      { url: "/icons/icon-192-orange.png?v=2", type: "image/png", sizes: "192x192" },
+      { url: "/icons/icon-512-orange.png?v=2", type: "image/png", sizes: "512x512" },
     ],
     apple: [
-      { url: "/icons/icon-192.png", sizes: "192x192", type: "image/png" },
+      { url: "/apple-touch-icon.png?v=2", sizes: "180x180", type: "image/png" },
+      { url: "/icons/icon-192-orange.png?v=2", sizes: "192x192", type: "image/png" },
     ],
   },
   robots: {
@@ -73,7 +74,10 @@ export default function RootLayout({
     <html lang="es" className="dark scroll-smooth" suppressHydrationWarning>
       <head>
         <meta name="color-scheme" content="light dark" />
-        <link rel="apple-touch-icon" href="/icons/icon-192.png" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=2" />
+        <link rel="apple-touch-icon" sizes="192x192" href="/icons/icon-192-orange.png?v=2" />
+        <link rel="apple-touch-icon" sizes="512x512" href="/icons/icon-512-orange.png?v=2" />
         <script
           dangerouslySetInnerHTML={{
             __html: `

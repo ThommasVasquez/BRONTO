@@ -1036,7 +1036,7 @@ export default function BrontoAppPage() {
               <div className="text-center py-2">
                 <div className="relative w-16 h-16 overflow-hidden mx-auto mb-2 border-2 border-[#FF5F00] bg-[#101114]">
                   <Image
-                    src="/icons/icon-192.png"
+                    src="/icons/icon-192-orange.png?v=2"
                     alt="BRONTO®"
                     fill
                     className="object-cover"
