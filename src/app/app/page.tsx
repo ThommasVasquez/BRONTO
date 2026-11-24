@@ -234,8 +234,8 @@ export default function BrontoAppPage() {
             {/* Logo e Identidad App */}
             <div className="flex items-center gap-2.5">
               <Link href="/" className="flex items-center gap-2 group" title="Ir al portal principal de BRONTO®">
-                <div className="w-9 h-9 bg-bronto-yellow text-[#151515] flex items-center justify-center font-black rounded-sm shadow-md group-hover:scale-105 transition-transform">
-                  <DynastesBeetleSymbol className="w-6 h-6" colorFill="#151515" />
+                <div className="w-9 h-9 bg-[#1A1A1E] border border-[#2E2E34] text-bronto-yellow flex items-center justify-center font-black rounded-sm shadow-md group-hover:scale-105 transition-transform">
+                  <DynastesBeetleSymbol className="w-6 h-6" />
                 </div>
                 <div>
                   <div className="flex items-center gap-1.5">
@@ -254,7 +254,7 @@ export default function BrontoAppPage() {
             <div className="flex items-center gap-2">
               <button
                 onClick={handleInstallClick}
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-gradient-to-r from-bronto-yellow to-[#FED800] hover:to-white text-[#151515] font-black text-xs uppercase tracking-wider rounded-sm shadow-lg shadow-bronto-yellow/20 active:scale-95 transition-all"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-gradient-to-r from-bronto-yellow to-[#FF7A1A] hover:to-white text-[#151515] font-black text-xs uppercase tracking-wider rounded-sm shadow-lg shadow-bronto-yellow/20 active:scale-95 transition-all"
                 title="Descargar e instalar en tu celular"
               >
                 <Download className="w-3.5 h-3.5 stroke-[3]" />
@@ -479,7 +479,7 @@ export default function BrontoAppPage() {
                           <div className="mt-3 flex items-center gap-2">
                             <button
                               onClick={() => handleAddProduct(product, "30 días")}
-                              className="flex-1 py-1.5 px-2 bg-bronto-yellow hover:bg-[#FED800] text-[#151515] font-black text-[11px] uppercase tracking-wider rounded-sm flex items-center justify-center gap-1 transition-all active:scale-95"
+                              className="flex-1 py-1.5 px-2 bg-bronto-yellow hover:bg-[#FF7A1A] text-[#151515] font-black text-[11px] uppercase tracking-wider rounded-sm flex items-center justify-center gap-1 transition-all active:scale-95"
                             >
                               <Plus className="w-3.5 h-3.5 stroke-[3]" />
                               <span>Agregar</span>

@@ -33,6 +33,8 @@ export interface SiteConfig {
     url: string;
   };
   colors: {
+    industrialOrange?: string;
+    brandOrange?: string;
     industrialYellow: string;
     carbonBlack: string;
     graphite: string;
@@ -92,11 +94,13 @@ export const siteConfig: SiteConfig = {
     url: "https://energysoftmedia.com",
   },
   colors: {
-    industrialYellow: "#FEE123",
+    industrialOrange: "#FF5E00",
+    brandOrange: "#FF5E00",
+    industrialYellow: "#FF5E00",
     carbonBlack: "#151515",
     graphite: "#242424",
     white: "#FFFFFF",
     technicalGray: "#A6A6A6",
-    energeticOrange: "#FF6511",
+    energeticOrange: "#FF5E00",
   },
 };

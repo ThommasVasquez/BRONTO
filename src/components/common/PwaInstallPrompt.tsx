@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import { Download, X, Smartphone } from "lucide-react";
 import { DynastesBeetleSymbol } from "./BrandLogo";
 
@@ -61,12 +62,20 @@ export const PwaInstallPrompt: React.FC = () => {
     setDeferredPrompt(null);
   };
 
+  const pathname = usePathname();
+
   const dismiss = () => {
     setIsDismissed(true);
     sessionStorage.setItem("bronto_pwa_dismissed", "true");
   };
 
-  if (isStandalone || isDismissed) {
+  if (
+    isStandalone ||
+    isDismissed ||
+    pathname === "/app" ||
+    pathname?.startsWith("/app/") ||
+    (typeof window !== "undefined" && (window.location.pathname === "/app" || window.location.pathname.startsWith("/app")))
+  ) {
     return null;
   }
 

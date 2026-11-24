@@ -33,7 +33,7 @@ export default function AboutUsPage() {
         {/* Bloque Central: El Escarabajo Dynastes (Concepto de Marca) */}
         <div className="py-16 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           <div className="lg:col-span-5 bg-[#181818] border-2 border-bronto-yellow/30 p-10 flex flex-col items-center justify-center text-center relative overflow-hidden">
-            <DynastesBeetleSymbol className="w-36 h-36" colorFill="#FEE123" />
+            <DynastesBeetleSymbol className="w-36 h-36" colorFill="#FF5E00" />
             <span className="text-xs uppercase tracking-wider text-bronto-yellow font-bold mt-6">
               Símbolo Dynastes
             </span>

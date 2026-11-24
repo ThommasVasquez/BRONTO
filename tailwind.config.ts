@@ -13,13 +13,14 @@ const config: Config = {
         bronto: {
           yellow: "var(--bronto-yellow)",
           "yellow-hover": "var(--bronto-yellow-hover)",
+          orange: "var(--bronto-orange)",
+          "orange-hover": "var(--bronto-orange-hover)",
           carbon: "var(--bronto-carbon)",
           graphite: "var(--bronto-graphite)",
           surface: "var(--bronto-surface)",
           border: "var(--bronto-border)",
           gray: "var(--bronto-gray)",
           "gray-light": "var(--bronto-gray-light)",
-          orange: "var(--bronto-orange)",
         },
       },
       fontFamily: {

@@ -50,6 +50,15 @@ export const Header: React.FC = () => {
     return pathname.startsWith(href);
   };
 
+  // Si estamos en la aplicación PWA (/app), el Header corporativo no se renderiza
+  if (
+    pathname === "/app" ||
+    pathname?.startsWith("/app/") ||
+    (typeof window !== "undefined" && (window.location.pathname === "/app" || window.location.pathname.startsWith("/app")))
+  ) {
+    return null;
+  }
+
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-200 ${
@@ -99,7 +108,7 @@ export const Header: React.FC = () => {
             {/* Acceso a App PWA: Renta & Cursos */}
             <Link
               href="/app"
-              className="inline-flex items-center gap-1.5 px-3 py-2 bg-gradient-to-r from-bronto-yellow to-[#FED800] hover:to-white text-[#151515] text-xs font-black uppercase tracking-wider rounded-none shadow-sm transition-all active:scale-95"
+              className="inline-flex items-center gap-1.5 px-3 py-2 bg-gradient-to-r from-bronto-yellow to-[#FF7A1A] hover:to-white text-[#151515] text-xs font-black uppercase tracking-wider rounded-none shadow-sm transition-all active:scale-95"
               title="Descargar e instalar la App de Renta de Equipos y Cursos"
             >
               <Smartphone className="w-3.5 h-3.5 stroke-[2.5]" />
@@ -221,7 +230,7 @@ export const Header: React.FC = () => {
             <div className="pt-4 flex flex-col gap-3">
               <Link
                 href="/app"
-                className="w-full flex items-center justify-center gap-2 py-3 bg-gradient-to-r from-bronto-yellow to-[#FED800] text-black font-black text-xs uppercase tracking-wider shadow-lg"
+                className="w-full flex items-center justify-center gap-2 py-3 bg-gradient-to-r from-bronto-yellow to-[#FF7A1A] text-black font-black text-xs uppercase tracking-wider shadow-lg"
               >
                 <Smartphone className="w-4 h-4 stroke-[2.5]" />
                 <span>Abrir / Descargar BRONTO App</span>

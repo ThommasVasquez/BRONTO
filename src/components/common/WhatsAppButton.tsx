@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { usePathname } from "next/navigation";
 import { siteConfig } from "@/data/siteConfig";
 
 export const OfficialWhatsAppIcon: React.FC<{ className?: string }> = ({
@@ -20,6 +21,16 @@ export const OfficialWhatsAppIcon: React.FC<{ className?: string }> = ({
 };
 
 export const WhatsAppButton: React.FC = () => {
+  const pathname = usePathname();
+
+  if (
+    pathname === "/app" ||
+    pathname?.startsWith("/app/") ||
+    (typeof window !== "undefined" && (window.location.pathname === "/app" || window.location.pathname.startsWith("/app")))
+  ) {
+    return null;
+  }
+
   const defaultMessage = encodeURIComponent(
     `Hola BRONTO, me comunico desde la plataforma web para solicitar asesoría técnica y cotización de equipos para mi proyecto en Bogotá o la Sabana.`
   );
