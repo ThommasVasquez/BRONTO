@@ -13,7 +13,7 @@ import { Product } from "@/types/catalog";
 import {
   HardHat,
   GraduationCap,
-  FileText,
+  ShoppingBag,
   Phone,
   Search,
   MessageCircle,
@@ -41,11 +41,11 @@ interface BeforeInstallPromptEvent extends Event {
 type AppTab = "renta" | "cursos" | "pedido" | "cuenta";
 
 const DELIVERY_ZONES = [
-  { id: "Bogotá D.C.", label: "Bogotá D.C.", eta: "Despacho mismo día" },
-  { id: "Cota / Siberia", label: "Calle 80 / Siberia / Cota", eta: "Salida inmediata" },
-  { id: "Chía / Cajicá", label: "Sabana Norte (Chía / Cajicá)", eta: "2 a 4 horas" },
-  { id: "Funza / Mosquera / Madrid", label: "Occidente (Funza / Mosquera)", eta: "2 a 4 horas" },
-  { id: "Soacha", label: "Sur y Soacha", eta: "Mismo día" },
+  { id: "Bogotá D.C.", label: "Bogotá D.C.", eta: "Entrega mismo día" },
+  { id: "Cota / Siberia", label: "Calle 80 · Siberia · Cota", eta: "Salida en < 2h" },
+  { id: "Chía / Cajicá", label: "Sabana Norte (Chía · Cajicá)", eta: "2 a 4 horas" },
+  { id: "Funza / Mosquera / Madrid", label: "Occidente (Funza · Mosquera)", eta: "2 a 4 horas" },
+  { id: "Soacha", label: "Bogotá Sur y Soacha", eta: "Mismo día" },
 ];
 
 export default function BrontoAppPage() {
@@ -57,7 +57,6 @@ export default function BrontoAppPage() {
   const [requiresTransport, setRequiresTransport] = useState(true);
   const [requiresOperator, setRequiresOperator] = useState(false);
 
-  // Native Bottom Sheets
   const [showZoneSheet, setShowZoneSheet] = useState(false);
   const [selectedProductSheet, setSelectedProductSheet] = useState<Product | null>(null);
   const [sheetDuration, setSheetDuration] = useState("1 mes");
@@ -192,42 +191,41 @@ export default function BrontoAppPage() {
     if (!selectedCourseSheet) return;
 
     const message =
-      `*INSCRIPCIÓN ESCUELA DE OPERADORES BRONTO®*\n\n` +
+      `*INSCRIPCIÓN ACADEMIA BRONTO®*\n\n` +
       `*Programa:* ${selectedCourseSheet.title}\n` +
       `*Duración:* ${selectedCourseSheet.duration}\n` +
       `*Responsable:* ${courseForm.name}\n` +
       `*Teléfono:* ${courseForm.phone}\n` +
       `*Empresa:* ${courseForm.company || "Independiente"}\n` +
       `*Participantes:* ${courseForm.traineesCount}\n\n` +
-      `Solicito confirmar fechas disponibles de práctica.`;
+      `Solicito confirmar fechas disponibles.`;
 
     window.open(
       `https://wa.me/${siteConfig.contact.whatsapp}?text=${encodeURIComponent(message)}`,
       "_blank"
     );
     setSelectedCourseSheet(null);
-    showToast("Solicitud enviada por WhatsApp");
+    showToast("Solicitud enviada");
   };
 
   const handleCheckoutWhatsApp = () => {
     if (items.length === 0) return;
 
-    let text = `*ORDEN DE COTIZACIÓN Y DESPACHO — BRONTO® APP*\n\n`;
-    text += `*Destino de obra:* ${selectedCity}\n`;
+    let text = `*ORDEN DE COTIZACIÓN — BRONTO® APP*\n\n`;
+    text += `*Destino:* ${selectedCity}\n`;
     text += `*Transporte cama baja:* ${requiresTransport ? "Sí" : "No"}\n`;
     text += `*Operador certificado:* ${requiresOperator ? "Sí" : "No"}\n\n`;
-    text += `*EQUIPOS SOLICITADOS:*\n`;
+    text += `*EQUIPOS:*\n`;
 
     items.forEach((item, idx) => {
       const calc = calculateItemTotal(item, requiresOperator);
       text += `${idx + 1}. *${item.product.name}* (${item.product.sku})\n`;
-      text += `   Cant: ${item.quantity} | Plazo: ${item.estimatedDuration || "1 mes"} | Subtotal: ${formatCOP(
+      text += `   Cant: ${item.quantity} · Plazo: ${item.estimatedDuration || "1 mes"} · ${formatCOP(
         calc.equipmentSubtotal
       )}\n`;
     });
 
     text += `\n*Total estimado (IVA incl.):* ${formatCOP(quoteSummary.grandTotal)}\n`;
-    text += `Solicito validar disponibilidad inmediata en patio Calle 80.`;
 
     window.open(
       `https://wa.me/${siteConfig.contact.whatsapp}?text=${encodeURIComponent(text)}`,
@@ -239,25 +237,26 @@ export default function BrontoAppPage() {
     DELIVERY_ZONES.find((z) => z.id === selectedCity) || DELIVERY_ZONES[0];
 
   return (
-    <div className="w-full h-[100dvh] max-w-[100vw] overflow-hidden bg-matte-deep flex justify-center select-none">
+    <div className="fixed inset-0 w-full h-[100dvh] overflow-hidden bg-[#131518] sm:bg-[#0A0C0E] sm:flex sm:justify-center select-none">
       {/* ====================================================================
-          SHELL NATIVO BLOQUEADO (100vw en móvil · 430px marco iPhone en desktop)
-          Cero desborde horizontal: w-full max-w-[430px] h-[100dvh] overflow-hidden
+          MODERN NATIVE MOBILE SHELL (100% edge-to-edge on all phones · 430px centered frame on desktop)
           ==================================================================== */}
-      <div className="relative w-full max-w-[430px] h-[100dvh] bg-storm sm:border-x sm:border-storm-border flex flex-col overflow-hidden shadow-2xl">
-        {/* Toast Nativo Superior */}
+      <div className="relative w-full max-w-full sm:max-w-[430px] h-full bg-[#131518] sm:border-x sm:border-white/[0.08] flex flex-col min-w-0 overflow-hidden shadow-2xl">
+        {/* Toast Flotante Tipo Píldora */}
         {toastMessage && (
-          <div className="absolute top-16 left-4 right-4 z-50 bg-matte border border-[#FF5F00] text-white px-3.5 py-2.5 shadow-2xl flex items-center gap-2 text-xs font-semibold pointer-events-none">
-            <Check className="w-4 h-4 text-[#FF5F00] shrink-0" />
+          <div className="absolute top-16 left-1/2 -translate-x-1/2 z-50 max-w-[90%] bg-[#252B35]/95 backdrop-blur-xl border border-white/[0.12] text-white px-4 py-2 rounded-full shadow-2xl flex items-center gap-2 text-xs font-semibold pointer-events-none">
+            <span className="w-4 h-4 rounded-full bg-[#FF5F00] flex items-center justify-center shrink-0">
+              <Check className="w-2.5 h-2.5 text-white stroke-[3]" />
+            </span>
             <span className="truncate">{toastMessage}</span>
           </div>
         )}
 
         {/* ==================================================================
-            1. NATIVE APP BAR FIJA (SIN SCROLL LATERAL)
+            1. NATIVE GLASS TOP BAR
             ================================================================== */}
         <header
-          className="shrink-0 w-full bg-matte border-b border-storm-border px-4 pb-2.5 z-30"
+          className="shrink-0 w-full min-w-0 max-w-full overflow-hidden bg-[#131518]/90 backdrop-blur-2xl border-b border-white/[0.06] px-4 pb-3 z-30"
           style={{ paddingTop: "max(10px, env(safe-area-inset-top, 10px))" }}
         >
           <div className="flex items-center justify-between gap-2 min-w-0">
@@ -267,11 +266,11 @@ export default function BrontoAppPage() {
               <button
                 type="button"
                 onClick={() => setShowZoneSheet(true)}
-                className="inline-flex items-center gap-1 max-w-[155px] px-2.5 py-1.5 bg-storm-panel border border-storm-border text-xs font-medium text-white active:scale-[0.98] transition-transform"
+                className="inline-flex items-center gap-1.5 max-w-[162px] px-3 py-1.5 rounded-full bg-[#1E232B] hover:bg-[#272D37] border border-white/[0.08] text-xs font-medium text-white active:scale-[0.98] transition-all"
               >
                 <MapPin className="w-3.5 h-3.5 text-[#FF5F00] shrink-0" />
                 <span className="truncate">{selectedCity}</span>
-                <ChevronDown className="w-3.5 h-3.5 text-[#B8C1CC] shrink-0" />
+                <ChevronDown className="w-3.5 h-3.5 text-[#9BA5B4] shrink-0" />
               </button>
 
               {!isStandalone && (
@@ -279,53 +278,51 @@ export default function BrontoAppPage() {
                   type="button"
                   onClick={handleInstallClick}
                   aria-label="Instalar aplicación"
-                  className="inline-flex items-center gap-1 px-2.5 py-1.5 bg-[#FF5F00] active:bg-[#E55500] text-[#111316] text-xs font-bold shrink-0"
+                  className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-[#FF5F00] active:bg-[#FF711A] text-white text-xs font-semibold shadow-md shadow-[#FF5F00]/25 shrink-0"
                 >
                   <Download className="w-3.5 h-3.5 stroke-[2.5]" />
-                  <span>App</span>
+                  <span>Instalar</span>
                 </button>
               )}
             </div>
           </div>
 
-          {/* Controles fijos de búsqueda y filtros cuando está en Equipos o Cursos */}
+          {/* Buscador moderno + Chips en Equipos / Cursos */}
           {(activeTab === "renta" || activeTab === "cursos") && (
-            <div className="mt-2.5 space-y-2 min-w-0">
-              {/* Buscador con font-size 16px (text-base) para evitar auto-zoom y desplazamiento en iOS */}
+            <div className="mt-3 space-y-2.5 min-w-0">
               <div className="relative w-full min-w-0">
-                <Search className="w-4 h-4 text-[#8E99A6] absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" />
+                <Search className="w-4 h-4 text-[#8E99A8] absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
                 <input
                   type="search"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   placeholder={
                     activeTab === "renta"
-                      ? "Buscar equipo, SKU o aplicación..."
-                      : "Buscar programa o máquina..."
+                      ? "¿Qué equipo necesita hoy?"
+                      : "Buscar curso o máquina..."
                   }
-                  className="w-full h-10 pl-9 pr-8 bg-matte-deep border border-storm-border focus:border-[#FF5F00] text-[16px] leading-tight text-white placeholder-[#8E99A6] rounded-none focus:outline-none"
+                  className="w-full h-11 pl-10 pr-9 rounded-2xl bg-[#1E232B] border border-white/[0.07] focus:border-[#FF5F00]/60 text-[16px] leading-tight text-white placeholder-[#8E99A8] focus:outline-none transition-colors"
                 />
                 {searchQuery && (
                   <button
                     type="button"
                     onClick={() => setSearchQuery("")}
-                    className="absolute right-2.5 top-1/2 -translate-y-1/2 p-1 text-[#8E99A6] hover:text-white"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 p-1 text-[#8E99A8] hover:text-white"
                   >
                     <X className="w-4 h-4" />
                   </button>
                 )}
               </div>
 
-              {/* Chips horizontales contenidos estrictamente dentro del ancho del teléfono */}
               {activeTab === "renta" && (
                 <div className="w-full max-w-full overflow-x-auto no-scrollbar flex items-center gap-1.5 pb-0.5 touch-pan-x">
                   <button
                     type="button"
                     onClick={() => setSelectedCategory("todos")}
-                    className={`shrink-0 px-3 py-1.5 text-xs font-semibold border transition-colors ${
+                    className={`shrink-0 px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all ${
                       selectedCategory === "todos"
-                        ? "bg-[#FF5F00] border-[#FF5F00] text-[#111316] font-bold"
-                        : "bg-storm-panel border-storm-border text-[#E5EAF0]"
+                        ? "bg-[#FF5F00] text-white shadow-sm shadow-[#FF5F00]/25"
+                        : "bg-[#1E232B] text-[#B8C2CE] border border-white/[0.06]"
                     }`}
                   >
                     Todos ({catalogProducts.length})
@@ -335,10 +332,10 @@ export default function BrontoAppPage() {
                       key={cat.id}
                       type="button"
                       onClick={() => setSelectedCategory(cat.id)}
-                      className={`shrink-0 px-3 py-1.5 text-xs font-semibold border transition-colors ${
+                      className={`shrink-0 px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all ${
                         selectedCategory === cat.id
-                          ? "bg-[#FF5F00] border-[#FF5F00] text-[#111316] font-bold"
-                          : "bg-storm-panel border-storm-border text-[#E5EAF0]"
+                          ? "bg-[#FF5F00] text-white shadow-sm shadow-[#FF5F00]/25"
+                          : "bg-[#1E232B] text-[#B8C2CE] border border-white/[0.06]"
                       }`}
                     >
                       {cat.shortName}
@@ -351,33 +348,34 @@ export default function BrontoAppPage() {
         </header>
 
         {/* ==================================================================
-            2. ÁREA DE SCROLL VERTICAL EXCLUSIVO (touch-pan-y, overflow-x-hidden)
+            2. CONTENIDO DESLIZABLE VERTICAL
             ================================================================== */}
         <div
-          className="flex-1 w-full min-w-0 overflow-y-auto overflow-x-hidden overscroll-y-contain px-3.5 py-3.5 space-y-3"
+          className="flex-1 w-full min-w-0 overflow-y-auto overflow-x-hidden overscroll-y-contain px-4 py-4 space-y-3"
           style={{
             paddingBottom:
               mounted && totalCount > 0 && (activeTab === "renta" || activeTab === "cursos")
-                ? "76px"
-                : "16px",
+                ? "84px"
+                : "20px",
           }}
         >
           {/* ----------------------------------------------------------------
-              VISTA 1: CATÁLOGO NATIVO DE EQUIPOS (TARJETAS COMPACTAS TÁCTILES)
+              VISTA 1: CATÁLOGO DE EQUIPOS (TARJETAS MODERNAS EN GRIS TORMENTA)
               ---------------------------------------------------------------- */}
           {activeTab === "renta" && (
             <>
-              <div className="flex items-center justify-between text-xs text-[#C4CCD4] px-0.5">
-                <span>
-                  <strong className="text-white">{filteredProducts.length}</strong> equipos en patio
+              <div className="flex items-center justify-between text-xs text-[#9BA5B4] px-0.5">
+                <span>{filteredProducts.length} equipos disponibles</span>
+                <span className="inline-flex items-center gap-1.5 text-emerald-400 font-medium">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                  {currentZoneObj.eta}
                 </span>
-                <span className="text-emerald-400 font-medium">{currentZoneObj.eta}</span>
               </div>
 
               {filteredProducts.length === 0 ? (
-                <div className="bg-matte border border-storm-border p-8 text-center space-y-3">
+                <div className="rounded-2xl bg-[#1E232B] border border-white/[0.06] p-8 text-center space-y-3">
                   <p className="text-sm font-semibold text-white">
-                    Sin resultados para &ldquo;{searchQuery}&rdquo;
+                    No encontramos &ldquo;{searchQuery}&rdquo;
                   </p>
                   <button
                     type="button"
@@ -385,13 +383,13 @@ export default function BrontoAppPage() {
                       setSearchQuery("");
                       setSelectedCategory("todos");
                     }}
-                    className="px-4 py-2 bg-[#FF5F00] text-[#111316] text-xs font-bold"
+                    className="px-4 py-2 rounded-full bg-[#FF5F00] text-white text-xs font-semibold"
                   >
-                    Mostrar toda la flota
+                    Ver todos los equipos
                   </button>
                 </div>
               ) : (
-                <div className="space-y-2.5">
+                <div className="space-y-3">
                   {filteredProducts.map((product) => {
                     const primaryImg =
                       product.images.find((img) => img.isPrimary)?.url ||
@@ -412,10 +410,10 @@ export default function BrontoAppPage() {
                         onKeyDown={(e) => {
                           if (e.key === "Enter") setSelectedProductSheet(product);
                         }}
-                        className="w-full min-w-0 bg-matte border border-storm-border active:border-[#FF5F00] p-3 flex items-stretch gap-3 cursor-pointer transition-colors"
+                        className="w-full min-w-0 rounded-2xl bg-[#1E232B] active:bg-[#252B35] border border-white/[0.07] p-3 flex items-center gap-3.5 cursor-pointer transition-colors"
                       >
-                        {/* Miniatura cuadrada nítida */}
-                        <div className="relative w-[96px] h-[96px] shrink-0 bg-matte-deep border border-matte-border overflow-hidden self-center">
+                        {/* Miniatura redondeada moderna */}
+                        <div className="relative w-[96px] h-[96px] shrink-0 rounded-xl bg-[#131518] overflow-hidden">
                           <Image
                             src={primaryImg}
                             alt={product.name}
@@ -425,59 +423,56 @@ export default function BrontoAppPage() {
                           />
                         </div>
 
-                        {/* Datos compactos y control táctil */}
+                        {/* Contenido */}
                         <div className="flex-1 min-w-0 flex flex-col justify-between">
                           <div className="min-w-0">
-                            <div className="flex items-center justify-between gap-1.5 text-[11px]">
-                              <span className="font-mono text-[#8E99A6] truncate">
-                                {product.sku}
-                              </span>
-                              <span className="text-emerald-400 font-medium shrink-0">Stock</span>
-                            </div>
+                            <span className="text-[11px] text-[#9BA5B4] block truncate">
+                              {product.subcategory}
+                            </span>
 
-                            <h3 className="font-display text-lg font-bold text-white leading-tight line-clamp-1 mt-0.5">
+                            <h3 className="text-[15px] font-bold text-white leading-snug line-clamp-1 mt-0.5">
                               {product.name}
                             </h3>
 
                             {mainSpec && (
-                              <p className="text-xs text-[#B8C1CC] truncate mt-0.5">
-                                {mainSpec.label}: {mainSpec.value}
-                              </p>
+                              <span className="inline-block mt-1 px-2 py-0.5 rounded-md bg-[#282F3A] text-[11px] text-[#C8D1DC] max-w-full truncate">
+                                {mainSpec.value}
+                              </span>
                             )}
                           </div>
 
-                          <div className="pt-2 mt-1.5 border-t border-matte-border flex items-center justify-between gap-2 min-w-0">
+                          <div className="mt-2.5 flex items-center justify-between gap-2 min-w-0">
                             <div className="min-w-0">
-                              <span className="font-mono text-sm font-bold text-[#FF5F00] tabular-nums block truncate">
+                              <span className="text-sm font-bold text-white tabular-nums block truncate">
                                 {formatCOP(product.pricing.basePrice)}
                               </span>
-                              <span className="text-[10px] text-[#8E99A6] block truncate">
-                                / {product.pricing.priceUnit}
+                              <span className="text-[10px] text-[#8E99A8] block truncate">
+                                / {product.pricing.priceUnit.split(" ")[0].toLowerCase()}
                               </span>
                             </div>
 
-                            {/* Stepper nativo si ya está en la orden, o botón Agregar */}
+                            {/* Stepper redondeado moderno */}
                             {qty > 0 ? (
                               <div
                                 onClick={(e) => e.stopPropagation()}
-                                className="shrink-0 flex items-center bg-matte-deep border border-[#FF5F00]"
+                                className="shrink-0 flex items-center rounded-full bg-[#282F3A] border border-[#FF5F00]/50 p-0.5"
                               >
                                 <button
                                   type="button"
                                   onClick={(e) => handleStepQty(product, -1, e)}
-                                  className="w-8 h-8 flex items-center justify-center text-white active:bg-storm-panel"
-                                  aria-label="Restar unidad"
+                                  className="w-7 h-7 rounded-full flex items-center justify-center text-white active:bg-white/10"
+                                  aria-label="Restar"
                                 >
                                   <Minus className="w-3.5 h-3.5" />
                                 </button>
-                                <span className="w-6 text-center text-xs font-mono font-bold text-[#FF5F00] tabular-nums">
+                                <span className="w-6 text-center text-xs font-bold text-[#FF5F00] tabular-nums">
                                   {qty}
                                 </span>
                                 <button
                                   type="button"
                                   onClick={(e) => handleStepQty(product, 1, e)}
-                                  className="w-8 h-8 flex items-center justify-center text-white active:bg-storm-panel"
-                                  aria-label="Sumar unidad"
+                                  className="w-7 h-7 rounded-full bg-[#FF5F00] flex items-center justify-center text-white"
+                                  aria-label="Sumar"
                                 >
                                   <Plus className="w-3.5 h-3.5" />
                                 </button>
@@ -486,7 +481,7 @@ export default function BrontoAppPage() {
                               <button
                                 type="button"
                                 onClick={(e) => handleQuickAdd(product, e)}
-                                className="shrink-0 h-8 px-3 bg-[#FF5F00] active:bg-[#E55500] text-[#111316] text-xs font-bold inline-flex items-center gap-1"
+                                className="shrink-0 h-8 px-3.5 rounded-full bg-[#FF5F00] active:bg-[#FF711A] text-white text-xs font-semibold inline-flex items-center gap-1 shadow-sm shadow-[#FF5F00]/25"
                               >
                                 <Plus className="w-3.5 h-3.5 stroke-[2.5]" />
                                 <span>Agregar</span>
@@ -506,43 +501,48 @@ export default function BrontoAppPage() {
               VISTA 2: ESCUELA DE OPERADORES
               ---------------------------------------------------------------- */}
           {activeTab === "cursos" && (
-            <div className="space-y-2.5">
-              <div className="bg-matte border-l-4 border-l-[#FF5F00] border-y border-r border-storm-border p-3.5">
-                <h2 className="font-display text-xl font-bold text-white">
-                  Escuela de Operadores BRONTO®
+            <div className="space-y-3">
+              <div
+                className="rounded-2xl bg-[#1E232B] border border-white/[0.08] p-4 space-y-1"
+                style={{
+                  backgroundImage:
+                    "radial-gradient(circle at 95% 10%, rgba(255,95,0,0.18), transparent 55%)",
+                }}
+              >
+                <span className="text-xs font-semibold text-[#FF5F00]">Academia BRONTO®</span>
+                <h2 className="text-lg font-bold text-white">
+                  Certificación práctica de operadores
                 </h2>
-                <p className="text-xs text-[#B8C1CC] mt-0.5 leading-relaxed">
-                  Certificación práctica en patio Calle 80 o en su frente de obra. Homologado para ARL e interventoría.
+                <p className="text-xs text-[#B8C2CE] leading-relaxed">
+                  Cursos en máquina real en Patio Calle 80 o en su proyecto, homologados para interventoría y ARL.
                 </p>
               </div>
 
               {filteredCourses.map((course) => (
                 <div
                   key={course.id}
-                  className="bg-matte border border-storm-border p-4 space-y-3 min-w-0"
+                  className="rounded-2xl bg-[#1E232B] border border-white/[0.07] p-4 space-y-3 min-w-0"
                 >
                   <div className="flex items-center justify-between gap-2 text-xs">
-                    <span className="px-2 py-0.5 bg-storm-panel border border-storm-border text-white font-semibold truncate">
+                    <span className="px-2.5 py-1 rounded-full bg-[#282F3A] text-white font-medium truncate">
                       {course.categoryLabel}
                     </span>
-                    <span className="inline-flex items-center gap-1 text-[#C4CCD4] font-mono shrink-0">
+                    <span className="inline-flex items-center gap-1 text-[#9BA5B4] shrink-0">
                       <Clock className="w-3.5 h-3.5 text-[#FF5F00]" />
                       {course.duration}
                     </span>
                   </div>
 
-                  <h3 className="font-display text-xl font-bold text-white leading-snug">
-                    {course.title}
-                  </h3>
+                  <h3 className="text-base font-bold text-white leading-snug">{course.title}</h3>
 
-                  <p className="text-xs text-[#B8C1CC] leading-relaxed line-clamp-2">
+                  <p className="text-xs text-[#9BA5B4] leading-relaxed line-clamp-2">
                     {course.summary}
                   </p>
 
-                  <div className="pt-2.5 border-t border-matte-border flex items-center justify-between gap-3">
+                  <div className="pt-2.5 border-t border-white/[0.06] flex items-center justify-between gap-3">
                     <div>
-                      <span className="text-[10px] text-[#8E99A6] block">Por operador</span>
-                      <span className="font-mono text-base font-bold text-[#FF5F00] tabular-nums">
+                      <span className="text-[10px] text-[#8E99A8] block">Por operador</span>
+                      <span className="text-base font-bold text-white tabular-nums">
                         {formatCOP(course.priceCOP)}
                       </span>
                     </div>
@@ -550,9 +550,9 @@ export default function BrontoAppPage() {
                     <button
                       type="button"
                       onClick={() => setSelectedCourseSheet(course)}
-                      className="px-3.5 py-2 bg-[#FF5F00] active:bg-[#E55500] text-[#111316] text-xs font-bold shrink-0"
+                      className="px-4 py-2 rounded-full bg-[#FF5F00] active:bg-[#FF711A] text-white text-xs font-semibold shadow-sm shadow-[#FF5F00]/25 shrink-0"
                     >
-                      Inscribir cuadrilla
+                      Inscribir
                     </button>
                   </div>
                 </div>
@@ -565,20 +565,16 @@ export default function BrontoAppPage() {
               ---------------------------------------------------------------- */}
           {activeTab === "pedido" && (
             <div className="space-y-3">
-              <div className="bg-matte border border-storm-border p-3.5 flex items-center justify-between">
+              <div className="flex items-center justify-between px-0.5">
                 <div>
-                  <h2 className="font-display text-2xl font-bold text-white leading-none">
-                    Orden de despacho
-                  </h2>
-                  <span className="text-xs text-[#B8C1CC] mt-1 block">
-                    Destino: {selectedCity}
-                  </span>
+                  <h2 className="text-xl font-bold text-white">Su orden</h2>
+                  <span className="text-xs text-[#9BA5B4]">Entrega en {selectedCity}</span>
                 </div>
                 {items.length > 0 && (
                   <button
                     type="button"
                     onClick={clearBasket}
-                    className="inline-flex items-center gap-1 text-xs text-rose-400 font-semibold px-2 py-1"
+                    className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-[#1E232B] text-xs text-rose-400 font-medium"
                   >
                     <Trash2 className="w-3.5 h-3.5" />
                     <span>Vaciar</span>
@@ -587,53 +583,55 @@ export default function BrontoAppPage() {
               </div>
 
               {items.length === 0 ? (
-                <div className="bg-matte border border-storm-border p-8 text-center space-y-3">
-                  <FileText className="w-10 h-10 text-[#8E99A6] mx-auto" />
-                  <p className="text-sm font-semibold text-white">Su orden está vacía</p>
-                  <p className="text-xs text-[#B8C1CC]">
-                    Agregue equipos desde la pestaña Equipos para calcular transporte y tarifas en tiempo real.
+                <div className="rounded-3xl bg-[#1E232B] border border-white/[0.07] p-8 text-center space-y-3">
+                  <div className="w-12 h-12 rounded-2xl bg-[#282F3A] flex items-center justify-center mx-auto text-[#9BA5B4]">
+                    <ShoppingBag className="w-6 h-6" />
+                  </div>
+                  <p className="text-base font-bold text-white">No hay equipos agregados</p>
+                  <p className="text-xs text-[#9BA5B4]">
+                    Seleccione maquinaria o materiales para ver el estimado con transporte en tiempo real.
                   </p>
                   <button
                     type="button"
                     onClick={() => setActiveTab("renta")}
-                    className="px-5 py-2.5 bg-[#FF5F00] text-[#111316] text-xs font-bold"
+                    className="px-5 py-2.5 rounded-full bg-[#FF5F00] text-white text-xs font-semibold"
                   >
                     Explorar equipos
                   </button>
                 </div>
               ) : (
                 <>
-                  <div className="space-y-2">
+                  <div className="space-y-2.5">
                     {items.map((item) => {
                       const calc = calculateItemTotal(item, requiresOperator);
                       return (
                         <div
                           key={item.product.id}
-                          className="bg-matte border border-storm-border p-3.5 space-y-2.5 min-w-0"
+                          className="rounded-2xl bg-[#1E232B] border border-white/[0.07] p-3.5 space-y-3 min-w-0"
                         >
                           <div className="flex items-start justify-between gap-2 min-w-0">
                             <div className="min-w-0">
-                              <span className="text-[11px] font-mono text-[#8E99A6] block">
+                              <span className="text-[11px] font-mono text-[#8E99A8] block">
                                 {item.product.sku}
                               </span>
-                              <h4 className="font-display text-lg font-bold text-white leading-tight truncate">
+                              <h4 className="text-sm font-bold text-white leading-snug truncate">
                                 {item.product.name}
                               </h4>
                             </div>
                             <button
                               type="button"
                               onClick={() => removeItem(item.product.id)}
-                              className="p-1 text-[#8E99A6] hover:text-rose-400 shrink-0"
+                              className="p-1 text-[#8E99A8] hover:text-rose-400 shrink-0"
                             >
                               <X className="w-4 h-4" />
                             </button>
                           </div>
 
-                          <div className="flex items-center justify-between gap-2 pt-2 border-t border-matte-border">
+                          <div className="flex items-center justify-between gap-2 pt-2 border-t border-white/[0.06]">
                             <select
                               value={item.estimatedDuration || "1 mes"}
                               onChange={(e) => updateDuration(item.product.id, e.target.value)}
-                              className="h-8 bg-matte-deep border border-storm-border text-white text-[14px] px-2 focus:outline-none"
+                              className="h-8 rounded-xl bg-[#131518] border border-white/[0.08] text-white text-[13px] px-2.5 focus:outline-none"
                             >
                               <option value="1 a 7 días">1 a 7 días</option>
                               <option value="15 días">15 días</option>
@@ -641,29 +639,29 @@ export default function BrontoAppPage() {
                               <option value="3 meses">3 meses</option>
                             </select>
 
-                            <div className="flex items-center bg-matte-deep border border-storm-border">
+                            <div className="flex items-center rounded-full bg-[#131518] border border-white/[0.08] p-0.5">
                               <button
                                 type="button"
                                 onClick={() =>
                                   updateQuantity(item.product.id, Math.max(1, item.quantity - 1))
                                 }
-                                className="w-8 h-8 flex items-center justify-center text-white"
+                                className="w-7 h-7 rounded-full flex items-center justify-center text-white"
                               >
                                 <Minus className="w-3.5 h-3.5" />
                               </button>
-                              <span className="w-6 text-center text-xs font-mono font-bold text-white tabular-nums">
+                              <span className="w-6 text-center text-xs font-bold text-white tabular-nums">
                                 {item.quantity}
                               </span>
                               <button
                                 type="button"
                                 onClick={() => updateQuantity(item.product.id, item.quantity + 1)}
-                                className="w-8 h-8 flex items-center justify-center text-white"
+                                className="w-7 h-7 rounded-full bg-[#282F3A] flex items-center justify-center text-white"
                               >
                                 <Plus className="w-3.5 h-3.5" />
                               </button>
                             </div>
 
-                            <span className="font-mono text-xs font-bold text-[#FF5F00] tabular-nums shrink-0">
+                            <span className="text-xs font-bold text-white tabular-nums shrink-0">
                               {formatCOP(calc.equipmentSubtotal)}
                             </span>
                           </div>
@@ -672,13 +670,13 @@ export default function BrontoAppPage() {
                     })}
                   </div>
 
-                  {/* Opciones logísticas y liquidación */}
-                  <div className="bg-matte border border-storm-border p-4 space-y-3">
+                  {/* Liquidación moderna */}
+                  <div className="rounded-3xl bg-[#1E232B] border border-white/[0.08] p-4 space-y-3.5">
                     <div className="space-y-2">
-                      <label className="flex items-center justify-between p-2.5 bg-matte-deep border border-matte-border cursor-pointer text-xs">
-                        <span className="flex items-center gap-2 text-white font-medium min-w-0">
+                      <label className="flex items-center justify-between p-3 rounded-2xl bg-[#14171C] border border-white/[0.06] cursor-pointer text-xs">
+                        <span className="flex items-center gap-2.5 text-white font-medium min-w-0">
                           <Truck className="w-4 h-4 text-[#FF5F00] shrink-0" />
-                          <span className="truncate">Cama baja ({selectedCity})</span>
+                          <span className="truncate">Transporte cama baja ({selectedCity})</span>
                         </span>
                         <input
                           type="checkbox"
@@ -688,8 +686,8 @@ export default function BrontoAppPage() {
                         />
                       </label>
 
-                      <label className="flex items-center justify-between p-2.5 bg-matte-deep border border-matte-border cursor-pointer text-xs">
-                        <span className="flex items-center gap-2 text-white font-medium min-w-0">
+                      <label className="flex items-center justify-between p-3 rounded-2xl bg-[#14171C] border border-white/[0.06] cursor-pointer text-xs">
+                        <span className="flex items-center gap-2.5 text-white font-medium min-w-0">
                           <HardHat className="w-4 h-4 text-[#FF5F00] shrink-0" />
                           <span className="truncate">Incluir operador certificado</span>
                         </span>
@@ -702,40 +700,40 @@ export default function BrontoAppPage() {
                       </label>
                     </div>
 
-                    <div className="divide-y divide-matte-border border-y border-matte-border text-xs">
-                      <div className="py-2 flex justify-between">
-                        <span className="text-[#B8C1CC]">Equipos ({totalCount})</span>
-                        <span className="font-mono text-white tabular-nums">
+                    <div className="space-y-2 pt-1 text-xs">
+                      <div className="flex justify-between text-[#9BA5B4]">
+                        <span>Subtotal equipos ({totalCount})</span>
+                        <span className="text-white font-medium tabular-nums">
                           {formatCOP(quoteSummary.equipmentTotal)}
                         </span>
                       </div>
                       {requiresTransport && (
-                        <div className="py-2 flex justify-between">
-                          <span className="text-[#B8C1CC]">Transporte estimado</span>
-                          <span className="font-mono text-white tabular-nums">
+                        <div className="flex justify-between text-[#9BA5B4]">
+                          <span>Transporte estimado</span>
+                          <span className="text-white font-medium tabular-nums">
                             {formatCOP(quoteSummary.transportTotal)}
                           </span>
                         </div>
                       )}
                       {requiresOperator && quoteSummary.operatorTotal > 0 && (
-                        <div className="py-2 flex justify-between">
-                          <span className="text-[#B8C1CC]">Operador certificado</span>
-                          <span className="font-mono text-white tabular-nums">
+                        <div className="flex justify-between text-[#9BA5B4]">
+                          <span>Operador certificado</span>
+                          <span className="text-white font-medium tabular-nums">
                             {formatCOP(quoteSummary.operatorTotal)}
                           </span>
                         </div>
                       )}
-                      <div className="py-2 flex justify-between">
-                        <span className="text-[#B8C1CC]">IVA (19%)</span>
-                        <span className="font-mono text-white tabular-nums">
+                      <div className="flex justify-between text-[#9BA5B4]">
+                        <span>IVA (19%)</span>
+                        <span className="text-white font-medium tabular-nums">
                           {formatCOP(quoteSummary.taxAmount)}
                         </span>
                       </div>
                     </div>
 
-                    <div className="flex items-baseline justify-between">
+                    <div className="pt-3 border-t border-white/[0.08] flex items-baseline justify-between">
                       <span className="text-sm font-bold text-white">Total estimado</span>
-                      <span className="font-mono text-xl font-bold text-[#FF5F00] tabular-nums">
+                      <span className="text-xl font-extrabold text-[#FF5F00] tabular-nums">
                         {formatCOP(quoteSummary.grandTotal)}
                       </span>
                     </div>
@@ -743,10 +741,10 @@ export default function BrontoAppPage() {
                     <button
                       type="button"
                       onClick={handleCheckoutWhatsApp}
-                      className="w-full py-3.5 bg-[#FF5F00] active:bg-[#E55500] text-[#111316] font-bold text-sm flex items-center justify-center gap-2"
+                      className="w-full py-3.5 rounded-2xl bg-[#FF5F00] active:bg-[#FF711A] text-white font-semibold text-sm shadow-lg shadow-[#FF5F00]/25 flex items-center justify-center gap-2"
                     >
                       <MessageCircle className="w-4 h-4" />
-                      <span>Enviar orden a despacho</span>
+                      <span>Confirmar por WhatsApp</span>
                     </button>
                   </div>
                 </>
@@ -755,20 +753,18 @@ export default function BrontoAppPage() {
           )}
 
           {/* ----------------------------------------------------------------
-              VISTA 4: PATIO Y CONTACTO
+              VISTA 4: PATIO Y SOPORTE
               ---------------------------------------------------------------- */}
           {activeTab === "cuenta" && (
             <div className="space-y-3">
-              <div className="bg-matte border border-storm-border p-4 flex items-center gap-3.5">
-                <div className="relative w-14 h-14 border border-storm-border bg-[#16181B] shrink-0 overflow-hidden">
+              <div className="rounded-3xl bg-[#1E232B] border border-white/[0.07] p-4 flex items-center gap-3.5">
+                <div className="relative w-14 h-14 rounded-2xl border border-white/[0.1] bg-[#16181B] shrink-0 overflow-hidden">
                   <Image src="/icons/icon-192-v3.png" alt="BRONTO®" fill className="object-cover" />
                 </div>
                 <div className="min-w-0">
-                  <h2 className="font-display text-2xl font-bold text-white leading-tight">
-                    BRONTO® App de Obra
-                  </h2>
-                  <p className="text-xs text-[#B8C1CC] mt-0.5">
-                    Renta directa de maquinaria y formación técnica en Bogotá y Sabana.
+                  <h2 className="text-lg font-bold text-white">BRONTO® App</h2>
+                  <p className="text-xs text-[#9BA5B4] mt-0.5">
+                    Renta de maquinaria y certificaciones técnicas en Bogotá y Sabana.
                   </p>
                 </div>
               </div>
@@ -777,60 +773,60 @@ export default function BrontoAppPage() {
                 <button
                   type="button"
                   onClick={handleInstallClick}
-                  className="w-full p-4 bg-[#FF5F00] active:bg-[#E55500] text-[#111316] flex items-center justify-between font-bold text-sm"
+                  className="w-full p-4 rounded-2xl bg-[#FF5F00] active:bg-[#FF711A] text-white flex items-center justify-between font-semibold text-sm shadow-lg shadow-[#FF5F00]/20"
                 >
                   <span className="flex items-center gap-2.5">
                     <Download className="w-4 h-4 stroke-[2.5]" />
-                    <span>Instalar aplicación en este teléfono</span>
+                    <span>Agregar a pantalla de inicio</span>
                   </span>
                   <ChevronRight className="w-4 h-4" />
                 </button>
               )}
 
-              <div className="bg-matte border border-storm-border divide-y divide-matte-border text-sm">
+              <div className="rounded-3xl bg-[#1E232B] border border-white/[0.07] divide-y divide-white/[0.06] overflow-hidden text-sm">
                 <a
                   href={`tel:${siteConfig.contact.phoneFormatted}`}
-                  className="p-4 flex items-center justify-between active:bg-storm-panel"
+                  className="p-4 flex items-center justify-between active:bg-[#262C36]"
                 >
                   <span className="flex items-center gap-3 text-white font-medium">
                     <Phone className="w-4 h-4 text-[#FF5F00] shrink-0" />
                     <span>Llamar a patio ({siteConfig.contact.phone})</span>
                   </span>
-                  <ChevronRight className="w-4 h-4 text-[#8E99A6]" />
+                  <ChevronRight className="w-4 h-4 text-[#8E99A8]" />
                 </a>
 
                 <a
                   href={`https://wa.me/${siteConfig.contact.whatsapp}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-4 flex items-center justify-between active:bg-storm-panel"
+                  className="p-4 flex items-center justify-between active:bg-[#262C36]"
                 >
                   <span className="flex items-center gap-3 text-white font-medium">
                     <MessageCircle className="w-4 h-4 text-[#FF5F00] shrink-0" />
-                    <span>WhatsApp soporte de obra</span>
+                    <span>Soporte directo por WhatsApp</span>
                   </span>
-                  <ChevronRight className="w-4 h-4 text-[#8E99A6]" />
+                  <ChevronRight className="w-4 h-4 text-[#8E99A8]" />
                 </a>
 
                 <a
                   href="https://maps.google.com/?q=Bogota+Calle+80+Siberia"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-4 flex items-center justify-between active:bg-storm-panel"
+                  className="p-4 flex items-center justify-between active:bg-[#262C36]"
                 >
                   <span className="flex items-center gap-3 text-white font-medium">
                     <MapPin className="w-4 h-4 text-[#FF5F00] shrink-0" />
-                    <span>Patio Central Calle 80 / Siberia</span>
+                    <span>Ubicación Calle 80 / Siberia</span>
                   </span>
-                  <ExternalLink className="w-4 h-4 text-[#8E99A6]" />
+                  <ExternalLink className="w-4 h-4 text-[#8E99A8]" />
                 </a>
 
                 <Link
                   href="/"
-                  className="p-4 flex items-center justify-between active:bg-storm-panel text-[#C4CCD4]"
+                  className="p-4 flex items-center justify-between active:bg-[#262C36] text-[#B8C2CE]"
                 >
-                  <span>Abrir sitio web de escritorio</span>
-                  <ExternalLink className="w-4 h-4 text-[#8E99A6]" />
+                  <span>Ir a la web principal</span>
+                  <ExternalLink className="w-4 h-4 text-[#8E99A8]" />
                 </Link>
               </div>
             </div>
@@ -838,22 +834,22 @@ export default function BrontoAppPage() {
         </div>
 
         {/* ==================================================================
-            3. BARRA FLOTANTE DE ORDEN ACTIVA (ESTILO APP NATIVA DE PEDIDOS)
+            3. PÍLDORA FLOTANTE DE ORDEN ACTIVA (ESTILO UBER / RAPPI)
             ================================================================== */}
         {mounted && totalCount > 0 && (activeTab === "renta" || activeTab === "cursos") && (
-          <div className="absolute bottom-[68px] left-3.5 right-3.5 z-30">
+          <div className="absolute bottom-[74px] left-4 right-4 z-30">
             <button
               type="button"
               onClick={() => setActiveTab("pedido")}
-              className="w-full h-12 px-4 bg-[#FF5F00] active:bg-[#E55500] text-[#111316] shadow-2xl flex items-center justify-between font-bold text-sm"
+              className="w-full h-13 py-3 px-4 rounded-2xl bg-[#FF5F00] active:bg-[#FF711A] text-white shadow-2xl shadow-black/60 flex items-center justify-between font-semibold text-sm"
             >
-              <div className="flex items-center gap-2 min-w-0">
-                <span className="px-2 py-0.5 bg-[#111316] text-white font-mono text-xs tabular-nums">
+              <div className="flex items-center gap-2.5 min-w-0">
+                <span className="min-w-[24px] h-6 px-1.5 rounded-full bg-black/25 text-white text-xs font-bold flex items-center justify-center tabular-nums">
                   {totalCount}
                 </span>
-                <span className="truncate">Ver orden de despacho</span>
+                <span className="truncate">Ver orden</span>
               </div>
-              <span className="font-mono text-sm tabular-nums shrink-0">
+              <span className="font-bold text-sm tabular-nums shrink-0">
                 {formatCOP(quoteSummary.equipmentTotal)}
               </span>
             </button>
@@ -861,18 +857,18 @@ export default function BrontoAppPage() {
         )}
 
         {/* ==================================================================
-            4. NATIVE BOTTOM TAB BAR FIJA (SIEMPRE VISIBLE EN EL SHELL)
+            4. NATIVE GLASS BOTTOM TAB BAR
             ================================================================== */}
         <nav
-          aria-label="Navegación de la aplicación"
-          className="shrink-0 w-full bg-matte border-t border-storm-border grid grid-cols-4 z-30"
+          aria-label="Navegación inferior"
+          className="shrink-0 w-full bg-[#131518]/92 backdrop-blur-2xl border-t border-white/[0.07] grid grid-cols-4 z-30 pt-1.5"
           style={{ paddingBottom: "max(8px, env(safe-area-inset-bottom, 8px))" }}
         >
           {(
             [
               { id: "renta", label: "Equipos", Icon: HardHat },
-              { id: "cursos", label: "Cursos", Icon: GraduationCap },
-              { id: "pedido", label: "Orden", Icon: FileText, badge: mounted ? totalCount : 0 },
+              { id: "cursos", label: "Academia", Icon: GraduationCap },
+              { id: "pedido", label: "Orden", Icon: ShoppingBag, badge: mounted ? totalCount : 0 },
               { id: "cuenta", label: "Patio", Icon: Phone },
             ] as { id: AppTab; label: string; Icon: React.ElementType; badge?: number }[]
           ).map(({ id, label, Icon, badge }) => {
@@ -882,17 +878,14 @@ export default function BrontoAppPage() {
                 key={id}
                 type="button"
                 onClick={() => setActiveTab(id)}
-                className={`relative pt-2 pb-1 flex flex-col items-center justify-center gap-1 text-[11px] font-semibold transition-colors ${
-                  active ? "text-[#FF5F00]" : "text-[#B8C1CC]"
+                className={`py-1 flex flex-col items-center justify-center gap-1 text-[11px] font-medium transition-colors ${
+                  active ? "text-[#FF5F00]" : "text-[#8E99A8]"
                 }`}
               >
-                {active && (
-                  <span className="absolute top-0 left-4 right-4 h-0.5 bg-[#FF5F00]" />
-                )}
                 <div className="relative">
                   <Icon className="w-5 h-5" />
                   {badge && badge > 0 ? (
-                    <span className="absolute -top-1.5 -right-2.5 min-w-[16px] h-4 px-1 bg-[#FF5F00] text-[#111316] text-[10px] font-mono font-bold flex items-center justify-center tabular-nums">
+                    <span className="absolute -top-1.5 -right-2.5 min-w-[16px] h-4 px-1 rounded-full bg-[#FF5F00] text-white text-[10px] font-bold flex items-center justify-center tabular-nums">
                       {badge}
                     </span>
                   ) : null}
@@ -904,33 +897,31 @@ export default function BrontoAppPage() {
         </nav>
 
         {/* ==================================================================
-            BOTTOM SHEET 1: SELECTOR DE FRENTE DE OBRA
+            SHEET 1: UBICACIÓN DE OBRA
             ================================================================== */}
         {showZoneSheet && (
           <div
             onClick={() => setShowZoneSheet(false)}
-            className="absolute inset-0 z-50 bg-black/75 flex flex-col justify-end"
+            className="absolute inset-0 z-50 bg-black/70 backdrop-blur-xs flex flex-col justify-end"
           >
             <div
               onClick={(e) => e.stopPropagation()}
-              className="w-full bg-matte border-t-2 border-[#FF5F00] p-5 space-y-3"
-              style={{ paddingBottom: "max(20px, env(safe-area-inset-bottom, 20px))" }}
+              className="w-full rounded-t-[28px] bg-[#1C2027] border-t border-white/[0.1] p-5 space-y-4"
+              style={{ paddingBottom: "max(22px, env(safe-area-inset-bottom, 22px))" }}
             >
-              <div className="w-10 h-1 bg-storm-border mx-auto mb-1" />
+              <div className="w-10 h-1 rounded-full bg-white/20 mx-auto" />
               <div className="flex items-center justify-between">
-                <h3 className="font-display text-2xl font-bold text-white">
-                  Ubicación de su obra
-                </h3>
+                <h3 className="text-lg font-bold text-white">Ubicación de entrega</h3>
                 <button
                   type="button"
                   onClick={() => setShowZoneSheet(false)}
-                  className="p-1 text-[#B8C1CC]"
+                  className="w-8 h-8 rounded-full bg-white/[0.07] flex items-center justify-center text-[#B8C2CE]"
                 >
-                  <X className="w-5 h-5" />
+                  <X className="w-4 h-4" />
                 </button>
               </div>
 
-              <div className="divide-y divide-matte-border border-y border-matte-border">
+              <div className="space-y-1.5">
                 {DELIVERY_ZONES.map((z) => {
                   const selected = selectedCity === z.id;
                   return (
@@ -941,7 +932,11 @@ export default function BrontoAppPage() {
                         setSelectedCity(z.id);
                         setShowZoneSheet(false);
                       }}
-                      className="w-full py-3 flex items-center justify-between text-left"
+                      className={`w-full px-4 py-3 rounded-2xl flex items-center justify-between text-left transition-colors ${
+                        selected
+                          ? "bg-[#FF5F00]/15 border border-[#FF5F00]/40"
+                          : "bg-[#14171C] border border-white/[0.05]"
+                      }`}
                     >
                       <div>
                         <span
@@ -951,7 +946,7 @@ export default function BrontoAppPage() {
                         >
                           {z.label}
                         </span>
-                        <span className="text-xs text-[#8E99A6]">{z.eta}</span>
+                        <span className="text-xs text-[#8E99A8]">{z.eta}</span>
                       </div>
                       {selected && <Check className="w-4 h-4 text-[#FF5F00]" />}
                     </button>
@@ -963,33 +958,33 @@ export default function BrontoAppPage() {
         )}
 
         {/* ==================================================================
-            BOTTOM SHEET 2: FICHA TÉCNICA DE EQUIPO
+            SHEET 2: DETALLE DE EQUIPO
             ================================================================== */}
         {selectedProductSheet && (
           <div
             onClick={() => setSelectedProductSheet(null)}
-            className="absolute inset-0 z-50 bg-black/75 flex flex-col justify-end"
+            className="absolute inset-0 z-50 bg-black/70 backdrop-blur-xs flex flex-col justify-end"
           >
             <div
               onClick={(e) => e.stopPropagation()}
-              className="w-full max-h-[88dvh] bg-matte border-t-2 border-[#FF5F00] flex flex-col overflow-hidden"
-              style={{ paddingBottom: "max(16px, env(safe-area-inset-bottom, 16px))" }}
+              className="w-full max-h-[88dvh] rounded-t-[28px] bg-[#1C2027] border-t border-white/[0.1] flex flex-col overflow-hidden"
+              style={{ paddingBottom: "max(18px, env(safe-area-inset-bottom, 18px))" }}
             >
-              <div className="shrink-0 px-4 pt-3 pb-2.5 border-b border-matte-border flex items-center justify-between">
-                <span className="font-mono text-xs text-[#FF5F00] font-semibold">
-                  {selectedProductSheet.sku} · {selectedProductSheet.subcategory}
+              <div className="pt-3 pb-2 px-5 flex items-center justify-between">
+                <span className="text-xs font-mono text-[#9BA5B4]">
+                  {selectedProductSheet.sku}
                 </span>
                 <button
                   type="button"
                   onClick={() => setSelectedProductSheet(null)}
-                  className="p-1 text-[#B8C1CC]"
+                  className="w-8 h-8 rounded-full bg-white/[0.07] flex items-center justify-center text-[#B8C2CE]"
                 >
-                  <X className="w-5 h-5" />
+                  <X className="w-4 h-4" />
                 </button>
               </div>
 
-              <div className="flex-1 overflow-y-auto p-4 space-y-4">
-                <div className="relative aspect-[16/10] bg-matte-deep border border-matte-border overflow-hidden">
+              <div className="flex-1 overflow-y-auto px-5 pb-4 space-y-4">
+                <div className="relative aspect-[16/10] rounded-2xl bg-[#131518] overflow-hidden">
                   <Image
                     src={selectedProductSheet.images[0]?.url || "/brand/bronto-logo.png"}
                     alt={selectedProductSheet.name}
@@ -1000,26 +995,26 @@ export default function BrontoAppPage() {
                 </div>
 
                 <div>
-                  <h3 className="font-display text-2xl font-bold text-white leading-tight">
+                  <h3 className="text-xl font-bold text-white leading-snug">
                     {selectedProductSheet.name}
                   </h3>
-                  <p className="text-xs text-[#C4CCD4] mt-1.5 leading-relaxed">
+                  <p className="text-xs text-[#B8C2CE] mt-1.5 leading-relaxed">
                     {selectedProductSheet.shortDescription}
                   </p>
                 </div>
 
-                <div className="divide-y divide-matte-border border-y border-matte-border text-xs">
+                <div className="rounded-2xl bg-[#14171C] border border-white/[0.06] divide-y divide-white/[0.05] px-4 text-xs">
                   {selectedProductSheet.specifications.map((spec, idx) => (
-                    <div key={idx} className="py-2 flex justify-between gap-3">
-                      <span className="text-[#8E99A6]">{spec.label}</span>
-                      <span className="font-mono text-white text-right">{spec.value}</span>
+                    <div key={idx} className="py-2.5 flex justify-between gap-3">
+                      <span className="text-[#8E99A8]">{spec.label}</span>
+                      <span className="font-semibold text-white text-right">{spec.value}</span>
                     </div>
                   ))}
                 </div>
 
                 <div>
                   <span className="text-xs font-semibold text-white block mb-2">
-                    Plazo estimado de alquiler
+                    Periodo estimado
                   </span>
                   <div className="grid grid-cols-3 gap-2">
                     {["1 a 7 días", "15 días", "1 mes"].map((dur) => (
@@ -1027,10 +1022,10 @@ export default function BrontoAppPage() {
                         key={dur}
                         type="button"
                         onClick={() => setSheetDuration(dur)}
-                        className={`py-2 text-xs font-semibold border ${
+                        className={`py-2.5 rounded-xl text-xs font-semibold transition-colors ${
                           sheetDuration === dur
-                            ? "bg-[#FF5F00] border-[#FF5F00] text-[#111316] font-bold"
-                            : "bg-storm-panel border-storm-border text-white"
+                            ? "bg-[#FF5F00] text-white"
+                            : "bg-[#14171C] border border-white/[0.07] text-[#C8D1DC]"
                         }`}
                       >
                         {dur}
@@ -1040,10 +1035,10 @@ export default function BrontoAppPage() {
                 </div>
               </div>
 
-              <div className="shrink-0 px-4 pt-3 border-t border-matte-border flex items-center justify-between gap-3">
+              <div className="shrink-0 px-5 pt-3 border-t border-white/[0.07] flex items-center justify-between gap-4">
                 <div>
-                  <span className="text-[11px] text-[#8E99A6] block">Tarifa base</span>
-                  <span className="font-mono text-lg font-bold text-[#FF5F00] tabular-nums">
+                  <span className="text-[11px] text-[#8E99A8] block">Tarifa base</span>
+                  <span className="text-lg font-bold text-white tabular-nums">
                     {formatCOP(selectedProductSheet.pricing.basePrice)}
                   </span>
                 </div>
@@ -1059,7 +1054,7 @@ export default function BrontoAppPage() {
                     showToast(`Agregado: ${selectedProductSheet.name}`);
                     setSelectedProductSheet(null);
                   }}
-                  className="flex-1 py-3 bg-[#FF5F00] active:bg-[#E55500] text-[#111316] font-bold text-sm"
+                  className="flex-1 py-3.5 rounded-2xl bg-[#FF5F00] active:bg-[#FF711A] text-white font-semibold text-sm shadow-lg shadow-[#FF5F00]/25"
                 >
                   Agregar a la orden
                 </button>
@@ -1069,99 +1064,81 @@ export default function BrontoAppPage() {
         )}
 
         {/* ==================================================================
-            BOTTOM SHEET 3: INSCRIPCIÓN DE CURSO
+            SHEET 3: INSCRIPCIÓN DE CURSO
             ================================================================== */}
         {selectedCourseSheet && (
           <div
             onClick={() => setSelectedCourseSheet(null)}
-            className="absolute inset-0 z-50 bg-black/75 flex flex-col justify-end"
+            className="absolute inset-0 z-50 bg-black/70 backdrop-blur-xs flex flex-col justify-end"
           >
             <div
               onClick={(e) => e.stopPropagation()}
-              className="w-full max-h-[88dvh] bg-matte border-t-2 border-[#FF5F00] p-4 space-y-3 overflow-y-auto"
-              style={{ paddingBottom: "max(20px, env(safe-area-inset-bottom, 20px))" }}
+              className="w-full max-h-[88dvh] rounded-t-[28px] bg-[#1C2027] border-t border-white/[0.1] p-5 space-y-4 overflow-y-auto"
+              style={{ paddingBottom: "max(22px, env(safe-area-inset-bottom, 22px))" }}
             >
-              <div className="flex items-center justify-between pb-2 border-b border-matte-border">
-                <span className="text-xs font-semibold text-[#FF5F00]">
-                  Inscripción Escuela de Operadores
-                </span>
+              <div className="flex items-center justify-between">
+                <span className="text-xs font-semibold text-[#FF5F00]">Academia BRONTO®</span>
                 <button
                   type="button"
                   onClick={() => setSelectedCourseSheet(null)}
-                  className="p-1 text-[#B8C1CC]"
+                  className="w-8 h-8 rounded-full bg-white/[0.07] flex items-center justify-center text-[#B8C2CE]"
                 >
-                  <X className="w-5 h-5" />
+                  <X className="w-4 h-4" />
                 </button>
               </div>
 
               <div>
-                <h3 className="font-display text-2xl font-bold text-white leading-tight">
+                <h3 className="text-lg font-bold text-white leading-snug">
                   {selectedCourseSheet.title}
                 </h3>
-                <p className="text-xs text-[#B8C1CC] mt-1">
+                <p className="text-xs text-[#9BA5B4] mt-1">
                   {selectedCourseSheet.duration} · {formatCOP(selectedCourseSheet.priceCOP)} / operador
                 </p>
               </div>
 
               <form onSubmit={handleCourseSubmit} className="space-y-3">
-                <div>
-                  <label className="block text-xs text-[#C4CCD4] font-medium mb-1">
-                    Nombre del responsable
-                  </label>
+                <input
+                  type="text"
+                  required
+                  placeholder="Nombre del responsable"
+                  value={courseForm.name}
+                  onChange={(e) => setCourseForm({ ...courseForm, name: e.target.value })}
+                  className="w-full h-12 px-4 rounded-xl bg-[#131518] border border-white/[0.08] text-[16px] text-white placeholder-[#8E99A8] focus:border-[#FF5F00] focus:outline-none"
+                />
+                <input
+                  type="tel"
+                  required
+                  placeholder="Teléfono celular"
+                  value={courseForm.phone}
+                  onChange={(e) => setCourseForm({ ...courseForm, phone: e.target.value })}
+                  className="w-full h-12 px-4 rounded-xl bg-[#131518] border border-white/[0.08] text-[16px] text-white placeholder-[#8E99A8] focus:border-[#FF5F00] focus:outline-none"
+                />
+                <div className="grid grid-cols-2 gap-2.5">
                   <input
                     type="text"
-                    required
-                    value={courseForm.name}
-                    onChange={(e) => setCourseForm({ ...courseForm, name: e.target.value })}
-                    className="w-full h-11 px-3 bg-matte-deep border border-storm-border text-[16px] text-white rounded-none focus:border-[#FF5F00] focus:outline-none"
+                    placeholder="Constructora"
+                    value={courseForm.company}
+                    onChange={(e) => setCourseForm({ ...courseForm, company: e.target.value })}
+                    className="w-full h-12 px-4 rounded-xl bg-[#131518] border border-white/[0.08] text-[16px] text-white placeholder-[#8E99A8] focus:border-[#FF5F00] focus:outline-none"
                   />
-                </div>
-                <div>
-                  <label className="block text-xs text-[#C4CCD4] font-medium mb-1">
-                    Teléfono celular
-                  </label>
                   <input
-                    type="tel"
-                    required
-                    value={courseForm.phone}
-                    onChange={(e) => setCourseForm({ ...courseForm, phone: e.target.value })}
-                    className="w-full h-11 px-3 bg-matte-deep border border-storm-border text-[16px] text-white rounded-none focus:border-[#FF5F00] focus:outline-none"
+                    type="number"
+                    min="1"
+                    max="50"
+                    placeholder="Operadores"
+                    value={courseForm.traineesCount}
+                    onChange={(e) =>
+                      setCourseForm({ ...courseForm, traineesCount: e.target.value })
+                    }
+                    className="w-full h-12 px-4 rounded-xl bg-[#131518] border border-white/[0.08] text-[16px] text-white placeholder-[#8E99A8] focus:border-[#FF5F00] focus:outline-none"
                   />
-                </div>
-                <div className="grid grid-cols-2 gap-2.5">
-                  <div>
-                    <label className="block text-xs text-[#C4CCD4] font-medium mb-1">
-                      Empresa
-                    </label>
-                    <input
-                      type="text"
-                      value={courseForm.company}
-                      onChange={(e) => setCourseForm({ ...courseForm, company: e.target.value })}
-                      className="w-full h-11 px-3 bg-matte-deep border border-storm-border text-[16px] text-white rounded-none focus:border-[#FF5F00] focus:outline-none"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-xs text-[#C4CCD4] font-medium mb-1">
-                      Operadores
-                    </label>
-                    <input
-                      type="number"
-                      min="1"
-                      max="50"
-                      value={courseForm.traineesCount}
-                      onChange={(e) =>
-                        setCourseForm({ ...courseForm, traineesCount: e.target.value })
-                      }
-                      className="w-full h-11 px-3 bg-matte-deep border border-storm-border text-[16px] text-white rounded-none focus:border-[#FF5F00] focus:outline-none"
-                    />
-                  </div>
                 </div>
 
                 <button
                   type="submit"
-                  className="w-full py-3.5 bg-[#FF5F00] active:bg-[#E55500] text-[#111316] font-bold text-sm"
+                  className="w-full py-3.5 rounded-2xl bg-[#FF5F00] active:bg-[#FF711A] text-white font-semibold text-sm shadow-lg shadow-[#FF5F00]/25"
                 >
-                  Confirmar cupos por WhatsApp
+                  Solicitar cupos por WhatsApp
                 </button>
               </form>
             </div>
@@ -1169,64 +1146,61 @@ export default function BrontoAppPage() {
         )}
 
         {/* ==================================================================
-            BOTTOM SHEET 4: INSTALACIÓN EN PANTALLA DE INICIO
+            SHEET 4: INSTALAR APP EN INICIO
             ================================================================== */}
         {showInstallSheet && (
           <div
             onClick={() => setShowInstallSheet(false)}
-            className="absolute inset-0 z-50 bg-black/75 flex flex-col justify-end"
+            className="absolute inset-0 z-50 bg-black/70 backdrop-blur-xs flex flex-col justify-end"
           >
             <div
               onClick={(e) => e.stopPropagation()}
-              className="w-full bg-matte border-t-2 border-[#FF5F00] p-5 space-y-4"
-              style={{ paddingBottom: "max(20px, env(safe-area-inset-bottom, 20px))" }}
+              className="w-full rounded-t-[28px] bg-[#1C2027] border-t border-white/[0.1] p-5 space-y-4"
+              style={{ paddingBottom: "max(22px, env(safe-area-inset-bottom, 22px))" }}
             >
+              <div className="w-10 h-1 rounded-full bg-white/20 mx-auto" />
               <div className="flex items-center justify-between">
-                <span className="text-xs font-bold text-[#FF5F00]">Instalar BRONTO®</span>
+                <div className="flex items-center gap-3">
+                  <div className="relative w-14 h-14 rounded-2xl border border-white/[0.1] bg-[#16181B] overflow-hidden shrink-0">
+                    <Image src="/icons/icon-192-v3.png" alt="BRONTO®" fill className="object-cover" />
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-bold text-white">Instalar BRONTO®</h3>
+                    <p className="text-xs text-[#9BA5B4]">Acceso rápido desde su inicio</p>
+                  </div>
+                </div>
                 <button
                   type="button"
                   onClick={() => setShowInstallSheet(false)}
-                  className="p-1 text-[#B8C1CC]"
+                  className="w-8 h-8 rounded-full bg-white/[0.07] flex items-center justify-center text-[#B8C2CE]"
                 >
-                  <X className="w-5 h-5" />
+                  <X className="w-4 h-4" />
                 </button>
               </div>
 
-              <div className="flex items-center gap-3.5">
-                <div className="relative w-16 h-16 border border-storm-border bg-[#16181B] shrink-0 overflow-hidden">
-                  <Image src="/icons/icon-192-v3.png" alt="BRONTO®" fill className="object-cover" />
-                </div>
-                <div>
-                  <h3 className="font-display text-2xl font-bold text-white">BRONTO®</h3>
-                  <p className="text-xs text-[#B8C1CC]">
-                    Acceso directo desde su pantalla principal como aplicación nativa.
-                  </p>
-                </div>
-              </div>
-
               {isIOS ? (
-                <div className="bg-matte-deep border border-matte-border p-3.5 text-xs space-y-1.5 text-[#E5EAF0]">
+                <div className="rounded-2xl bg-[#14171C] border border-white/[0.06] p-4 text-xs space-y-2 text-[#E2E8F0]">
                   <strong className="text-[#FF5F00] flex items-center gap-1.5">
                     <Smartphone className="w-4 h-4" />
                     En iPhone / Safari:
                   </strong>
                   <p>
                     1. Toque <strong>Compartir</strong>{" "}
-                    <Share2 className="w-3.5 h-3.5 inline text-[#FF5F00]" /> en la barra de Safari.
+                    <Share2 className="w-3.5 h-3.5 inline text-[#FF5F00]" /> en la barra inferior.
                   </p>
                   <p>
-                    2. Elija <strong>Agregar a inicio</strong> y pulse Agregar.
+                    2. Seleccione <strong>Agregar a inicio</strong>.
                   </p>
                 </div>
               ) : (
-                <div className="bg-matte-deep border border-matte-border p-3.5 text-xs space-y-1.5 text-[#E5EAF0]">
+                <div className="rounded-2xl bg-[#14171C] border border-white/[0.06] p-4 text-xs space-y-2 text-[#E2E8F0]">
                   <strong className="text-[#FF5F00] flex items-center gap-1.5">
                     <Smartphone className="w-4 h-4" />
                     En Android / Chrome:
                   </strong>
-                  <p>1. Toque el menú de tres puntos arriba a la derecha.</p>
+                  <p>1. Abra el menú superior de tres puntos.</p>
                   <p>
-                    2. Seleccione <strong>Instalar aplicación</strong>.
+                    2. Toque <strong>Instalar aplicación</strong>.
                   </p>
                 </div>
               )}

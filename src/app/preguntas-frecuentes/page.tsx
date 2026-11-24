@@ -37,13 +37,13 @@ export default function FAQPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
 
-      <div className="py-8 sm:py-10 pb-20 bg-storm min-h-screen text-white">
+      <div className="py-8 sm:py-10 pb-20 bg-[#131518] min-h-screen text-white">
         <div className="w-full px-6 sm:px-10 lg:px-16 2xl:px-24">
           <Breadcrumbs items={[{ label: "Preguntas Frecuentes" }]} />
 
           {/* Cabecera */}
           <div className="py-8 border-b border-storm-border">
-            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black uppercase text-white tracking-tight">
+            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white tracking-tight">
               Preguntas Frecuentes
             </h1>
             <p className="mt-2 text-base text-[#C4CCD4]">
@@ -59,8 +59,8 @@ export default function FAQPage() {
                 onClick={() => setSelectedCategory(cat.id)}
                 className={`px-4 py-2 text-xs uppercase tracking-wider font-bold transition-colors ${
                   selectedCategory === cat.id
-                    ? "bg-bronto-yellow text-[#151515] font-black"
-                    : "bg-matte-deep text-[#C4CCD4] hover:text-white border border-storm-border"
+                    ? "bg-bronto-yellow text-white font-black"
+                    : "bg-[#14171C] rounded-xl text-[#C4CCD4] hover:text-white border border-storm-border"
                 }`}
               >
                 {cat.label}
@@ -76,7 +76,7 @@ export default function FAQPage() {
               return (
                 <div
                   key={faq.id}
-                  className="bg-matte border border-storm-border overflow-hidden transition-colors hover:border-[#3D3D3D]"
+                  className="bg-[#1E232B] rounded-2xl border border-storm-border overflow-hidden transition-colors hover:border-[#3D3D3D]"
                 >
                   <button
                     onClick={() => toggleFaq(faq.id)}
@@ -84,10 +84,10 @@ export default function FAQPage() {
                     aria-expanded={isOpen}
                   >
                     <div className="flex items-center gap-3">
-                      <span className="text-[10px] uppercase font-bold px-2 py-0.5 bg-storm-panel text-bronto-yellow border border-storm-border">
+                      <span className="text-[10px] uppercase font-bold px-2 py-0.5 bg-[#282F3A] rounded-xl text-bronto-yellow border border-storm-border">
                         {faq.categoryLabel}
                       </span>
-                      <h3 className="uppercase text-lg sm:text-xl font-bold text-white tracking-wide">
+                      <h3 className="text-lg sm:text-xl font-bold text-white tracking-wide">
                         {faq.question}
                       </h3>
                     </div>
@@ -110,9 +110,9 @@ export default function FAQPage() {
           </div>
 
           {/* CTA de Asistencia Adicional */}
-          <div className="mt-16 p-8 bg-matte border border-storm-border text-center space-y-4">
+          <div className="mt-16 p-8 bg-[#1E232B] rounded-2xl border border-storm-border text-center space-y-4">
             <HelpCircle className="w-8 h-8 text-bronto-yellow mx-auto" />
-            <h3 className="uppercase text-2xl font-bold text-white">
+            <h3 className="text-2xl font-bold text-white">
               ¿Tiene una consulta técnica específica?
             </h3>
             <p className="text-xs sm:text-sm text-[#C4CCD4] max-w-md mx-auto">
@@ -121,7 +121,7 @@ export default function FAQPage() {
             <div className="pt-2">
               <Link
                 href="/contacto"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-bronto-yellow hover:bg-bronto-yellow-hover text-[#151515] font-black text-xs uppercase tracking-wider rounded-sm transition-colors"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-bronto-yellow hover:bg-bronto-yellow-hover text-white font-black text-xs uppercase tracking-wider rounded-2xl transition-colors"
               >
                 <span>Hablar con un asesor</span>
                 <ArrowRight className="w-3.5 h-3.5" />

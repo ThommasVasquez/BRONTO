@@ -85,11 +85,11 @@ export default function LoginPage() {
   // Si ya tiene sesión iniciada, mostrar acceso directo
   if (isLoggedIn && user) {
     return (
-      <div className="py-8 sm:py-10 pb-20 bg-storm min-h-screen">
+      <div className="py-8 sm:py-10 pb-20 bg-[#131518] min-h-screen">
         <div className="w-full px-6 sm:px-10 lg:px-16 2xl:px-24">
           <Breadcrumbs items={[{ label: "Portal de Clientes", href: "/portal-clientes" }, { label: "Sesión Activa" }]} />
 
-          <div className="my-12 max-w-xl mx-auto bg-matte border border-storm-border p-8 text-center space-y-6">
+          <div className="my-12 max-w-xl mx-auto bg-[#1E232B] rounded-2xl border border-storm-border p-8 text-center space-y-6">
             <div className="w-16 h-16 bg-bronto-yellow/10 border border-bronto-yellow rounded-full flex items-center justify-center mx-auto text-bronto-yellow">
               <CheckCircle2 className="w-8 h-8" />
             </div>
@@ -98,7 +98,7 @@ export default function LoginPage() {
               <span className="text-xs text-bronto-yellow font-bold uppercase tracking-wider block">
                 Sesión Iniciada
               </span>
-              <h2 className="text-2xl font-black uppercase text-white mt-1">
+              <h2 className="text-2xl font-bold tracking-tight text-white mt-1">
                 {user.companyName}
               </h2>
               <p className="mt-2 text-xs text-[#C4CCD4]">
@@ -109,7 +109,7 @@ export default function LoginPage() {
             <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-3">
               <Link
                 href="/portal-clientes"
-                className="w-full sm:w-auto px-6 py-3 bg-bronto-yellow hover:bg-bronto-yellow-hover text-[#111111] font-black text-xs uppercase tracking-wider transition-colors inline-flex items-center justify-center gap-2"
+                className="w-full sm:w-auto px-6 py-3 bg-bronto-yellow hover:bg-bronto-yellow-hover text-white font-black text-xs uppercase tracking-wider transition-colors inline-flex items-center justify-center gap-2"
               >
                 <span>Ir al panel de obra</span>
                 <ArrowRight className="w-4 h-4" />
@@ -122,14 +122,14 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="py-8 sm:py-10 pb-20 bg-storm min-h-screen">
+    <div className="py-8 sm:py-10 pb-20 bg-[#131518] min-h-screen">
       <div className="w-full px-6 sm:px-10 lg:px-16 2xl:px-24">
         <Breadcrumbs items={[{ label: "Acceso para Clientes" }]} />
 
         {/* Cabecera */}
         <div className="py-8 border-b border-storm-border flex flex-col md:flex-row md:items-end justify-between gap-4">
           <div>
-            <h1 className="text-3xl sm:text-5xl font-black uppercase text-white tracking-tight">
+            <h1 className="text-3xl sm:text-5xl font-bold tracking-tight text-white tracking-tight">
               Portal de Clientes y Contratistas
             </h1>
             <p className="mt-2 text-sm text-[#C4CCD4] max-w-2xl">
@@ -142,11 +142,11 @@ export default function LoginPage() {
         <div className="py-12 grid grid-cols-1 lg:grid-cols-12 gap-12 max-w-6xl mx-auto">
           {/* Columna Izquierda: Beneficios y Respaldo Institucional (5 cols) */}
           <div className="lg:col-span-5 space-y-6">
-            <div className="bg-matte border border-storm-border p-8 space-y-6">
+            <div className="bg-[#1E232B] rounded-2xl border border-storm-border p-8 space-y-6">
               <div className="flex items-center gap-3">
                 <DynastesBeetleSymbol className="w-10 h-10" size={50} />
                 <div>
-                  <h3 className="uppercase text-lg font-black text-white">
+                  <h3 className="text-lg font-black text-white">
                     Respaldo BRONTO
                   </h3>
                   <span className="text-xs text-bronto-yellow font-bold uppercase tracking-wider block">
@@ -182,7 +182,7 @@ export default function LoginPage() {
               </div>
 
               {/* Acceso Rápido Demo para Pruebas Inmediatas */}
-              <div className="p-4 bg-matte-deep border border-bronto-yellow/40 space-y-3">
+              <div className="p-4 bg-[#14171C] rounded-xl border border-bronto-yellow/40 space-y-3">
                 <div className="flex items-center gap-2 text-bronto-yellow text-xs font-bold uppercase tracking-wider">
                   <Sparkles className="w-4 h-4" />
                   <span>Demostración de Cliente Activo</span>
@@ -193,7 +193,7 @@ export default function LoginPage() {
                 <button
                   type="button"
                   onClick={() => handleDemoLogin("cli-bolivar")}
-                  className="w-full py-2.5 px-3 bg-bronto-yellow hover:bg-bronto-yellow-hover text-[#111111] font-black text-xs uppercase tracking-wider transition-colors text-center"
+                  className="w-full py-2.5 px-3 bg-bronto-yellow hover:bg-bronto-yellow-hover text-white font-black text-xs uppercase tracking-wider transition-colors text-center"
                 >
                   Ingresar como Constructora Bolívar (Demo)
                 </button>
@@ -202,7 +202,7 @@ export default function LoginPage() {
           </div>
 
           {/* Columna Derecha: Formulario de Login / Registro (7 cols) */}
-          <div className="lg:col-span-7 bg-matte border border-storm-border p-6 sm:p-10">
+          <div className="lg:col-span-7 bg-[#1E232B] rounded-2xl border border-storm-border p-6 sm:p-10">
             {/* Tabs Selector */}
             <div className="flex items-center border-b border-storm-border mb-8">
               <button
@@ -250,7 +250,7 @@ export default function LoginPage() {
                       value={emailOrNit}
                       onChange={(e) => setEmailOrNit(e.target.value)}
                       placeholder="ej: carlos@constructorabolivar.com o 860.051.240-1"
-                      className="w-full pl-10 pr-3.5 py-2.5 bg-matte-deep border border-storm-border text-sm text-white focus:border-bronto-yellow focus:outline-none"
+                      className="w-full pl-10 pr-3.5 py-2.5 bg-[#14171C] rounded-xl border border-storm-border text-sm text-white focus:border-bronto-yellow focus:outline-none"
                     />
                   </div>
                 </div>
@@ -271,7 +271,7 @@ export default function LoginPage() {
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
                       placeholder="••••••••••••"
-                      className="w-full pl-10 pr-3.5 py-2.5 bg-matte-deep border border-storm-border text-sm text-white focus:border-bronto-yellow focus:outline-none"
+                      className="w-full pl-10 pr-3.5 py-2.5 bg-[#14171C] rounded-xl border border-storm-border text-sm text-white focus:border-bronto-yellow focus:outline-none"
                     />
                   </div>
                 </div>
@@ -280,7 +280,7 @@ export default function LoginPage() {
                   <button
                     type="submit"
                     disabled={isLoading}
-                    className="w-full py-4 bg-bronto-yellow hover:bg-bronto-yellow-hover text-[#111111] font-black text-xs uppercase tracking-wider transition-all flex items-center justify-center gap-2"
+                    className="w-full py-4 bg-bronto-yellow hover:bg-bronto-yellow-hover text-white font-black text-xs uppercase tracking-wider transition-all flex items-center justify-center gap-2"
                   >
                     <span>{isLoading ? "Validando credenciales..." : "Ingresar al portal de clientes"}</span>
                     <ArrowRight className="w-4 h-4" />
@@ -314,7 +314,7 @@ export default function LoginPage() {
                         value={regCompany}
                         onChange={(e) => setRegCompany(e.target.value)}
                         placeholder="Constructora S.A.S."
-                        className="w-full pl-10 pr-3.5 py-2.5 bg-matte-deep border border-storm-border text-sm text-white focus:border-bronto-yellow focus:outline-none"
+                        className="w-full pl-10 pr-3.5 py-2.5 bg-[#14171C] rounded-xl border border-storm-border text-sm text-white focus:border-bronto-yellow focus:outline-none"
                       />
                     </div>
                   </div>
@@ -329,7 +329,7 @@ export default function LoginPage() {
                       value={regNit}
                       onChange={(e) => setRegNit(e.target.value)}
                       placeholder="900.000.000-1"
-                      className="w-full px-3.5 py-2.5 bg-matte-deep border border-storm-border text-sm text-white focus:border-bronto-yellow focus:outline-none"
+                      className="w-full px-3.5 py-2.5 bg-[#14171C] rounded-xl border border-storm-border text-sm text-white focus:border-bronto-yellow focus:outline-none"
                     />
                   </div>
                 </div>
@@ -347,7 +347,7 @@ export default function LoginPage() {
                         value={regContact}
                         onChange={(e) => setRegContact(e.target.value)}
                         placeholder="Ing. Carlos Pérez"
-                        className="w-full pl-10 pr-3.5 py-2.5 bg-matte-deep border border-storm-border text-sm text-white focus:border-bronto-yellow focus:outline-none"
+                        className="w-full pl-10 pr-3.5 py-2.5 bg-[#14171C] rounded-xl border border-storm-border text-sm text-white focus:border-bronto-yellow focus:outline-none"
                       />
                     </div>
                   </div>
@@ -364,7 +364,7 @@ export default function LoginPage() {
                         value={regPhone}
                         onChange={(e) => setRegPhone(e.target.value)}
                         placeholder="+57 315 000 0000"
-                        className="w-full pl-10 pr-3.5 py-2.5 bg-matte-deep border border-storm-border text-sm text-white focus:border-bronto-yellow focus:outline-none"
+                        className="w-full pl-10 pr-3.5 py-2.5 bg-[#14171C] rounded-xl border border-storm-border text-sm text-white focus:border-bronto-yellow focus:outline-none"
                       />
                     </div>
                   </div>
@@ -383,7 +383,7 @@ export default function LoginPage() {
                         value={regEmail}
                         onChange={(e) => setRegEmail(e.target.value)}
                         placeholder="residente@constructora.com"
-                        className="w-full pl-10 pr-3.5 py-2.5 bg-matte-deep border border-storm-border text-sm text-white focus:border-bronto-yellow focus:outline-none"
+                        className="w-full pl-10 pr-3.5 py-2.5 bg-[#14171C] rounded-xl border border-storm-border text-sm text-white focus:border-bronto-yellow focus:outline-none"
                       />
                     </div>
                   </div>
@@ -395,7 +395,7 @@ export default function LoginPage() {
                     <select
                       value={regCity}
                       onChange={(e) => setRegCity(e.target.value)}
-                      className="w-full px-3.5 py-2.5 bg-matte-deep border border-storm-border text-sm text-white focus:border-bronto-yellow focus:outline-none"
+                      className="w-full px-3.5 py-2.5 bg-[#14171C] rounded-xl border border-storm-border text-sm text-white focus:border-bronto-yellow focus:outline-none"
                     >
                       <option value="Bogotá D.C.">Bogotá D.C.</option>
                       <option value="Chía">Chía</option>
@@ -415,7 +415,7 @@ export default function LoginPage() {
                   <button
                     type="submit"
                     disabled={isLoading}
-                    className="w-full py-4 bg-bronto-yellow hover:bg-bronto-yellow-hover text-[#111111] font-black text-xs uppercase tracking-wider transition-all flex items-center justify-center gap-2"
+                    className="w-full py-4 bg-bronto-yellow hover:bg-bronto-yellow-hover text-white font-black text-xs uppercase tracking-wider transition-all flex items-center justify-center gap-2"
                   >
                     <span>{isLoading ? "Creando registro..." : "Crear cuenta corporativa"}</span>
                     <ArrowRight className="w-4 h-4" />

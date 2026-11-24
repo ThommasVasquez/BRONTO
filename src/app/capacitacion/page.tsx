@@ -181,19 +181,19 @@ export default function CapacitacionPage() {
   };
 
   return (
-    <div className="py-8 sm:py-10 pb-20 bg-storm min-h-screen text-white">
+    <div className="py-8 sm:py-10 pb-20 bg-[#131518] min-h-screen text-white">
       <div className="w-full px-6 sm:px-10 lg:px-16 2xl:px-24">
         <Breadcrumbs items={[{ label: "Servicios", href: "/servicios" }, { label: "Capacitación y Escuela de Operadores" }]} />
 
         {/* Hero de Capacitación Técnica */}
         <section className="py-10 border-b border-storm-border">
           <div className="max-w-4xl space-y-5">
-            <div className="inline-flex items-center gap-2 px-3 py-1 bg-storm-panel border border-bronto-yellow/50 text-xs uppercase font-bold text-bronto-yellow tracking-wider">
+            <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#282F3A] rounded-xl border border-bronto-yellow/50 text-xs uppercase font-bold text-bronto-yellow tracking-wider">
               <GraduationCap className="w-4 h-4" />
               <span>Centro de Formación y Certificación Laboral BRONTO</span>
             </div>
 
-            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black uppercase text-white tracking-tight leading-tight">
+            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white tracking-tight leading-tight">
               Escuela de Operadores de Maquinaria Pesada
             </h1>
 
@@ -204,7 +204,7 @@ export default function CapacitacionPage() {
             <div className="pt-3 flex flex-wrap gap-4">
               <Link
                 href="/cotizar?servicio=capacitacion-y-certificacion-de-operadores"
-                className="inline-flex items-center gap-2 px-6 py-3.5 bg-bronto-yellow hover:bg-bronto-yellow-hover text-[#111111] font-black text-xs uppercase tracking-wider transition-colors"
+                className="inline-flex items-center gap-2 px-6 py-3.5 bg-bronto-yellow hover:bg-bronto-yellow-hover text-white font-black text-xs uppercase tracking-wider transition-colors"
               >
                 <span>Cotizar capacitación para empresa</span>
                 <ChevronRight className="w-4 h-4 stroke-[3]" />
@@ -226,41 +226,41 @@ export default function CapacitacionPage() {
         {/* 4 Pilares de Impacto en Obra */}
         <section className="py-14 border-b border-storm-border">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="bg-matte border border-storm-border p-6 space-y-3">
+            <div className="bg-[#1E232B] rounded-2xl border border-storm-border p-6 space-y-3">
               <div className="w-10 h-10 bg-[#222222] border border-bronto-yellow/40 flex items-center justify-center text-bronto-yellow">
                 <Flame className="w-5 h-5" />
               </div>
-              <h3 className="text-sm font-black uppercase text-white">Ahorro de Combustible</h3>
+              <h3 className="text-sm font-bold tracking-tight text-white">Ahorro de Combustible</h3>
               <p className="text-xs text-[#C4CCD4] leading-relaxed font-normal">
                 Técnicas de operación económica, aceleración progresiva y control de ciclos que disminuyen el consumo diésel entre un 12% y un 18% mensual por equipo.
               </p>
             </div>
 
-            <div className="bg-matte border border-storm-border p-6 space-y-3">
+            <div className="bg-[#1E232B] rounded-2xl border border-storm-border p-6 space-y-3">
               <div className="w-10 h-10 bg-[#222222] border border-bronto-yellow/40 flex items-center justify-center text-bronto-yellow">
                 <Wrench className="w-5 h-5" />
               </div>
-              <h3 className="text-sm font-black uppercase text-white">Cero Paradas Evitables</h3>
+              <h3 className="text-sm font-bold tracking-tight text-white">Cero Paradas Evitables</h3>
               <p className="text-xs text-[#C4CCD4] leading-relaxed font-normal">
                 Inspección preoperacional estandarizada de 40 puntos para identificar desgastes prematuros, fugas y fallas antes de que detengan el frente de obra.
               </p>
             </div>
 
-            <div className="bg-matte border border-storm-border p-6 space-y-3">
+            <div className="bg-[#1E232B] rounded-2xl border border-storm-border p-6 space-y-3">
               <div className="w-10 h-10 bg-[#222222] border border-bronto-yellow/40 flex items-center justify-center text-bronto-yellow">
                 <ShieldCheck className="w-5 h-5" />
               </div>
-              <h3 className="text-sm font-black uppercase text-white">Seguridad y Normatividad</h3>
+              <h3 className="text-sm font-bold tracking-tight text-white">Seguridad y Normatividad</h3>
               <p className="text-xs text-[#C4CCD4] leading-relaxed font-normal">
                 Manejo defensivo en obra, visibilidad de ángulos ciegos y procedimientos seguros para cumplir al 100% las exigencias de interventoría y ARL.
               </p>
             </div>
 
-            <div className="bg-matte border border-storm-border p-6 space-y-3">
+            <div className="bg-[#1E232B] rounded-2xl border border-storm-border p-6 space-y-3">
               <div className="w-10 h-10 bg-[#222222] border border-bronto-yellow/40 flex items-center justify-center text-bronto-yellow">
                 <Award className="w-5 h-5" />
               </div>
-              <h3 className="text-sm font-black uppercase text-white">Certificación con QR</h3>
+              <h3 className="text-sm font-bold tracking-tight text-white">Certificación con QR</h3>
               <p className="text-xs text-[#C4CCD4] leading-relaxed font-normal">
                 Expedición de carnet físico y digital con código de verificación en línea para consulta inmediata de interventores, auditores y directores de proyecto.
               </p>
@@ -272,7 +272,7 @@ export default function CapacitacionPage() {
         <section className="py-14 border-b border-storm-border">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
             <div>
-              <h2 className="text-2xl sm:text-4xl font-black uppercase text-white tracking-tight">
+              <h2 className="text-2xl sm:text-4xl font-bold tracking-tight text-white tracking-tight">
                 Programas y Cursos de Formación
               </h2>
               <p className="text-xs sm:text-sm text-[#C4CCD4] mt-1 font-normal">
@@ -287,7 +287,7 @@ export default function CapacitacionPage() {
                 className={`px-4 py-2 text-xs font-bold uppercase transition-colors border ${
                   selectedCategory === "todas"
                     ? "bg-bronto-yellow text-black border-bronto-yellow"
-                    : "bg-matte text-white/80 border-storm-border hover:border-white/50"
+                    : "bg-[#1E232B] rounded-2xl text-white/80 border-storm-border hover:border-white/50"
                 }`}
               >
                 Todos los Programas ({courses.length})
@@ -297,7 +297,7 @@ export default function CapacitacionPage() {
                 className={`px-4 py-2 text-xs font-bold uppercase transition-colors border ${
                   selectedCategory === "operacion"
                     ? "bg-bronto-yellow text-black border-bronto-yellow"
-                    : "bg-matte text-white/80 border-storm-border hover:border-white/50"
+                    : "bg-[#1E232B] rounded-2xl text-white/80 border-storm-border hover:border-white/50"
                 }`}
               >
                 Operación de Maquinaria
@@ -307,7 +307,7 @@ export default function CapacitacionPage() {
                 className={`px-4 py-2 text-xs font-bold uppercase transition-colors border ${
                   selectedCategory === "tecnica"
                     ? "bg-bronto-yellow text-black border-bronto-yellow"
-                    : "bg-matte text-white/80 border-storm-border hover:border-white/50"
+                    : "bg-[#1E232B] rounded-2xl text-white/80 border-storm-border hover:border-white/50"
                 }`}
               >
                 Mecánica y Topografía
@@ -317,7 +317,7 @@ export default function CapacitacionPage() {
                 className={`px-4 py-2 text-xs font-bold uppercase transition-colors border ${
                   selectedCategory === "seguridad"
                     ? "bg-bronto-yellow text-black border-bronto-yellow"
-                    : "bg-matte text-white/80 border-storm-border hover:border-white/50"
+                    : "bg-[#1E232B] rounded-2xl text-white/80 border-storm-border hover:border-white/50"
                 }`}
               >
                 Seguridad Industrial (HSE)
@@ -330,7 +330,7 @@ export default function CapacitacionPage() {
             {filteredCourses.map((course) => (
               <div
                 key={course.id}
-                className="bg-matte border border-storm-border hover:border-bronto-yellow flex flex-col justify-between p-6 sm:p-8 transition-colors duration-150"
+                className="bg-[#1E232B] rounded-2xl border border-storm-border hover:border-bronto-yellow flex flex-col justify-between p-6 sm:p-8 transition-colors duration-150"
               >
                 <div className="space-y-4">
                   <div className="flex items-center justify-between gap-2 border-b border-white/10 pb-3">
@@ -343,7 +343,7 @@ export default function CapacitacionPage() {
                     </span>
                   </div>
 
-                  <h3 className="text-xl font-black uppercase text-white leading-tight">
+                  <h3 className="text-xl font-bold tracking-tight text-white leading-tight">
                     {course.title}
                   </h3>
 
@@ -389,7 +389,7 @@ export default function CapacitacionPage() {
         {/* Modalidades de Formación: In-Company vs Patio Central */}
         <section className="py-14 border-b border-storm-border">
           <div className="max-w-3xl mb-10">
-            <h2 className="text-2xl sm:text-4xl font-black uppercase text-white tracking-tight">
+            <h2 className="text-2xl sm:text-4xl font-bold tracking-tight text-white tracking-tight">
               Modalidades Flexibles para Proyectos
             </h2>
             <p className="text-xs sm:text-sm text-[#C4CCD4] mt-1 font-normal">
@@ -398,11 +398,11 @@ export default function CapacitacionPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="bg-matte border border-storm-border p-6 sm:p-8 space-y-4">
+            <div className="bg-[#1E232B] rounded-2xl border border-storm-border p-6 sm:p-8 space-y-4">
               <div className="w-10 h-10 bg-[#222222] border border-bronto-yellow/40 flex items-center justify-center text-bronto-yellow">
                 <Building2 className="w-5 h-5" />
               </div>
-              <h3 className="text-lg font-black uppercase text-white">Modalidad In-Company (En Obra)</h3>
+              <h3 className="text-lg font-bold tracking-tight text-white">Modalidad In-Company (En Obra)</h3>
               <p className="text-xs text-[#C4CCD4] leading-relaxed font-normal">
                 Nuestros instructores certificados se desplazan a su frente de trabajo en Bogotá o la Sabana. Capacitamos a sus operarios en la misma maquinaria del proyecto con turnos escalonados para no frenar la producción.
               </p>
@@ -422,11 +422,11 @@ export default function CapacitacionPage() {
               </ul>
             </div>
 
-            <div className="bg-matte border border-storm-border p-6 sm:p-8 space-y-4">
+            <div className="bg-[#1E232B] rounded-2xl border border-storm-border p-6 sm:p-8 space-y-4">
               <div className="w-10 h-10 bg-[#222222] border border-bronto-yellow/40 flex items-center justify-center text-bronto-yellow">
                 <HardHat className="w-5 h-5" />
               </div>
-              <h3 className="text-lg font-black uppercase text-white">Patio Central de Maniobras</h3>
+              <h3 className="text-lg font-bold tracking-tight text-white">Patio Central de Maniobras</h3>
               <p className="text-xs text-[#C4CCD4] leading-relaxed font-normal">
                 Práctica intensiva en nuestra base operativa del Corredor Industrial Calle 80 / Siberia. Flota propia multimarca disponible, pista de maniobras y aulas técnicas de simulación hidráulica.
               </p>
@@ -446,11 +446,11 @@ export default function CapacitacionPage() {
               </ul>
             </div>
 
-            <div className="bg-matte border border-storm-border p-6 sm:p-8 space-y-4">
+            <div className="bg-[#1E232B] rounded-2xl border border-storm-border p-6 sm:p-8 space-y-4">
               <div className="w-10 h-10 bg-[#222222] border border-bronto-yellow/40 flex items-center justify-center text-bronto-yellow">
                 <FileCheck2 className="w-5 h-5" />
               </div>
-              <h3 className="text-lg font-black uppercase text-white">Homologación y Recertificación</h3>
+              <h3 className="text-lg font-bold tracking-tight text-white">Homologación y Recertificación</h3>
               <p className="text-xs text-[#C4CCD4] leading-relaxed font-normal">
                 Pruebas de suficiencia teórica y práctica para operadores con experiencia empírica que requieren certificar formalmente sus competencias laborales ante auditorías de interventoría.
               </p>
@@ -474,14 +474,14 @@ export default function CapacitacionPage() {
 
         {/* Verificador de Certificados (Funcionalidad inspirada en Dozer Maquinarias) */}
         <section className="py-14 border-b border-storm-border">
-          <div className="bg-matte border border-storm-border p-8 sm:p-12">
+          <div className="bg-[#1E232B] rounded-2xl border border-storm-border p-8 sm:p-12">
             <div className="max-w-2xl mx-auto text-center space-y-4">
               <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#222222] text-bronto-yellow text-xs font-bold uppercase border border-storm-border">
                 <Search className="w-3.5 h-3.5" />
                 <span>Consulta Oficial en Línea</span>
               </div>
 
-              <h2 className="text-2xl sm:text-3xl font-black uppercase text-white">
+              <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-white">
                 Validar Certificado de Operador
               </h2>
 
@@ -507,7 +507,7 @@ export default function CapacitacionPage() {
               </form>
 
               {certResult && (
-                <div className="mt-6 text-left p-6 bg-matte-deep border border-storm-border transition-all">
+                <div className="mt-6 text-left p-6 bg-[#14171C] rounded-xl border border-storm-border transition-all">
                   {certResult.found ? (
                     <div className="space-y-3">
                       <div className="flex items-center gap-2 text-green-400 text-xs font-bold uppercase">
@@ -549,7 +549,7 @@ export default function CapacitacionPage() {
         <section className="py-14 text-center">
           <div className="max-w-2xl mx-auto space-y-6">
             <DynastesBeetleSymbol className="w-12 h-12 mx-auto" size={54} />
-            <h2 className="text-2xl sm:text-4xl font-black uppercase text-white tracking-tight">
+            <h2 className="text-2xl sm:text-4xl font-bold tracking-tight text-white tracking-tight">
               ¿Listo para certificar a su cuadrilla operativa?
             </h2>
             <p className="text-xs sm:text-sm text-[#C4CCD4] font-normal">

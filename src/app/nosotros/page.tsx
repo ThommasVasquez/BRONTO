@@ -16,13 +16,13 @@ export const metadata: Metadata = {
 
 export default function AboutUsPage() {
   return (
-    <div className="py-8 sm:py-10 pb-20 bg-storm min-h-screen text-white">
+    <div className="py-8 sm:py-10 pb-20 bg-[#131518] min-h-screen text-white">
       <div className="w-full px-6 sm:px-10 lg:px-16 2xl:px-24">
         <Breadcrumbs items={[{ label: "Quiénes Somos" }]} />
 
         {/* Hero de Nosotros */}
         <div className="py-12 border-b border-storm-border max-w-4xl">
-          <h1 className="text-3xl sm:text-6xl font-black uppercase text-white tracking-tight">
+          <h1 className="text-3xl sm:text-6xl font-bold tracking-tight text-white tracking-tight">
             Potencia, resistencia y capacidad de respuesta
           </h1>
           <p className="mt-4 text-lg text-[#C4CCD4] leading-relaxed">
@@ -32,12 +32,12 @@ export default function AboutUsPage() {
 
         {/* Bloque Central: El Escarabajo Dynastes (Concepto de Marca) */}
         <div className="py-16 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          <div className="lg:col-span-5 bg-matte border-2 border-bronto-yellow/30 p-10 flex flex-col items-center justify-center text-center relative overflow-hidden">
+          <div className="lg:col-span-5 bg-[#1E232B] rounded-2xl border-2 border-bronto-yellow/30 p-10 flex flex-col items-center justify-center text-center relative overflow-hidden">
             <DynastesBeetleSymbol className="w-36 h-36" colorFill="#FF5E00" />
             <span className="text-xs uppercase tracking-wider text-bronto-yellow font-bold mt-6">
               Símbolo Dynastes
             </span>
-            <h3 className="uppercase text-2xl font-black text-white mt-1">
+            <h3 className="text-2xl font-black text-white mt-1">
               Fuerza Proporcional
             </h3>
             <p className="mt-3 text-xs text-[#C4CCD4] leading-relaxed max-w-xs">
@@ -46,7 +46,7 @@ export default function AboutUsPage() {
           </div>
 
           <div className="lg:col-span-7 space-y-6">
-            <h2 className="uppercase text-3xl sm:text-4xl font-black text-white">
+            <h2 className="text-3xl sm:text-4xl font-black text-white">
               &ldquo;Pida todo en BRONTO&rdquo;
             </h2>
             <p className="text-sm sm:text-base text-[#C4CCD4] leading-relaxed font-normal">
@@ -57,7 +57,7 @@ export default function AboutUsPage() {
             </p>
 
             <div className="pt-4 grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div className="p-4 bg-matte-deep border border-storm-border">
+              <div className="p-4 bg-[#14171C] rounded-xl border border-storm-border">
                 <span className="text-xs text-bronto-yellow font-bold uppercase block mb-1">
                   Disponibilidad Inmediata
                 </span>
@@ -65,7 +65,7 @@ export default function AboutUsPage() {
                   Parque de maquinaria alistado con protocolos estrictos previo al despacho en cama baja.
                 </p>
               </div>
-              <div className="p-4 bg-matte-deep border border-storm-border">
+              <div className="p-4 bg-[#14171C] rounded-xl border border-storm-border">
                 <span className="text-xs text-bronto-yellow font-bold uppercase block mb-1">
                   Respaldo en Obra
                 </span>
@@ -84,9 +84,9 @@ export default function AboutUsPage() {
           </h3>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="bg-matte border border-storm-border p-6 space-y-3">
+            <div className="bg-[#1E232B] rounded-2xl border border-storm-border p-6 space-y-3">
               <HardHat className="w-6 h-6 text-bronto-yellow" />
-              <h4 className="uppercase text-xl font-bold text-white">
+              <h4 className="text-xl font-bold text-white">
                 Seguridad y Normativa
               </h4>
               <p className="text-xs text-[#C4CCD4] leading-relaxed">
@@ -94,9 +94,9 @@ export default function AboutUsPage() {
               </p>
             </div>
 
-            <div className="bg-matte border border-storm-border p-6 space-y-3">
+            <div className="bg-[#1E232B] rounded-2xl border border-storm-border p-6 space-y-3">
               <Cog className="w-6 h-6 text-bronto-yellow" />
-              <h4 className="uppercase text-xl font-bold text-white">
+              <h4 className="text-xl font-bold text-white">
                 Rendimiento Mecánico
               </h4>
               <p className="text-xs text-[#C4CCD4] leading-relaxed">
@@ -104,9 +104,9 @@ export default function AboutUsPage() {
               </p>
             </div>
 
-            <div className="bg-matte border border-storm-border p-6 space-y-3">
+            <div className="bg-[#1E232B] rounded-2xl border border-storm-border p-6 space-y-3">
               <ShieldCheck className="w-6 h-6 text-bronto-yellow" />
-              <h4 className="uppercase text-xl font-bold text-white">
+              <h4 className="text-xl font-bold text-white">
                 Transparencia Comercial
               </h4>
               <p className="text-xs text-[#C4CCD4] leading-relaxed">
@@ -117,9 +117,9 @@ export default function AboutUsPage() {
         </div>
 
         {/* CTA */}
-        <div className="mt-12 p-8 sm:p-12 bg-matte border border-storm-border flex flex-col md:flex-row items-center justify-between gap-6">
+        <div className="mt-12 p-8 sm:p-12 bg-[#1E232B] rounded-2xl border border-storm-border flex flex-col md:flex-row items-center justify-between gap-6">
           <div>
-            <h3 className="uppercase text-2xl sm:text-3xl font-black text-white">
+            <h3 className="text-2xl sm:text-3xl font-black text-white">
               ¿Listo para equipar su próxima obra?
             </h3>
             <p className="text-sm text-[#C4CCD4] mt-1">
@@ -129,7 +129,7 @@ export default function AboutUsPage() {
           <div className="flex items-center gap-3">
             <Link
               href="/catalogo"
-              className="px-6 py-3 bg-bronto-yellow hover:bg-bronto-yellow-hover text-[#151515] font-black text-xs uppercase tracking-wider transition-colors"
+              className="px-6 py-3 bg-bronto-yellow hover:bg-bronto-yellow-hover text-white font-black text-xs uppercase tracking-wider transition-colors"
             >
               Ver catálogo
             </Link>

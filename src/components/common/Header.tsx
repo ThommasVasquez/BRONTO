@@ -6,17 +6,7 @@ import { usePathname } from "next/navigation";
 import { BrandLogo } from "./BrandLogo";
 import { useClientAuth } from "@/components/auth/ClientAuthProvider";
 import { useQuoteBasket } from "@/components/quote/QuoteBasketProvider";
-import { siteConfig } from "@/data/siteConfig";
-import {
-  Menu,
-  X,
-  FileText,
-  Phone,
-  MapPin,
-  User,
-  ShieldCheck,
-  Smartphone,
-} from "lucide-react";
+import { Menu, X, ShoppingBag, User, ShieldCheck, Smartphone } from "lucide-react";
 
 export const Header: React.FC = () => {
   const [mounted, setMounted] = useState(false);
@@ -37,7 +27,7 @@ export const Header: React.FC = () => {
     { label: "Inicio", href: "/" },
     { label: "Catálogo", href: "/catalogo" },
     { label: "Servicios", href: "/servicios" },
-    { label: "Capacitación", href: "/capacitacion" },
+    { label: "Academia", href: "/capacitacion" },
     { label: "Nosotros", href: "/nosotros" },
     { label: "Contacto", href: "/contacto" },
   ];
@@ -58,78 +48,32 @@ export const Header: React.FC = () => {
   }
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-matte border-b-2 border-[#FF5F00] shadow-xl">
-      {/* Franja Operativa Superior */}
-      <div
-        className="hidden md:block bg-matte-deep border-b border-matte-border text-[#B8C1CC] text-xs"
-        style={{ paddingTop: "env(safe-area-inset-top, 0px)" }}
-      >
-        <div className="max-w-[1440px] mx-auto px-6 lg:px-10 h-9 flex items-center justify-between gap-4">
-          <div className="flex items-center gap-5">
-            <span className="inline-flex items-center gap-1.5 text-[#E5EAF0] font-medium">
-              <MapPin className="w-3.5 h-3.5 text-[#FF5F00]" />
-              Patio Central Calle 80 / Siberia · Cobertura Bogotá y Sabana
-            </span>
-            <a
-              href={`tel:${siteConfig.contact.phoneFormatted}`}
-              className="inline-flex items-center gap-1.5 hover:text-white transition-colors font-mono tabular-nums"
-            >
-              <Phone className="w-3.5 h-3.5 text-[#FF5F00]" />
-              {siteConfig.contact.phone}
-            </a>
-          </div>
-
-          <div className="flex items-center gap-5">
-            <Link href="/preguntas-frecuentes" className="hover:text-white transition-colors">
-              Requisitos de alquiler
-            </Link>
-            <Link
-              href={mounted && isLoggedIn ? "/portal-clientes" : "/login"}
-              className="inline-flex items-center gap-1.5 text-[#E5EAF0] hover:text-[#FF5F00] font-medium transition-colors"
-            >
-              {mounted && isLoggedIn ? (
-                <>
-                  <ShieldCheck className="w-3.5 h-3.5 text-[#FF5F00]" />
-                  <span>{user?.companyName}</span>
-                </>
-              ) : (
-                <>
-                  <User className="w-3.5 h-3.5 text-[#FF5F00]" />
-                  <span>Portal contratistas</span>
-                </>
-              )}
-            </Link>
-          </div>
-        </div>
-      </div>
-
-      {/* Barra Principal en Negro Mate con Logo BRONTO® en Blanco */}
-      <div
-        className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-10 h-16 sm:h-20 flex items-center justify-between gap-4"
-        style={{
-          paddingTop: "env(safe-area-inset-top, 0px)",
-        }}
-      >
+    <header
+      className="sticky top-0 z-50 w-full bg-[#131518]/85 backdrop-blur-2xl border-b border-white/[0.07]"
+      style={{ paddingTop: "env(safe-area-inset-top, 0px)" }}
+    >
+      <div className="max-w-[1380px] mx-auto px-4 sm:px-6 lg:px-8 h-18 sm:h-20 flex items-center justify-between gap-4 py-3">
+        {/* Logo oficial con texto BRONTO® en blanco puro */}
         <BrandLogo size="md" />
 
-        {/* Navegación Desktop */}
-        <nav className="hidden lg:flex items-center gap-1 xl:gap-2" aria-label="Navegación principal">
+        {/* Cápsula central de navegación estilo producto moderno */}
+        <nav
+          className="hidden lg:flex items-center gap-1 p-1.5 rounded-full bg-[#1E232A]/90 border border-white/[0.07]"
+          aria-label="Navegación principal"
+        >
           {navLinks.map((link) => {
             const active = isActive(link.href);
             return (
               <Link
                 key={link.href}
                 href={link.href}
-                className={`px-3.5 py-2 text-sm font-semibold transition-colors relative ${
+                className={`px-4 py-1.5 rounded-full text-sm font-medium transition-all duration-200 ${
                   active
-                    ? "text-white bg-storm-panel"
-                    : "text-[#C4CCD4] hover:text-white hover:bg-storm/50"
+                    ? "bg-[#2C333E] text-white shadow-sm"
+                    : "text-[#A7B1BE] hover:text-white"
                 }`}
               >
                 {link.label}
-                {active && (
-                  <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#FF5F00]" />
-                )}
               </Link>
             );
           })}
@@ -139,34 +83,47 @@ export const Header: React.FC = () => {
         <div className="hidden sm:flex items-center gap-2.5">
           <Link
             href="/app"
-            className="inline-flex items-center gap-2 px-3.5 py-2.5 bg-storm-panel hover:bg-storm-elevated border border-storm-border text-white text-xs font-semibold transition-colors"
-            title="Abrir aplicación móvil de obra y cursos"
+            className="inline-flex items-center gap-2 px-3.5 py-2 rounded-full bg-[#1E232A] hover:bg-[#282E38] border border-white/[0.08] text-xs font-semibold text-white transition-colors"
+            title="Abrir aplicación móvil BRONTO®"
           >
-            <Smartphone className="w-4 h-4 text-[#FF5F00]" />
-            <span>App de obra</span>
+            <Smartphone className="w-3.5 h-3.5 text-[#FF5F00]" />
+            <span>App móvil</span>
+          </Link>
+
+          <Link
+            href={mounted && isLoggedIn ? "/portal-clientes" : "/login"}
+            className="hidden xl:inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-[#1E232A] hover:bg-[#282E38] border border-white/[0.08] text-xs font-medium text-[#D0D7E2] hover:text-white transition-colors"
+          >
+            {mounted && isLoggedIn ? (
+              <>
+                <ShieldCheck className="w-3.5 h-3.5 text-[#FF5F00]" />
+                <span className="max-w-[100px] truncate">{user?.companyName.split(" ")[0]}</span>
+              </>
+            ) : (
+              <>
+                <User className="w-3.5 h-3.5 text-[#A7B1BE]" />
+                <span>Clientes</span>
+              </>
+            )}
           </Link>
 
           <Link
             href="/cotizar"
-            className="inline-flex items-center gap-2 px-3.5 py-2.5 bg-matte-deep hover:bg-storm-panel border border-storm-border text-white text-xs font-semibold transition-colors"
-            title="Ver equipos en orden de cotización"
+            className="inline-flex items-center gap-2 px-3.5 py-2 rounded-full bg-[#1E232A] hover:bg-[#282E38] border border-white/[0.08] text-xs font-semibold text-white transition-colors"
+            title="Ver orden de cotización"
           >
-            <FileText className="w-4 h-4 text-[#FF5F00]" />
+            <ShoppingBag className="w-3.5 h-3.5 text-[#FF5F00]" />
             <span>Orden</span>
-            <span
-              className={`px-1.5 py-0.5 text-xs font-mono font-semibold tabular-nums ${
-                mounted && totalCount > 0
-                  ? "bg-[#FF5F00] text-[#111316]"
-                  : "bg-storm text-[#B8C1CC]"
-              }`}
-            >
-              {mounted ? totalCount : 0}
-            </span>
+            {mounted && totalCount > 0 && (
+              <span className="min-w-[20px] h-5 px-1.5 rounded-full bg-[#FF5F00] text-white text-[11px] font-bold flex items-center justify-center tabular-nums">
+                {totalCount}
+              </span>
+            )}
           </Link>
 
           <Link
             href="/cotizar"
-            className="inline-flex items-center justify-center px-5 py-2.5 bg-[#FF5F00] hover:bg-[#E55500] text-[#111316] font-bold text-sm tracking-tight transition-colors"
+            className="inline-flex items-center justify-center px-5 py-2.5 rounded-full bg-[#FF5F00] hover:bg-[#FF711A] text-white font-semibold text-sm shadow-lg shadow-[#FF5F00]/20 transition-all active:scale-[0.98]"
           >
             Cotizar equipo
           </Link>
@@ -176,7 +133,7 @@ export const Header: React.FC = () => {
         <div className="flex items-center gap-2 sm:hidden">
           <Link
             href="/app"
-            className="inline-flex items-center gap-1 px-2.5 py-2 bg-storm-panel border border-storm-border text-white text-xs font-semibold"
+            className="inline-flex items-center gap-1.5 px-3 py-2 rounded-full bg-[#1E232A] border border-white/[0.08] text-white text-xs font-semibold"
           >
             <Smartphone className="w-3.5 h-3.5 text-[#FF5F00]" />
             <span>App</span>
@@ -184,50 +141,53 @@ export const Header: React.FC = () => {
 
           <Link
             href="/cotizar"
-            className="relative inline-flex items-center justify-center p-2 bg-storm-panel border border-storm-border text-white"
-            aria-label="Ver orden de cotización"
+            className="relative inline-flex items-center justify-center w-9 h-9 rounded-full bg-[#1E232A] border border-white/[0.08] text-white"
+            aria-label="Ver orden"
           >
-            <FileText className="w-4 h-4 text-[#FF5F00]" />
+            <ShoppingBag className="w-4 h-4 text-[#FF5F00]" />
             {mounted && totalCount > 0 && (
-              <span className="absolute -top-1.5 -right-1.5 min-w-[18px] h-[18px] px-1 bg-[#FF5F00] text-[#111316] text-[10px] font-mono font-bold flex items-center justify-center">
+              <span className="absolute -top-1 -right-1 min-w-[18px] h-[18px] px-1 rounded-full bg-[#FF5F00] text-white text-[10px] font-bold flex items-center justify-center">
                 {totalCount}
               </span>
             )}
           </Link>
 
           <button
+            type="button"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="p-2 bg-matte-deep border border-storm-border text-white hover:border-[#FF5F00]"
+            className="w-9 h-9 rounded-full bg-[#1E232A] border border-white/[0.08] flex items-center justify-center text-white"
             aria-expanded={mobileMenuOpen}
-            aria-label="Menú principal"
+            aria-label="Menú"
           >
-            {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            {mobileMenuOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
           </button>
         </div>
       </div>
 
-      {/* Menú Móvil */}
+      {/* Menú Móvil Moderno */}
       {mobileMenuOpen && (
-        <div className="lg:hidden bg-matte-deep border-t border-storm-border px-5 py-6 space-y-4 shadow-2xl">
-          <div className="grid grid-cols-1 divide-y divide-matte-border">
+        <div className="lg:hidden bg-[#171A1F]/98 backdrop-blur-2xl border-t border-white/[0.08] px-5 py-5 space-y-4 shadow-2xl">
+          <div className="space-y-1">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className={`py-3 text-base font-semibold flex items-center justify-between ${
-                  isActive(link.href) ? "text-[#FF5F00]" : "text-white"
+                className={`block px-4 py-3 rounded-xl text-base font-semibold transition-colors ${
+                  isActive(link.href)
+                    ? "bg-[#252B34] text-white"
+                    : "text-[#B8C2CE] hover:bg-[#1E232A] hover:text-white"
                 }`}
               >
-                <span>{link.label}</span>
+                {link.label}
               </Link>
             ))}
             <Link
               href={mounted && isLoggedIn ? "/portal-clientes" : "/login"}
-              className="py-3 text-sm font-semibold text-[#C4CCD4] flex items-center gap-2"
+              className="flex items-center gap-2 px-4 py-3 rounded-xl text-sm font-medium text-[#B8C2CE] hover:bg-[#1E232A]"
             >
               <User className="w-4 h-4 text-[#FF5F00]" />
               <span>
-                {mounted && isLoggedIn ? `Portal: ${user?.companyName}` : "Portal de contratistas"}
+                {mounted && isLoggedIn ? `Portal: ${user?.companyName}` : "Portal de clientes"}
               </span>
             </Link>
           </div>
@@ -235,13 +195,13 @@ export const Header: React.FC = () => {
           <div className="pt-2 grid grid-cols-2 gap-2.5">
             <Link
               href="/app"
-              className="py-3 px-3 bg-storm-panel border border-storm-border text-white text-center text-sm font-semibold"
+              className="py-3 px-4 rounded-xl bg-[#252B34] border border-white/[0.08] text-white text-center text-sm font-semibold"
             >
-              Instalar App PWA
+              Abrir App PWA
             </Link>
             <Link
               href="/cotizar"
-              className="py-3 px-3 bg-[#FF5F00] text-[#111316] text-center text-sm font-bold"
+              className="py-3 px-4 rounded-xl bg-[#FF5F00] text-white text-center text-sm font-semibold shadow-lg shadow-[#FF5F00]/20"
             >
               Cotizar ({mounted ? totalCount : 0})
             </Link>

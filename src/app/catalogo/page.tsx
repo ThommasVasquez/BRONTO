@@ -2,23 +2,21 @@
 
 import React, { useState, useMemo, Suspense, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { useSearchParams } from "next/navigation";
 import { catalogProducts, catalogCategories } from "@/data/catalogData";
-import { ModalityType } from "@/types/catalog";
 import { useQuoteBasket } from "@/components/quote/QuoteBasketProvider";
 import { Breadcrumbs } from "@/components/common/Breadcrumbs";
 import { formatCOP } from "@/lib/pricing";
-import { 
-  Search, 
-  SlidersHorizontal, 
-  LayoutGrid, 
-  List, 
-  Eye, 
-  Plus, 
-  Check, 
+import {
+  Search,
+  SlidersHorizontal,
+  LayoutGrid,
+  List,
+  Plus,
+  Check,
   X,
   Filter,
-  CheckCircle2
 } from "lucide-react";
 
 function CatalogContent() {
@@ -29,7 +27,9 @@ function CatalogContent() {
   const [searchQuery, setSearchQuery] = useState(initialQuery);
   const [selectedCategory, setSelectedCategory] = useState(initialCategory);
   const [selectedModality, setSelectedModality] = useState<string>("todas");
-  const [sortBy, setSortBy] = useState<"destacados" | "nombre_asc" | "nombre_desc" | "precio_asc" | "precio_desc">("destacados");
+  const [sortBy, setSortBy] = useState<
+    "destacados" | "nombre_asc" | "nombre_desc" | "precio_asc" | "precio_desc"
+  >("destacados");
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
@@ -40,11 +40,9 @@ function CatalogContent() {
 
   const { addItem, isInBasket } = useQuoteBasket();
 
-  // Filtrado reactivo optimizado
   const filteredProducts = useMemo(() => {
     return catalogProducts
       .filter((product) => {
-        // Búsqueda por texto (nombre, SKU, subcategoría, tags)
         if (searchQuery.trim()) {
           const q = searchQuery.toLowerCase().trim();
           const matchName = product.name.toLowerCase().includes(q);
@@ -54,17 +52,23 @@ function CatalogContent() {
           if (!matchName && !matchSku && !matchSub && !matchTag) return false;
         }
 
-        // Filtro por categoría
         if (selectedCategory !== "todas" && product.categoryId !== selectedCategory) {
           return false;
         }
 
-        // Filtro por modalidad (alquiler, suministro, servicio)
         if (selectedModality !== "todas") {
-          if (selectedModality === "alquiler" && product.modality !== "alquiler" && product.modality !== "alquiler_suministro") {
+          if (
+            selectedModality === "alquiler" &&
+            product.modality !== "alquiler" &&
+            product.modality !== "alquiler_suministro"
+          ) {
             return false;
           }
-          if (selectedModality === "suministro" && product.modality !== "suministro" && product.modality !== "alquiler_suministro") {
+          if (
+            selectedModality === "suministro" &&
+            product.modality !== "suministro" &&
+            product.modality !== "alquiler_suministro"
+          ) {
             return false;
           }
           if (selectedModality === "servicio" && product.modality !== "servicio") {
@@ -75,21 +79,11 @@ function CatalogContent() {
         return true;
       })
       .sort((a, b) => {
-        if (sortBy === "destacados") {
-          return (b.featured ? 1 : 0) - (a.featured ? 1 : 0);
-        }
-        if (sortBy === "precio_asc") {
-          return a.pricing.basePrice - b.pricing.basePrice;
-        }
-        if (sortBy === "precio_desc") {
-          return b.pricing.basePrice - a.pricing.basePrice;
-        }
-        if (sortBy === "nombre_asc") {
-          return a.name.localeCompare(b.name);
-        }
-        if (sortBy === "nombre_desc") {
-          return b.name.localeCompare(a.name);
-        }
+        if (sortBy === "destacados") return (b.featured ? 1 : 0) - (a.featured ? 1 : 0);
+        if (sortBy === "precio_asc") return a.pricing.basePrice - b.pricing.basePrice;
+        if (sortBy === "precio_desc") return b.pricing.basePrice - a.pricing.basePrice;
+        if (sortBy === "nombre_asc") return a.name.localeCompare(b.name);
+        if (sortBy === "nombre_desc") return b.name.localeCompare(a.name);
         return 0;
       });
   }, [searchQuery, selectedCategory, selectedModality, sortBy]);
@@ -101,48 +95,47 @@ function CatalogContent() {
     setSortBy("destacados");
   };
 
-  const hasActiveFilters = searchQuery !== "" || selectedCategory !== "todas" || selectedModality !== "todas";
+  const hasActiveFilters =
+    searchQuery !== "" || selectedCategory !== "todas" || selectedModality !== "todas";
 
   return (
-    <div className="py-8 sm:py-10 pb-20 bg-storm min-h-screen">
-      <div className="w-full px-6 sm:px-10 lg:px-16 2xl:px-24">
-        {/* Breadcrumbs */}
-        <Breadcrumbs items={[{ label: "Catálogo de Equipos y Soluciones" }]} />
+    <div className="py-8 sm:py-12 pb-20 bg-[#131518] min-h-screen">
+      <div className="max-w-[1380px] mx-auto px-4 sm:px-6 lg:px-8">
+        <Breadcrumbs items={[{ label: "Catálogo de equipos" }]} />
 
-        {/* Cabecera Principal del Catálogo */}
-        <div className="py-8 border-b border-storm-border flex flex-col md:flex-row md:items-end justify-between gap-6">
+        {/* Cabecera moderna */}
+        <div className="py-6 sm:py-8 flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div>
-            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black uppercase text-white tracking-tight">
-              Catálogo Comercial
+            <h1 className="text-3xl sm:text-5xl font-extrabold tracking-[-0.035em] text-white">
+              Catálogo de maquinaria y soluciones
             </h1>
-            <p className="mt-2 text-sm sm:text-base text-[#C4CCD4] max-w-2xl">
-              Equipos de construcción, maquinaria pesada, encofrados certificados y materiales aligerados para frentes de obra en Bogotá y municipios de la Sabana.
+            <p className="mt-2.5 text-sm sm:text-base text-[#9BA5B4] max-w-2xl">
+              Equipos de construcción, maquinaria pesada, encofrados certificados y materiales aligerados listos para entrega en Bogotá y la Sabana.
             </p>
           </div>
 
-          <div className="flex items-center gap-2 text-xs text-[#B8C1CC]">
-            <span>
-              Mostrando <strong className="text-bronto-yellow">{filteredProducts.length}</strong> de {catalogProducts.length} referencias
-            </span>
+          <div className="px-4 py-2 rounded-full bg-[#1E232A] border border-white/[0.07] text-xs text-[#B8C2CE] self-start md:self-auto">
+            Mostrando <strong className="text-white">{filteredProducts.length}</strong> de{" "}
+            {catalogProducts.length} referencias
           </div>
         </div>
 
-        {/* Barra de Filtros Rápidos y Búsqueda */}
-        <div className="py-6 flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-4">
-          {/* Campo de Búsqueda */}
-          <div className="relative flex-1 max-w-lg">
-            <Search className="w-4 h-4 text-[#8E99A6] absolute left-3.5 top-1/2 -translate-y-1/2" />
+        {/* Barra de búsqueda y ordenamiento */}
+        <div className="pb-6 flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-3">
+          <div className="relative flex-1 max-w-xl">
+            <Search className="w-4 h-4 text-[#8E99A8] absolute left-4 top-1/2 -translate-y-1/2" />
             <input
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Buscar por equipo, referencia (ej: BRT-MAQ) o aplicación..."
-              className="w-full pl-10 pr-10 py-2.5 bg-matte-deep border border-storm-border focus:border-bronto-yellow focus:outline-none text-sm text-white placeholder-white/40"
+              placeholder="Buscar equipo, SKU o aplicación..."
+              className="w-full h-12 pl-11 pr-10 rounded-2xl bg-[#1E232A] border border-white/[0.08] focus:border-[#FF5F00] focus:outline-none text-sm text-white placeholder-[#8E99A8]"
             />
             {searchQuery && (
               <button
+                type="button"
                 onClick={() => setSearchQuery("")}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-[#8E99A6] hover:text-white"
+                className="absolute right-3.5 top-1/2 -translate-y-1/2 text-[#8E99A8] hover:text-white"
                 aria-label="Limpiar búsqueda"
               >
                 <X className="w-4 h-4" />
@@ -150,87 +143,104 @@ function CatalogContent() {
             )}
           </div>
 
-          {/* Selector de Orden y Alternador de Vistas */}
-          <div className="flex items-center gap-3 justify-between lg:justify-end">
-            <div className="flex items-center gap-2">
-              <span className="text-xs text-[#B8C1CC] hidden sm:inline">Ordenar:</span>
-              <select
-                value={sortBy}
-                onChange={(e) => setSortBy(e.target.value as "destacados" | "nombre_asc" | "nombre_desc" | "precio_asc" | "precio_desc")}
-                className="bg-matte-deep border border-storm-border text-white text-xs py-2 px-3 focus:border-bronto-yellow focus:outline-none"
-              >
-                <option value="destacados">Destacados primero</option>
-                <option value="precio_asc">Precio: Menor a Mayor</option>
-                <option value="precio_desc">Precio: Mayor a Menor</option>
-                <option value="nombre_asc">Nombre: A - Z</option>
-                <option value="nombre_desc">Nombre: Z - A</option>
-              </select>
-            </div>
+          <div className="flex items-center gap-2.5 justify-between lg:justify-end">
+            <select
+              value={sortBy}
+              onChange={(e) =>
+                setSortBy(
+                  e.target.value as
+                    | "destacados"
+                    | "nombre_asc"
+                    | "nombre_desc"
+                    | "precio_asc"
+                    | "precio_desc"
+                )
+              }
+              className="h-11 rounded-xl bg-[#1E232A] border border-white/[0.08] text-white text-xs font-medium px-3.5 focus:border-[#FF5F00] focus:outline-none"
+            >
+              <option value="destacados">Más solicitados</option>
+              <option value="precio_asc">Menor tarifa primero</option>
+              <option value="precio_desc">Mayor tarifa primero</option>
+              <option value="nombre_asc">Nombre: A - Z</option>
+              <option value="nombre_desc">Nombre: Z - A</option>
+            </select>
 
-            {/* Alternador Grid / List */}
-            <div className="flex items-center border border-storm-border bg-matte-deep p-0.5">
+            <div className="flex items-center rounded-xl border border-white/[0.08] bg-[#1E232A] p-1">
               <button
+                type="button"
                 onClick={() => setViewMode("grid")}
-                className={`p-1.5 ${viewMode === "grid" ? "bg-bronto-yellow text-[#151515]" : "text-[#B8C1CC] hover:text-white"}`}
+                className={`p-2 rounded-lg transition-colors ${
+                  viewMode === "grid"
+                    ? "bg-[#FF5F00] text-white"
+                    : "text-[#9BA5B4] hover:text-white"
+                }`}
                 aria-label="Vista en cuadrícula"
               >
                 <LayoutGrid className="w-4 h-4" />
               </button>
               <button
+                type="button"
                 onClick={() => setViewMode("list")}
-                className={`p-1.5 ${viewMode === "list" ? "bg-bronto-yellow text-[#151515]" : "text-[#B8C1CC] hover:text-white"}`}
+                className={`p-2 rounded-lg transition-colors ${
+                  viewMode === "list"
+                    ? "bg-[#FF5F00] text-white"
+                    : "text-[#9BA5B4] hover:text-white"
+                }`}
                 aria-label="Vista en lista"
               >
                 <List className="w-4 h-4" />
               </button>
             </div>
 
-            {/* Botón filtros en móviles */}
             <button
+              type="button"
               onClick={() => setMobileFiltersOpen(!mobileFiltersOpen)}
-              className="lg:hidden flex items-center gap-1.5 px-3 py-2 bg-storm-panel border border-storm-border text-xs uppercase font-bold text-bronto-yellow"
+              className="lg:hidden inline-flex items-center gap-1.5 h-11 px-4 rounded-xl bg-[#1E232A] border border-white/[0.08] text-xs font-semibold text-white"
             >
-              <Filter className="w-3.5 h-3.5" />
+              <Filter className="w-3.5 h-3.5 text-[#FF5F00]" />
               <span>Filtros</span>
             </button>
           </div>
         </div>
 
-        {/* Layout Principal: Sidebar de Filtros + Rejilla de Productos Full Width */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-          {/* SIDEBAR DE FILTROS (Desktop + Móvil) */}
-          <aside className={`lg:block ${mobileFiltersOpen ? "block" : "hidden"} lg:col-span-3 space-y-6 bg-matte p-6 border border-storm-border h-fit`}>
-            <div className="flex items-center justify-between pb-3 border-b border-matte-border">
-              <span className="text-xs uppercase tracking-wider font-bold text-white flex items-center gap-2">
-                <SlidersHorizontal className="w-4 h-4 text-bronto-yellow" />
-                Filtros de Catálogo
+        {/* Layout principal */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-7 items-start">
+          {/* Sidebar moderno */}
+          <aside
+            className={`lg:block ${
+              mobileFiltersOpen ? "block" : "hidden"
+            } lg:col-span-3 space-y-6 rounded-3xl bg-[#1E232A] p-6 border border-white/[0.07]`}
+          >
+            <div className="flex items-center justify-between pb-3 border-b border-white/[0.07]">
+              <span className="text-sm font-bold text-white flex items-center gap-2">
+                <SlidersHorizontal className="w-4 h-4 text-[#FF5F00]" />
+                Filtrar inventario
               </span>
               {hasActiveFilters && (
                 <button
+                  type="button"
                   onClick={resetFilters}
-                  className="text-xs text-bronto-yellow hover:underline"
+                  className="text-xs font-semibold text-[#FF5F00] hover:underline"
                 >
-                  Restablecer
+                  Limpiar
                 </button>
               )}
             </div>
 
-            {/* Filtro: Familias de Catálogo */}
             <div>
-              <h4 className="text-xs uppercase tracking-wider text-[#B8C1CC] font-bold mb-3">
-                Familia Principal
-              </h4>
-              <div className="space-y-1.5">
+              <h4 className="text-xs font-semibold text-[#9BA5B4] mb-2.5">Línea de obra</h4>
+              <div className="space-y-1">
                 <button
+                  type="button"
                   onClick={() => setSelectedCategory("todas")}
-                  className={`w-full text-left px-3 py-2 text-xs transition-colors flex items-center justify-between ${
+                  className={`w-full text-left px-3.5 py-2.5 rounded-xl text-xs font-medium transition-colors flex items-center justify-between ${
                     selectedCategory === "todas"
-                      ? "bg-bronto-yellow text-[#151515] font-black"
-                      : "text-white/80 hover:bg-storm-panel"
+                      ? "bg-[#FF5F00] text-white font-semibold"
+                      : "text-[#D0D7E2] hover:bg-[#282F39]"
                   }`}
                 >
-                  <span>Todas las familias</span>
-                  <span>({catalogProducts.length})</span>
+                  <span>Todas las líneas</span>
+                  <span className="tabular-nums">{catalogProducts.length}</span>
                 </button>
                 {catalogCategories.map((cat) => {
                   const count = catalogProducts.filter((p) => p.categoryId === cat.id).length;
@@ -238,40 +248,39 @@ function CatalogContent() {
                   return (
                     <button
                       key={cat.id}
+                      type="button"
                       onClick={() => setSelectedCategory(cat.id)}
-                      className={`w-full text-left px-3 py-2 text-xs transition-colors flex items-center justify-between ${
+                      className={`w-full text-left px-3.5 py-2.5 rounded-xl text-xs font-medium transition-colors flex items-center justify-between ${
                         active
-                          ? "bg-bronto-yellow text-[#151515] font-black"
-                          : "text-white/80 hover:bg-storm-panel"
+                          ? "bg-[#FF5F00] text-white font-semibold"
+                          : "text-[#D0D7E2] hover:bg-[#282F39]"
                       }`}
                     >
                       <span className="truncate pr-2">{cat.shortName}</span>
-                      <span className="shrink-0 text-[10px]">({count})</span>
+                      <span className="shrink-0 tabular-nums opacity-80">{count}</span>
                     </button>
                   );
                 })}
               </div>
             </div>
 
-            {/* Filtro: Modalidad Comercial */}
-            <div className="pt-4 border-t border-matte-border">
-              <h4 className="text-xs uppercase tracking-wider text-[#B8C1CC] font-bold mb-3">
-                Modalidad Comercial
-              </h4>
-              <div className="space-y-1.5">
+            <div className="pt-4 border-t border-white/[0.07]">
+              <h4 className="text-xs font-semibold text-[#9BA5B4] mb-2.5">Modalidad</h4>
+              <div className="space-y-1">
                 {[
-                  { id: "todas", label: "Cualquier modalidad" },
+                  { id: "todas", label: "Todas las modalidades" },
                   { id: "alquiler", label: "Alquiler de equipos" },
                   { id: "suministro", label: "Suministro de materiales" },
-                  { id: "servicio", label: "Prestación de servicios" },
+                  { id: "servicio", label: "Servicio especializado" },
                 ].map((mod) => (
                   <button
                     key={mod.id}
+                    type="button"
                     onClick={() => setSelectedModality(mod.id)}
-                    className={`w-full text-left px-3 py-1.5 text-xs transition-colors ${
+                    className={`w-full text-left px-3.5 py-2 rounded-xl text-xs font-medium transition-colors ${
                       selectedModality === mod.id
-                        ? "text-bronto-yellow font-bold bg-storm-panel border-l-2 border-bronto-yellow"
-                        : "text-[#C4CCD4] hover:text-white"
+                        ? "bg-[#282F39] text-white font-semibold border border-white/[0.1]"
+                        : "text-[#9BA5B4] hover:text-white"
                     }`}
                   >
                     {mod.label}
@@ -280,116 +289,115 @@ function CatalogContent() {
               </div>
             </div>
 
-            {/* Asesoría Rápida */}
-            <div className="pt-4 border-t border-matte-border">
-              <div className="p-4 bg-black/40 border border-storm-border text-xs space-y-2">
-                <span className="text-xs font-bold text-bronto-yellow uppercase block">
-                  ¿No encuentra su equipo?
+            <div className="pt-4 border-t border-white/[0.07]">
+              <div className="p-4 rounded-2xl bg-[#14171C] border border-white/[0.06] space-y-2">
+                <span className="text-xs font-semibold text-white block">
+                  ¿Necesita un equipo especial?
                 </span>
-                <p className="text-[#C4CCD4] text-xs">
-                  Consulte a nuestro equipo técnico. Coordinamos referencias especiales o de gran tonelaje bajo pedido.
+                <p className="text-xs text-[#9BA5B4] leading-relaxed">
+                  Coordinamos referencias de gran tonelaje o especificaciones particulares bajo requerimiento.
                 </p>
                 <Link
                   href="/contacto"
-                  className="inline-block pt-1 text-xs text-white hover:text-bronto-yellow underline font-semibold"
+                  className="inline-block pt-1 text-xs font-semibold text-[#FF5F00] hover:underline"
                 >
-                  Contactar asesor técnico &rarr;
+                  Hablar con ingeniería
                 </Link>
               </div>
             </div>
           </aside>
 
-          {/* REJILLA / LISTA DE RESULTADOS */}
+          {/* Resultados */}
           <div className="lg:col-span-9">
             {filteredProducts.length === 0 ? (
-              <div className="bg-matte border border-storm-border p-12 text-center rounded-sm space-y-4">
-                <p className="text-sm uppercase text-[#C4CCD4] font-semibold">
-                  No se encontraron referencias con los criterios aplicados.
+              <div className="rounded-3xl bg-[#1E232A] border border-white/[0.07] p-12 text-center space-y-4">
+                <p className="text-base font-semibold text-white">
+                  No encontramos equipos con los filtros seleccionados.
                 </p>
                 <button
+                  type="button"
                   onClick={resetFilters}
-                  className="px-4 py-2 bg-bronto-yellow text-[#151515] font-black text-xs uppercase tracking-wider rounded-sm"
+                  className="px-5 py-2.5 rounded-full bg-[#FF5F00] text-white text-xs font-semibold"
                 >
-                  Limpiar filtros
+                  Restablecer filtros
                 </button>
               </div>
             ) : viewMode === "grid" ? (
-              /* Vista en Cuadrícula Full Width */
-              <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
                 {filteredProducts.map((product) => {
                   const inBasket = mounted && isInBasket(product.id);
                   return (
-                    <div
+                    <article
                       key={product.id}
-                      className="bg-matte border border-storm-border rounded-sm flex flex-col justify-between overflow-hidden group hover:border-bronto-yellow transition-all duration-300"
+                      className="group rounded-3xl bg-[#1E232A] hover:bg-[#232932] border border-white/[0.07] hover:border-white/[0.14] p-3.5 flex flex-col justify-between transition-all duration-300"
                     >
-                      <div className="relative aspect-[16/10] overflow-hidden bg-black/50">
-                        <div
-                          className="absolute inset-0 bg-cover bg-center transition-transform duration-500 ease-out group-hover:scale-105"
-                          style={{ backgroundImage: `url('${product.images[0]?.url}')` }}
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-[#181818] via-transparent to-black/30" />
-
-                        <div className="absolute top-2.5 left-2.5 flex flex-wrap gap-1">
-                          <span className="px-2 py-0.5 bg-black/80 text-[10px] uppercase text-white font-bold">
+                      <div>
+                        <Link
+                          href={`/catalogo/${product.slug}`}
+                          className="block relative aspect-[16/10] rounded-2xl overflow-hidden bg-[#131518]"
+                        >
+                          <Image
+                            src={product.images[0]?.url || "/brand/bronto-logo.png"}
+                            alt={product.name}
+                            fill
+                            className="object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
+                            sizes="(max-width: 768px) 100vw, 33vw"
+                          />
+                          <div className="absolute top-3 left-3 px-3 py-1 rounded-full bg-[#131518]/80 backdrop-blur-md border border-white/[0.1] text-[11px] font-medium text-white">
                             {product.subcategory}
-                          </span>
-                        </div>
-                        <div className="absolute top-2.5 right-2.5">
-                          <span className="px-2 py-0.5 bg-bronto-yellow text-[#151515] text-[10px] uppercase font-black">
-                            {product.modality.replace("_", " & ")}
-                          </span>
+                          </div>
+                        </Link>
+
+                        <div className="px-2 pt-4 pb-3 space-y-3">
+                          <div>
+                            <span className="text-xs font-mono text-[#8E99A8]">{product.sku}</span>
+                            <Link href={`/catalogo/${product.slug}`}>
+                              <h3 className="text-lg font-bold text-white group-hover:text-[#FF5F00] transition-colors leading-snug mt-0.5">
+                                {product.name}
+                              </h3>
+                            </Link>
+                          </div>
+
+                          <div className="flex flex-wrap gap-1.5">
+                            {product.specifications.slice(0, 2).map((s, idx) => (
+                              <span
+                                key={idx}
+                                className="px-2.5 py-1 rounded-lg bg-[#282F39] text-xs text-[#D0D7E2]"
+                              >
+                                {s.label}: <strong className="text-white">{s.value}</strong>
+                              </span>
+                            ))}
+                          </div>
                         </div>
                       </div>
 
-                      <div className="p-5 flex-1 flex flex-col justify-between">
-                        <div>
-                          <span className="text-[11px] font-bold text-[#8E99A6] block mb-1 uppercase tracking-wider">
-                            {product.sku}
-                          </span>
-                          <h3 className="uppercase text-lg font-bold text-white group-hover:text-bronto-yellow transition-colors leading-tight">
-                            {product.name}
-                          </h3>
-                          <p className="mt-2 text-xs text-[#C4CCD4] line-clamp-2">
-                            {product.shortDescription}
-                          </p>
-
-                          <div className="mt-3 pt-3 border-t border-matte-border space-y-1">
-                            {product.specifications.slice(0, 2).map((s, idx) => (
-                              <div key={idx} className="flex justify-between text-xs">
-                                <span className="text-[#8E99A6]">{s.label}:</span>
-                                <span className="text-white font-semibold">{s.value}</span>
-                              </div>
-                            ))}
-                          </div>
-
-                          {/* Tarifa de Referencia (+10% aplicada) */}
-                          <div className="mt-3 pt-2.5 border-t border-matte-border flex items-baseline justify-between">
-                            <span className="text-[10px] text-[#8E99A6] uppercase font-semibold">Tarifa Ref.</span>
-                            <div className="text-right">
-                              <span className="text-sm font-black text-bronto-yellow">
-                                {formatCOP(product.pricing.basePrice)}
-                              </span>
-                              <span className="text-[10px] text-[#8E99A6] block font-normal">/ {product.pricing.priceUnit}</span>
-                            </div>
+                      <div className="px-2 pt-3 pb-1 border-t border-white/[0.06] flex items-center justify-between gap-2">
+                        <div className="min-w-0">
+                          <span className="text-[11px] text-[#8E99A8] block">Desde</span>
+                          <div className="flex items-baseline gap-1 whitespace-nowrap">
+                            <span className="text-base font-bold text-white tabular-nums">
+                              {formatCOP(product.pricing.basePrice, false)}
+                            </span>
+                            <span className="text-[11px] text-[#9BA5B4]">
+                              / {product.pricing.priceUnit.split(" ")[0].toLowerCase()}
+                            </span>
                           </div>
                         </div>
 
-                        <div className="mt-5 pt-3 border-t border-matte-border flex items-center gap-2">
+                        <div className="flex items-center gap-2">
                           <Link
                             href={`/catalogo/${product.slug}`}
-                            className="flex-1 inline-flex items-center justify-center gap-1 py-2 px-2.5 bg-storm-panel hover:bg-storm-elevated text-white text-xs uppercase font-bold transition-colors"
+                            className="px-3 py-2 rounded-xl bg-[#282F39] hover:bg-[#323A46] text-xs font-semibold text-white transition-colors"
                           >
-                            <Eye className="w-3.5 h-3.5" />
-                            <span>Detalle</span>
+                            Ficha
                           </Link>
-
                           <button
+                            type="button"
                             onClick={() => addItem(product, 1)}
-                            className={`flex-1 inline-flex items-center justify-center gap-1 py-2 px-2.5 text-xs uppercase font-bold transition-colors ${
+                            className={`px-3.5 py-2 rounded-xl text-xs font-semibold inline-flex items-center gap-1 transition-all ${
                               inBasket
-                                ? "bg-green-700 text-white"
-                                : "bg-bronto-yellow hover:bg-bronto-yellow-hover text-[#151515] font-black"
+                                ? "bg-emerald-600 text-white"
+                                : "bg-[#FF5F00] hover:bg-[#FF711A] text-white shadow-md shadow-[#FF5F00]/20"
                             }`}
                           >
                             {inBasket ? (
@@ -399,95 +407,88 @@ function CatalogContent() {
                               </>
                             ) : (
                               <>
-                                <Plus className="w-3.5 h-3.5" />
+                                <Plus className="w-3.5 h-3.5 stroke-[2.5]" />
                                 <span>Cotizar</span>
                               </>
                             )}
                           </button>
                         </div>
                       </div>
-                    </div>
+                    </article>
                   );
                 })}
               </div>
             ) : (
-              /* Vista en Lista */
-              <div className="space-y-4">
+              <div className="space-y-3.5">
                 {filteredProducts.map((product) => {
                   const inBasket = mounted && isInBasket(product.id);
                   return (
                     <div
                       key={product.id}
-                      className="bg-matte border border-storm-border p-4 sm:p-6 flex flex-col md:flex-row items-stretch md:items-center justify-between gap-6 group hover:border-bronto-yellow transition-colors"
+                      className="rounded-3xl bg-[#1E232A] border border-white/[0.07] hover:border-white/[0.14] p-4 sm:p-5 flex flex-col md:flex-row items-stretch md:items-center justify-between gap-5 transition-colors"
                     >
-                      <div className="flex items-center gap-4 flex-1">
-                        <div className="w-24 h-24 sm:w-28 sm:h-28 overflow-hidden bg-black shrink-0 relative">
-                          <div
-                            className="absolute inset-0 bg-cover bg-center"
-                            style={{ backgroundImage: `url('${product.images[0]?.url}')` }}
+                      <div className="flex items-center gap-4 flex-1 min-w-0">
+                        <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl overflow-hidden bg-[#131518] shrink-0 relative">
+                          <Image
+                            src={product.images[0]?.url || "/brand/bronto-logo.png"}
+                            alt={product.name}
+                            fill
+                            className="object-cover"
+                            sizes="112px"
                           />
                         </div>
 
-                        <div className="flex-1">
-                          <div className="flex items-center gap-2">
-                            <span className="text-[11px] font-bold text-[#8E99A6] tracking-wider uppercase">{product.sku}</span>
-                            <span className="px-2 py-0.5 bg-bronto-yellow text-[#151515] text-[10px] uppercase font-black">
-                              {product.modality.replace("_", " & ")}
-                            </span>
-                          </div>
-                          <h3 className="uppercase text-xl font-bold text-white group-hover:text-bronto-yellow transition-colors mt-1">
-                            {product.name}
-                          </h3>
-                          <p className="text-xs text-[#C4CCD4] mt-1 max-w-xl line-clamp-2">
+                        <div className="flex-1 min-w-0 space-y-1.5">
+                          <span className="text-xs font-mono text-[#8E99A8]">{product.sku}</span>
+                          <Link href={`/catalogo/${product.slug}`}>
+                            <h3 className="text-lg font-bold text-white hover:text-[#FF5F00] transition-colors">
+                              {product.name}
+                            </h3>
+                          </Link>
+                          <p className="text-xs text-[#9BA5B4] line-clamp-2 max-w-xl">
                             {product.shortDescription}
                           </p>
-                          <div className="mt-2 flex flex-wrap gap-3 text-xs text-[#C4CCD4]">
+                          <div className="flex flex-wrap gap-1.5 pt-1">
                             {product.specifications.slice(0, 2).map((s, idx) => (
-                              <span key={idx} className="bg-storm-panel px-2 py-0.5">
-                                {s.label}: <strong>{s.value}</strong>
+                              <span
+                                key={idx}
+                                className="px-2.5 py-1 rounded-lg bg-[#282F39] text-xs text-[#D0D7E2]"
+                              >
+                                {s.label}: <strong className="text-white">{s.value}</strong>
                               </span>
                             ))}
                           </div>
                         </div>
                       </div>
 
-                      <div className="flex md:flex-col items-end gap-3 shrink-0 border-t md:border-t-0 md:border-l border-storm-border pt-4 md:pt-0 md:pl-6 min-w-[180px]">
-                        <div className="text-right w-full pb-1 border-b md:border-b border-matte-border">
-                          <span className="text-[10px] text-[#8E99A6] uppercase block font-semibold">Tarifa Ref.</span>
-                          <span className="text-base font-black text-bronto-yellow">
+                      <div className="flex md:flex-col items-center md:items-end justify-between gap-3 shrink-0 border-t md:border-t-0 md:border-l border-white/[0.07] pt-3 md:pt-0 md:pl-6 min-w-[170px]">
+                        <div className="md:text-right">
+                          <span className="text-[11px] text-[#8E99A8] block">Desde</span>
+                          <span className="text-lg font-bold text-white tabular-nums">
                             {formatCOP(product.pricing.basePrice)}
                           </span>
-                          <span className="text-[10px] text-[#8E99A6] block font-normal">/ {product.pricing.priceUnit}</span>
+                          <span className="text-[11px] text-[#9BA5B4] block">
+                            / {product.pricing.priceUnit}
+                          </span>
                         </div>
 
-                        <div className="flex md:flex-col items-center gap-2 w-full">
+                        <div className="flex items-center gap-2">
                           <Link
                             href={`/catalogo/${product.slug}`}
-                            className="w-full inline-flex items-center justify-center gap-1.5 py-2 px-4 bg-storm-panel hover:bg-storm-elevated text-white text-xs uppercase font-bold transition-colors"
+                            className="px-3.5 py-2 rounded-xl bg-[#282F39] hover:bg-[#323A46] text-xs font-semibold text-white transition-colors"
                           >
-                            <Eye className="w-3.5 h-3.5" />
-                            <span>Ver Ficha</span>
+                            Ficha
                           </Link>
-
                           <button
+                            type="button"
                             onClick={() => addItem(product, 1)}
-                            className={`w-full inline-flex items-center justify-center gap-1.5 py-2 px-4 text-xs uppercase font-bold transition-colors ${
+                            className={`px-4 py-2 rounded-xl text-xs font-semibold inline-flex items-center gap-1 transition-all ${
                               inBasket
-                                ? "bg-green-700 text-white"
-                                : "bg-bronto-yellow hover:bg-bronto-yellow-hover text-[#151515] font-black"
+                                ? "bg-emerald-600 text-white"
+                                : "bg-[#FF5F00] hover:bg-[#FF711A] text-white"
                             }`}
                           >
-                            {inBasket ? (
-                              <>
-                                <Check className="w-3.5 h-3.5" />
-                                <span>En Lista</span>
-                              </>
-                            ) : (
-                              <>
-                                <Plus className="w-3.5 h-3.5" />
-                                <span>Cotizar</span>
-                              </>
-                            )}
+                            {inBasket ? "Listo" : "+ Cotizar"}
                           </button>
                         </div>
                       </div>
@@ -505,9 +506,12 @@ function CatalogContent() {
 
 export default function CatalogPage() {
   return (
-    <Suspense fallback={<div className="pt-32 text-center text-white font-bold text-sm">Cargando catálogo BRONTO...</div>}>
+    <Suspense
+      fallback={
+        <div className="py-24 text-center text-[#9BA5B4] text-sm">Cargando catálogo...</div>
+      }
+    >
       <CatalogContent />
     </Suspense>
   );
 }
-

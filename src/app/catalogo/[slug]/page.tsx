@@ -81,7 +81,7 @@ export default async function ProductDetailPage({ params }: Props) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
 
-      <div className="py-8 sm:py-10 pb-20 bg-storm min-h-screen">
+      <div className="py-8 sm:py-10 pb-20 bg-[#131518] min-h-screen">
         <div className="w-full px-6 sm:px-10 lg:px-16 2xl:px-24">
           {/* Breadcrumbs */}
           <Breadcrumbs
@@ -100,7 +100,7 @@ export default async function ProductDetailPage({ params }: Props) {
             {/* Columna Derecha: Especificaciones Técnicas y Condiciones */}
             <div className="lg:col-span-5 space-y-6">
               {/* Tabla de Especificaciones Técnicas */}
-              <div className="bg-matte border border-storm-border p-6">
+              <div className="bg-[#1E232B] rounded-2xl border border-storm-border p-6">
                 <h3 className="text-xs uppercase tracking-wider text-bronto-yellow font-bold mb-4 flex items-center justify-between">
                   <span>Ficha Técnica y Parámetros</span>
                   <span className="text-[10px] text-[#8E99A6]">NSR-10 / Estándar</span>
@@ -122,7 +122,7 @@ export default async function ProductDetailPage({ params }: Props) {
               </div>
 
               {/* Características Clave y Respaldo */}
-              <div className="bg-matte border border-storm-border p-6">
+              <div className="bg-[#1E232B] rounded-2xl border border-storm-border p-6">
                 <h3 className="text-xs uppercase tracking-wider text-white font-bold mb-3">
                   Características de Rendimiento
                 </h3>
@@ -138,7 +138,7 @@ export default async function ProductDetailPage({ params }: Props) {
 
               {/* Condiciones de Alquiler / Suministro */}
               {(product.rentalConditions || product.supplyConditions || product.serviceConditions) && (
-                <div className="bg-matte border border-storm-border p-6 text-xs text-white/80 space-y-2">
+                <div className="bg-[#1E232B] rounded-2xl border border-storm-border p-6 text-xs text-white/80 space-y-2">
                   <span className="text-xs uppercase font-bold text-bronto-yellow flex items-center gap-1.5">
                     <ShieldAlert className="w-3.5 h-3.5" />
                     Condiciones Comerciales de Despacho
@@ -158,7 +158,7 @@ export default async function ProductDetailPage({ params }: Props) {
               )}
 
               {/* Ficha técnica PDF demostrativa */}
-              <div className="p-4 bg-storm-panel border border-storm-border flex items-center justify-between gap-4">
+              <div className="p-4 bg-[#282F3A] rounded-xl border border-storm-border flex items-center justify-between gap-4">
                 <div className="flex items-center gap-3">
                   <div className="p-2 bg-black border border-storm-border text-bronto-yellow">
                     <FileDown className="w-5 h-5" />
@@ -188,7 +188,7 @@ export default async function ProductDetailPage({ params }: Props) {
             <div className="mt-16 pt-12 border-t border-storm-border">
               <div className="flex items-center justify-between mb-8">
                 <div>
-                  <h3 className="uppercase text-2xl sm:text-3xl font-black text-white">
+                  <h3 className="text-2xl sm:text-3xl font-black text-white">
                     Equipos Relacionados
                   </h3>
                 </div>
@@ -205,7 +205,7 @@ export default async function ProductDetailPage({ params }: Props) {
                 {relatedProducts.map((rel) => (
                   <div
                     key={rel.id}
-                    className="bg-matte border border-storm-border p-4 flex flex-col justify-between group hover:border-bronto-yellow transition-colors"
+                    className="bg-[#1E232B] rounded-2xl border border-storm-border p-4 flex flex-col justify-between group hover:border-bronto-yellow transition-colors"
                   >
                     <div className="relative aspect-[16/10] overflow-hidden bg-black mb-4">
                       <div
@@ -230,7 +230,7 @@ export default async function ProductDetailPage({ params }: Props) {
                     <div className="mt-4 pt-3 border-t border-storm-border">
                       <Link
                         href={`/catalogo/${rel.slug}`}
-                        className="w-full inline-flex items-center justify-center gap-1.5 py-2 bg-storm-panel hover:bg-bronto-yellow hover:text-[#151515] text-white text-xs uppercase font-bold transition-colors"
+                        className="w-full inline-flex items-center justify-center gap-1.5 py-2 bg-[#282F3A] rounded-xl hover:bg-bronto-yellow hover:text-white text-white text-xs uppercase font-bold transition-colors"
                       >
                         <Eye className="w-3.5 h-3.5" />
                         <span>Ver equipo</span>

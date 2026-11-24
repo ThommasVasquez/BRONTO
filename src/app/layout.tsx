@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Barlow_Condensed, IBM_Plex_Sans, IBM_Plex_Mono } from "next/font/google";
+import { Plus_Jakarta_Sans, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { siteConfig } from "@/data/siteConfig";
 import { SiteChrome } from "@/components/common/SiteChrome";
@@ -7,21 +7,14 @@ import { QuoteBasketProvider } from "@/components/quote/QuoteBasketProvider";
 import { ThemeProvider } from "@/components/common/ThemeProvider";
 import { ClientAuthProvider } from "@/components/auth/ClientAuthProvider";
 
-const barlowCondensed = Barlow_Condensed({
+const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  weight: ["600", "700", "800"],
-  variable: "--font-heading",
-  display: "swap",
-});
-
-const ibmPlexSans = IBM_Plex_Sans({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["400", "500", "600", "700", "800"],
   variable: "--font-sans",
   display: "swap",
 });
 
-const ibmPlexMono = IBM_Plex_Mono({
+const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
   weight: ["500", "600"],
   variable: "--font-mono",
@@ -29,7 +22,7 @@ const ibmPlexMono = IBM_Plex_Mono({
 });
 
 export const viewport: Viewport = {
-  themeColor: "#17191D",
+  themeColor: "#131518",
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,
@@ -39,7 +32,7 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.siteUrl),
   title: {
-    default: "BRONTO® | Maquinaria Pesada, Formaletas y Concreto para Obra",
+    default: "BRONTO® | Renta de Maquinaria, Formaletas y Concreto",
     template: "%s | BRONTO®",
   },
   description: siteConfig.description,
@@ -49,7 +42,10 @@ export const metadata: Metadata = {
     capable: true,
     statusBarStyle: "black-translucent",
   },
-  authors: [{ name: "BRONTO Colombia" }, { name: "ENERGYSOFTmedia", url: "https://energysoftmedia.com" }],
+  authors: [
+    { name: "BRONTO Colombia" },
+    { name: "ENERGYSOFTmedia", url: "https://energysoftmedia.com" },
+  ],
   generator: "Next.js",
   keywords: [
     "alquiler de maquinaria bogota",
@@ -95,7 +91,7 @@ export default function RootLayout({
   return (
     <html
       lang="es"
-      className={`dark scroll-smooth ${barlowCondensed.variable} ${ibmPlexSans.variable} ${ibmPlexMono.variable}`}
+      className={`dark scroll-smooth ${jakarta.variable} ${jetbrainsMono.variable}`}
       suppressHydrationWarning
     >
       <head>
@@ -105,13 +101,11 @@ export default function RootLayout({
         <link rel="apple-touch-icon" sizes="192x192" href="/icons/icon-192-v3.png" />
         <link rel="apple-touch-icon" sizes="512x512" href="/icons/icon-512-v3.png" />
       </head>
-      <body className="bg-storm text-[#F5F7F9] min-h-screen flex flex-col font-sans antialiased selection:bg-[#FF5F00] selection:text-[#111316]">
+      <body className="bg-[#131518] text-[#F5F7FA] min-h-screen flex flex-col font-sans antialiased selection:bg-[#FF5F00] selection:text-white">
         <ThemeProvider>
           <ClientAuthProvider>
             <QuoteBasketProvider>
-              <SiteChrome>
-                {children}
-              </SiteChrome>
+              <SiteChrome>{children}</SiteChrome>
             </QuoteBasketProvider>
           </ClientAuthProvider>
         </ThemeProvider>

@@ -4,39 +4,38 @@
 
 :root {
   /* ==========================================================================
-     BRONTO® — ARQUITECTURA CROMÁTICA 60-30-10
-     60% Gris Tormenta (Principal) · 30% Negro Mate (Secundario) · 10% Naranja Seguridad (Acento)
+     BRONTO® — MODERN ARCHITECTURAL PALETTE (60% Storm Slate · 30% Matte Black · 10% Safety Orange)
+     Tonal elevation + hairline specular borders (rgba(255,255,255,0.07)) — zero chalky borders
      ========================================================================== */
-  --storm-base: #2B3036;
-  --storm-panel: #343A42;
-  --storm-elevated: #3D444E;
-  --storm-border: #464E59;
-
-  --matte-base: #17191D;
-  --matte-deep: #111316;
-  --matte-border: #282C33;
+  --matte-deep: #0E1013;
+  --matte-base: #131518;
+  --storm-base: #1B1F25;
+  --storm-panel: #232830;
+  --storm-elevated: #2C323C;
+  --storm-border: rgba(255, 255, 255, 0.08);
+  --matte-border: rgba(255, 255, 255, 0.06);
 
   --safety-orange: #FF5F00;
-  --safety-orange-hover: #E55500;
+  --safety-orange-hover: #FF711A;
 
-  /* Compatibilidad con utilidades heredadas en páginas secundarias */
+  /* Compatibilidad con clases existentes */
   --bronto-yellow: #FF5F00;
-  --bronto-yellow-hover: #E55500;
+  --bronto-yellow-hover: #FF711A;
   --bronto-orange: #FF5F00;
-  --bronto-orange-hover: #E55500;
-  --bronto-carbon: #17191D;
-  --bronto-graphite: #2B3036;
-  --bronto-surface: #343A42;
-  --bronto-border: #464E59;
-  --bronto-gray: #B8C1CC;
-  --bronto-gray-light: #E5EAF0;
+  --bronto-orange-hover: #FF711A;
+  --bronto-carbon: #131518;
+  --bronto-graphite: #1B1F25;
+  --bronto-surface: #232830;
+  --bronto-border: rgba(255, 255, 255, 0.08);
+  --bronto-gray: #9BA5B4;
+  --bronto-gray-light: #E2E8F0;
 }
 
 html {
   scroll-behavior: smooth;
   color-scheme: dark;
-  background-color: var(--storm-base);
-  color: #F5F7F9;
+  background-color: #131518;
+  color: #F5F7FA;
   max-width: 100%;
   overflow-x: clip;
   overscroll-behavior-x: none;
@@ -47,25 +46,24 @@ body {
   max-width: 100%;
   overflow-x: clip;
   overscroll-behavior-x: none;
-  background-color: var(--storm-base);
-  color: #F5F7F9;
-  font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
+  background-color: #131518;
+  color: #F5F7FA;
+  font-family: var(--font-sans), -apple-system, BlinkMacSystemFont, sans-serif;
+  letter-spacing: -0.01em;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Títulos industriales condensados estilo placa de maquinaria */
-h1, h2, h3, .font-display {
-  font-family: var(--font-heading), Impact, "Arial Narrow", sans-serif;
+h1, h2, h3, h4, .font-display {
+  font-family: var(--font-sans), -apple-system, BlinkMacSystemFont, sans-serif;
+  letter-spacing: -0.03em;
 }
 
-/* Números tabulares estrictos para precios, tonelajes y SKUs */
 .tabular-nums {
   font-variant-numeric: tabular-nums;
 }
 
-/* Soporte de Safe Area para iOS Notch & Dynamic Island */
 .pt-safe {
   padding-top: max(12px, env(safe-area-inset-top, 12px));
 }
@@ -73,26 +71,6 @@ h1, h2, h3, .font-display {
   padding-bottom: max(10px, env(safe-area-inset-bottom, 10px));
 }
 
-/* Trama sutil de acero cepillado / retícula de plano estructural */
-.industrial-grid {
-  background-image:
-    linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
-  background-size: 48px 48px;
-}
-
-/* Franja diagonal industrial de seguridad (uso puntual en barra de despacho) */
-.hazard-stripe {
-  background-image: repeating-linear-gradient(
-    -45deg,
-    #FF5F00,
-    #FF5F00 10px,
-    #17191D 10px,
-    #17191D 20px
-  );
-}
-
-/* Ocultar barra horizontal en carruseles de filtros móviles */
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }
@@ -103,25 +81,26 @@ h1, h2, h3, .font-display {
 
 .bg-bronto-yellow {
   background-color: var(--safety-orange);
-  color: #111316;
+  color: #FFFFFF;
 }
 
 ::selection {
   background-color: var(--safety-orange);
-  color: #111316;
+  color: #FFFFFF;
 }
 
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 6px;
+  height: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #17191D;
+  background: #131518;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #464E59;
+  background: #2C323C;
+  border-radius: 9999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -142,7 +121,6 @@ h1, h2, h3, .font-display {
   }
 }
 
-/* Impresión formal para órdenes y cotizaciones */
 @media print {
   header, footer, .whatsapp-floating-btn, button, nav, .breadcrumbs {
     display: none !important;
@@ -151,7 +129,7 @@ h1, h2, h3, .font-display {
     background: #FFFFFF !important;
     color: #000000 !important;
   }
-  .text-white, .text-\[\#F5F7F9\] {
+  .text-white {
     color: #000000 !important;
   }
 }

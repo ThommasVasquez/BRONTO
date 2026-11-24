@@ -14,39 +14,28 @@ import {
   MapPin,
   Plus,
   Check,
-  Phone,
+  ArrowUpRight,
   Truck,
   ShieldCheck,
   Wrench,
   GraduationCap,
-  FileText,
-  SlidersHorizontal,
+  Clock,
+  MessageCircle,
+  Smartphone,
 } from "lucide-react";
-
-const HERO_UNITS = [
-  catalogProducts.find((p) => p.slug === "retroexcavadora-sobre-orugas-20t")!,
-  catalogProducts.find((p) => p.slug === "minicargador-con-aditamentos")!,
-  catalogProducts.find((p) => p.slug === "andamio-multidireccional-certificado")!,
-].filter(Boolean);
 
 export const HomeFleetExperience: React.FC = () => {
   const router = useRouter();
   const { addItem, isInBasket, totalCount } = useQuoteBasket();
   const [mounted, setMounted] = useState(false);
 
-  // Estado del buscador rápido en el Hero
   const [heroSearch, setHeroSearch] = useState("");
-  const [heroZone, setHeroZone] = useState("Bogotá Norte y Sabana Centro");
-  const [activeHeroIdx, setActiveHeroIdx] = useState(0);
-
-  // Estado del explorador de flota en vivo sobre Gris Tormenta
+  const [heroZone, setHeroZone] = useState("Bogotá y Sabana Norte");
   const [activeCategory, setActiveCategory] = useState<string>("destacados");
 
   useEffect(() => {
     setMounted(true);
   }, []);
-
-  const heroUnit = HERO_UNITS[activeHeroIdx] || catalogProducts[0];
 
   const visibleFleet = useMemo(() => {
     if (activeCategory === "destacados") {
@@ -67,196 +56,114 @@ export const HomeFleetExperience: React.FC = () => {
   const quickTags = [
     { label: "Excavadora 20T", href: "/catalogo/retroexcavadora-sobre-orugas-20t" },
     { label: "Minicargador Bobcat", href: "/catalogo/minicargador-con-aditamentos" },
-    { label: "Rodillo 10T", href: "/catalogo/rodillo-compactador-monocilindrico-10t" },
-    { label: "Andamio Res. 4272", href: "/catalogo/andamio-multidireccional-certificado" },
+    { label: "Andamios Res. 4272", href: "/catalogo/andamio-multidireccional-certificado" },
     { label: "Planta 150 kVA", href: "/catalogo/planta-electrica-insonorizada-150kva" },
     { label: "Concreto bombeable", href: "/catalogo/concreto-premezclado-bombeable" },
   ];
 
+  const bentoSpans = [
+    "lg:col-span-7 h-[340px] sm:h-[400px]",
+    "lg:col-span-5 h-[340px] sm:h-[400px]",
+    "lg:col-span-5 h-[320px] sm:h-[360px]",
+    "lg:col-span-7 h-[320px] sm:h-[360px]",
+  ];
+
   return (
-    <div className="w-full bg-storm text-[#F5F7F9]">
+    <div className="w-full bg-[#131518] text-[#F5F7FA]">
       {/* =====================================================================
-          SECCIÓN 1: HERO ARQUITECTÓNICO DIVIDIDO + MESA DE BÚSQUEDA DE FLOTA
-          60% Gris Tormenta (#2B3036) · 30% Negro Mate (#17191D) · 10% Naranja (#FF5F00)
+          1. HERO CINEMATOGRÁFICO ENMARCADO + CONSOLA FLOTANTE DE BÚSQUEDA
           ===================================================================== */}
-      <section
-        aria-label="Buscador de maquinaria y despacho en obra"
-        className="w-full bg-storm industrial-grid border-b border-storm-border"
-      >
-        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-10 py-10 lg:py-16">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-stretch">
-            {/* Columna Izquierda: Titular directo + Buscador de Patio */}
-            <div className="lg:col-span-7 flex flex-col justify-between space-y-8">
-              <div className="space-y-5">
-                <div className="inline-flex items-center gap-2.5 px-3 py-1.5 bg-matte border border-storm-border text-xs text-[#E5EAF0]">
-                  <span className="w-2 h-2 bg-[#FF5F00]" />
-                  <span>Despacho desde Calle 80 / Siberia hacia Bogotá y Sabana</span>
-                </div>
+      <section aria-label="Presentación principal BRONTO®" className="pt-4 sm:pt-6 pb-14 sm:pb-20">
+        <div className="max-w-[1380px] mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="relative rounded-[28px] sm:rounded-[32px] overflow-hidden min-h-[560px] lg:min-h-[640px] flex flex-col justify-between p-6 sm:p-10 lg:p-14 border border-white/[0.08] shadow-2xl">
+            {/* Fotografía real de maquinaria pesada con iluminación arquitectónica */}
+            <Image
+              src="/images/products/retroexcavadora-oruga-20t.jpg"
+              alt="Excavadora sobre orugas 20 toneladas BRONTO®"
+              fill
+              priority
+              className="object-cover object-center scale-[1.01]"
+              sizes="100vw"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#0E1013]/95 via-[#131518]/80 to-[#131518]/30" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0E1013] via-transparent to-[#0E1013]/40" />
 
-                <h1 className="font-display text-5xl sm:text-6xl xl:text-[4.6rem] font-extrabold tracking-tight leading-[0.94] text-white">
-                  Maquinaria pesada, formaletas y concreto puestos en su frente de obra.
-                </h1>
-
-                <p className="text-base sm:text-lg text-[#C4CCD4] max-w-2xl leading-relaxed">
-                  Unifique excavación, compactación, encofrados certificados y suministro de concreto con un solo proveedor operativo. Alquiler por día o mes, en modalidad seca o con operador acreditado.
-                </p>
+            {/* Píldora superior de estado de patio */}
+            <div className="relative z-10 flex flex-wrap items-center justify-between gap-3">
+              <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#1E232A]/85 backdrop-blur-xl border border-white/[0.12] text-xs font-medium text-white">
+                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                <span>Patio Calle 80 / Siberia activo · Despacho en menos de 4h</span>
               </div>
 
-              {/* Consola de Búsqueda Rápida en Negro Mate (30%) sobre Gris Tormenta (60%) */}
-              <div className="bg-matte border border-storm-border p-5 sm:p-6 space-y-4 shadow-2xl">
-                <div className="flex items-center justify-between gap-2">
-                  <span className="text-sm font-semibold text-white">
-                    Consultar equipo y tarifa de referencia
-                  </span>
-                  <span className="text-xs text-[#B8C1CC] font-mono tabular-nums">
-                    {catalogProducts.length} equipos en línea
-                  </span>
+              <Link
+                href="/app"
+                className="hidden sm:inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/[0.08] hover:bg-white/[0.14] backdrop-blur-xl border border-white/[0.12] text-xs font-medium text-white transition-colors"
+              >
+                <Smartphone className="w-3.5 h-3.5 text-[#FF5F00]" />
+                <span>Instalar App iOS y Android</span>
+              </Link>
+            </div>
+
+            {/* Titular + Dock de Búsqueda */}
+            <div className="relative z-10 mt-16 lg:mt-24 max-w-3xl space-y-6">
+              <h1 className="text-4xl sm:text-6xl lg:text-[4.25rem] font-extrabold tracking-[-0.035em] leading-[1.03] text-white">
+                Maquinaria, formaletas y concreto para obras que no se detienen.
+              </h1>
+
+              <p className="text-base sm:text-lg text-[#C6CFD9] max-w-2xl leading-relaxed font-normal">
+                Alquiler flexible por día o mes con alistamiento certificado, modalidad con o sin operador y movilización propia hacia Bogotá y toda la Sabana.
+              </p>
+
+              {/* Dock Moderno de Búsqueda en Gris Tormenta Translúcido */}
+              <form
+                onSubmit={handleHeroSearchSubmit}
+                className="bg-[#1F242C]/90 backdrop-blur-2xl border border-white/[0.12] rounded-2xl p-2 shadow-2xl flex flex-col sm:flex-row items-stretch sm:items-center gap-2"
+              >
+                <div className="flex-1 flex items-center gap-3 px-3.5 py-2">
+                  <Search className="w-5 h-5 text-[#FF5F00] shrink-0" />
+                  <input
+                    type="text"
+                    value={heroSearch}
+                    onChange={(e) => setHeroSearch(e.target.value)}
+                    placeholder="¿Qué necesita hoy? Ej: excavadora, minicargador, andamio..."
+                    className="w-full bg-transparent text-sm sm:text-base text-white placeholder-[#8E99A8] focus:outline-none"
+                  />
                 </div>
 
-                <form
-                  onSubmit={handleHeroSearchSubmit}
-                  className="grid grid-cols-1 sm:grid-cols-12 gap-2.5"
+                <div className="hidden md:flex items-center gap-2 px-3 py-2 border-l border-white/[0.08]">
+                  <MapPin className="w-4 h-4 text-[#9BA5B4] shrink-0" />
+                  <select
+                    value={heroZone}
+                    onChange={(e) => setHeroZone(e.target.value)}
+                    aria-label="Zona de obra"
+                    className="bg-transparent text-xs font-medium text-[#E2E8F0] focus:outline-none cursor-pointer"
+                  >
+                    <option className="bg-[#1B1F25]">Bogotá y Sabana Norte</option>
+                    <option className="bg-[#1B1F25]">Calle 80 / Cota / Chía</option>
+                    <option className="bg-[#1B1F25]">Funza / Mosquera / Madrid</option>
+                    <option className="bg-[#1B1F25]">Bogotá Sur / Soacha</option>
+                  </select>
+                </div>
+
+                <button
+                  type="submit"
+                  className="h-12 px-6 rounded-xl bg-[#FF5F00] hover:bg-[#FF711A] text-white font-semibold text-sm shadow-lg shadow-[#FF5F00]/25 transition-all shrink-0 active:scale-[0.99]"
                 >
-                  <div className="sm:col-span-6 relative">
-                    <Search className="w-4 h-4 text-[#8E99A6] absolute left-3.5 top-1/2 -translate-y-1/2" />
-                    <input
-                      type="text"
-                      value={heroSearch}
-                      onChange={(e) => setHeroSearch(e.target.value)}
-                      placeholder="Buscar excavadora, rodillo, andamio, planta..."
-                      className="w-full h-12 pl-10 pr-3 bg-matte-deep border border-storm-border focus:border-[#FF5F00] text-sm text-white placeholder-[#8E99A6] focus:outline-none"
-                    />
-                  </div>
+                  Buscar en flota
+                </button>
+              </form>
 
-                  <div className="sm:col-span-3 relative">
-                    <select
-                      value={heroZone}
-                      onChange={(e) => setHeroZone(e.target.value)}
-                      aria-label="Zona de entrega"
-                      className="w-full h-12 px-3 bg-matte-deep border border-storm-border focus:border-[#FF5F00] text-xs font-medium text-[#E5EAF0] focus:outline-none"
-                    >
-                      <option>Bogotá Norte y Sabana</option>
-                      <option>Calle 80 / Cota / Chía</option>
-                      <option>Funza / Mosquera / Madrid</option>
-                      <option>Bogotá Centro / Sur / Soacha</option>
-                    </select>
-                  </div>
-
-                  <div className="sm:col-span-3">
-                    <button
-                      type="submit"
-                      className="w-full h-12 px-4 bg-[#FF5F00] hover:bg-[#E55500] text-[#111316] font-bold text-sm transition-colors"
-                    >
-                      Buscar equipo
-                    </button>
-                  </div>
-                </form>
-
-                {/* Accesos directos a referencias de alta rotación */}
-                <div className="pt-1 flex flex-wrap items-center gap-2">
-                  <span className="text-xs text-[#8E99A6] mr-1">Frecuentes:</span>
-                  {quickTags.map((tag) => (
-                    <Link
-                      key={tag.href}
-                      href={tag.href}
-                      className="px-2.5 py-1 bg-storm-panel hover:bg-storm-elevated border border-storm-border text-xs text-[#E5EAF0] transition-colors"
-                    >
-                      {tag.label}
-                    </Link>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            {/* Columna Derecha: Vitrina Técnica de Unidad en Patio */}
-            <div className="lg:col-span-5 bg-matte border border-storm-border flex flex-col justify-between overflow-hidden shadow-2xl">
-              {/* Selector superior de unidad */}
-              <div className="px-4 py-3 bg-matte-deep border-b border-matte-border flex items-center justify-between gap-2">
-                <span className="text-xs font-mono text-[#B8C1CC] tabular-nums">
-                  {heroUnit.sku} · {heroUnit.subcategory}
-                </span>
-                <div className="flex items-center gap-1.5">
-                  {HERO_UNITS.map((u, idx) => (
-                    <button
-                      key={u.id}
-                      type="button"
-                      onClick={() => setActiveHeroIdx(idx)}
-                      className={`px-2 py-0.5 text-xs font-mono transition-colors ${
-                        activeHeroIdx === idx
-                          ? "bg-[#FF5F00] text-[#111316] font-bold"
-                          : "bg-storm-panel text-[#C4CCD4] hover:text-white"
-                      }`}
-                    >
-                      {idx + 1}
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              {/* Fotografía real del equipo */}
-              <div className="relative aspect-[16/10] w-full bg-matte-deep overflow-hidden">
-                <Image
-                  src={heroUnit.images[0]?.url || "/images/products/retroexcavadora-oruga-20t.jpg"}
-                  alt={heroUnit.name}
-                  fill
-                  priority
-                  className="object-cover"
-                  sizes="(max-width: 1024px) 100vw, 45vw"
-                />
-                <div className="absolute bottom-3 left-3 px-2.5 py-1 bg-matte-deep/90 border border-storm-border text-xs text-emerald-400 font-medium">
-                  {heroUnit.availabilityLabel}
-                </div>
-              </div>
-
-              {/* Placa de Especificación y Tarifa */}
-              <div className="p-5 sm:p-6 space-y-4 flex-1 flex flex-col justify-between">
-                <div>
-                  <h2 className="font-display text-2xl sm:text-3xl font-bold text-white leading-tight">
-                    {heroUnit.name}
-                  </h2>
-                  <p className="mt-1.5 text-sm text-[#B8C1CC] line-clamp-2">
-                    {heroUnit.shortDescription}
-                  </p>
-
-                  <div className="mt-4 grid grid-cols-2 gap-2.5 pt-3 border-t border-matte-border text-xs">
-                    {heroUnit.specifications.slice(0, 2).map((spec, idx) => (
-                      <div key={idx} className="bg-matte-deep p-2.5 border border-matte-border">
-                        <span className="text-[#8E99A6] block">{spec.label}</span>
-                        <strong className="text-white font-mono text-xs mt-0.5 block">
-                          {spec.value}
-                        </strong>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                <div className="pt-3 border-t border-matte-border flex flex-wrap items-center justify-between gap-3">
-                  <div>
-                    <span className="text-xs text-[#8E99A6] block">Tarifa de referencia</span>
-                    <span className="font-mono text-xl font-bold text-[#FF5F00] tabular-nums">
-                      {formatCOP(heroUnit.pricing.basePrice)}
-                    </span>
-                    <span className="text-xs text-[#B8C1CC] ml-1">
-                      / {heroUnit.pricing.priceUnit}
-                    </span>
-                  </div>
-
-                  <div className="flex items-center gap-2">
-                    <Link
-                      href={`/catalogo/${heroUnit.slug}`}
-                      className="px-3.5 py-2.5 bg-storm-panel hover:bg-storm-elevated border border-storm-border text-xs font-semibold text-white transition-colors"
-                    >
-                      Ver ficha
-                    </Link>
-                    <button
-                      type="button"
-                      onClick={() => addItem(heroUnit, 1)}
-                      className="px-4 py-2.5 bg-[#FF5F00] hover:bg-[#E55500] text-[#111316] text-xs font-bold transition-colors"
-                    >
-                      {mounted && isInBasket(heroUnit.id) ? "En orden" : "Cotizar unidad"}
-                    </button>
-                  </div>
-                </div>
+              {/* Accesos rápidos */}
+              <div className="flex flex-wrap items-center gap-2 pt-1">
+                {quickTags.map((tag) => (
+                  <Link
+                    key={tag.href}
+                    href={tag.href}
+                    className="px-3.5 py-1.5 rounded-full bg-white/[0.07] hover:bg-white/[0.14] backdrop-blur-md border border-white/[0.09] text-xs font-medium text-[#E5EAF0] transition-colors"
+                  >
+                    {tag.label}
+                  </Link>
+                ))}
               </div>
             </div>
           </div>
@@ -264,112 +171,51 @@ export const HomeFleetExperience: React.FC = () => {
       </section>
 
       {/* =====================================================================
-          SECCIÓN 2: BANDA DE RESPALDO OPERATIVO EN NEGRO MATE (30%)
+          2. FLOTA INTERACTIVA SOBRE TARJETAS GRIS TORMENTA ESCULPIDAS
           ===================================================================== */}
-      <section
-        aria-label="Respaldo logístico y normativo"
-        className="w-full bg-matte border-b border-storm-border"
-      >
-        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-10 py-7 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 divide-y sm:divide-y-0 lg:divide-x divide-matte-border">
-          <div className="pt-3 sm:pt-0 lg:pr-6 flex items-start gap-3.5">
-            <Truck className="w-6 h-6 text-[#FF5F00] shrink-0 mt-0.5" />
+      <section aria-label="Flota disponible" className="py-10 sm:py-16">
+        <div className="max-w-[1380px] mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
             <div>
-              <h3 className="font-display text-xl font-bold text-white">
-                Movilización en cama baja
-              </h3>
-              <p className="text-xs text-[#B8C1CC] mt-1 leading-relaxed">
-                Salida directa por el corredor Calle 80 / Siberia hacia Bogotá, Chía, Cota, Funza, Mosquera y Soacha.
-              </p>
-            </div>
-          </div>
-
-          <div className="pt-4 sm:pt-0 lg:px-6 flex items-start gap-3.5">
-            <Wrench className="w-6 h-6 text-[#FF5F00] shrink-0 mt-0.5" />
-            <div>
-              <h3 className="font-display text-xl font-bold text-white">
-                Protocolo de 40 puntos
-              </h3>
-              <p className="text-xs text-[#B8C1CC] mt-1 leading-relaxed">
-                Verificación hidráulica, niveles, horómetro calibrado y cuadrilla móvil para soporte mecánico en obra.
-              </p>
-            </div>
-          </div>
-
-          <div className="pt-4 sm:pt-0 lg:px-6 flex items-start gap-3.5">
-            <ShieldCheck className="w-6 h-6 text-[#FF5F00] shrink-0 mt-0.5" />
-            <div>
-              <h3 className="font-display text-xl font-bold text-white">
-                Carpeta para interventoría
-              </h3>
-              <p className="text-xs text-[#B8C1CC] mt-1 leading-relaxed">
-                Equipos y andamios certificados bajo Resolución 4272, memorias de cálculo y planillas ARL vigentes.
-              </p>
-            </div>
-          </div>
-
-          <div className="pt-4 sm:pt-0 lg:pl-6 flex items-start gap-3.5">
-            <FileText className="w-6 h-6 text-[#FF5F00] shrink-0 mt-0.5" />
-            <div>
-              <h3 className="font-display text-xl font-bold text-white">
-                Facturación unificada
-              </h3>
-              <p className="text-xs text-[#B8C1CC] mt-1 leading-relaxed">
-                Consolide maquinaria amarilla, encofrados, concreto y casetones con una sola cuenta comercial.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* =====================================================================
-          SECCIÓN 3: EXPLORADOR DE FLOTA EN VIVO SOBRE GRIS TORMENTA (60%)
-          Contraste directo entre fondo Gris Tormenta (#2B3036) y chasis Negro Mate (#17191D)
-          ===================================================================== */}
-      <section
-        aria-label="Inventario disponible y tarifas"
-        className="w-full bg-storm py-14 lg:py-20 border-b border-storm-border"
-      >
-        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-10 space-y-8">
-          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
-            <div>
-              <h2 className="font-display text-4xl sm:text-5xl font-extrabold text-white tracking-tight">
-                Flota y suministros para cotización inmediata
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-[-0.03em] text-white">
+                Equipos listos para despacho
               </h2>
-              <p className="mt-2 text-base text-[#C4CCD4] max-w-2xl">
-                Filtre por frente constructivo, revise parámetros mecánicos y arme su solicitud de despacho en línea.
+              <p className="mt-2 text-base text-[#9BA5B4] max-w-xl">
+                Tarifas transparentes y fichas verificadas. Agregue unidades a su orden para calcular transporte e IVA al instante.
               </p>
             </div>
 
             <Link
               href="/catalogo"
-              className="self-start lg:self-auto px-4 py-2.5 bg-matte hover:bg-matte-deep border border-storm-border text-sm font-semibold text-white transition-colors"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#1E232A] hover:bg-[#272E38] border border-white/[0.08] text-sm font-semibold text-white transition-colors self-start md:self-auto"
             >
-              Ver las {catalogProducts.length} referencias del catálogo
+              <span>Ver las {catalogProducts.length} referencias</span>
+              <ArrowUpRight className="w-4 h-4 text-[#FF5F00]" />
             </Link>
           </div>
 
-          {/* Pestañas de División en Gris Tormenta Panel (#343A42) */}
+          {/* Filtros tipo píldora moderna */}
           <div className="flex items-center gap-2 overflow-x-auto no-scrollbar pb-1">
             <button
               type="button"
               onClick={() => setActiveCategory("destacados")}
-              className={`px-4 py-2.5 text-sm font-semibold whitespace-nowrap border transition-colors ${
+              className={`px-4 py-2 rounded-full text-sm font-semibold whitespace-nowrap transition-all ${
                 activeCategory === "destacados"
-                  ? "bg-[#FF5F00] border-[#FF5F00] text-[#111316] font-bold"
-                  : "bg-storm-panel border-storm-border text-[#E5EAF0] hover:bg-storm-elevated"
+                  ? "bg-[#FF5F00] text-white shadow-md shadow-[#FF5F00]/20"
+                  : "bg-[#1E232A] text-[#B8C2CE] hover:bg-[#262C35] hover:text-white border border-white/[0.06]"
               }`}
             >
-              Alta rotación en obra
+              Más solicitados
             </button>
             {catalogCategories.map((cat) => (
               <button
                 key={cat.id}
                 type="button"
                 onClick={() => setActiveCategory(cat.id)}
-                className={`px-4 py-2.5 text-sm font-semibold whitespace-nowrap border transition-colors ${
+                className={`px-4 py-2 rounded-full text-sm font-semibold whitespace-nowrap transition-all ${
                   activeCategory === cat.id
-                    ? "bg-[#FF5F00] border-[#FF5F00] text-[#111316] font-bold"
-                    : "bg-storm-panel border-storm-border text-[#E5EAF0] hover:bg-storm-elevated"
+                    ? "bg-[#FF5F00] text-white shadow-md shadow-[#FF5F00]/20"
+                    : "bg-[#1E232A] text-[#B8C2CE] hover:bg-[#262C35] hover:text-white border border-white/[0.06]"
                 }`}
               >
                 {cat.shortName}
@@ -377,104 +223,106 @@ export const HomeFleetExperience: React.FC = () => {
             ))}
           </div>
 
-          {/* Barra aviso si hay equipos en la orden */}
+          {/* Notificación limpia si hay ítems en la orden */}
           {mounted && totalCount > 0 && (
-            <div className="bg-matte border-l-4 border-l-[#FF5F00] border-y border-r border-storm-border px-5 py-3.5 flex flex-wrap items-center justify-between gap-4">
-              <span className="text-sm text-white">
-                Tiene <strong className="text-[#FF5F00] font-mono">{totalCount}</strong>{" "}
-                {totalCount === 1 ? "unidad agregada" : "unidades agregadas"} en su orden de cotización.
-              </span>
+            <div className="rounded-2xl bg-[#1E232A] border border-[#FF5F00]/40 px-5 py-4 flex flex-wrap items-center justify-between gap-4">
+              <div className="flex items-center gap-3">
+                <span className="w-7 h-7 rounded-full bg-[#FF5F00] text-white text-xs font-bold flex items-center justify-center tabular-nums">
+                  {totalCount}
+                </span>
+                <span className="text-sm font-medium text-white">
+                  Equipos seleccionados en su orden de cotización
+                </span>
+              </div>
               <Link
                 href="/cotizar"
-                className="px-4 py-2 bg-[#FF5F00] hover:bg-[#E55500] text-[#111316] text-xs font-bold transition-colors"
+                className="px-4 py-2 rounded-xl bg-[#FF5F00] hover:bg-[#FF711A] text-white text-xs font-semibold transition-colors"
               >
-                Revisar liquidación y flete
+                Revisar orden y flete
               </Link>
             </div>
           )}
 
-          {/* Rejilla de 3 columnas amplias y legibles */}
+          {/* Grid de Tarjetas Esculpidas en Gris Tormenta (#1E232A) */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {visibleFleet.map((product) => {
               const inBasket = mounted && isInBasket(product.id);
               return (
                 <article
                   key={product.id}
-                  className="bg-matte border border-storm-border hover:border-[#FF5F00] transition-colors flex flex-col justify-between group"
+                  className="group rounded-3xl bg-[#1E232A] hover:bg-[#232932] border border-white/[0.07] hover:border-white/[0.14] p-3.5 flex flex-col justify-between transition-all duration-300"
                 >
                   <div>
-                    {/* Cabecera de ficha */}
-                    <div className="px-4 py-2.5 bg-matte-deep border-b border-matte-border flex items-center justify-between text-xs">
-                      <span className="font-mono text-[#B8C1CC]">{product.sku}</span>
-                      <span className="text-[#E5EAF0] font-medium capitalize">
-                        {product.modality.replace("_", " / ")}
-                      </span>
-                    </div>
-
-                    {/* Imagen */}
+                    {/* Marco de imagen con radio interno armónico */}
                     <Link
                       href={`/catalogo/${product.slug}`}
-                      className="block relative aspect-[16/10] bg-matte-deep overflow-hidden"
+                      className="block relative aspect-[16/10] rounded-2xl overflow-hidden bg-[#131518]"
                     >
                       <Image
                         src={product.images[0]?.url || "/brand/bronto-logo.png"}
                         alt={product.name}
                         fill
-                        className="object-cover group-hover:scale-[1.03] transition-transform duration-300"
+                        className="object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       />
+                      <div className="absolute top-3 left-3 px-3 py-1 rounded-full bg-[#131518]/80 backdrop-blur-md border border-white/[0.1] text-[11px] font-medium text-white">
+                        {product.subcategory}
+                      </div>
                     </Link>
 
-                    {/* Cuerpo técnico */}
-                    <div className="p-5 space-y-4">
+                    {/* Contenido */}
+                    <div className="px-2 pt-4 pb-3 space-y-3">
                       <div>
-                        <span className="text-xs text-[#8E99A6] block">{product.subcategory}</span>
+                        <span className="text-xs font-mono text-[#8E99A8]">{product.sku}</span>
                         <Link href={`/catalogo/${product.slug}`}>
-                          <h3 className="font-display text-2xl font-bold text-white group-hover:text-[#FF5F00] transition-colors leading-tight mt-0.5">
+                          <h3 className="text-xl font-bold text-white group-hover:text-[#FF5F00] transition-colors leading-snug mt-0.5">
                             {product.name}
                           </h3>
                         </Link>
                       </div>
 
-                      <div className="divide-y divide-matte-border border-y border-matte-border text-xs">
-                        {product.specifications.slice(0, 3).map((spec, idx) => (
-                          <div key={idx} className="py-2 flex items-center justify-between gap-3">
-                            <span className="text-[#8E99A6]">{spec.label}</span>
-                            <span className="font-mono font-medium text-[#E5EAF0] text-right">
-                              {spec.value}
-                            </span>
-                          </div>
+                      {/* Píldoras de especificación limpias en Gris Tormenta Elevado */}
+                      <div className="flex flex-wrap gap-1.5">
+                        {product.specifications.slice(0, 2).map((spec, idx) => (
+                          <span
+                            key={idx}
+                            className="px-2.5 py-1 rounded-lg bg-[#282F39] text-xs text-[#D0D7E2]"
+                          >
+                            {spec.label}: <strong className="text-white font-semibold">{spec.value}</strong>
+                          </span>
                         ))}
                       </div>
                     </div>
                   </div>
 
-                  {/* Pie de Tarifa y Acción */}
-                  <div className="px-5 pb-5 pt-1 flex items-end justify-between gap-4">
+                  {/* Precio + Botones */}
+                  <div className="px-2 pt-3 pb-1 border-t border-white/[0.06] flex items-center justify-between gap-3">
                     <div>
-                      <span className="text-xs text-[#8E99A6] block">Tarifa base</span>
-                      <span className="font-mono text-lg font-bold text-[#FF5F00] tabular-nums">
-                        {formatCOP(product.pricing.basePrice)}
-                      </span>
-                      <span className="text-[11px] text-[#B8C1CC] block">
-                        / {product.pricing.priceUnit}
-                      </span>
+                      <span className="text-[11px] text-[#8E99A8] block">Desde</span>
+                      <div className="flex items-baseline gap-1">
+                        <span className="text-lg font-bold text-white tabular-nums">
+                          {formatCOP(product.pricing.basePrice)}
+                        </span>
+                        <span className="text-xs text-[#9BA5B4]">
+                          / {product.pricing.priceUnit.split(" ")[0].toLowerCase()}
+                        </span>
+                      </div>
                     </div>
 
                     <div className="flex items-center gap-2">
                       <Link
                         href={`/catalogo/${product.slug}`}
-                        className="px-3 py-2.5 bg-storm-panel hover:bg-storm-elevated border border-storm-border text-xs font-semibold text-white transition-colors"
+                        className="px-3.5 py-2.5 rounded-xl bg-[#282F39] hover:bg-[#323A46] text-xs font-semibold text-white transition-colors"
                       >
                         Ficha
                       </Link>
                       <button
                         type="button"
                         onClick={() => addItem(product, 1)}
-                        className={`px-3.5 py-2.5 text-xs font-bold inline-flex items-center gap-1.5 transition-colors ${
+                        className={`px-4 py-2.5 rounded-xl text-xs font-semibold inline-flex items-center gap-1.5 transition-all active:scale-[0.98] ${
                           inBasket
                             ? "bg-emerald-600 text-white"
-                            : "bg-[#FF5F00] hover:bg-[#E55500] text-[#111316]"
+                            : "bg-[#FF5F00] hover:bg-[#FF711A] text-white shadow-md shadow-[#FF5F00]/20"
                         }`}
                       >
                         {inBasket ? (
@@ -499,80 +347,62 @@ export const HomeFleetExperience: React.FC = () => {
       </section>
 
       {/* =====================================================================
-          SECCIÓN 4: LAS 4 DIVISIONES DE OBRA (DISEÑO ASIMÉTRICO EN GRIS TORMENTA PANEL)
+          3. BENTO GRID ASIMÉTRICO: LAS 4 DIVISIONES DE OBRA
           ===================================================================== */}
-      <section
-        aria-label="Divisiones técnicas de suministro"
-        className="w-full bg-storm-panel py-14 lg:py-20 border-b border-storm-border"
-      >
-        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-10 grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
-          {/* Columna Izquierda Fija */}
-          <div className="lg:col-span-4 lg:sticky lg:top-28 space-y-5">
-            <h2 className="font-display text-4xl sm:text-5xl font-extrabold text-white leading-[0.96]">
-              Cuatro frentes críticos resueltos con una sola remisión.
+      <section aria-label="Divisiones de suministro" className="py-12 sm:py-20">
+        <div className="max-w-[1380px] mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+          <div className="max-w-2xl">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-[-0.03em] text-white">
+              Un solo aliado desde la excavación hasta la estructura
             </h2>
-            <p className="text-sm sm:text-base text-[#C4CCD4] leading-relaxed">
-              Coordinar excavación por un lado, formaleta por otro y concreto con un tercero multiplica los tiempos muertos en obra. En BRONTO® integramos el ciclo estructural completo.
+            <p className="mt-2.5 text-base text-[#9BA5B4]">
+              Elimine tiempos muertos coordinando maquinaria, encofrados, vaciado de concreto y casetones con facturación consolidada.
             </p>
-            <div className="pt-2">
-              <Link
-                href="/servicios"
-                className="inline-flex items-center gap-2 px-5 py-3 bg-matte hover:bg-matte-deep border border-storm-border text-sm font-semibold text-white transition-colors"
-              >
-                <SlidersHorizontal className="w-4 h-4 text-[#FF5F00]" />
-                <span>Conocer alcance de servicios</span>
-              </Link>
-            </div>
           </div>
 
-          {/* Columna Derecha: Filas Horizontales de Ingeniería */}
-          <div className="lg:col-span-8 space-y-4">
-            {catalogCategories.map((cat) => {
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-5">
+            {catalogCategories.map((cat, index) => {
               const count = catalogProducts.filter((p) => p.categoryId === cat.id).length;
               return (
                 <Link
                   key={cat.id}
                   href={`/catalogo?categoria=${cat.id}`}
-                  className="group block bg-matte border border-storm-border hover:border-[#FF5F00] transition-colors overflow-hidden"
+                  className={`group relative rounded-3xl overflow-hidden border border-white/[0.08] hover:border-white/[0.18] flex flex-col justify-between p-6 sm:p-8 transition-all ${bentoSpans[index]}`}
                 >
-                  <div className="grid grid-cols-1 sm:grid-cols-12 items-stretch">
-                    <div className="sm:col-span-4 relative min-h-[180px] bg-matte-deep overflow-hidden">
-                      <Image
-                        src={cat.imageUrl}
-                        alt={cat.name}
-                        fill
-                        className="object-cover group-hover:scale-105 transition-transform duration-500"
-                        sizes="(max-width: 640px) 100vw, 280px"
-                      />
-                    </div>
-                    <div className="sm:col-span-8 p-6 flex flex-col justify-between space-y-4">
-                      <div>
-                        <div className="flex items-center justify-between gap-2">
-                          <span className="text-xs font-mono text-[#FF5F00] font-semibold">
-                            {count} referencias activas
-                          </span>
-                          <span className="text-xs font-semibold text-[#C4CCD4] group-hover:text-white">
-                            Abrir división
-                          </span>
-                        </div>
-                        <h3 className="font-display text-2xl sm:text-3xl font-bold text-white group-hover:text-[#FF5F00] transition-colors mt-1">
-                          {cat.name}
-                        </h3>
-                        <p className="text-sm text-[#B8C1CC] mt-1.5 leading-relaxed">
-                          {cat.description}
-                        </p>
-                      </div>
+                  <Image
+                    src={cat.imageUrl}
+                    alt={cat.name}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                    sizes="(max-width: 1024px) 100vw, 55vw"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0E1013]/95 via-[#131518]/55 to-[#131518]/20" />
 
-                      <div className="flex flex-wrap gap-1.5 pt-3 border-t border-matte-border">
-                        {cat.subcategories.map((sub, i) => (
-                          <span
-                            key={i}
-                            className="px-2.5 py-1 bg-matte-deep border border-matte-border text-xs text-[#C4CCD4]"
-                          >
-                            {sub}
-                          </span>
-                        ))}
-                      </div>
+                  <div className="relative z-10 flex items-center justify-between">
+                    <span className="px-3.5 py-1.5 rounded-full bg-[#1E232A]/85 backdrop-blur-md border border-white/[0.1] text-xs font-medium text-white">
+                      {count} referencias
+                    </span>
+                    <span className="w-10 h-10 rounded-full bg-white/[0.1] group-hover:bg-[#FF5F00] backdrop-blur-md border border-white/[0.12] flex items-center justify-center text-white transition-colors">
+                      <ArrowUpRight className="w-4 h-4" />
+                    </span>
+                  </div>
+
+                  <div className="relative z-10 max-w-lg space-y-2.5">
+                    <h3 className="text-2xl sm:text-3xl font-bold text-white leading-tight">
+                      {cat.name}
+                    </h3>
+                    <p className="text-sm text-[#D0D7E2] line-clamp-2 leading-relaxed">
+                      {cat.description}
+                    </p>
+                    <div className="pt-2 flex flex-wrap gap-1.5">
+                      {cat.subcategories.slice(0, 3).map((sub, i) => (
+                        <span
+                          key={i}
+                          className="px-2.5 py-1 rounded-full bg-white/[0.08] backdrop-blur-sm text-[11px] text-white/90"
+                        >
+                          {sub}
+                        </span>
+                      ))}
                     </div>
                   </div>
                 </Link>
@@ -583,87 +413,91 @@ export const HomeFleetExperience: React.FC = () => {
       </section>
 
       {/* =====================================================================
-          SECCIÓN 5: PROTOCOLO DE DESPACHO + ESCUELA DE OPERADORES BRONTO®
+          4. BENTO DOBLE: LOGÍSTICA DE CAMPO & ESCUELA DE OPERADORES
           ===================================================================== */}
-      <section
-        aria-label="Proceso logístico y certificación de operadores"
-        className="w-full bg-storm py-14 lg:py-20 border-b border-storm-border"
-      >
-        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
-          {/* Proceso real paso a paso (aquí la numeración 1-4 SÍ es una secuencia operativa) */}
-          <div className="lg:col-span-7 bg-matte border border-storm-border p-6 sm:p-8 flex flex-col justify-between space-y-6">
-            <div>
-              <h2 className="font-display text-3xl sm:text-4xl font-extrabold text-white">
-                Cómo operamos cada despacho a obra
+      <section aria-label="Respaldo operativo y formación" className="py-10 sm:py-16">
+        <div className="max-w-[1380px] mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12 gap-5 items-stretch">
+          {/* Estándar operativo BRONTO */}
+          <div className="lg:col-span-7 rounded-3xl bg-[#1E232A] border border-white/[0.07] p-6 sm:p-10 flex flex-col justify-between space-y-8">
+            <div className="space-y-2">
+              <h2 className="text-2xl sm:text-4xl font-bold tracking-[-0.03em] text-white">
+                Ingeniería logística pensada para residentes de obra
               </h2>
-              <p className="text-sm text-[#B8C1CC] mt-1.5">
-                Desde la solicitud de cotización hasta el cierre de acta en su proyecto.
+              <p className="text-sm sm:text-base text-[#9BA5B4]">
+                Respaldo técnico real antes, durante y después de descargar el equipo en su proyecto.
               </p>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {[
-                {
-                  step: "Paso 1",
-                  title: "Cubicaje y reserva en patio",
-                  desc: "Validamos tonelaje, aditamentos, metraje de formaleta o volumen de concreto según su programación semanal.",
-                },
-                {
-                  step: "Paso 2",
-                  title: "Inspección preoperacional",
-                  desc: "Ejecutamos revisión mecánica de 40 puntos y emitimos carpeta de seguridad social y certificados para interventoría.",
-                },
-                {
-                  step: "Paso 3",
-                  title: "Transporte especializado",
-                  desc: "Despachamos en cama baja o camión grúa desde Calle 80 / Siberia directamente hasta la portería de su frente.",
-                },
-                {
-                  step: "Paso 4",
-                  title: "Soporte continuo en campo",
-                  desc: "Mantenimiento preventivo programado en sitio y reemplazo prioritario de unidad ante cualquier eventualidad.",
-                },
-              ].map((item) => (
-                <div
-                  key={item.step}
-                  className="bg-matte-deep border border-matte-border p-5 space-y-2"
-                >
-                  <span className="text-xs font-mono font-semibold text-[#FF5F00]">
-                    {item.step}
-                  </span>
-                  <h3 className="font-display text-xl font-bold text-white">{item.title}</h3>
-                  <p className="text-xs text-[#B8C1CC] leading-relaxed">{item.desc}</p>
+              <div className="rounded-2xl bg-[#15181E] border border-white/[0.06] p-5 space-y-2.5">
+                <div className="w-10 h-10 rounded-xl bg-[#FF5F00]/15 flex items-center justify-center text-[#FF5F00]">
+                  <Truck className="w-5 h-5" />
                 </div>
-              ))}
+                <h3 className="text-base font-bold text-white">Cama baja y grúa propia</h3>
+                <p className="text-xs text-[#9BA5B4] leading-relaxed">
+                  Ubicación estratégica en el corredor Calle 80 / Siberia para entregas ágiles en Bogotá, Chía, Cota, Funza y Soacha.
+                </p>
+              </div>
+
+              <div className="rounded-2xl bg-[#15181E] border border-white/[0.06] p-5 space-y-2.5">
+                <div className="w-10 h-10 rounded-xl bg-[#FF5F00]/15 flex items-center justify-center text-[#FF5F00]">
+                  <Wrench className="w-5 h-5" />
+                </div>
+                <h3 className="text-base font-bold text-white">Protocolo de 40 puntos</h3>
+                <p className="text-xs text-[#9BA5B4] leading-relaxed">
+                  Revisión hidráulica preoperacional y reemplazo prioritario de unidad en caso de contingencia mecánica.
+                </p>
+              </div>
+
+              <div className="rounded-2xl bg-[#15181E] border border-white/[0.06] p-5 space-y-2.5">
+                <div className="w-10 h-10 rounded-xl bg-[#FF5F00]/15 flex items-center justify-center text-[#FF5F00]">
+                  <ShieldCheck className="w-5 h-5" />
+                </div>
+                <h3 className="text-base font-bold text-white">Carpeta para interventoría</h3>
+                <p className="text-xs text-[#9BA5B4] leading-relaxed">
+                  Certificados de conformidad Res. 4272, memorias de cálculo de andamios y documentación ARL vigente.
+                </p>
+              </div>
+
+              <div className="rounded-2xl bg-[#15181E] border border-white/[0.06] p-5 space-y-2.5">
+                <div className="w-10 h-10 rounded-xl bg-[#FF5F00]/15 flex items-center justify-center text-[#FF5F00]">
+                  <Clock className="w-5 h-5" />
+                </div>
+                <h3 className="text-base font-bold text-white">Modalidad flexible</h3>
+                <p className="text-xs text-[#9BA5B4] leading-relaxed">
+                  Alquiler en modalidad seca o con operador certificado por día, semana o contrato mensual de obra.
+                </p>
+              </div>
             </div>
           </div>
 
-          {/* Bloque Escuela de Operadores */}
-          <div className="lg:col-span-5 bg-matte border-t-4 border-t-[#FF5F00] border-x border-b border-storm-border p-6 sm:p-8 flex flex-col justify-between space-y-6">
+          {/* Escuela de Operadores */}
+          <div className="lg:col-span-5 rounded-3xl bg-gradient-to-b from-[#252B35] to-[#1A1E25] border border-white/[0.09] p-6 sm:p-10 flex flex-col justify-between space-y-6">
             <div className="space-y-4">
-              <div className="inline-flex items-center gap-2 text-xs font-semibold text-[#FF5F00]">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FF5F00]/15 text-[#FF5F00] text-xs font-semibold">
                 <GraduationCap className="w-4 h-4" />
-                <span>Formación y acreditación técnica</span>
+                <span>Academia BRONTO®</span>
               </div>
 
-              <h2 className="font-display text-3xl sm:text-4xl font-extrabold text-white leading-tight">
-                Escuela de Operadores y Seguridad en Obra
+              <h2 className="text-2xl sm:text-3xl font-bold tracking-[-0.03em] text-white leading-tight">
+                Certificación de operadores y seguridad en alturas
               </h2>
 
-              <p className="text-sm text-[#B8C1CC] leading-relaxed">
-                Capacitamos y certificamos cuadrillas y operadores en excavadora hidráulica, minicargador, compactación vial y armado seguro de andamios conforme a la Resolución 4272.
+              <p className="text-sm text-[#B8C2CE] leading-relaxed">
+                Formación teórico-práctica en maquinaria real para cuadrillas y contratistas, con consulta de certificados en línea.
               </p>
 
-              <div className="divide-y divide-matte-border border-y border-matte-border">
+              <div className="space-y-2.5 pt-1">
                 {coursesData.slice(0, 3).map((course) => (
-                  <div key={course.id} className="py-3 flex items-center justify-between gap-3">
-                    <div>
-                      <h4 className="text-sm font-semibold text-white leading-snug">
-                        {course.title}
-                      </h4>
-                      <span className="text-xs text-[#8E99A6]">{course.duration}</span>
+                  <div
+                    key={course.id}
+                    className="rounded-2xl bg-[#131518]/75 border border-white/[0.06] px-4 py-3 flex items-center justify-between gap-3"
+                  >
+                    <div className="min-w-0">
+                      <h4 className="text-sm font-semibold text-white truncate">{course.title}</h4>
+                      <span className="text-xs text-[#8E99A8]">{course.duration}</span>
                     </div>
-                    <span className="font-mono text-xs font-semibold text-[#FF5F00] shrink-0 tabular-nums">
+                    <span className="text-xs font-bold text-[#FF5F00] shrink-0 tabular-nums">
                       {formatCOP(course.priceCOP)}
                     </span>
                   </div>
@@ -671,16 +505,16 @@ export const HomeFleetExperience: React.FC = () => {
               </div>
             </div>
 
-            <div className="flex flex-wrap items-center gap-3">
+            <div className="flex flex-wrap items-center gap-2.5">
               <Link
                 href="/capacitacion"
-                className="flex-1 text-center py-3 px-4 bg-[#FF5F00] hover:bg-[#E55500] text-[#111316] text-sm font-bold transition-colors"
+                className="flex-1 text-center py-3 px-5 rounded-xl bg-[#FF5F00] hover:bg-[#FF711A] text-white text-sm font-semibold shadow-lg shadow-[#FF5F00]/20 transition-all"
               >
-                Ver programas y validar certificados
+                Ver programas
               </Link>
               <Link
                 href="/app?tab=cursos"
-                className="py-3 px-4 bg-storm-panel hover:bg-storm-elevated border border-storm-border text-sm font-semibold text-white transition-colors"
+                className="py-3 px-4 rounded-xl bg-white/[0.07] hover:bg-white/[0.12] border border-white/[0.08] text-sm font-semibold text-white transition-colors"
               >
                 Inscribir en App
               </Link>
@@ -690,38 +524,45 @@ export const HomeFleetExperience: React.FC = () => {
       </section>
 
       {/* =====================================================================
-          SECCIÓN 6: MESA DE DESPACHO DIRECTO (CIERRE OPERATIVO COMPACTO)
+          5. BANNER DE CIERRE ESCULPIDO EN GRIS TORMENTA
           ===================================================================== */}
-      <section aria-label="Contacto directo de despacho" className="w-full bg-matte">
-        <div className="h-2 w-full hazard-stripe" />
-        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-10 py-12 lg:py-14 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
-          <div className="space-y-2 max-w-2xl">
-            <h2 className="font-display text-4xl sm:text-5xl font-extrabold text-white tracking-tight">
-              ¿Tiene programación de obra o fundida esta semana?
-            </h2>
-            <p className="text-base text-[#C4CCD4]">
-              Envíenos su listado de equipos o hable directamente con coordinación de patio en Calle 80 para bloqueo inmediato de unidades.
-            </p>
-          </div>
+      <section aria-label="Cotización inmediata" className="pt-6 pb-16 sm:pb-24">
+        <div className="max-w-[1380px] mx-auto px-4 sm:px-6 lg:px-8">
+          <div
+            className="relative rounded-[28px] sm:rounded-[32px] overflow-hidden bg-[#1E232A] border border-white/[0.09] p-8 sm:p-12 lg:p-16 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8"
+            style={{
+              backgroundImage:
+                "radial-gradient(circle at 90% 20%, rgba(255, 95, 0, 0.16), transparent 50%)",
+            }}
+          >
+            <div className="max-w-2xl space-y-3">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-[-0.03em] text-white leading-tight">
+                Cotice su próximo frente de obra en minutos.
+              </h2>
+              <p className="text-base text-[#B8C2CE] leading-relaxed">
+                Seleccione equipos en línea con cálculo automático de flete o envíe su requerimiento directo a coordinación de patio.
+              </p>
+            </div>
 
-          <div className="flex flex-wrap items-center gap-3 w-full lg:w-auto">
-            <Link
-              href="/cotizar"
-              className="flex-1 sm:flex-initial text-center px-7 py-4 bg-[#FF5F00] hover:bg-[#E55500] text-[#111316] font-bold text-sm transition-colors"
-            >
-              Abrir cotizador en línea
-            </Link>
-            <a
-              href={`https://wa.me/${siteConfig.contact.whatsapp}?text=${encodeURIComponent(
-                "Hola BRONTO®, requiero disponibilidad y cotización de maquinaria para frente de obra."
-              )}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-6 py-4 bg-storm-panel hover:bg-storm-elevated border border-storm-border text-white font-semibold text-sm transition-colors"
-            >
-              <Phone className="w-4 h-4 text-[#FF5F00]" />
-              <span>Hablar con despacho</span>
-            </a>
+            <div className="flex flex-wrap items-center gap-3 w-full lg:w-auto shrink-0">
+              <Link
+                href="/cotizar"
+                className="flex-1 sm:flex-initial text-center px-7 py-4 rounded-full bg-[#FF5F00] hover:bg-[#FF711A] text-white font-semibold text-sm shadow-xl shadow-[#FF5F00]/25 transition-all"
+              >
+                Abrir cotizador en línea
+              </Link>
+              <a
+                href={`https://wa.me/${siteConfig.contact.whatsapp}?text=${encodeURIComponent(
+                  "Hola BRONTO®, requiero disponibilidad y cotización para obra."
+                )}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-6 py-4 rounded-full bg-[#282F39] hover:bg-[#323A46] border border-white/[0.09] text-white font-semibold text-sm transition-colors"
+              >
+                <MessageCircle className="w-4 h-4 text-[#FF5F00]" />
+                <span>WhatsApp directo</span>
+              </a>
+            </div>
           </div>
         </div>
       </section>

@@ -16,13 +16,13 @@ export const metadata: Metadata = {
 
 export default function ServicesPage() {
   return (
-    <div className="py-8 sm:py-10 pb-20 bg-storm min-h-screen text-white">
+    <div className="py-8 sm:py-10 pb-20 bg-[#131518] min-h-screen text-white">
       <div className="w-full px-6 sm:px-10 lg:px-16 2xl:px-24">
         <Breadcrumbs items={[{ label: "Servicios y Soluciones" }]} />
 
         {/* Cabecera */}
         <div className="py-8 border-b border-storm-border max-w-3xl">
-          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black uppercase text-white tracking-tight">
+          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white tracking-tight">
             Servicios y Soluciones Técnicas
           </h1>
           <p className="mt-3 text-base text-[#C4CCD4]">
@@ -39,7 +39,7 @@ export default function ServicesPage() {
               <article
                 key={service.id}
                 id={service.id}
-                className="bg-matte border border-storm-border p-8 sm:p-12 scroll-mt-28 relative overflow-hidden"
+                className="bg-[#1E232B] rounded-2xl border border-storm-border p-8 sm:p-12 scroll-mt-28 relative overflow-hidden"
               >
                 <script
                   type="application/ld+json"
@@ -50,12 +50,12 @@ export default function ServicesPage() {
                   {/* Columna Izquierda: Información del Servicio */}
                   <div className="lg:col-span-7 space-y-6">
                     <div className="flex items-center gap-3">
-                      <span className="px-3 py-1 bg-storm-panel text-bronto-yellow text-xs font-bold uppercase border border-storm-border">
+                      <span className="px-3 py-1 bg-[#282F3A] rounded-xl text-bronto-yellow text-xs font-bold uppercase border border-storm-border">
                         {service.commercialNote}
                       </span>
                     </div>
 
-                    <h2 className="uppercase text-3xl sm:text-4xl font-black text-white leading-tight">
+                    <h2 className="text-3xl sm:text-4xl font-black text-white leading-tight">
                       {service.name}
                     </h2>
 
@@ -87,7 +87,7 @@ export default function ServicesPage() {
                         <>
                           <Link
                             href="/capacitacion"
-                            className="inline-flex items-center gap-2 px-6 py-3 bg-bronto-yellow hover:bg-bronto-yellow-hover text-[#151515] font-black text-xs uppercase tracking-wider transition-colors"
+                            className="inline-flex items-center gap-2 px-6 py-3 bg-bronto-yellow hover:bg-bronto-yellow-hover text-white font-black text-xs uppercase tracking-wider transition-colors"
                           >
                             <span>Ver Escuela de Operadores</span>
                             <ArrowRight className="w-3.5 h-3.5" />
@@ -105,7 +105,7 @@ export default function ServicesPage() {
                         <>
                           <Link
                             href={`/cotizar?servicio=${service.slug}`}
-                            className="inline-flex items-center gap-2 px-6 py-3 bg-bronto-yellow hover:bg-bronto-yellow-hover text-[#151515] font-black text-xs uppercase tracking-wider transition-colors"
+                            className="inline-flex items-center gap-2 px-6 py-3 bg-bronto-yellow hover:bg-bronto-yellow-hover text-white font-black text-xs uppercase tracking-wider transition-colors"
                           >
                             <span>Cotizar este servicio</span>
                             <ChevronRight className="w-3.5 h-3.5 stroke-[3]" />
@@ -123,7 +123,7 @@ export default function ServicesPage() {
                   </div>
 
                   {/* Columna Derecha: Flujo de Trabajo / Etapas */}
-                  <div className="lg:col-span-5 bg-matte-deep border border-matte-border p-6 sm:p-8 space-y-6">
+                  <div className="lg:col-span-5 bg-[#14171C] rounded-xl border border-matte-border p-6 sm:p-8 space-y-6">
                     <h3 className="text-xs uppercase tracking-wider text-bronto-yellow font-bold">
                       Protocolo de Ejecución
                     </h3>
@@ -131,7 +131,7 @@ export default function ServicesPage() {
                     <div className="space-y-6 relative before:absolute before:left-3 before:top-2 before:bottom-2 before:w-[1px] before:bg-[#333333]">
                       {service.workflow.map((w, idx) => (
                         <div key={idx} className="relative pl-8">
-                          <span className="absolute left-0 top-0.5 w-6 h-6 rounded-full bg-storm-panel border border-bronto-yellow text-bronto-yellow text-[10px] font-bold flex items-center justify-center">
+                          <span className="absolute left-0 top-0.5 w-6 h-6 rounded-full bg-[#282F3A] rounded-xl border border-bronto-yellow text-bronto-yellow text-[10px] font-bold flex items-center justify-center">
                             {w.step}
                           </span>
                           <h4 className="text-xs uppercase font-bold text-white">

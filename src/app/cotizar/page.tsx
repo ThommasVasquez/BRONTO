@@ -147,18 +147,18 @@ export default function QuotePage() {
   };
 
   return (
-    <div className="py-8 sm:py-10 pb-20 bg-storm min-h-screen text-white">
+    <div className="py-8 sm:py-10 pb-20 bg-[#131518] min-h-screen text-white">
       <div className="w-full px-6 sm:px-10 lg:px-16 2xl:px-24">
         <Breadcrumbs items={[{ label: "Cotizador en Línea" }]} />
 
         {/* Cabecera */}
         <div className="py-8 border-b border-storm-border flex flex-col md:flex-row md:items-end justify-between gap-4">
           <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 bg-storm-panel border border-bronto-yellow/40 text-[11px] font-bold uppercase text-bronto-yellow tracking-wider mb-2">
+            <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#282F3A] rounded-xl border border-bronto-yellow/40 text-[11px] font-bold uppercase text-bronto-yellow tracking-wider mb-2">
               <Calculator className="w-3.5 h-3.5" />
               <span>Cotizador en Línea con Tarifas Actualizadas (+10%)</span>
             </div>
-            <h1 className="text-3xl sm:text-5xl font-black uppercase text-white tracking-tight">
+            <h1 className="text-3xl sm:text-5xl font-bold tracking-tight text-white tracking-tight">
               Cotizador en Línea
             </h1>
             <p className="mt-2 text-sm text-[#C4CCD4] max-w-2xl font-normal">
@@ -179,7 +179,7 @@ export default function QuotePage() {
 
         {/* Pantalla de Confirmación de Cotización */}
         {submissionSuccess ? (
-          <div className="my-12 max-w-3xl mx-auto bg-matte border-2 border-bronto-yellow p-8 sm:p-12 text-center space-y-6">
+          <div className="my-12 max-w-3xl mx-auto bg-[#1E232B] rounded-2xl border-2 border-bronto-yellow p-8 sm:p-12 text-center space-y-6">
             <div className="w-16 h-16 bg-bronto-yellow/10 border border-bronto-yellow rounded-full flex items-center justify-center mx-auto text-bronto-yellow">
               <CheckCircle2 className="w-8 h-8" />
             </div>
@@ -188,7 +188,7 @@ export default function QuotePage() {
               <span className="text-xs uppercase font-bold text-bronto-yellow tracking-widest block">
                 Propuesta Comercial Generada
               </span>
-              <h2 className="uppercase text-3xl sm:text-4xl font-black text-white mt-1">
+              <h2 className="text-3xl sm:text-4xl font-black text-white mt-1">
                 ¡Cotización Lista y Radicada!
               </h2>
               <p className="mt-2 text-sm text-white/80 font-mono">
@@ -257,7 +257,7 @@ export default function QuotePage() {
             {/* COLUMNA IZQUIERDA: RESUMEN DE EQUIPOS Y PRECIOS (7 cols) */}
             <div className="lg:col-span-7 space-y-6">
               <div className="flex items-center justify-between">
-                <h2 className="uppercase text-xl font-bold text-white flex items-center gap-2">
+                <h2 className="text-xl font-bold text-white flex items-center gap-2">
                   <FileText className="w-5 h-5 text-bronto-yellow" />
                   <span>Ítems Seleccionados ({items.length})</span>
                 </h2>
@@ -274,7 +274,7 @@ export default function QuotePage() {
               </div>
 
               {items.length === 0 ? (
-                <div className="p-10 bg-matte border border-storm-border text-center space-y-4">
+                <div className="p-10 bg-[#1E232B] rounded-2xl border border-storm-border text-center space-y-4">
                   <Calculator className="w-12 h-12 text-bronto-yellow/50 mx-auto" />
                   <p className="text-sm uppercase font-semibold text-white/80">
                     No tiene equipos en su lista de cotización.
@@ -284,7 +284,7 @@ export default function QuotePage() {
                   </p>
                   <Link
                     href="/catalogo"
-                    className="inline-flex items-center gap-2 px-6 py-3 bg-bronto-yellow text-[#151515] font-black text-xs uppercase tracking-wider transition-colors"
+                    className="inline-flex items-center gap-2 px-6 py-3 bg-bronto-yellow text-white font-black text-xs uppercase tracking-wider transition-colors"
                   >
                     <span>Explorar catálogo con precios</span>
                   </Link>
@@ -299,7 +299,7 @@ export default function QuotePage() {
                     return (
                       <div
                         key={pId}
-                        className="bg-matte border border-storm-border p-4 sm:p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4"
+                        className="bg-[#1E232B] rounded-2xl border border-storm-border p-4 sm:p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4"
                       >
                         <div className="flex items-center gap-4">
                           <div className="w-16 h-16 bg-black overflow-hidden shrink-0 relative">
@@ -320,7 +320,7 @@ export default function QuotePage() {
                               <span className="text-[11px] font-mono text-bronto-yellow font-bold">
                                 {formatCOP(itemCalc.unitPrice)} / {itemCalc.priceBasis}
                               </span>
-                              <span className="text-[10px] uppercase text-[#8E99A6] bg-storm-panel px-1.5 py-0.5">
+                              <span className="text-[10px] uppercase text-[#8E99A6] bg-[#282F3A] rounded-xl px-1.5 py-0.5">
                                 {item.modality}
                               </span>
                             </div>
@@ -387,7 +387,7 @@ export default function QuotePage() {
               )}
 
               {/* Opciones Adicionales de Cotización */}
-              <div className="bg-matte border border-storm-border p-5 space-y-4">
+              <div className="bg-[#1E232B] rounded-2xl border border-storm-border p-5 space-y-4">
                 <h3 className="text-xs uppercase tracking-wider text-bronto-yellow font-bold flex items-center gap-2">
                   <ShieldCheck className="w-4 h-4" />
                   <span>Servicios Opcionales en Obra (Cálculo Instantáneo)</span>
@@ -438,7 +438,7 @@ export default function QuotePage() {
 
               {/* RESUMEN FINANCIERO EN VIVO */}
               {items.length > 0 && (
-                <div className="p-6 bg-matte border-2 border-bronto-yellow space-y-3">
+                <div className="p-6 bg-[#1E232B] rounded-2xl border-2 border-bronto-yellow space-y-3">
                   <div className="flex items-center justify-between pb-3 border-b border-white/10">
                     <span className="text-xs uppercase font-bold text-bronto-yellow tracking-wider flex items-center gap-2">
                       <Calculator className="w-4 h-4" />
@@ -489,7 +489,7 @@ export default function QuotePage() {
                   </div>
 
                   <div className="pt-3 border-t-2 border-bronto-yellow flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
-                    <span className="text-sm font-black uppercase text-white">
+                    <span className="text-sm font-bold tracking-tight text-white">
                       TOTAL ESTIMADO DE LA PROPUESTA:
                     </span>
                     <span className="text-2xl sm:text-3xl font-black text-bronto-yellow font-mono">
@@ -501,8 +501,8 @@ export default function QuotePage() {
             </div>
 
             {/* COLUMNA DERECHA: DATOS DE CONTACTO Y RADICACIÓN (5 cols) */}
-            <div className="lg:col-span-5 bg-matte border border-storm-border p-6 sm:p-8 space-y-5 h-fit">
-              <h2 className="uppercase text-xl font-bold text-white flex items-center gap-2">
+            <div className="lg:col-span-5 bg-[#1E232B] rounded-2xl border border-storm-border p-6 sm:p-8 space-y-5 h-fit">
+              <h2 className="text-xl font-bold text-white flex items-center gap-2">
                 <Building2 className="w-5 h-5 text-bronto-yellow" />
                 <span>Datos del Proyecto y Radicación</span>
               </h2>
@@ -518,7 +518,7 @@ export default function QuotePage() {
                   value={formData.fullName}
                   onChange={handleInputChange}
                   placeholder="Ej: Ing. Mauricio Cárdenas"
-                  className="w-full px-3.5 py-2.5 bg-matte-deep border border-storm-border focus:border-bronto-yellow text-white text-xs outline-none"
+                  className="w-full px-3.5 py-2.5 bg-[#14171C] rounded-xl border border-storm-border focus:border-bronto-yellow text-white text-xs outline-none"
                 />
               </div>
 
@@ -533,7 +533,7 @@ export default function QuotePage() {
                     value={formData.companyName}
                     onChange={handleInputChange}
                     placeholder="Ej: Constructora Bolívar S.A.S."
-                    className="w-full px-3.5 py-2.5 bg-matte-deep border border-storm-border focus:border-bronto-yellow text-white text-xs outline-none"
+                    className="w-full px-3.5 py-2.5 bg-[#14171C] rounded-xl border border-storm-border focus:border-bronto-yellow text-white text-xs outline-none"
                   />
                 </div>
                 <div>
@@ -546,7 +546,7 @@ export default function QuotePage() {
                     value={formData.taxId}
                     onChange={handleInputChange}
                     placeholder="Ej: 860.051.240-1"
-                    className="w-full px-3.5 py-2.5 bg-matte-deep border border-storm-border focus:border-bronto-yellow text-white text-xs outline-none"
+                    className="w-full px-3.5 py-2.5 bg-[#14171C] rounded-xl border border-storm-border focus:border-bronto-yellow text-white text-xs outline-none"
                   />
                 </div>
               </div>
@@ -563,7 +563,7 @@ export default function QuotePage() {
                     value={formData.phone}
                     onChange={handleInputChange}
                     placeholder="Ej: 315 705 2810"
-                    className="w-full px-3.5 py-2.5 bg-matte-deep border border-storm-border focus:border-bronto-yellow text-white text-xs outline-none"
+                    className="w-full px-3.5 py-2.5 bg-[#14171C] rounded-xl border border-storm-border focus:border-bronto-yellow text-white text-xs outline-none"
                   />
                 </div>
                 <div>
@@ -577,7 +577,7 @@ export default function QuotePage() {
                     value={formData.email}
                     onChange={handleInputChange}
                     placeholder="comercial@empresa.com"
-                    className="w-full px-3.5 py-2.5 bg-matte-deep border border-storm-border focus:border-bronto-yellow text-white text-xs outline-none"
+                    className="w-full px-3.5 py-2.5 bg-[#14171C] rounded-xl border border-storm-border focus:border-bronto-yellow text-white text-xs outline-none"
                   />
                 </div>
               </div>
@@ -591,7 +591,7 @@ export default function QuotePage() {
                     name="city"
                     value={formData.city}
                     onChange={handleInputChange}
-                    className="w-full px-3.5 py-2.5 bg-matte-deep border border-storm-border focus:border-bronto-yellow text-white text-xs outline-none"
+                    className="w-full px-3.5 py-2.5 bg-[#14171C] rounded-xl border border-storm-border focus:border-bronto-yellow text-white text-xs outline-none"
                   >
                     {Object.keys(transportRatesByZone).map((zone) => (
                       <option key={zone} value={zone}>
@@ -608,7 +608,7 @@ export default function QuotePage() {
                     name="projectType"
                     value={formData.projectType}
                     onChange={handleInputChange}
-                    className="w-full px-3.5 py-2.5 bg-matte-deep border border-storm-border focus:border-bronto-yellow text-white text-xs outline-none"
+                    className="w-full px-3.5 py-2.5 bg-[#14171C] rounded-xl border border-storm-border focus:border-bronto-yellow text-white text-xs outline-none"
                   >
                     <option value="edificacion">Edificación / Vivienda</option>
                     <option value="infraestructura">Vías e Infraestructura</option>
@@ -629,7 +629,7 @@ export default function QuotePage() {
                   value={formData.deliveryAddress}
                   onChange={handleInputChange}
                   placeholder="Ej: Corredor Industrial Siberia Km 2.5 / Lagos de Torca"
-                  className="w-full px-3.5 py-2.5 bg-matte-deep border border-storm-border focus:border-bronto-yellow text-white text-xs outline-none"
+                  className="w-full px-3.5 py-2.5 bg-[#14171C] rounded-xl border border-storm-border focus:border-bronto-yellow text-white text-xs outline-none"
                 />
               </div>
 
@@ -643,7 +643,7 @@ export default function QuotePage() {
                   value={formData.observations}
                   onChange={handleInputChange}
                   placeholder="Especifique requerimientos de potencia, altura de vaciado, horario nocturno, etc."
-                  className="w-full px-3.5 py-2.5 bg-matte-deep border border-storm-border focus:border-bronto-yellow text-white text-xs outline-none resize-none"
+                  className="w-full px-3.5 py-2.5 bg-[#14171C] rounded-xl border border-storm-border focus:border-bronto-yellow text-white text-xs outline-none resize-none"
                 />
               </div>
 
@@ -651,7 +651,7 @@ export default function QuotePage() {
                 <button
                   type="submit"
                   disabled={isSubmitting || items.length === 0}
-                  className="w-full py-4 bg-bronto-yellow hover:bg-bronto-yellow-hover disabled:opacity-50 disabled:cursor-not-allowed text-[#111111] font-black text-xs uppercase tracking-wider transition-all flex items-center justify-center gap-2 active:scale-95"
+                  className="w-full py-4 bg-bronto-yellow hover:bg-bronto-yellow-hover disabled:opacity-50 disabled:cursor-not-allowed text-white font-black text-xs uppercase tracking-wider transition-all flex items-center justify-center gap-2 active:scale-95"
                 >
                   <Send className="w-4 h-4" />
                   <span>{isSubmitting ? "Generando cotización formal..." : "Generar Cotización Formal"}</span>

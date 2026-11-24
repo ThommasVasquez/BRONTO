@@ -6,14 +6,14 @@ import { siteConfig } from "@/data/siteConfig";
 
 export default function OfflinePage() {
   return (
-    <div className="py-16 pb-20 bg-storm min-h-screen text-white flex items-center justify-center">
+    <div className="py-16 pb-20 bg-[#131518] min-h-screen text-white flex items-center justify-center">
       <div className="max-w-md mx-auto px-4 text-center space-y-6">
         <div className="w-20 h-20 bg-bronto-carbon border-2 border-bronto-yellow/40 rounded-full flex items-center justify-center mx-auto text-bronto-yellow">
           <WifiOff className="w-10 h-10" />
         </div>
 
         <div>
-          <h1 className="uppercase text-3xl sm:text-4xl font-black text-white mt-2">
+          <h1 className="text-3xl sm:text-4xl font-black text-white mt-2">
             Sin Conexión a Internet
           </h1>
           <p className="mt-3 text-sm text-[#C4CCD4]">
@@ -21,7 +21,7 @@ export default function OfflinePage() {
           </p>
         </div>
 
-        <div className="p-4 bg-matte-deep border border-storm-border text-xs text-[#C4CCD4] space-y-2 text-left">
+        <div className="p-4 bg-[#14171C] rounded-xl border border-storm-border text-xs text-[#C4CCD4] space-y-2 text-left">
           <div className="text-bronto-yellow font-bold uppercase tracking-wider">
             Canales Telefónicos de Emergencia en Obra:
           </div>
@@ -32,7 +32,7 @@ export default function OfflinePage() {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
           <Link
             href="/"
-            className="w-full sm:w-auto px-6 py-3 bg-bronto-yellow text-[#151515] font-black text-xs uppercase tracking-wider transition-colors flex items-center justify-center gap-2"
+            className="w-full sm:w-auto px-6 py-3 bg-bronto-yellow text-white font-black text-xs uppercase tracking-wider transition-colors flex items-center justify-center gap-2"
           >
             <RefreshCw className="w-4 h-4" />
             <span>Reintentar conexión</span>
