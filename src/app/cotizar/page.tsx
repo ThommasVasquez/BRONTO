@@ -147,21 +147,21 @@ export default function QuotePage() {
   };
 
   return (
-    <div className="pt-28 pb-24 bg-[#151515] min-h-screen text-white">
+    <div className="py-8 sm:py-10 pb-20 bg-storm min-h-screen text-white">
       <div className="w-full px-6 sm:px-10 lg:px-16 2xl:px-24">
         <Breadcrumbs items={[{ label: "Cotizador en Línea" }]} />
 
         {/* Cabecera */}
-        <div className="py-8 border-b border-[#242424] flex flex-col md:flex-row md:items-end justify-between gap-4">
+        <div className="py-8 border-b border-storm-border flex flex-col md:flex-row md:items-end justify-between gap-4">
           <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#202020] border border-bronto-yellow/40 text-[11px] font-bold uppercase text-bronto-yellow tracking-wider mb-2">
+            <div className="inline-flex items-center gap-2 px-3 py-1 bg-storm-panel border border-bronto-yellow/40 text-[11px] font-bold uppercase text-bronto-yellow tracking-wider mb-2">
               <Calculator className="w-3.5 h-3.5" />
               <span>Cotizador en Línea con Tarifas Actualizadas (+10%)</span>
             </div>
             <h1 className="text-3xl sm:text-5xl font-black uppercase text-white tracking-tight">
               Cotizador en Línea
             </h1>
-            <p className="mt-2 text-sm text-white/70 max-w-2xl font-normal">
+            <p className="mt-2 text-sm text-[#C4CCD4] max-w-2xl font-normal">
               Calcule al instante el costo estimado de alquiler de maquinaria, equipos y suministros para su frente de obra en Bogotá y la Sabana.
             </p>
           </div>
@@ -179,7 +179,7 @@ export default function QuotePage() {
 
         {/* Pantalla de Confirmación de Cotización */}
         {submissionSuccess ? (
-          <div className="my-12 max-w-3xl mx-auto bg-[#1A1A1A] border-2 border-bronto-yellow p-8 sm:p-12 text-center space-y-6">
+          <div className="my-12 max-w-3xl mx-auto bg-matte border-2 border-bronto-yellow p-8 sm:p-12 text-center space-y-6">
             <div className="w-16 h-16 bg-bronto-yellow/10 border border-bronto-yellow rounded-full flex items-center justify-center mx-auto text-bronto-yellow">
               <CheckCircle2 className="w-8 h-8" />
             </div>
@@ -197,21 +197,21 @@ export default function QuotePage() {
             </div>
 
             {/* Resumen Financiero Generado */}
-            <div className="p-6 bg-black/50 border border-[#333333] text-left text-xs text-white/80 space-y-3">
+            <div className="p-6 bg-black/50 border border-storm-border text-left text-xs text-white/80 space-y-3">
               <div className="flex items-center justify-between border-b border-white/10 pb-3">
-                <span className="text-white/60">Cliente / Empresa:</span>
+                <span className="text-[#B8C1CC]">Cliente / Empresa:</span>
                 <strong className="text-white">{formData.fullName} {formData.companyName ? `(${formData.companyName})` : ""}</strong>
               </div>
               <div className="flex items-center justify-between border-b border-white/10 pb-3">
-                <span className="text-white/60">Destino de Entrega:</span>
+                <span className="text-[#B8C1CC]">Destino de Entrega:</span>
                 <strong className="text-white">{formData.city}</strong>
               </div>
               <div className="flex items-center justify-between border-b border-white/10 pb-3">
-                <span className="text-white/60">Subtotal Neto:</span>
+                <span className="text-[#B8C1CC]">Subtotal Neto:</span>
                 <span className="font-mono">{formatCOP(summary.subtotalBeforeTax)}</span>
               </div>
               <div className="flex items-center justify-between border-b border-white/10 pb-3">
-                <span className="text-white/60">IVA (19%):</span>
+                <span className="text-[#B8C1CC]">IVA (19%):</span>
                 <span className="font-mono">{formatCOP(summary.taxAmount)}</span>
               </div>
               <div className="flex items-center justify-between pt-1 text-sm font-bold">
@@ -245,7 +245,7 @@ export default function QuotePage() {
                   setSubmissionSuccess(false);
                   clearBasket();
                 }}
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 border border-[#333333] hover:border-white text-white text-xs uppercase tracking-wider font-semibold transition-colors"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 border border-storm-border hover:border-white text-white text-xs uppercase tracking-wider font-semibold transition-colors"
               >
                 <span>Nueva cotización</span>
               </button>
@@ -266,7 +266,7 @@ export default function QuotePage() {
                   <button
                     type="button"
                     onClick={clearBasket}
-                    className="text-xs text-white/50 hover:text-red-400 transition-colors"
+                    className="text-xs text-[#8E99A6] hover:text-red-400 transition-colors"
                   >
                     Vaciar lista
                   </button>
@@ -274,12 +274,12 @@ export default function QuotePage() {
               </div>
 
               {items.length === 0 ? (
-                <div className="p-10 bg-[#181818] border border-[#2B2B2B] text-center space-y-4">
+                <div className="p-10 bg-matte border border-storm-border text-center space-y-4">
                   <Calculator className="w-12 h-12 text-bronto-yellow/50 mx-auto" />
                   <p className="text-sm uppercase font-semibold text-white/80">
                     No tiene equipos en su lista de cotización.
                   </p>
-                  <p className="text-xs text-white/60 max-w-md mx-auto font-normal">
+                  <p className="text-xs text-[#B8C1CC] max-w-md mx-auto font-normal">
                     Navegue por el catálogo de maquinaria, encofrados o concretos y agregue los equipos para ver el cálculo financiero en tiempo real.
                   </p>
                   <Link
@@ -299,7 +299,7 @@ export default function QuotePage() {
                     return (
                       <div
                         key={pId}
-                        className="bg-[#181818] border border-[#2B2B2B] p-4 sm:p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4"
+                        className="bg-matte border border-storm-border p-4 sm:p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4"
                       >
                         <div className="flex items-center gap-4">
                           <div className="w-16 h-16 bg-black overflow-hidden shrink-0 relative">
@@ -310,7 +310,7 @@ export default function QuotePage() {
                           </div>
 
                           <div>
-                            <span className="text-[10px] font-bold text-white/50 tracking-wider uppercase font-mono">
+                            <span className="text-[10px] font-bold text-[#8E99A6] tracking-wider uppercase font-mono">
                               {prod?.sku}
                             </span>
                             <h4 className="uppercase text-sm sm:text-base font-bold text-white leading-tight">
@@ -320,7 +320,7 @@ export default function QuotePage() {
                               <span className="text-[11px] font-mono text-bronto-yellow font-bold">
                                 {formatCOP(itemCalc.unitPrice)} / {itemCalc.priceBasis}
                               </span>
-                              <span className="text-[10px] uppercase text-white/50 bg-[#252525] px-1.5 py-0.5">
+                              <span className="text-[10px] uppercase text-[#8E99A6] bg-storm-panel px-1.5 py-0.5">
                                 {item.modality}
                               </span>
                             </div>
@@ -329,11 +329,11 @@ export default function QuotePage() {
 
                         {/* Controles de cantidad, duración y subtotal del ítem */}
                         <div className="flex items-center gap-4 w-full sm:w-auto justify-between sm:justify-end">
-                          <div className="flex items-center border border-[#333333] bg-black/40">
+                          <div className="flex items-center border border-storm-border bg-black/40">
                             <button
                               type="button"
                               onClick={() => prod?.id && updateQuantity(prod.id, item.quantity - 1)}
-                              className="p-1.5 text-white/70 hover:text-white"
+                              className="p-1.5 text-[#C4CCD4] hover:text-white"
                               aria-label="Disminuir cantidad"
                             >
                               <Minus className="w-3.5 h-3.5" />
@@ -344,7 +344,7 @@ export default function QuotePage() {
                             <button
                               type="button"
                               onClick={() => prod?.id && updateQuantity(prod.id, item.quantity + 1)}
-                              className="p-1.5 text-white/70 hover:text-white"
+                              className="p-1.5 text-[#C4CCD4] hover:text-white"
                               aria-label="Aumentar cantidad"
                             >
                               <Plus className="w-3.5 h-3.5" />
@@ -354,7 +354,7 @@ export default function QuotePage() {
                           <select
                             value={item.estimatedDuration || "1 mes"}
                             onChange={(e) => prod?.id && updateDuration(prod.id, e.target.value)}
-                            className="bg-black/40 border border-[#333333] text-white text-xs py-1.5 px-2 font-medium"
+                            className="bg-black/40 border border-storm-border text-white text-xs py-1.5 px-2 font-medium"
                           >
                             <option value="1 a 7 días">1 a 7 días</option>
                             <option value="15 días">15 días</option>
@@ -365,7 +365,7 @@ export default function QuotePage() {
 
                           {/* Subtotal del ítem */}
                           <div className="text-right min-w-[100px] hidden sm:block">
-                            <span className="text-[10px] text-white/50 block uppercase">Subtotal:</span>
+                            <span className="text-[10px] text-[#8E99A6] block uppercase">Subtotal:</span>
                             <strong className="text-xs text-white font-mono font-bold">
                               {formatCOP(itemCalc.equipmentSubtotal)}
                             </strong>
@@ -387,14 +387,14 @@ export default function QuotePage() {
               )}
 
               {/* Opciones Adicionales de Cotización */}
-              <div className="bg-[#181818] border border-[#2B2B2B] p-5 space-y-4">
+              <div className="bg-matte border border-storm-border p-5 space-y-4">
                 <h3 className="text-xs uppercase tracking-wider text-bronto-yellow font-bold flex items-center gap-2">
                   <ShieldCheck className="w-4 h-4" />
                   <span>Servicios Opcionales en Obra (Cálculo Instantáneo)</span>
                 </h3>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <label className="flex items-start gap-3 p-3 bg-black/40 border border-[#333333] cursor-pointer hover:border-bronto-yellow transition-colors">
+                  <label className="flex items-start gap-3 p-3 bg-black/40 border border-storm-border cursor-pointer hover:border-bronto-yellow transition-colors">
                     <input
                       type="checkbox"
                       name="requiresTransport"
@@ -407,13 +407,13 @@ export default function QuotePage() {
                         <Truck className="w-3.5 h-3.5 text-bronto-yellow" />
                         <span>Transporte / Cama Baja</span>
                       </span>
-                      <span className="text-white/60 text-[11px] block mt-0.5">
+                      <span className="text-[#B8C1CC] text-[11px] block mt-0.5">
                         Despacho a {formData.city}: <strong>{formatCOP(summary.transportTotal)}</strong>
                       </span>
                     </div>
                   </label>
 
-                  <label className="flex items-start gap-3 p-3 bg-black/40 border border-[#333333] cursor-pointer hover:border-bronto-yellow transition-colors">
+                  <label className="flex items-start gap-3 p-3 bg-black/40 border border-storm-border cursor-pointer hover:border-bronto-yellow transition-colors">
                     <input
                       type="checkbox"
                       name="requiresOperator"
@@ -426,7 +426,7 @@ export default function QuotePage() {
                         <HardHat className="w-3.5 h-3.5 text-bronto-yellow" />
                         <span>Operador Calificado</span>
                       </span>
-                      <span className="text-white/60 text-[11px] block mt-0.5">
+                      <span className="text-[#B8C1CC] text-[11px] block mt-0.5">
                         {summary.operatorTotal > 0
                           ? `Total estimado operador: ${formatCOP(summary.operatorTotal)}`
                           : "Tarifa estándar por jornada laboral en máquina"}
@@ -438,18 +438,18 @@ export default function QuotePage() {
 
               {/* RESUMEN FINANCIERO EN VIVO */}
               {items.length > 0 && (
-                <div className="p-6 bg-[#161616] border-2 border-bronto-yellow space-y-3">
+                <div className="p-6 bg-matte border-2 border-bronto-yellow space-y-3">
                   <div className="flex items-center justify-between pb-3 border-b border-white/10">
                     <span className="text-xs uppercase font-bold text-bronto-yellow tracking-wider flex items-center gap-2">
                       <Calculator className="w-4 h-4" />
                       <span>Liquidación Financiera en Tiempo Real</span>
                     </span>
-                    <span className="text-[11px] text-white/50 font-mono">Tarifas Mercado +10% Ref.</span>
+                    <span className="text-[11px] text-[#8E99A6] font-mono">Tarifas Mercado +10% Ref.</span>
                   </div>
 
                   <div className="space-y-2 text-xs text-white/80">
                     <div className="flex items-center justify-between">
-                      <span className="text-white/60">Subtotal Equipos y Materiales ({totalCount} unidades):</span>
+                      <span className="text-[#B8C1CC]">Subtotal Equipos y Materiales ({totalCount} unidades):</span>
                       <span className="font-mono font-semibold">{formatCOP(summary.equipmentTotal)}</span>
                     </div>
 
@@ -462,7 +462,7 @@ export default function QuotePage() {
 
                     {formData.requiresTransport && (
                       <div className="flex items-center justify-between">
-                        <span className="text-white/60">Flete y Logística a {formData.city}:</span>
+                        <span className="text-[#B8C1CC]">Flete y Logística a {formData.city}:</span>
                         <span className="font-mono font-semibold">+{formatCOP(summary.transportTotal)}</span>
                       </div>
                     )}
@@ -478,12 +478,12 @@ export default function QuotePage() {
                     )}
 
                     <div className="flex items-center justify-between pt-2 border-t border-white/10">
-                      <span className="text-white/70 font-semibold">Subtotal Neto antes de IVA:</span>
+                      <span className="text-[#C4CCD4] font-semibold">Subtotal Neto antes de IVA:</span>
                       <span className="font-mono font-bold text-white">{formatCOP(summary.subtotalBeforeTax)}</span>
                     </div>
 
                     <div className="flex items-center justify-between">
-                      <span className="text-white/60">IVA (19% servicio / arrendamiento):</span>
+                      <span className="text-[#B8C1CC]">IVA (19% servicio / arrendamiento):</span>
                       <span className="font-mono">{formatCOP(summary.taxAmount)}</span>
                     </div>
                   </div>
@@ -501,14 +501,14 @@ export default function QuotePage() {
             </div>
 
             {/* COLUMNA DERECHA: DATOS DE CONTACTO Y RADICACIÓN (5 cols) */}
-            <div className="lg:col-span-5 bg-[#181818] border border-[#2B2B2B] p-6 sm:p-8 space-y-5 h-fit">
+            <div className="lg:col-span-5 bg-matte border border-storm-border p-6 sm:p-8 space-y-5 h-fit">
               <h2 className="uppercase text-xl font-bold text-white flex items-center gap-2">
                 <Building2 className="w-5 h-5 text-bronto-yellow" />
                 <span>Datos del Proyecto y Radicación</span>
               </h2>
 
               <div>
-                <label className="block text-xs uppercase font-semibold text-white/70 mb-1.5">
+                <label className="block text-xs uppercase font-semibold text-[#C4CCD4] mb-1.5">
                   Nombre completo o Contacto comercial *
                 </label>
                 <input
@@ -518,13 +518,13 @@ export default function QuotePage() {
                   value={formData.fullName}
                   onChange={handleInputChange}
                   placeholder="Ej: Ing. Mauricio Cárdenas"
-                  className="w-full px-3.5 py-2.5 bg-[#121212] border border-[#333333] focus:border-bronto-yellow text-white text-xs outline-none"
+                  className="w-full px-3.5 py-2.5 bg-matte-deep border border-storm-border focus:border-bronto-yellow text-white text-xs outline-none"
                 />
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-xs uppercase font-semibold text-white/70 mb-1.5">
+                  <label className="block text-xs uppercase font-semibold text-[#C4CCD4] mb-1.5">
                     Empresa / Razón Social
                   </label>
                   <input
@@ -533,11 +533,11 @@ export default function QuotePage() {
                     value={formData.companyName}
                     onChange={handleInputChange}
                     placeholder="Ej: Constructora Bolívar S.A.S."
-                    className="w-full px-3.5 py-2.5 bg-[#121212] border border-[#333333] focus:border-bronto-yellow text-white text-xs outline-none"
+                    className="w-full px-3.5 py-2.5 bg-matte-deep border border-storm-border focus:border-bronto-yellow text-white text-xs outline-none"
                   />
                 </div>
                 <div>
-                  <label className="block text-xs uppercase font-semibold text-white/70 mb-1.5">
+                  <label className="block text-xs uppercase font-semibold text-[#C4CCD4] mb-1.5">
                     NIT o Cédula
                   </label>
                   <input
@@ -546,14 +546,14 @@ export default function QuotePage() {
                     value={formData.taxId}
                     onChange={handleInputChange}
                     placeholder="Ej: 860.051.240-1"
-                    className="w-full px-3.5 py-2.5 bg-[#121212] border border-[#333333] focus:border-bronto-yellow text-white text-xs outline-none"
+                    className="w-full px-3.5 py-2.5 bg-matte-deep border border-storm-border focus:border-bronto-yellow text-white text-xs outline-none"
                   />
                 </div>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-xs uppercase font-semibold text-white/70 mb-1.5">
+                  <label className="block text-xs uppercase font-semibold text-[#C4CCD4] mb-1.5">
                     Teléfono Celular *
                   </label>
                   <input
@@ -563,11 +563,11 @@ export default function QuotePage() {
                     value={formData.phone}
                     onChange={handleInputChange}
                     placeholder="Ej: 315 705 2810"
-                    className="w-full px-3.5 py-2.5 bg-[#121212] border border-[#333333] focus:border-bronto-yellow text-white text-xs outline-none"
+                    className="w-full px-3.5 py-2.5 bg-matte-deep border border-storm-border focus:border-bronto-yellow text-white text-xs outline-none"
                   />
                 </div>
                 <div>
-                  <label className="block text-xs uppercase font-semibold text-white/70 mb-1.5">
+                  <label className="block text-xs uppercase font-semibold text-[#C4CCD4] mb-1.5">
                     Correo Electrónico *
                   </label>
                   <input
@@ -577,21 +577,21 @@ export default function QuotePage() {
                     value={formData.email}
                     onChange={handleInputChange}
                     placeholder="comercial@empresa.com"
-                    className="w-full px-3.5 py-2.5 bg-[#121212] border border-[#333333] focus:border-bronto-yellow text-white text-xs outline-none"
+                    className="w-full px-3.5 py-2.5 bg-matte-deep border border-storm-border focus:border-bronto-yellow text-white text-xs outline-none"
                   />
                 </div>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-xs uppercase font-semibold text-white/70 mb-1.5">
+                  <label className="block text-xs uppercase font-semibold text-[#C4CCD4] mb-1.5">
                     Municipio / Zona de Obra *
                   </label>
                   <select
                     name="city"
                     value={formData.city}
                     onChange={handleInputChange}
-                    className="w-full px-3.5 py-2.5 bg-[#121212] border border-[#333333] focus:border-bronto-yellow text-white text-xs outline-none"
+                    className="w-full px-3.5 py-2.5 bg-matte-deep border border-storm-border focus:border-bronto-yellow text-white text-xs outline-none"
                   >
                     {Object.keys(transportRatesByZone).map((zone) => (
                       <option key={zone} value={zone}>
@@ -601,14 +601,14 @@ export default function QuotePage() {
                   </select>
                 </div>
                 <div>
-                  <label className="block text-xs uppercase font-semibold text-white/70 mb-1.5">
+                  <label className="block text-xs uppercase font-semibold text-[#C4CCD4] mb-1.5">
                     Tipo de Proyecto
                   </label>
                   <select
                     name="projectType"
                     value={formData.projectType}
                     onChange={handleInputChange}
-                    className="w-full px-3.5 py-2.5 bg-[#121212] border border-[#333333] focus:border-bronto-yellow text-white text-xs outline-none"
+                    className="w-full px-3.5 py-2.5 bg-matte-deep border border-storm-border focus:border-bronto-yellow text-white text-xs outline-none"
                   >
                     <option value="edificacion">Edificación / Vivienda</option>
                     <option value="infraestructura">Vías e Infraestructura</option>
@@ -620,7 +620,7 @@ export default function QuotePage() {
               </div>
 
               <div>
-                <label className="block text-xs uppercase font-semibold text-white/70 mb-1.5">
+                <label className="block text-xs uppercase font-semibold text-[#C4CCD4] mb-1.5">
                   Dirección o Punto de Referencia del Frente
                 </label>
                 <input
@@ -629,12 +629,12 @@ export default function QuotePage() {
                   value={formData.deliveryAddress}
                   onChange={handleInputChange}
                   placeholder="Ej: Corredor Industrial Siberia Km 2.5 / Lagos de Torca"
-                  className="w-full px-3.5 py-2.5 bg-[#121212] border border-[#333333] focus:border-bronto-yellow text-white text-xs outline-none"
+                  className="w-full px-3.5 py-2.5 bg-matte-deep border border-storm-border focus:border-bronto-yellow text-white text-xs outline-none"
                 />
               </div>
 
               <div>
-                <label className="block text-xs uppercase font-semibold text-white/70 mb-1.5">
+                <label className="block text-xs uppercase font-semibold text-[#C4CCD4] mb-1.5">
                   Observaciones Técnicas o Requerimientos Especiales
                 </label>
                 <textarea
@@ -643,7 +643,7 @@ export default function QuotePage() {
                   value={formData.observations}
                   onChange={handleInputChange}
                   placeholder="Especifique requerimientos de potencia, altura de vaciado, horario nocturno, etc."
-                  className="w-full px-3.5 py-2.5 bg-[#121212] border border-[#333333] focus:border-bronto-yellow text-white text-xs outline-none resize-none"
+                  className="w-full px-3.5 py-2.5 bg-matte-deep border border-storm-border focus:border-bronto-yellow text-white text-xs outline-none resize-none"
                 />
               </div>
 
@@ -657,7 +657,7 @@ export default function QuotePage() {
                   <span>{isSubmitting ? "Generando cotización formal..." : "Generar Cotización Formal"}</span>
                 </button>
 
-                <p className="text-[11px] text-white/50 text-center font-normal">
+                <p className="text-[11px] text-[#8E99A6] text-center font-normal">
                   La propuesta comercial incluye precios con el 10% de referencia sobre mercado, pólizas y disponibilidad inmediata en Bogotá y la Sabana.
                 </p>
               </div>

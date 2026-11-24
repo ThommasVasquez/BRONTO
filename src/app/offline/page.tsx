@@ -6,7 +6,7 @@ import { siteConfig } from "@/data/siteConfig";
 
 export default function OfflinePage() {
   return (
-    <div className="pt-32 pb-24 bg-[#151515] min-h-screen text-white flex items-center justify-center">
+    <div className="py-16 pb-20 bg-storm min-h-screen text-white flex items-center justify-center">
       <div className="max-w-md mx-auto px-4 text-center space-y-6">
         <div className="w-20 h-20 bg-bronto-carbon border-2 border-bronto-yellow/40 rounded-full flex items-center justify-center mx-auto text-bronto-yellow">
           <WifiOff className="w-10 h-10" />
@@ -16,12 +16,12 @@ export default function OfflinePage() {
           <h1 className="uppercase text-3xl sm:text-4xl font-black text-white mt-2">
             Sin Conexión a Internet
           </h1>
-          <p className="mt-3 text-sm text-white/70">
+          <p className="mt-3 text-sm text-[#C4CCD4]">
             Está consultando la aplicación fuera de línea. Los recursos almacenados en caché previamente siguen disponibles en su dispositivo.
           </p>
         </div>
 
-        <div className="p-4 bg-[#1C1C1C] border border-[#2E2E2E] text-xs text-white/70 space-y-2 text-left">
+        <div className="p-4 bg-matte-deep border border-storm-border text-xs text-[#C4CCD4] space-y-2 text-left">
           <div className="text-bronto-yellow font-bold uppercase tracking-wider">
             Canales Telefónicos de Emergencia en Obra:
           </div>
@@ -40,7 +40,7 @@ export default function OfflinePage() {
 
           <Link
             href="/catalogo"
-            className="w-full sm:w-auto px-6 py-3 border border-[#333333] hover:border-white text-white text-xs uppercase tracking-wider font-semibold transition-colors"
+            className="w-full sm:w-auto px-6 py-3 border border-storm-border hover:border-white text-white text-xs uppercase tracking-wider font-semibold transition-colors"
           >
             <span>Ver catálogo en caché</span>
           </Link>

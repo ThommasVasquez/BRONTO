@@ -85,11 +85,11 @@ export default function LoginPage() {
   // Si ya tiene sesión iniciada, mostrar acceso directo
   if (isLoggedIn && user) {
     return (
-      <div className="pt-28 pb-24 bg-[#151515] min-h-screen">
+      <div className="py-8 sm:py-10 pb-20 bg-storm min-h-screen">
         <div className="w-full px-6 sm:px-10 lg:px-16 2xl:px-24">
           <Breadcrumbs items={[{ label: "Portal de Clientes", href: "/portal-clientes" }, { label: "Sesión Activa" }]} />
 
-          <div className="my-12 max-w-xl mx-auto bg-[#181818] border border-[#2B2B2B] p-8 text-center space-y-6">
+          <div className="my-12 max-w-xl mx-auto bg-matte border border-storm-border p-8 text-center space-y-6">
             <div className="w-16 h-16 bg-bronto-yellow/10 border border-bronto-yellow rounded-full flex items-center justify-center mx-auto text-bronto-yellow">
               <CheckCircle2 className="w-8 h-8" />
             </div>
@@ -101,7 +101,7 @@ export default function LoginPage() {
               <h2 className="text-2xl font-black uppercase text-white mt-1">
                 {user.companyName}
               </h2>
-              <p className="mt-2 text-xs text-white/70">
+              <p className="mt-2 text-xs text-[#C4CCD4]">
                 Identificado como {user.contactName} (NIT: {user.nit})
               </p>
             </div>
@@ -122,17 +122,17 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="pt-28 pb-24 bg-[#151515] min-h-screen">
+    <div className="py-8 sm:py-10 pb-20 bg-storm min-h-screen">
       <div className="w-full px-6 sm:px-10 lg:px-16 2xl:px-24">
         <Breadcrumbs items={[{ label: "Acceso para Clientes" }]} />
 
         {/* Cabecera */}
-        <div className="py-8 border-b border-[#242424] flex flex-col md:flex-row md:items-end justify-between gap-4">
+        <div className="py-8 border-b border-storm-border flex flex-col md:flex-row md:items-end justify-between gap-4">
           <div>
             <h1 className="text-3xl sm:text-5xl font-black uppercase text-white tracking-tight">
               Portal de Clientes y Contratistas
             </h1>
-            <p className="mt-2 text-sm text-white/70 max-w-2xl">
+            <p className="mt-2 text-sm text-[#C4CCD4] max-w-2xl">
               Consulte frentes de obra activos, horómetros de maquinaria, actas de entrega digital y certificados técnicos en Bogotá y municipios de la Sabana.
             </p>
           </div>
@@ -142,7 +142,7 @@ export default function LoginPage() {
         <div className="py-12 grid grid-cols-1 lg:grid-cols-12 gap-12 max-w-6xl mx-auto">
           {/* Columna Izquierda: Beneficios y Respaldo Institucional (5 cols) */}
           <div className="lg:col-span-5 space-y-6">
-            <div className="bg-[#181818] border border-[#2B2B2B] p-8 space-y-6">
+            <div className="bg-matte border border-storm-border p-8 space-y-6">
               <div className="flex items-center gap-3">
                 <DynastesBeetleSymbol className="w-10 h-10" size={50} />
                 <div>
@@ -155,7 +155,7 @@ export default function LoginPage() {
                 </div>
               </div>
 
-              <div className="space-y-4 text-xs text-white/70 border-t border-white/10 pt-4">
+              <div className="space-y-4 text-xs text-[#C4CCD4] border-t border-white/10 pt-4">
                 <div className="flex items-start gap-3">
                   <ShieldCheck className="w-4 h-4 text-bronto-yellow shrink-0 mt-0.5" />
                   <div>
@@ -182,12 +182,12 @@ export default function LoginPage() {
               </div>
 
               {/* Acceso Rápido Demo para Pruebas Inmediatas */}
-              <div className="p-4 bg-[#141414] border border-bronto-yellow/40 space-y-3">
+              <div className="p-4 bg-matte-deep border border-bronto-yellow/40 space-y-3">
                 <div className="flex items-center gap-2 text-bronto-yellow text-xs font-bold uppercase tracking-wider">
                   <Sparkles className="w-4 h-4" />
                   <span>Demostración de Cliente Activo</span>
                 </div>
-                <p className="text-[11px] text-white/70">
+                <p className="text-[11px] text-[#C4CCD4]">
                   Haga clic para ingresar instantáneamente con una constructora simulada con 2 obras activas en Cota y Siberia:
                 </p>
                 <button
@@ -202,16 +202,16 @@ export default function LoginPage() {
           </div>
 
           {/* Columna Derecha: Formulario de Login / Registro (7 cols) */}
-          <div className="lg:col-span-7 bg-[#181818] border border-[#2B2B2B] p-6 sm:p-10">
+          <div className="lg:col-span-7 bg-matte border border-storm-border p-6 sm:p-10">
             {/* Tabs Selector */}
-            <div className="flex items-center border-b border-[#2B2B2B] mb-8">
+            <div className="flex items-center border-b border-storm-border mb-8">
               <button
                 type="button"
                 onClick={() => setActiveTab("login")}
                 className={`flex-1 py-3 text-xs uppercase tracking-wider font-bold border-b-2 transition-colors ${
                   activeTab === "login"
                     ? "border-bronto-yellow text-bronto-yellow"
-                    : "border-transparent text-white/60 hover:text-white"
+                    : "border-transparent text-[#B8C1CC] hover:text-white"
                 }`}
               >
                 Iniciar Sesión
@@ -222,7 +222,7 @@ export default function LoginPage() {
                 className={`flex-1 py-3 text-xs uppercase tracking-wider font-bold border-b-2 transition-colors ${
                   activeTab === "register"
                     ? "border-bronto-yellow text-bronto-yellow"
-                    : "border-transparent text-white/60 hover:text-white"
+                    : "border-transparent text-[#B8C1CC] hover:text-white"
                 }`}
               >
                 Vincular Empresa Nueva
@@ -239,7 +239,7 @@ export default function LoginPage() {
               /* FORMULARIO DE INICIO DE SESIÓN */
               <form onSubmit={handleLoginSubmit} className="space-y-5">
                 <div>
-                  <label className="block text-xs uppercase font-semibold text-white/70 mb-1.5">
+                  <label className="block text-xs uppercase font-semibold text-[#C4CCD4] mb-1.5">
                     Correo Electrónico Corporativo o NIT de la Empresa *
                   </label>
                   <div className="relative">
@@ -250,17 +250,17 @@ export default function LoginPage() {
                       value={emailOrNit}
                       onChange={(e) => setEmailOrNit(e.target.value)}
                       placeholder="ej: carlos@constructorabolivar.com o 860.051.240-1"
-                      className="w-full pl-10 pr-3.5 py-2.5 bg-[#121212] border border-[#333333] text-sm text-white focus:border-bronto-yellow focus:outline-none"
+                      className="w-full pl-10 pr-3.5 py-2.5 bg-matte-deep border border-storm-border text-sm text-white focus:border-bronto-yellow focus:outline-none"
                     />
                   </div>
                 </div>
 
                 <div>
                   <div className="flex items-center justify-between mb-1.5">
-                    <label className="block text-xs uppercase font-semibold text-white/70">
+                    <label className="block text-xs uppercase font-semibold text-[#C4CCD4]">
                       Contraseña *
                     </label>
-                    <span className="text-[11px] text-white/50">
+                    <span className="text-[11px] text-[#8E99A6]">
                       (Para demo, ingrese cualquier valor)
                     </span>
                   </div>
@@ -271,7 +271,7 @@ export default function LoginPage() {
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
                       placeholder="••••••••••••"
-                      className="w-full pl-10 pr-3.5 py-2.5 bg-[#121212] border border-[#333333] text-sm text-white focus:border-bronto-yellow focus:outline-none"
+                      className="w-full pl-10 pr-3.5 py-2.5 bg-matte-deep border border-storm-border text-sm text-white focus:border-bronto-yellow focus:outline-none"
                     />
                   </div>
                 </div>
@@ -287,7 +287,7 @@ export default function LoginPage() {
                   </button>
                 </div>
 
-                <div className="pt-4 border-t border-[#2A2A2A] text-center text-xs text-white/50">
+                <div className="pt-4 border-t border-matte-border text-center text-xs text-[#8E99A6]">
                   ¿Es cliente nuevo y aún no tiene usuario registrado?{" "}
                   <button
                     type="button"
@@ -303,7 +303,7 @@ export default function LoginPage() {
               <form onSubmit={handleRegisterSubmit} className="space-y-4">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-xs uppercase font-semibold text-white/70 mb-1.5">
+                    <label className="block text-xs uppercase font-semibold text-[#C4CCD4] mb-1.5">
                       Razón Social de la Empresa *
                     </label>
                     <div className="relative">
@@ -314,13 +314,13 @@ export default function LoginPage() {
                         value={regCompany}
                         onChange={(e) => setRegCompany(e.target.value)}
                         placeholder="Constructora S.A.S."
-                        className="w-full pl-10 pr-3.5 py-2.5 bg-[#121212] border border-[#333333] text-sm text-white focus:border-bronto-yellow focus:outline-none"
+                        className="w-full pl-10 pr-3.5 py-2.5 bg-matte-deep border border-storm-border text-sm text-white focus:border-bronto-yellow focus:outline-none"
                       />
                     </div>
                   </div>
 
                   <div>
-                    <label className="block text-xs uppercase font-semibold text-white/70 mb-1.5">
+                    <label className="block text-xs uppercase font-semibold text-[#C4CCD4] mb-1.5">
                       NIT de la Empresa *
                     </label>
                     <input
@@ -329,14 +329,14 @@ export default function LoginPage() {
                       value={regNit}
                       onChange={(e) => setRegNit(e.target.value)}
                       placeholder="900.000.000-1"
-                      className="w-full px-3.5 py-2.5 bg-[#121212] border border-[#333333] text-sm text-white focus:border-bronto-yellow focus:outline-none"
+                      className="w-full px-3.5 py-2.5 bg-matte-deep border border-storm-border text-sm text-white focus:border-bronto-yellow focus:outline-none"
                     />
                   </div>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-xs uppercase font-semibold text-white/70 mb-1.5">
+                    <label className="block text-xs uppercase font-semibold text-[#C4CCD4] mb-1.5">
                       Nombre del Residente o Contacto *
                     </label>
                     <div className="relative">
@@ -347,13 +347,13 @@ export default function LoginPage() {
                         value={regContact}
                         onChange={(e) => setRegContact(e.target.value)}
                         placeholder="Ing. Carlos Pérez"
-                        className="w-full pl-10 pr-3.5 py-2.5 bg-[#121212] border border-[#333333] text-sm text-white focus:border-bronto-yellow focus:outline-none"
+                        className="w-full pl-10 pr-3.5 py-2.5 bg-matte-deep border border-storm-border text-sm text-white focus:border-bronto-yellow focus:outline-none"
                       />
                     </div>
                   </div>
 
                   <div>
-                    <label className="block text-xs uppercase font-semibold text-white/70 mb-1.5">
+                    <label className="block text-xs uppercase font-semibold text-[#C4CCD4] mb-1.5">
                       Teléfono Móvil / WhatsApp *
                     </label>
                     <div className="relative">
@@ -364,7 +364,7 @@ export default function LoginPage() {
                         value={regPhone}
                         onChange={(e) => setRegPhone(e.target.value)}
                         placeholder="+57 315 000 0000"
-                        className="w-full pl-10 pr-3.5 py-2.5 bg-[#121212] border border-[#333333] text-sm text-white focus:border-bronto-yellow focus:outline-none"
+                        className="w-full pl-10 pr-3.5 py-2.5 bg-matte-deep border border-storm-border text-sm text-white focus:border-bronto-yellow focus:outline-none"
                       />
                     </div>
                   </div>
@@ -372,7 +372,7 @@ export default function LoginPage() {
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-xs uppercase font-semibold text-white/70 mb-1.5">
+                    <label className="block text-xs uppercase font-semibold text-[#C4CCD4] mb-1.5">
                       Correo Electrónico Corporativo *
                     </label>
                     <div className="relative">
@@ -383,19 +383,19 @@ export default function LoginPage() {
                         value={regEmail}
                         onChange={(e) => setRegEmail(e.target.value)}
                         placeholder="residente@constructora.com"
-                        className="w-full pl-10 pr-3.5 py-2.5 bg-[#121212] border border-[#333333] text-sm text-white focus:border-bronto-yellow focus:outline-none"
+                        className="w-full pl-10 pr-3.5 py-2.5 bg-matte-deep border border-storm-border text-sm text-white focus:border-bronto-yellow focus:outline-none"
                       />
                     </div>
                   </div>
 
                   <div>
-                    <label className="block text-xs uppercase font-semibold text-white/70 mb-1.5">
+                    <label className="block text-xs uppercase font-semibold text-[#C4CCD4] mb-1.5">
                       Municipio Principal de Operación *
                     </label>
                     <select
                       value={regCity}
                       onChange={(e) => setRegCity(e.target.value)}
-                      className="w-full px-3.5 py-2.5 bg-[#121212] border border-[#333333] text-sm text-white focus:border-bronto-yellow focus:outline-none"
+                      className="w-full px-3.5 py-2.5 bg-matte-deep border border-storm-border text-sm text-white focus:border-bronto-yellow focus:outline-none"
                     >
                       <option value="Bogotá D.C.">Bogotá D.C.</option>
                       <option value="Chía">Chía</option>

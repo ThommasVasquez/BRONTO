@@ -33,17 +33,17 @@ export default function ClientPortalPage() {
   // Si no está autenticado, invitar a iniciar sesión
   if (!isLoggedIn || !user) {
     return (
-      <div className="pt-28 pb-24 bg-[#151515] min-h-screen">
+      <div className="py-8 sm:py-10 pb-20 bg-storm min-h-screen">
         <div className="w-full px-6 sm:px-10 lg:px-16 2xl:px-24">
           <Breadcrumbs items={[{ label: "Portal de Clientes" }]} />
 
-          <div className="my-16 max-w-xl mx-auto bg-[#181818] border border-[#2B2B2B] p-10 text-center space-y-6">
+          <div className="my-16 max-w-xl mx-auto bg-matte border border-storm-border p-10 text-center space-y-6">
             <DynastesBeetleSymbol className="w-16 h-16 mx-auto" size={80} />
             <div>
               <h1 className="text-2xl sm:text-3xl font-black uppercase text-white">
                 Acceso Exclusivo para Clientes
               </h1>
-              <p className="mt-2 text-xs text-white/70">
+              <p className="mt-2 text-xs text-[#C4CCD4]">
                 Para consultar el estado de sus equipos en alquiler, horómetros, actas de entrega y certificados técnicos, inicie sesión con su usuario o NIT de empresa.
               </p>
             </div>
@@ -70,13 +70,13 @@ export default function ClientPortalPage() {
   };
 
   return (
-    <div className="pt-28 pb-24 bg-[#151515] min-h-screen">
+    <div className="py-8 sm:py-10 pb-20 bg-storm min-h-screen">
       <div className="w-full px-6 sm:px-10 lg:px-16 2xl:px-24">
         {/* Breadcrumbs */}
         <Breadcrumbs items={[{ label: "Portal de Clientes", href: "/portal-clientes" }, { label: user.companyName }]} />
 
         {/* Encabezado del Portal de Clientes */}
-        <div className="py-8 border-b border-[#242424] flex flex-col md:flex-row md:items-center justify-between gap-6">
+        <div className="py-8 border-b border-storm-border flex flex-col md:flex-row md:items-center justify-between gap-6">
           <div className="flex items-start gap-4">
             <div className="w-14 h-14 bg-bronto-yellow/10 border border-bronto-yellow flex items-center justify-center text-bronto-yellow shrink-0">
               <Building2 className="w-7 h-7" />
@@ -88,7 +88,7 @@ export default function ClientPortalPage() {
               <h1 className="text-2xl sm:text-4xl font-black uppercase text-white tracking-tight mt-0.5">
                 {user.companyName}
               </h1>
-              <div className="mt-1 flex flex-wrap items-center gap-4 text-xs text-white/60">
+              <div className="mt-1 flex flex-wrap items-center gap-4 text-xs text-[#B8C1CC]">
                 <span>NIT: <strong className="text-white">{user.nit}</strong></span>
                 <span>&bull;</span>
                 <span>Contacto: <strong className="text-white">{user.contactName}</strong></span>
@@ -112,7 +112,7 @@ export default function ClientPortalPage() {
                 logout();
                 router.push("/login");
               }}
-              className="inline-flex items-center gap-2 px-4 py-2.5 border border-[#333333] hover:border-red-500 text-white/70 hover:text-red-400 text-xs uppercase font-bold tracking-wider transition-colors"
+              className="inline-flex items-center gap-2 px-4 py-2.5 border border-storm-border hover:border-red-500 text-[#C4CCD4] hover:text-red-400 text-xs uppercase font-bold tracking-wider transition-colors"
               title="Cerrar sesión corporativa"
             >
               <LogOut className="w-4 h-4" />
@@ -136,8 +136,8 @@ export default function ClientPortalPage() {
 
         {/* Tarjetas de Indicadores Operativos Rápidos */}
         <div className="py-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          <div className="bg-[#181818] border-t-2 border-bronto-yellow p-5 flex flex-col justify-between">
-            <span className="text-xs uppercase text-white/50 font-bold tracking-wider">
+          <div className="bg-matte border-t-2 border-bronto-yellow p-5 flex flex-col justify-between">
+            <span className="text-xs uppercase text-[#8E99A6] font-bold tracking-wider">
               Obras Activas
             </span>
             <div className="mt-3 flex items-baseline justify-between">
@@ -146,8 +146,8 @@ export default function ClientPortalPage() {
             </div>
           </div>
 
-          <div className="bg-[#181818] border-t-2 border-bronto-yellow p-5 flex flex-col justify-between">
-            <span className="text-xs uppercase text-white/50 font-bold tracking-wider">
+          <div className="bg-matte border-t-2 border-bronto-yellow p-5 flex flex-col justify-between">
+            <span className="text-xs uppercase text-[#8E99A6] font-bold tracking-wider">
               Equipos en Alquiler
             </span>
             <div className="mt-3 flex items-baseline justify-between">
@@ -156,37 +156,37 @@ export default function ClientPortalPage() {
             </div>
           </div>
 
-          <div className="bg-[#181818] border-t-2 border-bronto-yellow p-5 flex flex-col justify-between">
-            <span className="text-xs uppercase text-white/50 font-bold tracking-wider">
+          <div className="bg-matte border-t-2 border-bronto-yellow p-5 flex flex-col justify-between">
+            <span className="text-xs uppercase text-[#8E99A6] font-bold tracking-wider">
               Horómetros Acumulados
             </span>
             <div className="mt-3 flex items-baseline justify-between">
               <span className="text-3xl font-black text-white">
                 {user.rentedEquipment.reduce((acc, eq) => acc + eq.horometerHours, 0)}
               </span>
-              <span className="text-xs text-white/60">Horas registradas</span>
+              <span className="text-xs text-[#B8C1CC]">Horas registradas</span>
             </div>
           </div>
 
-          <div className="bg-[#181818] border-t-2 border-bronto-yellow p-5 flex flex-col justify-between">
-            <span className="text-xs uppercase text-white/50 font-bold tracking-wider">
+          <div className="bg-matte border-t-2 border-bronto-yellow p-5 flex flex-col justify-between">
+            <span className="text-xs uppercase text-[#8E99A6] font-bold tracking-wider">
               Documentos de Obra
             </span>
             <div className="mt-3 flex items-baseline justify-between">
               <span className="text-3xl font-black text-white">{user.documents.length}</span>
-              <span className="text-xs text-white/60">Actas y certificados</span>
+              <span className="text-xs text-[#B8C1CC]">Actas y certificados</span>
             </div>
           </div>
         </div>
 
         {/* Navegación por Secciones del Portal */}
-        <div className="flex items-center gap-2 border-b border-[#242424] pb-4 mb-8">
+        <div className="flex items-center gap-2 border-b border-storm-border pb-4 mb-8">
           <button
             onClick={() => setActiveSection("equipos")}
             className={`px-5 py-2.5 text-xs uppercase font-bold tracking-wider transition-colors ${
               activeSection === "equipos"
                 ? "bg-bronto-yellow text-[#111111]"
-                : "bg-[#181818] text-white/70 hover:text-white border border-[#2B2B2B]"
+                : "bg-matte text-[#C4CCD4] hover:text-white border border-storm-border"
             }`}
           >
             Equipos en Alquiler ({user.rentedEquipment.length})
@@ -197,7 +197,7 @@ export default function ClientPortalPage() {
             className={`px-5 py-2.5 text-xs uppercase font-bold tracking-wider transition-colors ${
               activeSection === "proyectos"
                 ? "bg-bronto-yellow text-[#111111]"
-                : "bg-[#181818] text-white/70 hover:text-white border border-[#2B2B2B]"
+                : "bg-matte text-[#C4CCD4] hover:text-white border border-storm-border"
             }`}
           >
             Frentes de Obra ({user.activeProjects.length})
@@ -208,7 +208,7 @@ export default function ClientPortalPage() {
             className={`px-5 py-2.5 text-xs uppercase font-bold tracking-wider transition-colors ${
               activeSection === "documentos"
                 ? "bg-bronto-yellow text-[#111111]"
-                : "bg-[#181818] text-white/70 hover:text-white border border-[#2B2B2B]"
+                : "bg-matte text-[#C4CCD4] hover:text-white border border-storm-border"
             }`}
           >
             Actas y Certificados ({user.documents.length})
@@ -219,8 +219,8 @@ export default function ClientPortalPage() {
         {activeSection === "equipos" && (
           <div className="space-y-4">
             {user.rentedEquipment.length === 0 ? (
-              <div className="p-12 bg-[#181818] border border-[#2B2B2B] text-center space-y-3">
-                <p className="text-xs text-white/60 uppercase">No tiene equipos activos en este momento.</p>
+              <div className="p-12 bg-matte border border-storm-border text-center space-y-3">
+                <p className="text-xs text-[#B8C1CC] uppercase">No tiene equipos activos en este momento.</p>
                 <Link href="/catalogo" className="inline-block text-xs text-bronto-yellow font-bold uppercase hover:underline">
                   Explorar catálogo para solicitar alquiler &rarr;
                 </Link>
@@ -229,14 +229,14 @@ export default function ClientPortalPage() {
               user.rentedEquipment.map((eq) => (
                 <div
                   key={eq.id}
-                  className="bg-[#181818] border border-[#2B2B2B] p-6 flex flex-col lg:flex-row lg:items-center justify-between gap-6"
+                  className="bg-matte border border-storm-border p-6 flex flex-col lg:flex-row lg:items-center justify-between gap-6"
                 >
                   <div className="space-y-2 flex-1">
                     <div className="flex items-center gap-3">
-                      <span className="text-[11px] font-bold text-white/50 tracking-wider uppercase">
+                      <span className="text-[11px] font-bold text-[#8E99A6] tracking-wider uppercase">
                         {eq.sku}
                       </span>
-                      <span className="px-2 py-0.5 bg-[#252525] text-bronto-yellow text-[10px] uppercase font-bold">
+                      <span className="px-2 py-0.5 bg-storm-panel text-bronto-yellow text-[10px] uppercase font-bold">
                         {eq.category}
                       </span>
                       <span className="px-2 py-0.5 bg-green-950 text-green-400 text-[10px] uppercase font-bold border border-green-800">
@@ -248,7 +248,7 @@ export default function ClientPortalPage() {
                       {eq.name}
                     </h3>
 
-                    <div className="flex flex-wrap items-center gap-6 text-xs text-white/70 pt-1">
+                    <div className="flex flex-wrap items-center gap-6 text-xs text-[#C4CCD4] pt-1">
                       <span className="flex items-center gap-1.5">
                         <MapPin className="w-3.5 h-3.5 text-bronto-yellow" />
                         <span>Frente: <strong className="text-white">{eq.projectName}</strong></span>
@@ -267,7 +267,7 @@ export default function ClientPortalPage() {
                   <div className="flex flex-wrap sm:flex-nowrap items-center gap-3 shrink-0">
                     <button
                       onClick={() => handleRequestSupport(eq.sku)}
-                      className="inline-flex items-center gap-2 px-4 py-2.5 bg-[#242424] hover:bg-[#303030] text-white text-xs uppercase font-bold tracking-wider transition-colors"
+                      className="inline-flex items-center gap-2 px-4 py-2.5 bg-storm-panel hover:bg-storm-elevated text-white text-xs uppercase font-bold tracking-wider transition-colors"
                       title="Solicitar visita técnica móvil en obra"
                     >
                       <Wrench className="w-3.5 h-3.5 text-bronto-yellow" />
@@ -276,7 +276,7 @@ export default function ClientPortalPage() {
 
                     <Link
                       href={`/catalogo`}
-                      className="inline-flex items-center gap-2 px-4 py-2.5 border border-[#333333] hover:border-bronto-yellow text-white text-xs uppercase font-bold tracking-wider transition-colors"
+                      className="inline-flex items-center gap-2 px-4 py-2.5 border border-storm-border hover:border-bronto-yellow text-white text-xs uppercase font-bold tracking-wider transition-colors"
                     >
                       <span>Ver Ficha</span>
                     </Link>
@@ -293,7 +293,7 @@ export default function ClientPortalPage() {
             {user.activeProjects.map((prj) => (
               <div
                 key={prj.id}
-                className="bg-[#181818] border border-[#2B2B2B] p-6 space-y-4"
+                className="bg-matte border border-storm-border p-6 space-y-4"
               >
                 <div className="flex items-center justify-between">
                   <span className="text-xs text-bronto-yellow font-bold uppercase tracking-wider">
@@ -308,7 +308,7 @@ export default function ClientPortalPage() {
                   {prj.name}
                 </h3>
 
-                <div className="space-y-2 text-xs text-white/70 border-t border-white/10 pt-3">
+                <div className="space-y-2 text-xs text-[#C4CCD4] border-t border-white/10 pt-3">
                   <div className="flex items-start gap-2">
                     <MapPin className="w-4 h-4 text-bronto-yellow shrink-0 mt-0.5" />
                     <span>{prj.location} ({prj.municipality})</span>
@@ -338,13 +338,13 @@ export default function ClientPortalPage() {
 
         {/* SECCIÓN 3: ACTAS Y DOCUMENTACIÓN TÉCNICA */}
         {activeSection === "documentos" && (
-          <div className="bg-[#181818] border border-[#2B2B2B]">
-            <div className="p-6 border-b border-[#242424] flex items-center justify-between">
+          <div className="bg-matte border border-storm-border">
+            <div className="p-6 border-b border-storm-border flex items-center justify-between">
               <div>
                 <h3 className="text-lg font-bold uppercase text-white">
                   Repositorio Técnico y Certificaciones
                 </h3>
-                <p className="text-xs text-white/60 mt-0.5">
+                <p className="text-xs text-[#B8C1CC] mt-0.5">
                   Descargue los soportes digitales válidos ante interventoría y aseguradoras.
                 </p>
               </div>
@@ -357,15 +357,15 @@ export default function ClientPortalPage() {
                   className="p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:bg-white/[0.02] transition-colors"
                 >
                   <div className="flex items-center gap-4">
-                    <div className="p-2.5 bg-black border border-[#333333] text-bronto-yellow shrink-0">
+                    <div className="p-2.5 bg-black border border-storm-border text-bronto-yellow shrink-0">
                       <FileText className="w-5 h-5" />
                     </div>
                     <div>
                       <div className="flex items-center gap-2 mb-1">
-                        <span className="text-[10px] uppercase font-bold text-bronto-yellow px-1.5 py-0.2 bg-[#252525]">
+                        <span className="text-[10px] uppercase font-bold text-bronto-yellow px-1.5 py-0.2 bg-storm-panel">
                           {doc.type}
                         </span>
-                        <span className="text-[11px] text-white/50">{doc.date}</span>
+                        <span className="text-[11px] text-[#8E99A6]">{doc.date}</span>
                       </div>
                       <h4 className="text-sm font-bold text-white uppercase">
                         {doc.title}
@@ -375,7 +375,7 @@ export default function ClientPortalPage() {
 
                   <a
                     href={`/contacto?asunto=Descarga-${doc.id}`}
-                    className="inline-flex items-center justify-center gap-2 px-4 py-2 border border-[#333333] hover:border-bronto-yellow text-white hover:text-bronto-yellow text-xs uppercase font-bold tracking-wider transition-colors shrink-0"
+                    className="inline-flex items-center justify-center gap-2 px-4 py-2 border border-storm-border hover:border-bronto-yellow text-white hover:text-bronto-yellow text-xs uppercase font-bold tracking-wider transition-colors shrink-0"
                   >
                     <Download className="w-3.5 h-3.5" />
                     <span>Descargar PDF</span>
@@ -387,7 +387,7 @@ export default function ClientPortalPage() {
         )}
 
         {/* Franja de Respaldo Técnico de Emergencia */}
-        <div className="mt-12 p-6 bg-[#181818] border border-[#2B2B2B] flex flex-col md:flex-row items-center justify-between gap-4">
+        <div className="mt-12 p-6 bg-matte border border-storm-border flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-3">
             <div className="p-3 bg-bronto-yellow text-[#111111] shrink-0">
               <PhoneCall className="w-6 h-6" />
@@ -396,7 +396,7 @@ export default function ClientPortalPage() {
               <span className="text-white font-bold block text-sm sm:text-base uppercase">
                 Línea Directa de Despacho y Asistencia en Obra
               </span>
-              <span className="text-white/60 text-xs block">
+              <span className="text-[#B8C1CC] text-xs block">
                 Atención prioritaria para contratistas activos: <strong>+57 315 705 2810</strong>
               </span>
             </div>

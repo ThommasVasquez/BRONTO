@@ -81,7 +81,7 @@ export default async function ProductDetailPage({ params }: Props) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
 
-      <div className="pt-28 pb-24 bg-[#151515] min-h-screen">
+      <div className="py-8 sm:py-10 pb-20 bg-storm min-h-screen">
         <div className="w-full px-6 sm:px-10 lg:px-16 2xl:px-24">
           {/* Breadcrumbs */}
           <Breadcrumbs
@@ -100,13 +100,13 @@ export default async function ProductDetailPage({ params }: Props) {
             {/* Columna Derecha: Especificaciones Técnicas y Condiciones */}
             <div className="lg:col-span-5 space-y-6">
               {/* Tabla de Especificaciones Técnicas */}
-              <div className="bg-[#181818] border border-[#2B2B2B] p-6">
+              <div className="bg-matte border border-storm-border p-6">
                 <h3 className="text-xs uppercase tracking-wider text-bronto-yellow font-bold mb-4 flex items-center justify-between">
                   <span>Ficha Técnica y Parámetros</span>
-                  <span className="text-[10px] text-white/50">NSR-10 / Estándar</span>
+                  <span className="text-[10px] text-[#8E99A6]">NSR-10 / Estándar</span>
                 </h3>
 
-                <div className="divide-y divide-[#2B2B2B]">
+                <div className="divide-y divide-matte-border">
                   {product.specifications.map((spec, index) => (
                     <div
                       key={index}
@@ -114,7 +114,7 @@ export default async function ProductDetailPage({ params }: Props) {
                         spec.highlight ? "text-bronto-yellow font-bold" : "text-white"
                       }`}
                     >
-                      <span className="text-white/60">{spec.label}</span>
+                      <span className="text-[#B8C1CC]">{spec.label}</span>
                       <span className="text-right pl-4 font-semibold">{spec.value}</span>
                     </div>
                   ))}
@@ -122,13 +122,13 @@ export default async function ProductDetailPage({ params }: Props) {
               </div>
 
               {/* Características Clave y Respaldo */}
-              <div className="bg-[#181818] border border-[#2B2B2B] p-6">
+              <div className="bg-matte border border-storm-border p-6">
                 <h3 className="text-xs uppercase tracking-wider text-white font-bold mb-3">
                   Características de Rendimiento
                 </h3>
                 <ul className="space-y-2.5">
                   {product.features.map((feat, index) => (
-                    <li key={index} className="flex items-start gap-2.5 text-xs text-white/70">
+                    <li key={index} className="flex items-start gap-2.5 text-xs text-[#C4CCD4]">
                       <CheckCircle2 className="w-4 h-4 text-bronto-yellow shrink-0 mt-0.5" />
                       <span>{feat}</span>
                     </li>
@@ -138,12 +138,12 @@ export default async function ProductDetailPage({ params }: Props) {
 
               {/* Condiciones de Alquiler / Suministro */}
               {(product.rentalConditions || product.supplyConditions || product.serviceConditions) && (
-                <div className="bg-[#181818] border border-[#2B2B2B] p-6 text-xs text-white/80 space-y-2">
+                <div className="bg-matte border border-storm-border p-6 text-xs text-white/80 space-y-2">
                   <span className="text-xs uppercase font-bold text-bronto-yellow flex items-center gap-1.5">
                     <ShieldAlert className="w-3.5 h-3.5" />
                     Condiciones Comerciales de Despacho
                   </span>
-                  <ul className="space-y-1.5 list-disc list-inside text-white/60 text-xs pt-1">
+                  <ul className="space-y-1.5 list-disc list-inside text-[#B8C1CC] text-xs pt-1">
                     {product.rentalConditions?.map((c, i) => (
                       <li key={i}>{c}</li>
                     ))}
@@ -158,16 +158,16 @@ export default async function ProductDetailPage({ params }: Props) {
               )}
 
               {/* Ficha técnica PDF demostrativa */}
-              <div className="p-4 bg-[#1F1F1F] border border-[#333333] flex items-center justify-between gap-4">
+              <div className="p-4 bg-storm-panel border border-storm-border flex items-center justify-between gap-4">
                 <div className="flex items-center gap-3">
-                  <div className="p-2 bg-black border border-[#333333] text-bronto-yellow">
+                  <div className="p-2 bg-black border border-storm-border text-bronto-yellow">
                     <FileDown className="w-5 h-5" />
                   </div>
                   <div>
                     <span className="text-xs text-white font-bold block">
                       Ficha Técnica Homologada
                     </span>
-                    <span className="text-[11px] text-white/60">
+                    <span className="text-[11px] text-[#B8C1CC]">
                       Formato PDF &bull; {product.sku}
                     </span>
                   </div>
@@ -185,7 +185,7 @@ export default async function ProductDetailPage({ params }: Props) {
 
           {/* Sección de Equipos Relacionados */}
           {relatedProducts.length > 0 && (
-            <div className="mt-16 pt-12 border-t border-[#242424]">
+            <div className="mt-16 pt-12 border-t border-storm-border">
               <div className="flex items-center justify-between mb-8">
                 <div>
                   <h3 className="uppercase text-2xl sm:text-3xl font-black text-white">
@@ -205,7 +205,7 @@ export default async function ProductDetailPage({ params }: Props) {
                 {relatedProducts.map((rel) => (
                   <div
                     key={rel.id}
-                    className="bg-[#181818] border border-[#2B2B2B] p-4 flex flex-col justify-between group hover:border-bronto-yellow transition-colors"
+                    className="bg-matte border border-storm-border p-4 flex flex-col justify-between group hover:border-bronto-yellow transition-colors"
                   >
                     <div className="relative aspect-[16/10] overflow-hidden bg-black mb-4">
                       <div
@@ -218,19 +218,19 @@ export default async function ProductDetailPage({ params }: Props) {
                     </div>
 
                     <div>
-                      <span className="text-[11px] font-bold text-white/50 tracking-wider uppercase">{rel.sku}</span>
+                      <span className="text-[11px] font-bold text-[#8E99A6] tracking-wider uppercase">{rel.sku}</span>
                       <h4 className="uppercase text-base font-bold text-white group-hover:text-bronto-yellow transition-colors mt-0.5">
                         {rel.name}
                       </h4>
-                      <p className="text-xs text-white/70 mt-1 line-clamp-2">
+                      <p className="text-xs text-[#C4CCD4] mt-1 line-clamp-2">
                         {rel.shortDescription}
                       </p>
                     </div>
 
-                    <div className="mt-4 pt-3 border-t border-[#2B2B2B]">
+                    <div className="mt-4 pt-3 border-t border-storm-border">
                       <Link
                         href={`/catalogo/${rel.slug}`}
-                        className="w-full inline-flex items-center justify-center gap-1.5 py-2 bg-[#252525] hover:bg-bronto-yellow hover:text-[#151515] text-white text-xs uppercase font-bold transition-colors"
+                        className="w-full inline-flex items-center justify-center gap-1.5 py-2 bg-storm-panel hover:bg-bronto-yellow hover:text-[#151515] text-white text-xs uppercase font-bold transition-colors"
                       >
                         <Eye className="w-3.5 h-3.5" />
                         <span>Ver equipo</span>

@@ -37,16 +37,16 @@ export default function FAQPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
 
-      <div className="pt-28 pb-24 bg-[#151515] min-h-screen text-white">
+      <div className="py-8 sm:py-10 pb-20 bg-storm min-h-screen text-white">
         <div className="w-full px-6 sm:px-10 lg:px-16 2xl:px-24">
           <Breadcrumbs items={[{ label: "Preguntas Frecuentes" }]} />
 
           {/* Cabecera */}
-          <div className="py-8 border-b border-[#242424]">
+          <div className="py-8 border-b border-storm-border">
             <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black uppercase text-white tracking-tight">
               Preguntas Frecuentes
             </h1>
-            <p className="mt-2 text-base text-white/70">
+            <p className="mt-2 text-base text-[#C4CCD4]">
               Respuestas sobre requisitos de alquiler, tiempos de despacho en Bogotá y la Sabana, normatividad NSR-10 y condiciones comerciales.
             </p>
           </div>
@@ -60,7 +60,7 @@ export default function FAQPage() {
                 className={`px-4 py-2 text-xs uppercase tracking-wider font-bold transition-colors ${
                   selectedCategory === cat.id
                     ? "bg-bronto-yellow text-[#151515] font-black"
-                    : "bg-[#1C1C1C] text-white/70 hover:text-white border border-[#2D2D2D]"
+                    : "bg-matte-deep text-[#C4CCD4] hover:text-white border border-storm-border"
                 }`}
               >
                 {cat.label}
@@ -76,7 +76,7 @@ export default function FAQPage() {
               return (
                 <div
                   key={faq.id}
-                  className="bg-[#181818] border border-[#2B2B2B] overflow-hidden transition-colors hover:border-[#3D3D3D]"
+                  className="bg-matte border border-storm-border overflow-hidden transition-colors hover:border-[#3D3D3D]"
                 >
                   <button
                     onClick={() => toggleFaq(faq.id)}
@@ -84,7 +84,7 @@ export default function FAQPage() {
                     aria-expanded={isOpen}
                   >
                     <div className="flex items-center gap-3">
-                      <span className="text-[10px] uppercase font-bold px-2 py-0.5 bg-[#252525] text-bronto-yellow border border-[#333333]">
+                      <span className="text-[10px] uppercase font-bold px-2 py-0.5 bg-storm-panel text-bronto-yellow border border-storm-border">
                         {faq.categoryLabel}
                       </span>
                       <h3 className="uppercase text-lg sm:text-xl font-bold text-white tracking-wide">
@@ -100,7 +100,7 @@ export default function FAQPage() {
                   </button>
 
                   {isOpen && (
-                    <div className="px-6 pb-6 pt-2 border-t border-[#252525] text-sm text-white/70 leading-relaxed font-normal">
+                    <div className="px-6 pb-6 pt-2 border-t border-[#252525] text-sm text-[#C4CCD4] leading-relaxed font-normal">
                       {faq.answer}
                     </div>
                   )}
@@ -110,12 +110,12 @@ export default function FAQPage() {
           </div>
 
           {/* CTA de Asistencia Adicional */}
-          <div className="mt-16 p-8 bg-[#1A1A1A] border border-[#2B2B2B] text-center space-y-4">
+          <div className="mt-16 p-8 bg-matte border border-storm-border text-center space-y-4">
             <HelpCircle className="w-8 h-8 text-bronto-yellow mx-auto" />
             <h3 className="uppercase text-2xl font-bold text-white">
               ¿Tiene una consulta técnica específica?
             </h3>
-            <p className="text-xs sm:text-sm text-white/70 max-w-md mx-auto">
+            <p className="text-xs sm:text-sm text-[#C4CCD4] max-w-md mx-auto">
               Comuníquese con nuestros ingenieros para resolver especificaciones o asesoría en modulación para su obra en Bogotá y la Sabana.
             </p>
             <div className="pt-2">

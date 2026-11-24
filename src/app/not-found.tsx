@@ -5,7 +5,7 @@ import { ArrowLeft, Home } from "lucide-react";
 
 export default function NotFound() {
   return (
-    <div className="pt-32 pb-24 bg-[#151515] min-h-screen text-white flex items-center justify-center">
+    <div className="py-16 pb-20 bg-storm min-h-screen text-white flex items-center justify-center">
       <div className="max-w-md mx-auto px-4 text-center space-y-6">
         <DynastesBeetleSymbol className="w-20 h-20 mx-auto" size={100} />
 
@@ -13,7 +13,7 @@ export default function NotFound() {
           <h1 className="uppercase text-4xl sm:text-5xl font-black text-white mt-2">
             Página No Encontrada
           </h1>
-          <p className="mt-3 text-sm text-white/70">
+          <p className="mt-3 text-sm text-[#C4CCD4]">
             La ruta o referencia solicitada no existe o fue reubicada en nuestro catálogo.
           </p>
         </div>
@@ -29,7 +29,7 @@ export default function NotFound() {
 
           <Link
             href="/catalogo"
-            className="w-full sm:w-auto px-6 py-3 border border-[#333333] hover:border-white text-white text-xs uppercase tracking-wider font-semibold transition-colors flex items-center justify-center gap-2"
+            className="w-full sm:w-auto px-6 py-3 border border-storm-border hover:border-white text-white text-xs uppercase tracking-wider font-semibold transition-colors flex items-center justify-center gap-2"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>Ver catálogo</span>

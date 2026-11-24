@@ -33,16 +33,16 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="pt-28 pb-24 bg-[#151515] min-h-screen text-white">
+    <div className="py-8 sm:py-10 pb-20 bg-storm min-h-screen text-white">
       <div className="w-full px-6 sm:px-10 lg:px-16 2xl:px-24">
         <Breadcrumbs items={[{ label: "Contacto Comercial" }]} />
 
         {/* Cabecera */}
-        <div className="py-8 border-b border-[#242424] max-w-3xl">
+        <div className="py-8 border-b border-storm-border max-w-3xl">
           <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black uppercase text-white tracking-tight">
             Atención Comercial
           </h1>
-          <p className="mt-2 text-base text-white/70">
+          <p className="mt-2 text-base text-[#C4CCD4]">
             Comuníquese directamente con nuestro equipo de ingenieros y asesores comerciales. Atendemos requerimientos para proyectos y frentes de obra en Bogotá y municipios de la Sabana.
           </p>
         </div>
@@ -50,7 +50,7 @@ export default function ContactPage() {
         <div className="py-12 grid grid-cols-1 lg:grid-cols-12 gap-12">
           {/* Columna Izquierda: Información de Canales (5 cols) */}
           <div className="lg:col-span-5 space-y-8">
-            <div className="bg-[#181818] border border-[#2B2B2B] p-6 sm:p-8 space-y-6">
+            <div className="bg-matte border border-storm-border p-6 sm:p-8 space-y-6">
               <h2 className="text-xs uppercase tracking-wider text-bronto-yellow font-bold">
                 Líneas Comerciales y Despacho
               </h2>
@@ -59,7 +59,7 @@ export default function ContactPage() {
                 <li className="flex items-start gap-3">
                   <Phone className="w-5 h-5 text-bronto-yellow shrink-0 mt-0.5" />
                   <div>
-                    <span className="text-xs text-white/50 block">Línea Telefónica Principal</span>
+                    <span className="text-xs text-[#8E99A6] block">Línea Telefónica Principal</span>
                     <a
                       href={`tel:${siteConfig.contact.phoneFormatted}`}
                       className="font-bold text-white hover:text-bronto-yellow transition-colors"
@@ -72,7 +72,7 @@ export default function ContactPage() {
                 <li className="flex items-start gap-3">
                   <MessageSquare className="w-5 h-5 text-green-400 shrink-0 mt-0.5" />
                   <div>
-                    <span className="text-xs text-white/50 block">WhatsApp Asesoría Express</span>
+                    <span className="text-xs text-[#8E99A6] block">WhatsApp Asesoría Express</span>
                     <a
                       href={`https://wa.me/${siteConfig.contact.whatsapp}`}
                       target="_blank"
@@ -87,7 +87,7 @@ export default function ContactPage() {
                 <li className="flex items-start gap-3">
                   <Mail className="w-5 h-5 text-bronto-yellow shrink-0 mt-0.5" />
                   <div>
-                    <span className="text-xs text-white/50 block">Correo Comercial</span>
+                    <span className="text-xs text-[#8E99A6] block">Correo Comercial</span>
                     <a
                       href={`mailto:${siteConfig.contact.email}`}
                       className="font-bold text-white hover:text-bronto-yellow transition-colors"
@@ -100,7 +100,7 @@ export default function ContactPage() {
                 <li className="flex items-start gap-3">
                   <MapPin className="w-5 h-5 text-bronto-yellow shrink-0 mt-0.5" />
                   <div>
-                    <span className="text-xs text-white/50 block">Ubicación y Despacho</span>
+                    <span className="text-xs text-[#8E99A6] block">Ubicación y Despacho</span>
                     <span className="text-white">
                       {siteConfig.contact.address}, {siteConfig.contact.city}
                     </span>
@@ -110,8 +110,8 @@ export default function ContactPage() {
                 <li className="flex items-start gap-3">
                   <Clock className="w-5 h-5 text-bronto-yellow shrink-0 mt-0.5" />
                   <div>
-                    <span className="text-xs text-white/50 block">Horario de Despacho</span>
-                    <span className="text-xs text-white/70">
+                    <span className="text-xs text-[#8E99A6] block">Horario de Despacho</span>
+                    <span className="text-xs text-[#C4CCD4]">
                       {siteConfig.contact.operationHours}
                     </span>
                   </div>
@@ -120,18 +120,18 @@ export default function ContactPage() {
             </div>
 
             {/* Enlace rápido a Preguntas Frecuentes */}
-            <div className="p-6 bg-[#181818] border border-[#2B2B2B] flex items-center justify-between">
+            <div className="p-6 bg-matte border border-storm-border flex items-center justify-between">
               <div>
                 <span className="text-xs font-bold text-white block">
                   ¿Dudas sobre requisitos de alquiler?
                 </span>
-                <span className="text-xs text-white/60">
+                <span className="text-xs text-[#B8C1CC]">
                   Consulte nuestro centro de respuestas rápidas.
                 </span>
               </div>
               <Link
                 href="/preguntas-frecuentes"
-                className="p-2.5 bg-[#252525] hover:bg-bronto-yellow hover:text-[#151515] transition-colors text-white"
+                className="p-2.5 bg-storm-panel hover:bg-bronto-yellow hover:text-[#151515] transition-colors text-white"
                 aria-label="Ir a preguntas frecuentes"
               >
                 <HelpCircle className="w-5 h-5" />
@@ -140,19 +140,19 @@ export default function ContactPage() {
           </div>
 
           {/* Columna Derecha: Formulario de Mensaje Directo (7 cols) */}
-          <div className="lg:col-span-7 bg-[#181818] border border-[#2B2B2B] p-6 sm:p-10">
+          <div className="lg:col-span-7 bg-matte border border-storm-border p-6 sm:p-10">
             {isSubmitted ? (
               <div className="py-12 text-center space-y-4">
                 <CheckCircle2 className="w-12 h-12 text-bronto-yellow mx-auto" />
                 <h3 className="uppercase text-2xl font-bold text-white">
                   ¡Mensaje Recibido!
                 </h3>
-                <p className="text-sm text-white/70 max-w-md mx-auto">
+                <p className="text-sm text-[#C4CCD4] max-w-md mx-auto">
                   Gracias por contactar a BRONTO. Uno de nuestros asesores comerciales se comunicará con usted a la brevedad.
                 </p>
                 <button
                   onClick={() => setIsSubmitted(false)}
-                  className="mt-4 px-6 py-2.5 border border-[#333333] hover:border-white text-xs uppercase tracking-wider font-semibold transition-colors"
+                  className="mt-4 px-6 py-2.5 border border-storm-border hover:border-white text-xs uppercase tracking-wider font-semibold transition-colors"
                 >
                   Enviar otro mensaje
                 </button>
@@ -165,7 +165,7 @@ export default function ContactPage() {
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-xs uppercase font-semibold text-white/70 mb-1.5">
+                    <label className="block text-xs uppercase font-semibold text-[#C4CCD4] mb-1.5">
                       Nombre y Apellidos *
                     </label>
                     <input
@@ -174,12 +174,12 @@ export default function ContactPage() {
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                       placeholder="Nombre del solicitante"
-                      className="w-full px-3.5 py-2.5 bg-[#121212] border border-[#333333] text-sm text-white focus:border-bronto-yellow focus:outline-none"
+                      className="w-full px-3.5 py-2.5 bg-matte-deep border border-storm-border text-sm text-white focus:border-bronto-yellow focus:outline-none"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-xs uppercase font-semibold text-white/70 mb-1.5">
+                    <label className="block text-xs uppercase font-semibold text-[#C4CCD4] mb-1.5">
                       Empresa o Constructora
                     </label>
                     <input
@@ -187,14 +187,14 @@ export default function ContactPage() {
                       value={formData.company}
                       onChange={(e) => setFormData({ ...formData, company: e.target.value })}
                       placeholder="Razón Social"
-                      className="w-full px-3.5 py-2.5 bg-[#121212] border border-[#333333] text-sm text-white focus:border-bronto-yellow focus:outline-none"
+                      className="w-full px-3.5 py-2.5 bg-matte-deep border border-storm-border text-sm text-white focus:border-bronto-yellow focus:outline-none"
                     />
                   </div>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-xs uppercase font-semibold text-white/70 mb-1.5">
+                    <label className="block text-xs uppercase font-semibold text-[#C4CCD4] mb-1.5">
                       Correo Electrónico *
                     </label>
                     <input
@@ -203,12 +203,12 @@ export default function ContactPage() {
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                       placeholder="correo@empresa.com"
-                      className="w-full px-3.5 py-2.5 bg-[#121212] border border-[#333333] text-sm text-white focus:border-bronto-yellow focus:outline-none"
+                      className="w-full px-3.5 py-2.5 bg-matte-deep border border-storm-border text-sm text-white focus:border-bronto-yellow focus:outline-none"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-xs uppercase font-semibold text-white/70 mb-1.5">
+                    <label className="block text-xs uppercase font-semibold text-[#C4CCD4] mb-1.5">
                       Teléfono Móvil *
                     </label>
                     <input
@@ -217,19 +217,19 @@ export default function ContactPage() {
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                       placeholder="+57 300 000 0000"
-                      className="w-full px-3.5 py-2.5 bg-[#121212] border border-[#333333] text-sm text-white focus:border-bronto-yellow focus:outline-none"
+                      className="w-full px-3.5 py-2.5 bg-matte-deep border border-storm-border text-sm text-white focus:border-bronto-yellow focus:outline-none"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-xs uppercase font-semibold text-white/70 mb-1.5">
+                  <label className="block text-xs uppercase font-semibold text-[#C4CCD4] mb-1.5">
                     Asunto del Requerimiento
                   </label>
                   <select
                     value={formData.subject}
                     onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                    className="w-full px-3.5 py-2.5 bg-[#121212] border border-[#333333] text-sm text-white focus:border-bronto-yellow focus:outline-none"
+                    className="w-full px-3.5 py-2.5 bg-matte-deep border border-storm-border text-sm text-white focus:border-bronto-yellow focus:outline-none"
                   >
                     <option value="Asesoría comercial general">Asesoría comercial general</option>
                     <option value="Alquiler de maquinaria pesada">Alquiler de maquinaria pesada</option>
@@ -241,7 +241,7 @@ export default function ContactPage() {
                 </div>
 
                 <div>
-                  <label className="block text-xs uppercase font-semibold text-white/70 mb-1.5">
+                  <label className="block text-xs uppercase font-semibold text-[#C4CCD4] mb-1.5">
                     Mensaje o Requerimientos de Obra *
                   </label>
                   <textarea
@@ -250,7 +250,7 @@ export default function ContactPage() {
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     placeholder="Escriba aquí los detalles de su proyecto, ubicación en Bogotá o Sabana, fechas..."
-                    className="w-full px-3.5 py-2.5 bg-[#121212] border border-[#333333] text-sm text-white focus:border-bronto-yellow focus:outline-none"
+                    className="w-full px-3.5 py-2.5 bg-matte-deep border border-storm-border text-sm text-white focus:border-bronto-yellow focus:outline-none"
                   />
                 </div>
 

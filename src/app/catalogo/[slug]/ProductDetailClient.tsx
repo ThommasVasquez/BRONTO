@@ -58,7 +58,7 @@ export const ProductDetailClient: React.FC<ProductDetailClientProps> = ({ produc
     <div className="lg:col-span-7 space-y-8">
       {/* Galería de Fotografías de Gran Formato */}
       <div className="space-y-4">
-        <div className="relative aspect-[16/10] overflow-hidden rounded-sm bg-black border border-[#2B2B2B]">
+        <div className="relative aspect-[16/10] overflow-hidden rounded-sm bg-black border border-storm-border">
           <div
             className="absolute inset-0 bg-cover bg-center transition-all duration-500 ease-out"
             style={{ backgroundImage: `url('${product.images[activeImageIndex]?.url}')` }}
@@ -96,7 +96,7 @@ export const ProductDetailClient: React.FC<ProductDetailClientProps> = ({ produc
                 className={`relative w-20 h-16 overflow-hidden border-2 transition-all ${
                   activeImageIndex === index
                     ? "border-bronto-yellow ring-2 ring-bronto-yellow/30"
-                    : "border-[#333333] opacity-60 hover:opacity-100"
+                    : "border-storm-border opacity-60 hover:opacity-100"
                 }`}
               >
                 <div
@@ -121,27 +121,27 @@ export const ProductDetailClient: React.FC<ProductDetailClientProps> = ({ produc
           {product.name}
         </h1>
 
-        <p className="mt-4 text-base text-white/70 leading-relaxed font-normal">
+        <p className="mt-4 text-base text-[#C4CCD4] leading-relaxed font-normal">
           {product.fullDescription}
         </p>
 
         {/* Tarifa de Referencia y Estructura de Precios (+10% aplicada) */}
-        <div className="mt-6 p-5 bg-[#181818] border border-[#2B2B2B]">
+        <div className="mt-6 p-5 bg-matte border border-storm-border">
           <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 pb-3 border-b border-white/10">
             <div>
-              <span className="text-[11px] uppercase font-bold text-white/50 tracking-wider block">
+              <span className="text-[11px] uppercase font-bold text-[#8E99A6] tracking-wider block">
                 Tarifa de Referencia
               </span>
               <div className="flex items-baseline gap-2 mt-0.5">
                 <span className="text-2xl sm:text-3xl font-black text-bronto-yellow">
                   {formatCOP(product.pricing.basePrice)}
                 </span>
-                <span className="text-xs text-white/60">/ {product.pricing.priceUnit}</span>
+                <span className="text-xs text-[#B8C1CC]">/ {product.pricing.priceUnit}</span>
               </div>
             </div>
 
             {product.pricing.discountNotice && (
-              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-[#242424] text-bronto-yellow text-[11px] font-bold border border-bronto-yellow/30">
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-storm-panel text-bronto-yellow text-[11px] font-bold border border-bronto-yellow/30">
                 <Tag className="w-3 h-3" />
                 <span>{product.pricing.discountNotice}</span>
               </span>
@@ -150,52 +150,52 @@ export const ProductDetailClient: React.FC<ProductDetailClientProps> = ({ produc
 
           <div className="mt-3 grid grid-cols-2 sm:grid-cols-3 gap-3 text-xs">
             {product.pricing.dailyRate && (
-              <div className="p-2.5 bg-[#141414] border border-[#262626]">
-                <span className="text-white/50 block text-[10px] uppercase">Tarifa por día:</span>
+              <div className="p-2.5 bg-matte-deep border border-matte-border">
+                <span className="text-[#8E99A6] block text-[10px] uppercase">Tarifa por día:</span>
                 <strong className="text-white font-mono">{formatCOP(product.pricing.dailyRate)}</strong>
               </div>
             )}
             {product.pricing.monthlyRate && (
-              <div className="p-2.5 bg-[#141414] border border-[#262626]">
-                <span className="text-white/50 block text-[10px] uppercase">Tarifa por mes:</span>
+              <div className="p-2.5 bg-matte-deep border border-matte-border">
+                <span className="text-[#8E99A6] block text-[10px] uppercase">Tarifa por mes:</span>
                 <strong className="text-white font-mono">{formatCOP(product.pricing.monthlyRate)}</strong>
               </div>
             )}
             {product.pricing.operatorDayRate && (
-              <div className="p-2.5 bg-[#141414] border border-[#262626]">
-                <span className="text-white/50 block text-[10px] uppercase">Operador certificado:</span>
+              <div className="p-2.5 bg-matte-deep border border-matte-border">
+                <span className="text-[#8E99A6] block text-[10px] uppercase">Operador certificado:</span>
                 <strong className="text-white font-mono">{formatCOP(product.pricing.operatorDayRate)} / día</strong>
               </div>
             )}
           </div>
 
-          <p className="mt-3 text-[11px] text-white/60">
+          <p className="mt-3 text-[11px] text-[#B8C1CC]">
             {product.priceNote} Precios ajustados a plazos de contrato y disponibilidad en frentes de obra en Bogotá y la Sabana.
           </p>
         </div>
       </div>
 
       {/* Controles de Selección y Estimador en Vivo */}
-      <div className="p-6 bg-[#181818] border border-[#2B2B2B] space-y-6">
-        <div className="flex items-center justify-between pb-3 border-b border-[#2A2A2A]">
+      <div className="p-6 bg-matte border border-storm-border space-y-6">
+        <div className="flex items-center justify-between pb-3 border-b border-matte-border">
           <h3 className="text-xs uppercase tracking-wider text-bronto-yellow font-bold flex items-center gap-2">
             <Calculator className="w-4 h-4" />
             <span>Cotizador Rápido para este Equipo</span>
           </h3>
-          <span className="text-xs text-white/50">Cálculo instantáneo</span>
+          <span className="text-xs text-[#8E99A6]">Cálculo instantáneo</span>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {/* Selector de Cantidad */}
           <div>
-            <label className="block text-xs text-white/70 uppercase font-semibold mb-2">
+            <label className="block text-xs text-[#C4CCD4] uppercase font-semibold mb-2">
               Cantidad de unidades / metros:
             </label>
-            <div className="flex items-center border border-[#333333] bg-[#141414]">
+            <div className="flex items-center border border-storm-border bg-matte-deep">
               <button
                 type="button"
                 onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                className="p-3 text-white/70 hover:text-white hover:bg-white/5 transition-colors"
+                className="p-3 text-[#C4CCD4] hover:text-white hover:bg-white/5 transition-colors"
                 aria-label="Disminuir cantidad"
               >
                 <Minus className="w-4 h-4" />
@@ -210,7 +210,7 @@ export const ProductDetailClient: React.FC<ProductDetailClientProps> = ({ produc
               <button
                 type="button"
                 onClick={() => setQuantity(quantity + 1)}
-                className="p-3 text-white/70 hover:text-white hover:bg-white/5 transition-colors"
+                className="p-3 text-[#C4CCD4] hover:text-white hover:bg-white/5 transition-colors"
                 aria-label="Aumentar cantidad"
               >
                 <Plus className="w-4 h-4" />
@@ -220,13 +220,13 @@ export const ProductDetailClient: React.FC<ProductDetailClientProps> = ({ produc
 
           {/* Selector de Plazo Estimado */}
           <div>
-            <label className="block text-xs text-white/70 uppercase font-semibold mb-2">
+            <label className="block text-xs text-[#C4CCD4] uppercase font-semibold mb-2">
               Duración estimada de uso:
             </label>
             <select
               value={estimatedDuration}
               onChange={(e) => setEstimatedDuration(e.target.value)}
-              className="w-full py-3 px-3.5 bg-[#141414] border border-[#333333] text-white text-xs focus:border-bronto-yellow focus:outline-none font-medium"
+              className="w-full py-3 px-3.5 bg-matte-deep border border-storm-border text-white text-xs focus:border-bronto-yellow focus:outline-none font-medium"
             >
               <option value="1 a 7 días">1 a 7 días (Jornada puntual)</option>
               <option value="15 días">15 días de operación</option>
@@ -240,16 +240,16 @@ export const ProductDetailClient: React.FC<ProductDetailClientProps> = ({ produc
         </div>
 
         {/* Estimación en Vivo */}
-        <div className="p-4 bg-[#141414] border border-[#262626] flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+        <div className="p-4 bg-matte-deep border border-matte-border flex flex-col sm:flex-row sm:items-center justify-between gap-2">
           <div>
-            <span className="text-[11px] uppercase font-bold text-white/50 block">
+            <span className="text-[11px] uppercase font-bold text-[#8E99A6] block">
               Subtotal Estimado ({quantity} {quantity > 1 ? "unidades" : "unidad"} &bull; {estimatedDuration}):
             </span>
             <span className="text-xl font-black text-bronto-yellow">
               {formatCOP(liveEstimate.equipmentSubtotal)}
             </span>
           </div>
-          <span className="text-[11px] text-white/60">Tarifa antes de IVA y flete</span>
+          <span className="text-[11px] text-[#B8C1CC]">Tarifa antes de IVA y flete</span>
         </div>
 
         {/* Acciones de Cotización */}
@@ -261,7 +261,7 @@ export const ProductDetailClient: React.FC<ProductDetailClientProps> = ({ produc
               addedSuccess
                 ? "bg-green-700 border-green-600 text-white"
                 : mounted && isInBasket(product.id)
-                ? "bg-[#252525] border-bronto-yellow text-bronto-yellow"
+                ? "bg-storm-panel border-bronto-yellow text-bronto-yellow"
                 : "bg-[#222222] border-[#3A3A3A] hover:border-bronto-yellow text-white"
             }`}
           >

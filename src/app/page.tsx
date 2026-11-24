@@ -1,25 +1,21 @@
 import React from "react";
 import type { Metadata } from "next";
-import { HeroSection } from "@/components/home/HeroSection";
-import { CategoriesSection } from "@/components/home/CategoriesSection";
-import { BrontoInActionSection } from "@/components/home/BrontoInActionSection";
-import { ServicesSection } from "@/components/home/ServicesSection";
-import { FeaturedProductsSection } from "@/components/home/FeaturedProductsSection";
-import { WhyBrontoSection } from "@/components/home/WhyBrontoSection";
-import { FinalCtaSection } from "@/components/home/FinalCtaSection";
+import { HomeFleetExperience } from "@/components/home/HomeFleetExperience";
 import { getOrganizationSchema, getWebSiteSchema } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "BRONTO | Alquiler de Maquinaria y Soluciones para Construcción en Bogotá y Sabana",
-  description: "Plataforma especializada en alquiler y suministro de maquinaria pesada, equipos menores, formaletas, concretos y sistemas modulados para construcción e industria en Bogotá y zonas aledañas de la Sabana. Pida todo en BRONTO.",
+  title: "BRONTO® | Alquiler de Maquinaria Pesada, Formaletas y Concreto en Bogotá y Sabana",
+  description:
+    "Alquiler y suministro de maquinaria pesada, equipos de compactación, formaletas certificadas, concreto premezclado y casetones para construcción en Bogotá y la Sabana.",
   alternates: {
     canonical: "/",
   },
   openGraph: {
-    title: "BRONTO | La Obra No Se Detiene (Bogotá y Sabana)",
-    description: "Equipos, maquinaria y soluciones para construir sin límites. Despacho express en Bogotá y zonas aledañas.",
+    title: "BRONTO® | Maquinaria Pesada, Formaletas y Concreto en Obra",
+    description:
+      "Despacho directo desde Calle 80 / Siberia hacia Bogotá, Chía, Cota, Funza, Mosquera y Soacha.",
     url: "/",
-    siteName: "BRONTO",
+    siteName: "BRONTO®",
     locale: "es_CO",
     type: "website",
   },
@@ -31,7 +27,6 @@ export default function HomePage() {
 
   return (
     <>
-      {/* Datos Estructurados JSON-LD para SEO y GEO */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
@@ -40,17 +35,7 @@ export default function HomePage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
       />
-
-      {/* Flujo de 7 Secciones Principales */}
-      <div className="flex flex-col min-h-screen">
-        <HeroSection />
-        <CategoriesSection />
-        <BrontoInActionSection />
-        <ServicesSection />
-        <FeaturedProductsSection />
-        <WhyBrontoSection />
-        <FinalCtaSection />
-      </div>
+      <HomeFleetExperience />
     </>
   );
 }

@@ -1,37 +1,25 @@
 {
   "name": "BRONTO®",
   "short_name": "BRONTO®",
-  "description": "Terminal oficial de BRONTO®. Renta y cotización inmediata de maquinaria para construcción y cursos de certificación técnica para operadores.",
+  "description": "Aplicación oficial de BRONTO®. Alquiler de maquinaria pesada, formaletas, concreto y certificaciones técnicas para operadores en Bogotá y Sabana.",
   "start_url": "/app",
   "scope": "/",
   "display": "standalone",
-  "background_color": "#101114",
-  "theme_color": "#101114",
+  "background_color": "#16181B",
+  "theme_color": "#16181B",
   "orientation": "portrait-primary",
   "icons": [
     {
-      "src": "/icons/icon-192-orange.png?v=2",
+      "src": "/icons/icon-192-v3.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "/icons/icon-512-orange.png?v=2",
+      "src": "/icons/icon-512-v3.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
-    },
-    {
-      "src": "/icons/icon-192.png?v=2",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "/icons/icon-512.png?v=2",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any"
     }
   ],
   "categories": ["business", "productivity", "utilities", "education"],
@@ -39,17 +27,17 @@
     {
       "name": "Renta de Maquinaria",
       "url": "/app?tab=renta",
-      "description": "Explorar catálogo de equipos disponibles en patio"
+      "description": "Inventario disponible en patio Calle 80"
     },
     {
-      "name": "Cursos & Certificaciones",
+      "name": "Escuela de Operadores",
       "url": "/app?tab=cursos",
-      "description": "Capacitación y licencias para operadores"
+      "description": "Certificaciones técnicas y trabajo en alturas"
     },
     {
-      "name": "Mi Pedido",
+      "name": "Orden de Despacho",
       "url": "/app?tab=pedido",
-      "description": "Ver equipos seleccionados para cotizar"
+      "description": "Equipos seleccionados para cotizar"
     }
   ],
   "lang": "es-CO"

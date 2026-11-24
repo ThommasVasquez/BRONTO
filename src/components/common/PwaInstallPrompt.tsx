@@ -85,9 +85,9 @@ export const PwaInstallPrompt: React.FC = () => {
       className="fixed bottom-20 left-4 sm:left-6 z-40 max-w-sm bg-[#1A1A1A] border-2 border-bronto-yellow text-white p-4 shadow-2xl rounded-sm transition-all animate-fade-in"
     >
       <div className="flex items-start gap-3">
-        <div className="relative w-12 h-12 rounded-sm overflow-hidden border border-bronto-yellow bg-[#151515] shrink-0">
+        <div className="relative w-12 h-12 overflow-hidden border border-[#FF5F00] bg-[#17191D] shrink-0">
           <img
-            src="/icons/icon-192-orange.png?v=2"
+            src="/icons/icon-192-v3.png"
             alt="BRONTO®"
             className="w-full h-full object-cover"
           />

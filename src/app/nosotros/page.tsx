@@ -16,23 +16,23 @@ export const metadata: Metadata = {
 
 export default function AboutUsPage() {
   return (
-    <div className="pt-28 pb-24 bg-[#151515] min-h-screen text-white">
+    <div className="py-8 sm:py-10 pb-20 bg-storm min-h-screen text-white">
       <div className="w-full px-6 sm:px-10 lg:px-16 2xl:px-24">
         <Breadcrumbs items={[{ label: "Quiénes Somos" }]} />
 
         {/* Hero de Nosotros */}
-        <div className="py-12 border-b border-[#242424] max-w-4xl">
+        <div className="py-12 border-b border-storm-border max-w-4xl">
           <h1 className="text-3xl sm:text-6xl font-black uppercase text-white tracking-tight">
             Potencia, resistencia y capacidad de respuesta
           </h1>
-          <p className="mt-4 text-lg text-white/70 leading-relaxed">
+          <p className="mt-4 text-lg text-[#C4CCD4] leading-relaxed">
             BRONTO nace con la convicción de que las obras en Bogotá y la Sabana no pueden depender de proveedores fragmentados ni de maquinaria sin respaldo. Nuestra misión es simple: proveer soluciones técnicas contundentes para que la obra avance sin límites.
           </p>
         </div>
 
         {/* Bloque Central: El Escarabajo Dynastes (Concepto de Marca) */}
         <div className="py-16 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          <div className="lg:col-span-5 bg-[#181818] border-2 border-bronto-yellow/30 p-10 flex flex-col items-center justify-center text-center relative overflow-hidden">
+          <div className="lg:col-span-5 bg-matte border-2 border-bronto-yellow/30 p-10 flex flex-col items-center justify-center text-center relative overflow-hidden">
             <DynastesBeetleSymbol className="w-36 h-36" colorFill="#FF5E00" />
             <span className="text-xs uppercase tracking-wider text-bronto-yellow font-bold mt-6">
               Símbolo Dynastes
@@ -40,7 +40,7 @@ export default function AboutUsPage() {
             <h3 className="uppercase text-2xl font-black text-white mt-1">
               Fuerza Proporcional
             </h3>
-            <p className="mt-3 text-xs text-white/70 leading-relaxed max-w-xs">
+            <p className="mt-3 text-xs text-[#C4CCD4] leading-relaxed max-w-xs">
               Inspirado en el escarabajo Hércules (Dynastes), capaz de levantar hasta 850 veces su propio peso con coraza inquebrantable. Representa la resistencia y fuerza de nuestra maquinaria.
             </p>
           </div>
@@ -49,27 +49,27 @@ export default function AboutUsPage() {
             <h2 className="uppercase text-3xl sm:text-4xl font-black text-white">
               &ldquo;Pida todo en BRONTO&rdquo;
             </h2>
-            <p className="text-sm sm:text-base text-white/70 leading-relaxed font-normal">
+            <p className="text-sm sm:text-base text-[#C4CCD4] leading-relaxed font-normal">
               Entendemos la presión diaria de los directores de obra, residentes y contratistas. La falta de un equipo menor, el retraso de una formaleta o la falla de un generador pueden paralizar frentes enteros y generar sobrecostos millonarios.
             </p>
-            <p className="text-sm sm:text-base text-white/70 leading-relaxed font-normal">
+            <p className="text-sm sm:text-base text-[#C4CCD4] leading-relaxed font-normal">
               Por eso estructuramos nuestras líneas de servicio en cuatro familias clave: maquinaria pesada y menor, encofrados certificados, concretos estructurales y sistemas de aligeramiento en EPS. Un único contacto, una única remisión técnica y un respaldo coordinado en Bogotá y la Sabana.
             </p>
 
             <div className="pt-4 grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div className="p-4 bg-[#1C1C1C] border border-[#2B2B2B]">
+              <div className="p-4 bg-matte-deep border border-storm-border">
                 <span className="text-xs text-bronto-yellow font-bold uppercase block mb-1">
                   Disponibilidad Inmediata
                 </span>
-                <p className="text-xs text-white/70">
+                <p className="text-xs text-[#C4CCD4]">
                   Parque de maquinaria alistado con protocolos estrictos previo al despacho en cama baja.
                 </p>
               </div>
-              <div className="p-4 bg-[#1C1C1C] border border-[#2B2B2B]">
+              <div className="p-4 bg-matte-deep border border-storm-border">
                 <span className="text-xs text-bronto-yellow font-bold uppercase block mb-1">
                   Respaldo en Obra
                 </span>
-                <p className="text-xs text-white/70">
+                <p className="text-xs text-[#C4CCD4]">
                   Cuadrilla de soporte móvil para contingencias sin frenar su cronograma.
                 </p>
               </div>
@@ -78,38 +78,38 @@ export default function AboutUsPage() {
         </div>
 
         {/* Pilares Fundamentales */}
-        <div className="py-12 border-t border-[#242424]">
+        <div className="py-12 border-t border-storm-border">
           <h3 className="text-xs uppercase tracking-wider text-bronto-yellow font-bold mb-8">
             Nuestros Pilares de Ingeniería
           </h3>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="bg-[#181818] border border-[#2B2B2B] p-6 space-y-3">
+            <div className="bg-matte border border-storm-border p-6 space-y-3">
               <HardHat className="w-6 h-6 text-bronto-yellow" />
               <h4 className="uppercase text-xl font-bold text-white">
                 Seguridad y Normativa
               </h4>
-              <p className="text-xs text-white/70 leading-relaxed">
+              <p className="text-xs text-[#C4CCD4] leading-relaxed">
                 Cumplimiento de estándares de trabajo en alturas (Res. 4272), normas sismorresistentes NSR-10 y equipos con protecciones de fábrica certificadas.
               </p>
             </div>
 
-            <div className="bg-[#181818] border border-[#2B2B2B] p-6 space-y-3">
+            <div className="bg-matte border border-storm-border p-6 space-y-3">
               <Cog className="w-6 h-6 text-bronto-yellow" />
               <h4 className="uppercase text-xl font-bold text-white">
                 Rendimiento Mecánico
               </h4>
-              <p className="text-xs text-white/70 leading-relaxed">
+              <p className="text-xs text-[#C4CCD4] leading-relaxed">
                 Flota renovada de marcas líderes mundiales, con mantenimiento preventivo continuo y lubricación de grado industrial.
               </p>
             </div>
 
-            <div className="bg-[#181818] border border-[#2B2B2B] p-6 space-y-3">
+            <div className="bg-matte border border-storm-border p-6 space-y-3">
               <ShieldCheck className="w-6 h-6 text-bronto-yellow" />
               <h4 className="uppercase text-xl font-bold text-white">
                 Transparencia Comercial
               </h4>
-              <p className="text-xs text-white/70 leading-relaxed">
+              <p className="text-xs text-[#C4CCD4] leading-relaxed">
                 Actas de entrega detalladas, control de horómetros verificables y asesoría técnica real sin costos ocultos.
               </p>
             </div>
@@ -117,12 +117,12 @@ export default function AboutUsPage() {
         </div>
 
         {/* CTA */}
-        <div className="mt-12 p-8 sm:p-12 bg-[#1A1A1A] border border-[#2B2B2B] flex flex-col md:flex-row items-center justify-between gap-6">
+        <div className="mt-12 p-8 sm:p-12 bg-matte border border-storm-border flex flex-col md:flex-row items-center justify-between gap-6">
           <div>
             <h3 className="uppercase text-2xl sm:text-3xl font-black text-white">
               ¿Listo para equipar su próxima obra?
             </h3>
-            <p className="text-sm text-white/70 mt-1">
+            <p className="text-sm text-[#C4CCD4] mt-1">
               Explore el catálogo o solicite asesoría comercial inmediata en Bogotá y la Sabana.
             </p>
           </div>

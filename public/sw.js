@@ -1,5 +1,5 @@
-// BRONTO PWA Service Worker v2.2.0 - Orange Theme & Purged Cache
-const CACHE_NAME = 'bronto-cache-v2.2.0';
+// BRONTO PWA Service Worker v3.0.0 — Full Industrial Redesign & White-Contrast Icons
+const CACHE_NAME = 'bronto-cache-v3.0.0';
 
 // Recursos críticos para caché inicial (App Shell)
 const PRECACHE_ASSETS = [
@@ -11,10 +11,8 @@ const PRECACHE_ASSETS = [
   '/servicios',
   '/cotizar',
   '/manifest.webmanifest',
-  '/icons/icon-192-orange.png?v=2',
-  '/icons/icon-512-orange.png?v=2',
-  '/icons/icon-192.png?v=2',
-  '/icons/icon-512.png?v=2',
+  '/icons/icon-192-v3.png',
+  '/icons/icon-512-v3.png',
   '/apple-touch-icon.png',
   '/favicon.ico',
 ];

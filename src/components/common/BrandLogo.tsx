@@ -1,7 +1,6 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { siteConfig } from "@/data/siteConfig";
 
 interface BrandLogoProps {
   variant?: "full" | "symbol" | "wordmark";
@@ -19,7 +18,7 @@ export const DynastesBeetleSymbol: React.FC<{
     <div className={`relative inline-flex items-center justify-center ${className}`}>
       <Image
         src="/brand/bronto-beetle.png"
-        alt="Símbolo Escarabajo Dynastes BRONTO"
+        alt="Símbolo Escarabajo Dynastes BRONTO®"
         width={size}
         height={Math.round(size * 0.426)}
         className="w-full h-auto object-contain"
@@ -35,22 +34,21 @@ export const BrandLogo: React.FC<BrandLogoProps> = ({
   className = "",
   withLink = true,
 }) => {
-  // Proporciones oficiales exactas del recurso marcario original sin deformación (ratio: 1.97)
   const sizeMap = {
     sm: {
-      full: { width: 110, height: 56, className: "h-9 w-auto" },
+      full: { width: 108, height: 55, className: "h-8 sm:h-9 w-auto" },
       symbol: { width: 47, height: 20, className: "h-5 w-auto" },
     },
     md: {
-      full: { width: 148, height: 75, className: "h-12 w-auto" },
+      full: { width: 142, height: 72, className: "h-10 sm:h-11 w-auto" },
       symbol: { width: 66, height: 28, className: "h-7 w-auto" },
     },
     lg: {
-      full: { width: 197, height: 100, className: "h-16 w-auto" },
+      full: { width: 186, height: 94, className: "h-14 w-auto" },
       symbol: { width: 94, height: 40, className: "h-10 w-auto" },
     },
     xl: {
-      full: { width: 260, height: 132, className: "h-20 w-auto" },
+      full: { width: 248, height: 126, className: "h-18 w-auto" },
       symbol: { width: 127, height: 54, className: "h-14 w-auto" },
     },
   };
@@ -63,38 +61,24 @@ export const BrandLogo: React.FC<BrandLogoProps> = ({
         <div className="relative flex items-center justify-center">
           <Image
             src="/brand/bronto-beetle.png"
-            alt="Símbolo Escarabajo Dynastes BRONTO"
+            alt="Símbolo Escarabajo Dynastes BRONTO®"
             width={currentSize.symbol.width}
             height={currentSize.symbol.height}
-            className={`${currentSize.symbol.className} object-contain transition-transform duration-300 group-hover:scale-105`}
+            className={`${currentSize.symbol.className} object-contain`}
             priority
           />
         </div>
       ) : (
         <div className="relative flex items-center">
-          {/* Logo para Modo Oscuro (letras BRONTO en blanco) */}
+          {/* Siempre usamos el logotipo con texto BRONTO® en blanco puro (#FFFFFF) y escarabajo Naranja Seguridad (#FF5F00) para máximo contraste sobre Gris Tormenta y Negro Mate */}
           <Image
             src="/brand/bronto-logo.png"
-            alt="BRONTO - Equipos para Construcción e Industria"
+            alt="BRONTO® — Maquinaria, Formaletas y Concreto"
             width={currentSize.full.width}
             height={currentSize.full.height}
-            className={`${currentSize.full.className} hidden dark:block object-contain transition-transform duration-300 group-hover:scale-105`}
+            className={`${currentSize.full.className} object-contain`}
             priority
           />
-          {/* Logo para Modo Claro (letras BRONTO en carbón oscuro) */}
-          <Image
-            src="/brand/bronto-logo-dark-text.png"
-            alt="BRONTO - Equipos para Construcción e Industria"
-            width={currentSize.full.width}
-            height={currentSize.full.height}
-            className={`${currentSize.full.className} block dark:hidden object-contain transition-transform duration-300 group-hover:scale-105`}
-            priority
-          />
-          {siteConfig.showRegisteredSymbol && (
-            <span className="text-[10px] font-bold text-bronto-yellow ml-0.5 align-super">
-              ®
-            </span>
-          )}
         </div>
       )}
     </div>
@@ -104,8 +88,8 @@ export const BrandLogo: React.FC<BrandLogoProps> = ({
     return (
       <Link
         href="/"
-        className="group inline-flex items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-bronto-yellow rounded-sm"
-        aria-label="Ir a la página de inicio de BRONTO"
+        className="group inline-flex items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FF5F00]"
+        aria-label="Ir al inicio de BRONTO®"
       >
         {content}
       </Link>
